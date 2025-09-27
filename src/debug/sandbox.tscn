@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://h5kimkeas70"]
+
+[ext_resource type="Script" uid="uid://dbbkpkhl7jysd" path="res://conductor/Conductor.cs" id="1_r3gm0"]
+
+[node name="Sandbox" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Conductor" type="Node" parent="." node_paths=PackedStringArray("AudioStreamPlayer")]
+script = ExtResource("1_r3gm0")
+AudioStreamPlayer = NodePath("../AudioStreamPlayer")
