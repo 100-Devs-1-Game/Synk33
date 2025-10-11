@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://ovi7mj6ghtqq"]
+
+[ext_resource type="Script" uid="uid://cqsnhjpdnjag5" path="res://scenes/menus/credits/credits_label.gd" id="1_udlfv"]
+[ext_resource type="Shortcut" uid="uid://c2mgfjt733bdg" path="res://scenes/menus/back_shortcut.tres" id="2_mf3gr"]
+[ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="3_dpmsc"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 183.0
+offset_bottom = 39.0
+theme_type_variation = &"HeaderLarge"
+text = "CREDITS"
+
+[node name="Credits" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udlfv")
+credits_path = "res://credits.txt"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -44.0
+offset_right = -38.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+shortcut = ExtResource("2_mf3gr")
+text = "Back"
+script = ExtResource("3_dpmsc")
+scene_path = "res://scenes/menus/main/main_menu.tscn"
