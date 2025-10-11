@@ -9,6 +9,7 @@ shader = ExtResource("1_71g5q")
 shader_parameter/spacing = 25.0
 shader_parameter/animation_progress = 0.0
 shader_parameter/reverse = false
+shader_parameter/direction = Vector2(1, 1)
 shader_parameter/dot_size = 1.0
 
 [sub_resource type="Animation" id="Animation_086p3"]
