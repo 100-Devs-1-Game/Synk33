@@ -1,17 +1,16 @@
 extends CanvasLayer
 
 
-var _transition_scene:PackedScene
+signal transition_midpoint()
 
 
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 
 
-func transition_to_packed(scene:PackedScene) -> void:
-	_transition_scene = scene
+func transition(method:Callable) -> void:
 	animation_player.play(&"transition")
+	transition_midpoint.connect(method, CONNECT_ONE_SHOT)
 
 
 func _transition_callback() -> void:
-	# I don't likey this
-	get_tree().change_scene_to_packed(_transition_scene)
+	transition_midpoint.emit()
