@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+uniform sampler2D screen_tex:hint_screen_texture;
+
 uniform float spacing = 25.0;
 uniform float animation_progress : hint_range(0.0, 1.0) = 0.0;
 uniform bool reverse = false;
@@ -61,5 +63,6 @@ void fragment() {
 	// 机制3：alpha值过滤
 	if (alpha < 0.01) discard; 
 	
-	COLOR.a = alpha;
+	COLOR = texture(screen_tex, SCREEN_UV);
+	COLOR.a *= alpha;
 }

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd3wtxett1n0p"]
+[gd_scene load_steps=8 format=3 uid="uid://cd3wtxett1n0p"]
 
 [ext_resource type="Shader" uid="uid://cv5mwy6kqyjlo" path="res://autoloads/transition/transition.gdshader" id="1_71g5q"]
 [ext_resource type="Script" uid="uid://c2bohsencac6y" path="res://autoloads/transition/transition.gd" id="1_78yyn"]
+[ext_resource type="Script" uid="uid://cisjavy2jeloi" path="res://autoloads/transition/wiper.gd" id="3_dmvch"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_78yyn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nc1h4"]
 shader = ExtResource("1_71g5q")
 shader_parameter/spacing = 25.0
 shader_parameter/animation_progress = 0.0
@@ -90,7 +91,17 @@ layer = 99
 script = ExtResource("1_78yyn")
 
 [node name="Wiper" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_78yyn")
+material = SubResource("ShaderMaterial_nc1h4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_dmvch")
+
+[node name="ColorRect" type="ColorRect" parent="Wiper"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
