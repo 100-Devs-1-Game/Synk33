@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://ba834lokemy8p" path="res://chart/NoteObject.cs" id="1_vn1wh"]
 [ext_resource type="Texture2D" uid="uid://bl4y7udpesfni" path="res://assets/notes/note.png" id="2_rnleo"]
 
-[node name="NoteObject" type="Node2D"]
-script = ExtResource("1_vn1wh")
-
-[node name="Note" type="Sprite2D" parent="."]
+[node name="Note" type="Sprite2D"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_rnleo")
+script = ExtResource("1_vn1wh")

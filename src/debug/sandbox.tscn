@@ -1,20 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://h5kimkeas70"]
+[gd_scene load_steps=10 format=3 uid="uid://h5kimkeas70"]
 
-[ext_resource type="AudioStream" uid="uid://b3uxaoedjaa6r" path="res://assets/charts/placeholder/Placeholder.wav" id="1_cpkkn"]
-[ext_resource type="Script" uid="uid://dbbkpkhl7jysd" path="res://conductor/Conductor.cs" id="1_r3gm0"]
-[ext_resource type="Resource" uid="uid://6h6y7aehbpbo" path="res://assets/charts/placeholder/placeholder_hard.tres" id="2_pr6hy"]
+[ext_resource type="Script" uid="uid://dbbkpkhl7jysd" path="res://core/Conductor.cs" id="1_r3gm0"]
+[ext_resource type="AudioStream" uid="uid://b3uxaoedjaa6r" path="res://assets/charts/placeholder/Placeholder.wav" id="1_sekht"]
+[ext_resource type="Script" uid="uid://d2i6u8ixu12r2" path="res://core/GameManager.cs" id="2_sekht"]
 [ext_resource type="Texture2D" uid="uid://bl4y7udpesfni" path="res://assets/notes/note.png" id="2_wuxcy"]
 [ext_resource type="PackedScene" uid="uid://cjcavdxicliet" path="res://spawner/spawner.tscn" id="3_m8rsu"]
+[ext_resource type="Resource" uid="uid://6h6y7aehbpbo" path="res://assets/charts/placeholder/placeholder_hard.tres" id="4_a3tso"]
+[ext_resource type="Script" uid="uid://cn66yvsvfpaxu" path="res://core/InputManager.cs" id="4_s2mv0"]
+[ext_resource type="Script" uid="uid://cvtcbn8yijcak" path="res://core/JudgementManager.cs" id="5_8juq1"]
+[ext_resource type="Script" uid="uid://ch7g5tgreftc" path="res://debug/debug.gd" id="8_8juq1"]
 
 [node name="Sandbox" type="Node2D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_cpkkn")
+stream = ExtResource("1_sekht")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Conductor", "InputManager", "JudgementManager", "Spawner")]
+script = ExtResource("2_sekht")
+Conductor = NodePath("../Conductor")
+InputManager = NodePath("../InputManager")
+JudgementManager = NodePath("../JudgementManager")
+Spawner = NodePath("../Spawner")
 
 [node name="Conductor" type="Node" parent="." node_paths=PackedStringArray("Player")]
 script = ExtResource("1_r3gm0")
-Chart = ExtResource("2_pr6hy")
+Chart = ExtResource("4_a3tso")
 Player = NodePath("../AudioStreamPlayer")
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("4_s2mv0")
+
+[node name="JudgementManager" type="Node" parent="." node_paths=PackedStringArray("Conductor", "InputManager")]
+script = ExtResource("5_8juq1")
+Conductor = NodePath("../Conductor")
+InputManager = NodePath("../InputManager")
 
 [node name="Temp" type="Control" parent="."]
 layout_mode = 3
@@ -54,11 +73,24 @@ position = Vector2(1085, -43.399963)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_wuxcy")
 
-[node name="Spawner" parent="." instance=ExtResource("3_m8rsu")]
-ScrollSpeed = 0.1
+[node name="Spawner" parent="." node_paths=PackedStringArray("JudgementManager") instance=ExtResource("3_m8rsu")]
+ScrollSpeed = 0.2
 JudgementLine = NodePath("../JudgementDebug")
 Conductor = NodePath("../Conductor")
+JudgementManager = NodePath("../JudgementManager")
 
 [node name="JudgementDebug" type="Marker2D" parent="."]
-position = Vector2(960, 960)
+position = Vector2(960, 982)
 gizmo_extents = 250.0
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_8juq1")
+
+[node name="Time" type="Label" parent="Debug"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
