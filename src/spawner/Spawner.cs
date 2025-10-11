@@ -1,6 +1,7 @@
+using System;
 using Godot;
 using SYNK33.chart;
-using SYNK33.conductor;
+using SYNK33.core;
 
 namespace SYNK33.spawner;
 
@@ -14,6 +15,8 @@ public partial class Spawner : Node2D {
     [Export] public NodePath JudgementLine { get; set; }
 
     [Export] public NodePath Conductor { get; set; }
+    [Export] public JudgementManager JudgementManager { get; set; }
+    
 
     public override void _Ready() {
         _conductor = GetNode<Conductor>(Conductor);
@@ -22,20 +25,29 @@ public partial class Spawner : Node2D {
     }
 
     private void SpawnNotes() {
-        var judgementY = GetNode<Marker2D>(JudgementLine).Position.Y;
+        var judgementY = GetNode<Marker2D>(JudgementLine).GlobalPosition.Y;
         foreach (var note in _chart.Notes) {
-            var absoluteBeat = note.Beat * _chart.BeatsPerMeasure + AudioOffset;
-            var spawnY = absoluteBeat * ScrollSpeed * judgementY / _chart.BeatsPerMeasure;
+            var absoluteBeat = note.Bar * _chart.BeatsPerMeasure + note.Beat + (float)note.Sixteenth/ 4.0f + AudioOffset;
+            var spawnY = absoluteBeat * ScrollSpeed * judgementY;
             SpawnNote(note.ToNote(), new Vector2(960f, -spawnY));
         }
     }
 
     private void SpawnNote(Note note, Vector2 position) {
-        var judgementY = GetNode<Marker2D>(JudgementLine).Position.Y;
+        var judgementY = GetNode<Marker2D>(JudgementLine).GlobalPosition.Y;
         var noteInstance = GD.Load<PackedScene>("res://chart/NoteObject.tscn").Instantiate<NoteObject>();
         noteInstance.Speed = judgementY / _conductor.SecondsPerBeat * ScrollSpeed;
         noteInstance.Type = note.Type;
-        noteInstance.Position = new Vector2(position.X, judgementY + position.Y);
+        var lanePosition = note.Type switch {
+            NoteType.Left => position.X - 100,
+            NoteType.Middle => position.X,
+            NoteType.Right => position.X + 100,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+        noteInstance.Position = new Vector2(lanePosition, judgementY + position.Y);
+        noteInstance.StartTime = note.StartTime;
+        JudgementManager.NoteMissed += noteInstance.SetMissed;
+        JudgementManager.NoteHit += noteInstance.SetHit;
         AddChild(noteInstance);
     }
 }

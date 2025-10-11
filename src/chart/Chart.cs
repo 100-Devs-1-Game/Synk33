@@ -5,7 +5,7 @@ namespace SYNK33.chart;
 
 [GlobalClass]
 public partial class Chart : Resource {
-    [ExportGroup("Info")] [Export] public string Designer { get; set; }
+    [ExportGroup("Info")] [Export] public required string Designer { get; set; }
 
     [Export] public Difficulty Difficulty { get; set; }
     [Export] public int Level { get; set; }
