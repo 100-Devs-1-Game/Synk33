@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwpjtqjpf7sp0"]
+
+[ext_resource type="Shortcut" uid="uid://c2mgfjt733bdg" path="res://scenes/menus/back_shortcut.tres" id="1_e6ab2"]
+[ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="2_n3xhl"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 183.0
+offset_bottom = 39.0
+theme_type_variation = &"HeaderLarge"
+text = "OPTIONS"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -44.0
+offset_right = -38.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+shortcut = ExtResource("1_e6ab2")
+text = "Back"
+script = ExtResource("2_n3xhl")
+scene_path = "res://scenes/menus/main/main_menu.tscn"
