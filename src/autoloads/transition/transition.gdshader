@@ -5,6 +5,7 @@ uniform sampler2D screen_tex:hint_screen_texture;
 uniform float spacing = 25.0;
 uniform float animation_progress : hint_range(0.0, 1.0) = 0.0;
 uniform bool reverse = false;
+uniform vec2 direction = vec2(1.0, 1.0);
 uniform float dot_size : hint_range(0.0, 1.0) = 1.0;
 
 void fragment() {
@@ -21,12 +22,15 @@ void fragment() {
 	if (reverse){
 		uv_corrected = vec2(1.0) - uv_corrected;
 	}
+	uv_corrected.x = min(direction.x, 0.0) + uv_corrected.x;
+	uv_corrected.y = min(direction.y, 0.0) + uv_corrected.y;
 	
 	// 3. 计算归一化网格位置 [0,1]
 	vec2 norm_pos = uv_corrected * screen_size / (grid_count * spacing);
 	
+	norm_pos *= direction;
 	// 4. 对角线延迟计算（左上0 → 右下1）
-	float delay = (norm_pos.x + norm_pos.y) * 0.5;
+	float delay = (norm_pos.x + norm_pos.y) / (abs(direction.x) + abs(direction.y));
 	
 	// 5. 双重过滤机制
 	// 机制1：基于位置的延迟阈值
