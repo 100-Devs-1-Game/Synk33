@@ -4,7 +4,6 @@ uniform float spacing = 25.0;
 uniform float animation_progress : hint_range(0.0, 1.0) = 0.0;
 uniform bool reverse = false;
 uniform float dot_size : hint_range(0.0, 1.0) = 1.0;
-uniform vec4 dot_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 
 void fragment() {
 	// 1. 进度为零时强制完全不显示
@@ -62,5 +61,5 @@ void fragment() {
 	// 机制3：alpha值过滤
 	if (alpha < 0.01) discard; 
 	
-	COLOR = vec4(dot_color.rgb, alpha);
+	COLOR.a = alpha;
 }
