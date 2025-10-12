@@ -8,7 +8,7 @@ var current:SettingsSave
 var tenative:SettingsSave
 
 
-func _init() -> void:
+func _ready() -> void:
 	current = SettingsSave.load_config(OPTIONS_SAVE_PATH)
 	current.apply_settings(get_tree().root)
 	tenative = current.duplicate()
