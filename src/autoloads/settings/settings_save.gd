@@ -35,8 +35,7 @@ const VSYNC_MODE_NAMES:PackedStringArray = [
 @export_group("Audio")
 ## Linear volumes of busses.
 @export var bus_volumes:Array[float] = [
-	1.0,
-	0.8
+	1.0
 ]
 #endregion Audio
 
