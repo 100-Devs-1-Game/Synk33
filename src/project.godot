@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Transition="*res://autoloads/transition/transition.tscn"
+SettingsManager="*res://autoloads/settings/settings_manager.gd"
 
 [display]
 
