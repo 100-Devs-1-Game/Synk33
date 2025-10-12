@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Chart" load_steps=6 format=3 uid="uid://6ify6yqyshev"]
 
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="1_0brar"]
-[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/DebugNote.cs" id="1_0w044"]
+[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_0w044"]
 
 [sub_resource type="Resource" id="Resource_k13bl"]
 script = ExtResource("1_0w044")

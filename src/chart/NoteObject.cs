@@ -11,7 +11,7 @@ public partial class NoteObject : Node2D {
     [Export] public NoteType Type;
 
     public override void _Ready() {
-        SetSelfModulate(Type switch {
+        SetModulate(Type switch {
                 NoteType.Left => new Color("f7000f"),
                 NoteType.Middle => new Color("209f00"),
                 NoteType.Right => new Color("008bd9"),
@@ -27,12 +27,12 @@ public partial class NoteObject : Node2D {
 
     public void SetMissed(NoteType type, int bar, int beat, double sixteenth) {
         if (!IsEventMatching(type, bar, beat, sixteenth)) return;
-        SetSelfModulate(SelfModulate.Darkened(1f));
+        SetModulate(SelfModulate.Darkened(1f));
     }
 
     public void SetHit(NoteType type, int bar, int beat, double sixteenth, Judgement judgement) {
         if (!IsEventMatching(type, bar, beat, sixteenth)) return;
-        SetSelfModulate(judgement switch {
+        SetModulate(judgement switch {
             Judgement.Perfect => new Color(255, 255, 255),
             Judgement.Great => new Color(255, 255, 0),
             Judgement.Okay => new Color(255, 0, 2555),
@@ -41,13 +41,10 @@ public partial class NoteObject : Node2D {
         });
     }
 
-    private bool IsEventMatching(NoteType type,  int bar, int beat, double sixteenth) {
+    protected bool IsEventMatching(NoteType type,  int bar, int beat, double sixteenth) {
         return IsEventMatching(type, new NoteTime(bar, beat, sixteenth));
     }
-    private bool IsEventMatching(NoteType type, NoteTime time) {
-        if (Type == type && StartTime == time) {
-            GD.Print("matching " + time);
-        }
+    protected bool IsEventMatching(NoteType type, NoteTime time) {
         return Type == type && StartTime == time;
     }
 }
