@@ -239,7 +239,7 @@ func _load_audio_volumes(file:ConfigFile) -> void:
 			continue
 		
 		bus_volumes[bus_index] = file.get_value(
-			"Audio Volumes", 
+			CATEGORY_AUDIO, 
 			bus_name, 
 			bus_volumes[bus_index]
 		)
