@@ -61,6 +61,7 @@ static var input_regex:RegEx = RegEx.create_from_string(r"([^\/]+)(?:\/(.+))?")
 static func load_config(path:String) -> SettingsSave:
 	var instance := SettingsSave.new()
 	if not FileAccess.file_exists(path):
+		instance._load_default_input_map()
 		return instance
 	
 	var file := ConfigFile.new()
