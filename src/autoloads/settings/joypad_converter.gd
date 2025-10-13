@@ -51,7 +51,7 @@ static func _static_init() -> void:
 	_JOYBUTTON_NAME_REVERSE_LOOKUP.make_read_only() 
 	for i in len(_JOYAXIS_NAMES):
 		_JOYAXIS_NAME_REVERSE_LOOKUP[_JOYAXIS_NAMES[i]] = i as JoyAxis
-	_JOYBUTTON_NAME_REVERSE_LOOKUP.make_read_only()
+	_JOYAXIS_NAME_REVERSE_LOOKUP.make_read_only()
 
 
 ## Returns [code]true[/code] if a proper name for the [enum JoyButton] is defined (in practice,
