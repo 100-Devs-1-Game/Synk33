@@ -8,6 +8,7 @@ const CATEGORY_INPUT := "input"
 const CATEGORY_VIDEO := "video"
 const CATEGORY_AUDIO := "audio"
 
+const KEY_PHYSICAL_PREFIX:String = "!"
 
 const MAXIMUM_LOOK_SENSITIVITY:float = 1 / PI / 30
 const WINDOW_MODE_NAMES:PackedStringArray = [
@@ -163,9 +164,18 @@ func _load_input_map(file:ConfigFile) -> void:
 				
 				for keycode_string:String in value:
 					var event := InputEventKey.new()
-					event.physical_keycode = OS.find_keycode_from_string(keycode_string)
-					if event.physical_keycode == KEY_NONE \
-							or event.physical_keycode == KEY_UNKNOWN:
+					
+					var keycode_find:int
+					if keycode_string.begins_with(KEY_PHYSICAL_PREFIX): 
+						keycode_string = keycode_string.substr(1)
+						keycode_find = OS.find_keycode_from_string(keycode_string)
+						event.physical_keycode = keycode_find as Key
+					else:
+						keycode_find = OS.find_keycode_from_string(keycode_string)
+						event.keycode = keycode_find as Key
+					
+					
+					if keycode_find == KEY_NONE or keycode_find == KEY_UNKNOWN:
 						push_error(ERROR_MSG_INPUT_BAD_CODESTRING % [keycode_string, key])
 						continue
 					input_map[action].append(event)
@@ -246,9 +256,19 @@ func _save_input_map(file:ConfigFile) -> void:
 			if not (input_map[action][i] is InputEventKey):
 				break_index = i
 				break
-			constructed.append(OS.get_keycode_string(
-				(input_map[action][i] as InputEventKey).get_physical_keycode_with_modifiers()
-			))
+			
+			var processed:String = ""
+			if (input_map[action][i] as InputEventKey).keycode != 0:
+				processed = OS.get_keycode_string(
+					(input_map[action][i] as InputEventKey).get_keycode_with_modifiers()
+				)
+			else:
+				processed = KEY_PHYSICAL_PREFIX + OS.get_keycode_string(
+					(input_map[action][i] as InputEventKey).get_physical_keycode_with_modifiers()
+				)
+			
+			constructed.append(processed)
+			
 		file.set_value(CATEGORY_INPUT, action + "/keyboard", constructed)
 		
 		constructed = PackedStringArray()
