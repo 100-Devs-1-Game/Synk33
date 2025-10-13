@@ -4,6 +4,7 @@ extends Resource
 
 
 const CATEGORY_GAMEPLAY := "gameplay"
+const CATEGORY_INPUT := "input"
 const CATEGORY_VIDEO := "video"
 const CATEGORY_AUDIO := "audio"
 
@@ -16,11 +17,27 @@ const VSYNC_MODE_NAMES:PackedStringArray = [
 	"disabled", "enabled", "adaptive", "mailbox"
 ]
 
+const ERROR_MSG_INPUT_INVALID_KEY := 'Invalid Action name "%s" in config input section, skipping... %s'
+const ERROR_MSG_INPUT_BAD_VALUE := 'Bad value for action "%s" in config input section, skipping...'
+const ERROR_MSG_INPUT_BAD_CODESTRING := 'Bad codestring "%s" for action "%s" in config input section, skipping...'
+const ERROR_MSG_INPUT_UNKNOWN_SUBSECTION := 'Unknown subsection "%s" for action in config input section, skipping...'
+
+static var input_regex:RegEx = RegEx.create_from_string(r"([^\/]+)(?:\/(.+))?")
 
 #region Gameplay
 @export_group("Gameplay")
 @export_range(0, 1.0, 0.001, "or_greater") var custom_offset:float = 0.0
 #endregion Gameplay
+
+#region Input
+@export_group("Input")
+@export_custom(
+	PROPERTY_HINT_TYPE_STRING,
+	# StringName/PROPERTY_HINT_INPUT_NAME:"show_builtin";Object/PROPERTY_HINT_RESOURCE_TYPE:"InputEvent"
+	"21/43:show_builtin;28:24/17:InputEvent",
+	PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_ALWAYS_DUPLICATE
+) var input_map:Dictionary[StringName,Array] = {}
+#endregion Input
 
 #region Video
 @export_group("Video")
@@ -53,6 +70,7 @@ static func load_config(path:String) -> SettingsSave:
 		return instance
 	
 	instance._load_gameplay_settings(file)
+	instance._load_input_map(file)
 	instance._load_video_settings(file)
 	instance._load_audio_volumes(file)
 	return instance
@@ -82,6 +100,8 @@ func save_config(path:String) -> void:
 	
 	file.set_value(CATEGORY_GAMEPLAY, "custom_offset", custom_offset)
 	
+	_save_input_map(file)
+	
 	file.set_value(CATEGORY_VIDEO, "window_mode", WINDOW_MODE_NAMES[window_mode])
 	file.set_value(CATEGORY_VIDEO, "vsync_mode", VSYNC_MODE_NAMES[vsync_mode])
 	file.set_value(CATEGORY_VIDEO, "max_fps", max_fps)
@@ -100,12 +120,83 @@ func set_bus_volume(bus_index:int, linear_volume:float) -> void:
 
 
 func apply_settings(root:Viewport) -> void:
+	_apply_input_map(root)
 	_apply_video_settings(root)
 	_apply_bus_volumes(root)
 
 #region Loaders
 func _load_gameplay_settings(file:ConfigFile) -> void:
 	custom_offset = file.get_value(CATEGORY_GAMEPLAY, "custom_offset", custom_offset)
+
+
+func _load_input_map(file:ConfigFile) -> void:
+	if not file.has_section(CATEGORY_INPUT):
+		push_error('No "%s" section present in config, using defaults...' % CATEGORY_INPUT)
+		_load_default_input_map()
+		return
+	_create_template_input_map()
+	
+	for key in file.get_section_keys(CATEGORY_INPUT):
+		var key_match := input_regex.search(key)
+		if key_match == null:
+			push_error(ERROR_MSG_INPUT_INVALID_KEY % [key, "(Not in InputMap)"])
+			return
+		
+		var action:StringName = key_match.get_string(1) as StringName
+		var subsection:String = key_match.get_string(2)
+		
+		if not InputMap.has_action(action):
+			push_error(ERROR_MSG_INPUT_INVALID_KEY % [action, "(Not in InputMap)"])
+			continue
+		
+		var value = file.get_value(CATEGORY_INPUT, key)
+		
+		if value == null:
+			push_error(ERROR_MSG_INPUT_BAD_VALUE % key)
+			continue
+		
+		match subsection:
+			"keyboard": # Keyboard inputs
+				if value is not PackedStringArray:
+					push_error(ERROR_MSG_INPUT_BAD_VALUE % key)
+					continue
+				
+				for keycode_string:String in value:
+					var event := InputEventKey.new()
+					event.physical_keycode = OS.find_keycode_from_string(keycode_string)
+					if event.physical_keycode == KEY_NONE \
+							or event.physical_keycode == KEY_UNKNOWN:
+						push_error(ERROR_MSG_INPUT_BAD_CODESTRING % [keycode_string, key])
+						continue
+					input_map[action].append(event)
+			"controller":
+				if value is not PackedStringArray:
+					push_error(ERROR_MSG_INPUT_BAD_VALUE % key)
+					continue
+				
+				for code_string:String in value:
+					var event := JoypadConverter.joypad_input_event_from_string(code_string)
+					if event == null:
+						push_error(ERROR_MSG_INPUT_BAD_CODESTRING % [code_string, key])
+						continue
+					input_map[action].append(event)
+			_:
+				push_error(ERROR_MSG_INPUT_UNKNOWN_SUBSECTION % [subsection, key])
+				continue
+
+
+## Creates a blank template input map based on the defaults from [ProjectSettings]
+func _create_template_input_map() -> void:
+	input_map.clear()
+	for action in InputMap.get_actions():
+		input_map[action] = []
+
+
+func _load_default_input_map() -> void:
+	input_map.clear()
+	for action in InputMap.get_actions():
+		var defaults:Dictionary = ProjectSettings.get_setting_with_override("input/" + action)
+		input_map[action] = defaults.events
 
 
 func _load_video_settings(file:ConfigFile) -> void:
@@ -143,7 +234,44 @@ func _load_audio_volumes(file:ConfigFile) -> void:
 		)
 #endregion Loaders
 
+#region Savers
+func _save_input_map(file:ConfigFile) -> void:
+	# This is reused because why not
+	var constructed:PackedStringArray = PackedStringArray()
+	for action in input_map:
+		var break_index:int = 0
+		
+		# keyboard pass
+		for i in len(input_map[action]):
+			if not (input_map[action][i] is InputEventKey):
+				break_index = i
+				break
+			constructed.append(OS.get_keycode_string(
+				(input_map[action][i] as InputEventKey).get_physical_keycode_with_modifiers()
+			))
+		file.set_value(CATEGORY_INPUT, action + "/keyboard", constructed)
+		
+		constructed = PackedStringArray()
+		if break_index == 0:
+			continue
+		
+		constructed.resize(len(input_map[action]) - break_index)
+		# controller pass
+		for i in len(input_map[action]) - break_index:
+			constructed[i] = JoypadConverter.get_joypad_event_string(input_map[action][i + break_index])
+		file.set_value(CATEGORY_INPUT, action + "/controller", constructed)
+		
+		constructed = PackedStringArray()
+#endregion Savers
+
 #region Appliers
+func _apply_input_map(_root:Viewport) -> void:
+	for action in input_map:
+		InputMap.action_erase_events(action)
+		for event in input_map[action]:
+			InputMap.action_add_event(action, event)
+
+
 func _apply_video_settings(_root:Viewport) -> void:
 	DisplayServer.window_set_mode(window_mode)
 	Engine.max_fps = max_fps
