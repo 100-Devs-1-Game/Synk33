@@ -22,4 +22,12 @@ public record NoteTime(int Bar, int Beat, double Sixteenth) {
     public readonly int Bar = Bar;
     public readonly int Beat = Beat;
     public readonly double Sixteenth = Sixteenth;
+
+    public static NoteTime operator +(NoteTime left, NoteTime right) {
+        return new NoteTime(left.Bar + right.Bar, left.Beat + right.Beat, left.Sixteenth + right.Sixteenth);
+    }
+    
+    public static NoteTime operator -(NoteTime left, NoteTime right) {
+        return new NoteTime(left.Bar - right.Bar, left.Beat - right.Beat, left.Sixteenth - right.Sixteenth);
+    }
 }

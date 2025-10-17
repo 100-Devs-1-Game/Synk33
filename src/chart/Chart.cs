@@ -12,7 +12,7 @@ public partial class Chart : Resource {
     [Export] public float Bpm { get; set; }
     [Export(PropertyHint.Range, "1,32,1")] public int BeatsPerMeasure { get; set; } = 4;
 
-    [ExportGroup("Music")] [Export] public Array<DebugNote> Notes { get; set; }
+    [ExportGroup("Music")] [Export] public Array<GodotNote> Notes { get; set; }
 }
 
 public enum Difficulty {

@@ -16,9 +16,12 @@ public partial class InputManager : Node {
     public override void _Input(InputEvent @event) {
         if (@event is not InputEventKey keyEvent) return;
         var noteType = keyEvent switch {
-            _ when @event.IsAction("left") => NoteType.Left,
-            _ when @event.IsAction("middle") => NoteType.Middle,
-            _ when @event.IsAction("right") => NoteType.Right,
+            _ when @event.IsActionPressed("left") => NoteType.Left,
+            _ when @event.IsActionPressed("middle") => NoteType.Middle,
+            _ when @event.IsActionPressed("right") => NoteType.Right,
+            _ when @event.IsActionReleased("left") => NoteType.Left,
+            _ when @event.IsActionReleased("middle") => NoteType.Middle,
+            _ when @event.IsActionReleased("right") => NoteType.Right,
             _ => (NoteType?)null
         };
 
@@ -35,7 +38,6 @@ public partial class InputManager : Node {
         var timestamp = Time.GetUnixTimeFromSystem();
         var hit = new RhythmInput(type, pressed, timestamp - SongStartTime);
         _inputs.Enqueue(hit);
-        // GD.Print(hit);
     }
 }
 

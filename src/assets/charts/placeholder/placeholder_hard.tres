@@ -1,110 +1,28 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=20 format=3 uid="uid://6h6y7aehbpbo"]
+[gd_resource type="Resource" script_class="Chart" load_steps=7 format=3 uid="uid://6h6y7aehbpbo"]
 
-[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/DebugNote.cs" id="1_guutq"]
+[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="2_ppkk4"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_qvmu7"]
 
-[sub_resource type="Resource" id="Resource_oq1cs"]
-script = ExtResource("1_guutq")
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
 [sub_resource type="Resource" id="Resource_guutq"]
-script = ExtResource("1_guutq")
+script = ExtResource("2_ppkk4")
 Bar = 1
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_yftsa"]
-script = ExtResource("1_guutq")
-Bar = 1
-Beat = 1
-Type = 1
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_thnbw"]
-script = ExtResource("1_guutq")
-Bar = 1
-Beat = 2
-Type = 1
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_0jn2v"]
-script = ExtResource("1_guutq")
-Bar = 1
-Beat = 3
-Type = 1
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_qvmu7"]
-script = ExtResource("1_guutq")
-Bar = 2
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_gtqs8"]
-script = ExtResource("1_guutq")
-Bar = 2
+script = ExtResource("2_ppkk4")
 Beat = 2
-Sixteenth = 1.0
 Type = 2
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_vb8px"]
-script = ExtResource("1_guutq")
-Bar = 2
-Beat = 2
-Sixteenth = 2.0
-Type = 1
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_ow3ot"]
-script = ExtResource("1_guutq")
-Bar = 2
-Beat = 2
-Sixteenth = 3.0
-Type = 2
+EndBar = 1
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_ppkk4"]
-script = ExtResource("1_guutq")
-Bar = 3
+script = ExtResource("2_ppkk4")
+Bar = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_ceeje"]
-script = ExtResource("1_guutq")
-Bar = 4
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_rk2we"]
-script = ExtResource("1_guutq")
-Bar = 5
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_lyuvh"]
-script = ExtResource("1_guutq")
-Bar = 6
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_rkw86"]
-script = ExtResource("1_guutq")
-Bar = 7
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_1xq6w"]
-script = ExtResource("1_guutq")
-Bar = 8
-Type = 2
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_d1hux"]
-script = ExtResource("1_guutq")
-Bar = 8
-Beat = 1
-Type = 2
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_dm37s"]
-script = ExtResource("1_guutq")
-Bar = 8
-Beat = 2
-Type = 2
+script = ExtResource("2_ppkk4")
+Bar = 3
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [resource]
@@ -113,5 +31,5 @@ Designer = "Sarian"
 Difficulty = 2
 Level = 1
 Bpm = 120.0
-Notes = Array[Object]([SubResource("Resource_oq1cs"), SubResource("Resource_guutq"), SubResource("Resource_yftsa"), SubResource("Resource_thnbw"), SubResource("Resource_0jn2v"), SubResource("Resource_qvmu7"), SubResource("Resource_gtqs8"), SubResource("Resource_vb8px"), SubResource("Resource_ow3ot"), SubResource("Resource_ppkk4"), SubResource("Resource_ceeje"), SubResource("Resource_rk2we"), SubResource("Resource_lyuvh"), SubResource("Resource_rkw86"), SubResource("Resource_1xq6w"), SubResource("Resource_d1hux"), SubResource("Resource_dm37s")])
+Notes = Array[Object]([SubResource("Resource_guutq"), SubResource("Resource_qvmu7"), SubResource("Resource_ppkk4"), SubResource("Resource_ceeje")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

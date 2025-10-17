@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://6h6y7aehbpbo" path="res://assets/charts/placeholder/placeholder_hard.tres" id="4_a3tso"]
 [ext_resource type="Script" uid="uid://cn66yvsvfpaxu" path="res://core/InputManager.cs" id="4_s2mv0"]
 [ext_resource type="Script" uid="uid://cvtcbn8yijcak" path="res://core/JudgementManager.cs" id="5_8juq1"]
-[ext_resource type="Script" uid="uid://ch7g5tgreftc" path="res://debug/debug.gd" id="8_8juq1"]
+[ext_resource type="Script" uid="uid://dh0e0xamdv8xm" path="res://autoloads/debug/Debug.gd" id="9_sekht"]
 
 [node name="Sandbox" type="Node2D"]
 
@@ -26,6 +26,7 @@ Spawner = NodePath("../Spawner")
 script = ExtResource("1_r3gm0")
 Chart = ExtResource("4_a3tso")
 Player = NodePath("../AudioStreamPlayer")
+Bpm = 125.0
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("4_s2mv0")
@@ -74,7 +75,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_wuxcy")
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("JudgementManager") instance=ExtResource("3_m8rsu")]
-ScrollSpeed = 0.2
+ScrollSpeed = 0.05
 JudgementLine = NodePath("../JudgementDebug")
 Conductor = NodePath("../Conductor")
 JudgementManager = NodePath("../JudgementManager")
@@ -88,7 +89,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("8_8juq1")
+script = ExtResource("9_sekht")
 
 [node name="Time" type="Label" parent="Debug"]
 layout_mode = 0
