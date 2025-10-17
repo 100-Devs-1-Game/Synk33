@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=7 format=3 uid="uid://c75ew37wbtpa2"]
 
+[ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
 [ext_resource type="Shortcut" uid="uid://c2mgfjt733bdg" path="res://scenes/menus/back_shortcut.tres" id="1_aprlc"]
 [ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="2_jefun"]
+[ext_resource type="Script" uid="uid://c5cmuvsni3gcx" path="res://scenes/menus/song_select/songs_container.gd" id="2_yknkk"]
+
+[sub_resource type="Curve" id="Curve_4m66x"]
+_limits = [0.0, 1.0, -3.0, 3.0]
+bake_resolution = 6
+_data = [Vector2(-3, 0.5), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.5), 0.0, -1.0, 0, 1]
+point_count = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_ibs4a"]
+font_size = 96
 
 [node name="SongSelect" type="Control"]
 layout_mode = 3
@@ -11,12 +22,126 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 183.0
-offset_bottom = 39.0
-theme_type_variation = &"HeaderLarge"
-text = "SONG SELECT"
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.437
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.95996094
+grow_horizontal = 0
+texture = ExtResource("1_4m66x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.437
+anchor_bottom = 1.0
+offset_right = 0.95996094
+color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+
+[node name="Container" type="Container" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_yknkk")
+selected = 6.32
+scale_curve = SubResource("Curve_4m66x")
+
+[node name="Label" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label2" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "DEBUG SONG"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label3" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label4" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "DEBUG SONG"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label5" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label6" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 0
+text = "DEBUG SONG"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label7" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label8" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "DEBUG SONG"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label9" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label10" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "DEBUG SONG"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label11" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label12" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "DEBUG SONG"
+label_settings = SubResource("LabelSettings_ibs4a")
+
+[node name="Label13" type="Label" parent="ColorRect/Container"]
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 0
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_ibs4a")
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 1
