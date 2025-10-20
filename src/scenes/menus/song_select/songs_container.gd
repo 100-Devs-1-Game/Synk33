@@ -79,9 +79,6 @@ func _child_order_changed() -> void:
 		if Engine.is_editor_hint():
 			return
 		if child.focus_entered.is_connected(_goto):
-			# This should work. I'm PRETTY sure bound
-			# callables are considered the same. In the offchance they 
-			# aren't you'll be getting errors here anyway
 			child.focus_entered.disconnect(_goto)
 		child.focus_entered.connect(_goto.bind(i))
 		
