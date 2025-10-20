@@ -68,6 +68,13 @@ func _input(event: InputEvent) -> void:
 		event.position = event.global_position
 
 
+func _get_allowed_size_flags_horizontal() -> PackedInt32Array:
+	return [SIZE_FILL, SIZE_SHRINK_BEGIN, SIZE_SHRINK_CENTER, SIZE_SHRINK_END]
+
+func _get_allowed_size_flags_vertical() -> PackedInt32Array:
+	return [SIZE_SHRINK_BEGIN]
+
+
 func _wrap_mouse(gpos:Vector2) -> Vector2:
 	var global_rect := get_global_rect()
 	var minv:float = _mousewrap_offset + global_rect.size.y / 2.0
@@ -115,12 +122,10 @@ func _sort_children() -> void:
 			continue
 		
 		var child:Control = children[i]
-		
-		child.size = child.get_minimum_size()
 		child.scale = Vector2.ONE * scale_curve.sample(wrapf(i - selected, -count / 2.0, count / 2.0))
 		child.position.y = _cumulative
 		_cumulative += child.get_rect().size.y
-		
+		_size_child(child)
 		
 		select_centered_cumulative -= child.get_rect().size.y * clampf(
 			wrapf(selected + 0.5, 0, count) - i, 0, 1)
@@ -133,6 +138,20 @@ func _sort_children() -> void:
 		child.position.y += select_centered_cumulative + size.y / 2.0
 	_mousewrap_offset = select_centered_cumulative
 	_update_repeat(_cumulative)
+
+
+func _size_child(child:Control) -> void:
+	var child_size := child.get_combined_minimum_size()
+	child.position.x = 0
+	
+	if child.size_flags_horizontal & SIZE_FILL:
+		child_size.x = size.x / child.scale.x
+	if child.size_flags_horizontal & SIZE_SHRINK_CENTER:
+		child.position.x = (size.x - child_size.x * child.scale.x) / 2.0
+	if child.size_flags_horizontal & SIZE_SHRINK_END:
+		child.position.x = size.x - child_size.x * child.scale.x
+	
+	child.size = child_size
 
 
 func _goto(index:int) -> void:
