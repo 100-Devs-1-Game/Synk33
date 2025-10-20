@@ -2,6 +2,9 @@
 extends Container
 
 
+const TARGET_SNAP_MARGIN:float = 0.01
+
+
 @export var scale_curve:Curve:
 	set(new):
 		if scale_curve != null:
@@ -13,6 +16,8 @@ extends Container
 
 var selected:float = 0.0:
 	set(new):
+		if selected == new:
+			return
 		selected = new
 		queue_sort()
 var target_selected:int = 0
@@ -26,6 +31,10 @@ func _init() -> void:
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
+		return
+	
+	if absf(target_selected - selected) < TARGET_SNAP_MARGIN:
+		selected = target_selected
 		return
 	selected = lerpf(selected, target_selected, delta * 4)
 
