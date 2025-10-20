@@ -11,11 +11,10 @@ extends Container
 			scale_curve.changed.connect(queue_sort)
 
 
-@export var selected:float = 0.0:
+var selected:float = 0.0:
 	set(new):
 		selected = new
 		queue_sort()
-
 var target_selected:int = 0
 var _mousewrap_offset:float = 0
 var _cumulative:float = 0
