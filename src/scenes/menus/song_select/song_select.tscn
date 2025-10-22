@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=20 format=3 uid="uid://c75ew37wbtpa2"]
 
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
 [ext_resource type="Script" uid="uid://b0uu18ukygn2r" path="res://scenes/menus/song_select/song_select.gd" id="1_4vbmx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c6til1ee26leu" path="res://scenes/menus/song_select/song_info/song_info_widget.tscn" id="4_ibs4a"]
 [ext_resource type="PackedScene" uid="uid://cp7yjs0djkg5v" path="res://scenes/menus/song_select/song_info/song_credit_widget.tscn" id="4_jn1ix"]
 [ext_resource type="Resource" uid="uid://blarvatodptiw" path="res://assets/charts/debug_song/debug_song.tres" id="4_neb33"]
+[ext_resource type="PackedScene" uid="uid://bb1hkgpvpke6e" path="res://scenes/menus/vis_playback/vis_playback.tscn" id="8_01aqb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfngb"]
 bg_color = Color(0.039215688, 0.050980393, 0.07058824, 1)
@@ -111,6 +112,20 @@ size_flags_vertical = 3
 texture = ExtResource("1_4m66x")
 expand_mode = 3
 stretch_mode = 4
+
+[node name="VisPlayback" parent="HBoxContainer/VBoxContainer/SongCover" node_paths=PackedStringArray("player") instance=ExtResource("8_01aqb")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+offset_right = 0.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+player = NodePath("../../../../AudioStreamPlayer")
 
 [node name="SongInfo" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
