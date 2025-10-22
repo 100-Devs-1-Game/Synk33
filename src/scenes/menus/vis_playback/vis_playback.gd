@@ -11,7 +11,8 @@ func _process(delta: float) -> void:
 	if player.playing == false:
 		return
 	slider.max_value = player.stream.get_length()
-	slider.set_value_no_signal(player.get_playback_position())
+	slider.set_value_no_signal(player.get_playback_position() + AudioServer.get_time_since_last_mix())
+
 
 func _on_play_slider_drag_started() -> void:
 	if player.playing == false:
