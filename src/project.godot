@@ -33,6 +33,10 @@ window/size/window_height_override.editor=648
 
 project/assembly_name="SYNK33"
 
+[gui]
+
+theme/custom="uid://dkolwxkedrxfi"
+
 [input]
 
 left={
