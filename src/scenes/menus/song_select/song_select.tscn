@@ -12,7 +12,7 @@
 bg_color = Color(0.039215688, 0.050980393, 0.07058824, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4m66x"]
-font_size = 88
+font_size = 104
 font_color = Color(0.53333336, 0.22352941, 0.9490196, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yknkk"]
@@ -29,7 +29,7 @@ _data = [Vector2(-3, 0.5), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector
 point_count = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_ibs4a"]
-font_size = 64
+font_size = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibs4a"]
 bg_color = Color(0, 0, 0, 1)
@@ -76,8 +76,8 @@ contents_scale = Vector2(1, 2)
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SongSelect/VBoxContainer/ScaleContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = -12
-theme_override_constants/margin_bottom = -12
+theme_override_constants/margin_top = -15
+theme_override_constants/margin_bottom = -15
 
 [node name="Label" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/ScaleContainer/MarginContainer"]
 layout_mode = 2
