@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=19 format=3 uid="uid://c75ew37wbtpa2"]
 
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
+[ext_resource type="Script" uid="uid://b0uu18ukygn2r" path="res://scenes/menus/song_select/song_select.gd" id="1_4vbmx"]
 [ext_resource type="Shortcut" uid="uid://c2mgfjt733bdg" path="res://scenes/menus/back_shortcut.tres" id="1_aprlc"]
 [ext_resource type="Script" uid="uid://c4rj2ygwp6w2n" path="res://scenes/menus/scale_container.gd" id="2_ibs4a"]
 [ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="2_jefun"]
+[ext_resource type="Script" uid="uid://8gji4fyvkdmy" path="res://chart/Song.cs" id="2_w3xl6"]
 [ext_resource type="Script" uid="uid://c5cmuvsni3gcx" path="res://scenes/menus/song_select/songs_container.gd" id="2_yknkk"]
-[ext_resource type="PackedScene" uid="uid://bw05rhk6d6iip" path="res://scenes/menus/song_select/song_button.tscn" id="3_4vbmx"]
+[ext_resource type="Resource" uid="uid://cs2k8n7u8ily2" path="res://assets/charts/placeholder/placeholder.tres" id="3_01aqb"]
 [ext_resource type="PackedScene" uid="uid://c6til1ee26leu" path="res://scenes/menus/song_select/song_info/song_info_widget.tscn" id="4_ibs4a"]
 [ext_resource type="PackedScene" uid="uid://cp7yjs0djkg5v" path="res://scenes/menus/song_select/song_info/song_credit_widget.tscn" id="4_jn1ix"]
-[ext_resource type="Texture2D" uid="uid://1qk5juxjmsvr" path="res://assets/charts/debug_song/debug_song.png" id="4_xfngb"]
+[ext_resource type="Resource" uid="uid://blarvatodptiw" path="res://assets/charts/debug_song/debug_song.tres" id="4_neb33"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfngb"]
 bg_color = Color(0.039215688, 0.050980393, 0.07058824, 1)
@@ -49,6 +51,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4vbmx")
+songs = Array[ExtResource("2_w3xl6")]([ExtResource("3_01aqb"), ExtResource("4_neb33"), ExtResource("3_01aqb"), ExtResource("4_neb33"), ExtResource("3_01aqb"), ExtResource("4_neb33")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -90,76 +94,18 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yknkk")
 
 [node name="SongContainer" type="Container" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_yknkk")
 scale_curve = SubResource("Curve_4m66x")
 
-[node name="SongButton" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-credit = "???"
-
-[node name="SongButton2" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-title = "DEBUG SONG"
-credit = "???"
-icon = ExtResource("4_xfngb")
-
-[node name="SongButton3" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-credit = "???"
-
-[node name="SongButton4" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-title = "DEBUG SONG"
-credit = "???"
-icon = ExtResource("4_xfngb")
-
-[node name="SongButton5" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-credit = "???"
-
-[node name="SongButton6" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-title = "DEBUG SONG"
-credit = "???"
-icon = ExtResource("4_xfngb")
-
-[node name="SongButton7" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-credit = "???"
-
-[node name="SongButton8" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-title = "DEBUG SONG"
-credit = "???"
-icon = ExtResource("4_xfngb")
-
-[node name="SongButton9" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-credit = "???"
-
-[node name="SongButton10" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-title = "DEBUG SONG"
-credit = "???"
-icon = ExtResource("4_xfngb")
-
-[node name="SongButton11" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-credit = "???"
-
-[node name="SongButton12" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
-layout_mode = 2
-title = "DEBUG SONG"
-credit = "???"
-icon = ExtResource("4_xfngb")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = -32
 
-[node name="SongArt" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+[node name="SongCover" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("1_4m66x")
@@ -224,6 +170,7 @@ info = "160BPM"
 type = "TEMPO"
 
 [node name="LengthSongInfo" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongInfoContainer" instance=ExtResource("4_ibs4a")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 7
 info = "03:25"
@@ -253,3 +200,5 @@ shortcut = ExtResource("1_aprlc")
 text = "Back"
 script = ExtResource("2_jefun")
 scene_path = "res://scenes/menus/main/main_menu.tscn"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
