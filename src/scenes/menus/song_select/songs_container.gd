@@ -45,6 +45,8 @@ func _notification(what: int) -> void:
 			_child_order_changed()
 		NOTIFICATION_SORT_CHILDREN:
 			_sort_children()
+		NOTIFICATION_TRANSLATION_CHANGED, NOTIFICATION_LAYOUT_DIRECTION_CHANGED:
+			queue_sort()
 
 
 func _input(event: InputEvent) -> void:
