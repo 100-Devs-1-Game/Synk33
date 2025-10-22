@@ -7,3 +7,11 @@
 default_font = ExtResource("2_lngu5")
 default_font_size = 40
 Label/styles/focus = ExtResource("1_ij3x7")
+SongButton/colors/font_credit_color = Color(1, 1, 1, 1)
+SongButton/colors/font_credit_focus_color = Color(0.38431373, 0.94509804, 0.96862745, 1)
+SongButton/colors/font_title_color = Color(1, 1, 1, 1)
+SongButton/colors/font_title_focus_color = Color(0.8901961, 0.12156863, 0.6156863, 1)
+SongButton/constants/seperation = 8
+SongButton/font_sizes/font_size = 72
+SongButton/fonts/font = ExtResource("2_lngu5")
+SongButton/styles/focus = ExtResource("1_ij3x7")

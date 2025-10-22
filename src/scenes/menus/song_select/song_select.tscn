@@ -1,12 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=17 format=3 uid="uid://c75ew37wbtpa2"]
 
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
 [ext_resource type="Shortcut" uid="uid://c2mgfjt733bdg" path="res://scenes/menus/back_shortcut.tres" id="1_aprlc"]
 [ext_resource type="Script" uid="uid://c4rj2ygwp6w2n" path="res://scenes/menus/scale_container.gd" id="2_ibs4a"]
 [ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="2_jefun"]
 [ext_resource type="Script" uid="uid://c5cmuvsni3gcx" path="res://scenes/menus/song_select/songs_container.gd" id="2_yknkk"]
+[ext_resource type="PackedScene" uid="uid://bw05rhk6d6iip" path="res://scenes/menus/song_select/song_button.tscn" id="3_4vbmx"]
 [ext_resource type="PackedScene" uid="uid://c6til1ee26leu" path="res://scenes/menus/song_select/song_info/song_info_widget.tscn" id="4_ibs4a"]
 [ext_resource type="PackedScene" uid="uid://cp7yjs0djkg5v" path="res://scenes/menus/song_select/song_info/song_credit_widget.tscn" id="4_jn1ix"]
+[ext_resource type="Texture2D" uid="uid://1qk5juxjmsvr" path="res://assets/charts/debug_song/debug_song.png" id="4_xfngb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfngb"]
 bg_color = Color(0.039215688, 0.050980393, 0.07058824, 1)
@@ -27,9 +29,6 @@ _limits = [0.0, 1.0, -3.0, 3.0]
 bake_resolution = 6
 _data = [Vector2(-3, 0.5), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.5), 0.0, -1.0, 0, 1]
 point_count = 3
-
-[sub_resource type="LabelSettings" id="LabelSettings_ibs4a"]
-font_size = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibs4a"]
 bg_color = Color(0, 0, 0, 1)
@@ -96,101 +95,65 @@ size_flags_vertical = 3
 script = ExtResource("2_yknkk")
 scale_curve = SubResource("Curve_4m66x")
 
-[node name="Label" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "PLACEHOLDER"
-label_settings = SubResource("LabelSettings_ibs4a")
+credit = "???"
 
-[node name="Label2" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton2" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "DEBUG SONG"
-label_settings = SubResource("LabelSettings_ibs4a")
+title = "DEBUG SONG"
+credit = "???"
+icon = ExtResource("4_xfngb")
 
-[node name="Label3" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton3" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "PLACEHOLDER"
-label_settings = SubResource("LabelSettings_ibs4a")
+credit = "???"
 
-[node name="Label4" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton4" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "DEBUG SONG"
-label_settings = SubResource("LabelSettings_ibs4a")
+title = "DEBUG SONG"
+credit = "???"
+icon = ExtResource("4_xfngb")
 
-[node name="Label5" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton5" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "PLACEHOLDER"
-label_settings = SubResource("LabelSettings_ibs4a")
+credit = "???"
 
-[node name="Label6" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton6" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 2
-mouse_filter = 0
-text = "DEBUG SONG"
-label_settings = SubResource("LabelSettings_ibs4a")
+title = "DEBUG SONG"
+credit = "???"
+icon = ExtResource("4_xfngb")
 
-[node name="Label7" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton7" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "PLACEHOLDER"
-label_settings = SubResource("LabelSettings_ibs4a")
+credit = "???"
 
-[node name="Label8" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton8" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "DEBUG SONG"
-label_settings = SubResource("LabelSettings_ibs4a")
+title = "DEBUG SONG"
+credit = "???"
+icon = ExtResource("4_xfngb")
 
-[node name="Label9" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton9" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "PLACEHOLDER"
-label_settings = SubResource("LabelSettings_ibs4a")
+credit = "???"
 
-[node name="Label10" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton10" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "DEBUG SONG"
-label_settings = SubResource("LabelSettings_ibs4a")
+title = "DEBUG SONG"
+credit = "???"
+icon = ExtResource("4_xfngb")
 
-[node name="Label11" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton11" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "PLACEHOLDER"
-label_settings = SubResource("LabelSettings_ibs4a")
+credit = "???"
 
-[node name="Label12" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer"]
+[node name="SongButton12" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer/SongContainer" instance=ExtResource("3_4vbmx")]
 layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 1
-mouse_filter = 0
-text = "DEBUG SONG"
-label_settings = SubResource("LabelSettings_ibs4a")
+title = "DEBUG SONG"
+credit = "???"
+icon = ExtResource("4_xfngb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
