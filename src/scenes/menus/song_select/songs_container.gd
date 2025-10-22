@@ -77,15 +77,14 @@ func _get_allowed_size_flags_vertical() -> PackedInt32Array:
 
 func _wrap_mouse(gpos:Vector2) -> Vector2:
 	var global_rect := get_global_rect()
-	var minv:float = _mousewrap_offset + global_rect.size.y / 2.0
-	var maxv:float = _mousewrap_offset + _cumulative + global_rect.size.y / 2.0
+	var minv:float = _mousewrap_offset + global_rect.size.y / 2.0 + global_rect.position.y
+	var maxv:float = _mousewrap_offset + _cumulative + global_rect.size.y / 2.0 + global_rect.position.y
 	gpos.y = wrapf(
 		gpos.y,
 		minv,
 		maxv
 	)
-	
-	return gpos
+	return gpos 
 
 
 func _child_order_changed() -> void:
@@ -166,8 +165,6 @@ func _goto(index:int) -> void:
 
 
 func _update_repeat(childsize:float) -> void:
-	if Engine.is_editor_hint():
-		return
 	RenderingServer.canvas_set_item_repeat(get_canvas_item(), Vector2(0, childsize), 2)
 
 

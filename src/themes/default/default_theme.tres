@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dkolwxkedrxfi"]
+
+[ext_resource type="StyleBox" uid="uid://dyotf8338v8to" path="res://themes/default/song_focus.tres" id="1_ij3x7"]
+[ext_resource type="FontFile" uid="uid://b8n7wbkmoy1cc" path="res://fonts/bbh_sans_hegarty/bbh_sans_hegarty.ttf" id="2_lngu5"]
+
+[resource]
+default_font = ExtResource("2_lngu5")
+default_font_size = 40
+Button/styles/focus = ExtResource("1_ij3x7")
+Label/styles/focus = ExtResource("1_ij3x7")
