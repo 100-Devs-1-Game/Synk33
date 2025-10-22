@@ -6,5 +6,4 @@
 [resource]
 default_font = ExtResource("2_lngu5")
 default_font_size = 40
-Button/styles/focus = ExtResource("1_ij3x7")
 Label/styles/focus = ExtResource("1_ij3x7")
