@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbje615ewpyvp"]
+
+[ext_resource type="Script" uid="uid://ng27ey3h4538" path="res://editor/Editor.cs" id="1_3cn80"]
+[ext_resource type="Resource" uid="uid://4i0pmvvhnnyv" path="res://assets/charts/debug_song/debug_song_expert.tres" id="2_i1ssp"]
+[ext_resource type="AudioStream" uid="uid://b1xh0x4ctylao" path="res://assets/charts/debug_song/debug_song.wav" id="3_i1ssp"]
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("1_3cn80")
+Chart = ExtResource("2_i1ssp")
+
+[node name="MenuBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 33.0
+grow_horizontal = 2
+
+[node name="MenuBar" type="MenuBar" parent="MenuBar"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuBar/MenuBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="MenuButton" type="MenuButton" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
+text = "File"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Save"
+popup/item_0/id = 0
+popup/item_1/text = "Load"
+popup/item_1/id = 1
+popup/item_2/text = "Properties"
+popup/item_2/id = 2
+
+[node name="MenuButton2" type="MenuButton" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
+text = "Audio
+"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Save"
+popup/item_0/id = 0
+popup/item_1/text = "Load"
+popup/item_1/id = 1
+popup/item_2/text = "Properties"
+popup/item_2/id = 2
+
+[node name="InfoBox" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 47.0
+offset_right = 401.0
+offset_bottom = 288.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoBox/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Info"
+
+[node name="HSeparator" type="HSeparator" parent="InfoBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Key" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "BPM:"
+
+[node name="Value" type="Label" parent="InfoBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "125"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i1ssp")
