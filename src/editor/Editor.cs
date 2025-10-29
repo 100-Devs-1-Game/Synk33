@@ -97,6 +97,7 @@ public partial class Editor : Control {
     }
 
     private void PanView(InputEventMouseMotion mouseMotionEvent) {
+        // TODO: clamp pan value
         var deltaY = mouseMotionEvent.Position.Y - _dragStartMouse.Y;
         _panY = _dragStartPan + deltaY;
         QueueRedraw();
@@ -133,7 +134,7 @@ public partial class Editor : Control {
         if (_isPlaying) {
             var songPosition = _audioStreamPlayer?.GetPlaybackPosition() +
                 AudioServer.GetTimeSinceLastMix() - AudioServer.GetOutputLatency();
-            var playPosition = (float)songPosition / 60 * Chart.Bpm * _zoom + _panY;
+            var playPosition = -(float)songPosition / 60 * Chart.Bpm * _zoom + _panY;
             DrawLine(
                 new Vector2(0,playPosition), 
                 new Vector2(Size.X, playPosition), 
@@ -143,7 +144,7 @@ public partial class Editor : Control {
     }
 
     private void DrawBarLines(int i) {
-        var size2 = i * _zoom * Chart.BeatsPerMeasure + _panY;
+        var size2 = -i * _zoom * Chart.BeatsPerMeasure + _panY;
         DrawLine(
             new Vector2(0, size2), 
             new Vector2(Size.X, size2), 
@@ -154,7 +155,7 @@ public partial class Editor : Control {
     private void DrawBeatLines(int i) {
         for (var j = 0; j < Chart.BeatsPerMeasure * _division; j++) {
             var color = new Color(0.411765f, 0.411765f, 0.411765f);
-            var size = i * _zoom * Chart.BeatsPerMeasure + j * _zoom / _division + _panY;
+            var size = -i * _zoom * Chart.BeatsPerMeasure + -j * _zoom / _division + _panY;
             DrawLine(
                 new Vector2(0, size), 
                 new Vector2(Size.X, size), 
