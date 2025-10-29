@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Chart" load_steps=23 format=3 uid="uid://4i0pmvvhnnyv"]
 
-[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/DebugNote.cs" id="1_f8ume"]
+[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_f8ume"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_ycwed"]
 
 [sub_resource type="Resource" id="Resource_qvmu7"]
