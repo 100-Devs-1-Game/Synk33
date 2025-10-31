@@ -7,9 +7,9 @@ namespace SYNK33.editor;
 
 public partial class Editor : Control {
     [Export] public required Chart Chart;
-    [Export] public float Zoom = 100;
     private AudioStreamPlayer? _audioStreamPlayer;
     private NoteTime _selectedTime = new(0, 0 ,0);
+    private Label _selectedTimeLabel;
 
     private int _laneWidth = 100;
     private bool _isPlaying = false;
@@ -26,6 +26,7 @@ public partial class Editor : Control {
         base._Ready();
         // TODO: load song from file
         _audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        _selectedTimeLabel = GetNode<Label>("%SelectedBeat");
         GrabFocus();
     }
 
@@ -39,6 +40,11 @@ public partial class Editor : Control {
     }
 
     private void SelectBeat() {
+        var beatTime = -(GetViewport().GetMousePosition().Y - _panY) / _zoom;
+        var bar = Math.Round(beatTime / Chart.BeatsPerMeasure);
+        var beat = Math.Round((beatTime) % Chart.BeatsPerMeasure + 1);
+        var sixteenth = 0;
+        _selectedTimeLabel.Text = $"{bar + 1}.{beat}.{sixteenth + 1}";
     }
 
     public override void _Draw() {
