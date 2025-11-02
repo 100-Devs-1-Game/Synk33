@@ -3,9 +3,18 @@ class_name SongButton
 extends BaseButton
 
 const _THEME_TYPE:StringName = &"SongButton"
+const GRADE_SHEET:Texture2D = preload("uid://bq623lc385k45")
+
 enum {
 	_SHAPED_TITLE,
 	_SHAPED_CREDIT
+}
+enum Grade {
+	NONE = -1,
+	C,
+	B,
+	A,
+	S
 }
 
 
@@ -22,6 +31,12 @@ enum {
 			return
 		credit = new
 		_set_shaped_text(_shaped_text[_SHAPED_CREDIT], new)
+		queue_redraw()
+@export var grade:Grade = Grade.NONE:
+	set(new):
+		if grade == new:
+			return
+		grade = new
 		queue_redraw()
 
 @export var icon:Texture2D:
@@ -94,7 +109,7 @@ func _draw() -> void:
 	var offset:Vector2
 	
 	if is_instance_valid(icon):
-		var icon_size := _get_icon_size(size.y)
+		var icon_size := _get_tex_size(icon.get_width(), size.y)
 		draw_texture_rect(
 			icon, 
 			Rect2(
@@ -114,6 +129,24 @@ func _draw() -> void:
 		)
 		offset.y += text_server.shaped_text_get_descent(shaped)
 	
+	if grade >= 0:
+		var grade_sheet_size := GRADE_SHEET.get_size()
+		var grade_slice_height := grade_sheet_size.y / 4
+		var sz := _get_tex_size(grade_sheet_size.x, size.y)
+		draw_texture_rect_region(
+			GRADE_SHEET, 
+			Rect2(
+				Vector2(
+					size.x - sz.x,
+					0, 
+				), 
+				sz
+			), 
+			Rect2(
+				0, grade_slice_height * grade, grade_sheet_size.x, grade_slice_height
+			)
+		)
+	
 	if has_focus():
 		if is_instance_valid(_tc_focus):
 			_tc_focus.draw(get_canvas_item(), Rect2(
@@ -129,7 +162,7 @@ func _get_minimum_size() -> Vector2:
 		maxf(title_minsize.x, credit_minsize.x),
 		title_minsize.y + credit_minsize.y
 	)
-	constructed.x += _get_icon_size(constructed.y).x + _tc_icon_seperation
+	constructed.x += _get_tex_size(icon.get_width(), constructed.y).x + _tc_icon_seperation
 	return constructed
 
 
@@ -157,12 +190,12 @@ func _get_font_color(shaped_index:int) -> Color:
 	return _tc_font_colors[index]
 
 
-func _get_icon_size(height:float) -> Vector2:
+func _get_tex_size(width:float, height:float) -> Vector2:
 	if not is_instance_valid(icon):
 		return Vector2.ZERO
 	
 	var tex_size:Vector2 = Vector2(
-		icon.get_width() * height / icon.get_width(),
+		width * height / width,
 		height
 	)
 	return tex_size
