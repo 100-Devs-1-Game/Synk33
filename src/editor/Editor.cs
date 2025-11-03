@@ -32,19 +32,20 @@ public partial class Editor : Control {
 
     public override void _Process(double delta) {
         base._Process(delta);
-        if (_isPlaying) {
-            QueueRedraw();
-        }
+        // if (_isPlaying) {
+        QueueRedraw();
+        // }
 
         SelectBeat();
     }
 
     private void SelectBeat() {
         var beatTime = -(GetViewport().GetMousePosition().Y - _panY) / _zoom;
-        var bar = Math.Round(beatTime / Chart.BeatsPerMeasure);
-        var beat = Math.Round((beatTime) % Chart.BeatsPerMeasure + 1);
-        var sixteenth = 0;
-        _selectedTimeLabel.Text = $"{bar + 1}.{beat}.{sixteenth + 1}";
+        var bar = Math.Floor((beatTime) / Chart.BeatsPerMeasure);
+        var beat = Math.Floor((beatTime) % Chart.BeatsPerMeasure);
+        var sixteenth = Math.Floor((beatTime) % Chart.BeatsPerMeasure * 4) % 4;
+        _selectedTimeLabel.Text = $"{bar + 1}.{beat+1}.{sixteenth + 1}";
+        _selectedTime = new NoteTime((int)bar, (int)beat, sixteenth);
     }
 
     public override void _Draw() {
@@ -65,6 +66,20 @@ public partial class Editor : Control {
         }
 
         DrawPlayhead();
+        DrawSelector();
+    }
+
+    private void DrawSelector() {
+        DrawCircle(
+            new Vector2(
+                _offsetX, 
+                -_selectedTime.Bar * Chart.BeatsPerMeasure * _zoom + _panY 
+                - _selectedTime.Beat * _zoom -
+                (float)_selectedTime.Sixteenth / 4  * _zoom
+            ), 
+            15, 
+            Color.FromHsv(120, 1, 1, 0.5f)
+        );
     }
 
     public override void _GuiInput(InputEvent @event) {
