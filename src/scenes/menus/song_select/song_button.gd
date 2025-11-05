@@ -132,13 +132,13 @@ func _draw() -> void:
 	if grade >= 0:
 		var grade_sheet_size := GRADE_SHEET.get_size()
 		var grade_slice_height := grade_sheet_size.y / 4
-		var sz := _get_tex_size(grade_sheet_size.x, size.y)
+		var sz := Vector2(grade_sheet_size.x, grade_slice_height)
 		draw_texture_rect_region(
 			GRADE_SHEET, 
 			Rect2(
 				Vector2(
 					size.x - sz.x,
-					0, 
+					(size.y - sz.y) / 2, 
 				), 
 				sz
 			), 
