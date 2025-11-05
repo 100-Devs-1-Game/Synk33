@@ -1,0 +1,96 @@
+[gd_scene load_steps=18 format=3 uid="uid://eqrv7avptp3b"]
+
+[ext_resource type="Texture2D" uid="uid://dd6ge8wbbhj0u" path="res://assets/textures/auxie/body/002.png" id="1_u7u8j"]
+[ext_resource type="Texture2D" uid="uid://co5fyryxbsgti" path="res://assets/textures/auxie/body/003.png" id="2_esjnm"]
+[ext_resource type="Texture2D" uid="uid://ck65wrav2ni47" path="res://assets/textures/auxie/body/000.png" id="3_j5e87"]
+[ext_resource type="Texture2D" uid="uid://sv4cikvyme4o" path="res://assets/textures/auxie/body/001.png" id="4_8d0g4"]
+[ext_resource type="Texture2D" uid="uid://53alpciv88ev" path="res://assets/textures/auxie/body/007.png" id="5_6wfon"]
+[ext_resource type="Texture2D" uid="uid://j6jrr54da5cv" path="res://assets/textures/auxie/body/008.png" id="6_sb1nx"]
+[ext_resource type="Texture2D" uid="uid://71j6q80ovwl0" path="res://assets/textures/auxie/body/006.png" id="7_8s0xc"]
+[ext_resource type="Texture2D" uid="uid://cemouav4y2va4" path="res://assets/textures/auxie/body/004.png" id="8_u7u8j"]
+[ext_resource type="Texture2D" uid="uid://b7i6dsuol03m5" path="res://assets/textures/auxie/body/014.png" id="9_esjnm"]
+[ext_resource type="Texture2D" uid="uid://bpuesd85hqa81" path="res://assets/textures/auxie/body/012.png" id="10_j5e87"]
+[ext_resource type="Texture2D" uid="uid://dajcjyjxcf4y8" path="res://assets/textures/auxie/body/013.png" id="11_8d0g4"]
+[ext_resource type="Texture2D" uid="uid://7klos7xs0bmj" path="res://assets/textures/auxie/body/015.png" id="12_6wfon"]
+[ext_resource type="Texture2D" uid="uid://bkxyjsfgf8ch5" path="res://assets/textures/auxie/body/005.png" id="13_sb1nx"]
+[ext_resource type="Texture2D" uid="uid://bnutv8atdnw6j" path="res://assets/textures/auxie/body/009.png" id="14_8s0xc"]
+[ext_resource type="Texture2D" uid="uid://dx6lh2yv4aan3" path="res://assets/textures/auxie/body/010.png" id="15_s16kp"]
+[ext_resource type="Texture2D" uid="uid://ccva4wjfj8yum" path="res://assets/textures/auxie/body/011.png" id="16_rpakh"]
+[ext_resource type="PackedScene" uid="uid://dwxvrkiaql2qj" path="res://scenes/auxie/head.tscn" id="17_u7u8j"]
+
+[node name="Auxie" type="Node2D"]
+
+[node name="Torso" type="Sprite2D" parent="."]
+position = Vector2(-41, 222)
+texture = ExtResource("1_u7u8j")
+
+[node name="BeltStrap" type="Sprite2D" parent="Torso"]
+position = Vector2(11, 132)
+texture = ExtResource("2_esjnm")
+
+[node name="LegL" type="Sprite2D" parent="Torso"]
+show_behind_parent = true
+position = Vector2(137, 235)
+texture = ExtResource("3_j5e87")
+
+[node name="LegR" type="Sprite2D" parent="Torso"]
+show_behind_parent = true
+position = Vector2(-121, 234)
+texture = ExtResource("4_8d0g4")
+
+[node name="Chest" type="Sprite2D" parent="Torso"]
+position = Vector2(-16, -317)
+texture = ExtResource("5_6wfon")
+
+[node name="BeltStrap" type="Sprite2D" parent="Torso/Chest"]
+position = Vector2(19, -39)
+texture = ExtResource("6_sb1nx")
+
+[node name="Neck" type="Sprite2D" parent="Torso/Chest"]
+show_behind_parent = true
+position = Vector2(13, -171)
+texture = ExtResource("7_8s0xc")
+
+[node name="ArmUpperL" type="Sprite2D" parent="Torso/Chest"]
+show_behind_parent = true
+position = Vector2(287, -75)
+texture = ExtResource("8_u7u8j")
+metadata/_edit_group_ = true
+
+[node name="ArmLowerL" type="Sprite2D" parent="Torso/Chest/ArmUpperL"]
+position = Vector2(41, -56)
+texture = ExtResource("9_esjnm")
+
+[node name="SleeveBack" type="Sprite2D" parent="Torso/Chest/ArmUpperL/ArmLowerL"]
+show_behind_parent = true
+position = Vector2(-120, 2)
+texture = ExtResource("10_j5e87")
+
+[node name="Hand" type="Sprite2D" parent="Torso/Chest/ArmUpperL/ArmLowerL"]
+show_behind_parent = true
+position = Vector2(-153, -108)
+texture = ExtResource("11_8d0g4")
+
+[node name="BeltStrap" type="Sprite2D" parent="Torso/Chest/ArmUpperL/ArmLowerL"]
+position = Vector2(-91, -9)
+texture = ExtResource("12_6wfon")
+
+[node name="ArmUpperR" type="Sprite2D" parent="Torso/Chest"]
+show_behind_parent = true
+position = Vector2(-205, 82)
+texture = ExtResource("13_sb1nx")
+
+[node name="ArmLowerR" type="Sprite2D" parent="Torso/Chest/ArmUpperR"]
+position = Vector2(-22, -127)
+texture = ExtResource("14_8s0xc")
+
+[node name="Sleeve" type="Sprite2D" parent="Torso/Chest/ArmUpperR/ArmLowerR"]
+position = Vector2(-42, 120)
+texture = ExtResource("15_s16kp")
+
+[node name="BeltStrap" type="Sprite2D" parent="Torso/Chest/ArmUpperR/ArmLowerR/Sleeve"]
+position = Vector2(-43, -70)
+texture = ExtResource("16_rpakh")
+
+[node name="Head" parent="Torso" instance=ExtResource("17_u7u8j")]
+position = Vector2(41, -222)

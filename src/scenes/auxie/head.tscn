@@ -1,0 +1,78 @@
+[gd_scene load_steps=19 format=3 uid="uid://dwxvrkiaql2qj"]
+
+[ext_resource type="Texture2D" uid="uid://do08mqnk8e4ld" path="res://assets/textures/auxie/head/000.png" id="1_d5dpe"]
+[ext_resource type="Texture2D" uid="uid://dykub6iwpvuen" path="res://assets/textures/auxie/head/001.png" id="2_euywy"]
+[ext_resource type="Texture2D" uid="uid://t504tbe8jnu0" path="res://assets/textures/auxie/head/002.png" id="3_y5vjg"]
+[ext_resource type="Texture2D" uid="uid://ce3ea0t3gxodm" path="res://assets/textures/auxie/head/003.png" id="4_56jg5"]
+[ext_resource type="Texture2D" uid="uid://c2mm5a2uv4x8h" path="res://assets/textures/auxie/head/004.png" id="5_j5u3r"]
+[ext_resource type="Texture2D" uid="uid://0iblupgttqij" path="res://assets/textures/auxie/head/005.png" id="6_n6md5"]
+[ext_resource type="Texture2D" uid="uid://85thd1pntavw" path="res://assets/textures/auxie/head/006.png" id="7_3tqws"]
+[ext_resource type="Texture2D" uid="uid://3out1arrr61r" path="res://assets/textures/auxie/head/007.png" id="8_qwf07"]
+[ext_resource type="Texture2D" uid="uid://bklrxi1ee812w" path="res://assets/textures/auxie/head/008.png" id="9_83lhx"]
+[ext_resource type="Texture2D" uid="uid://b1f4axaiwlea0" path="res://assets/textures/auxie/head/009.png" id="10_64kys"]
+[ext_resource type="Texture2D" uid="uid://dj3k5qa3p2nja" path="res://assets/textures/auxie/head/010.png" id="11_1mtxt"]
+[ext_resource type="Texture2D" uid="uid://bj1u1saxsd023" path="res://assets/textures/auxie/head/011.png" id="12_ipwt6"]
+[ext_resource type="Texture2D" uid="uid://36sgi5dgs3v8" path="res://assets/textures/auxie/head/012.png" id="13_h770u"]
+[ext_resource type="Texture2D" uid="uid://bm8qdwgr21432" path="res://assets/textures/auxie/head/013.png" id="14_pybvo"]
+[ext_resource type="Texture2D" uid="uid://bh7edu8155fx1" path="res://assets/textures/auxie/head/014.png" id="15_ewdsx"]
+[ext_resource type="Texture2D" uid="uid://bksakctp5ro2b" path="res://assets/textures/auxie/head/015.png" id="16_y1ak2"]
+[ext_resource type="Texture2D" uid="uid://bqwmwudn4c1lk" path="res://assets/textures/auxie/head/016.png" id="17_e4a7b"]
+[ext_resource type="Texture2D" uid="uid://dhn177d3isxr3" path="res://assets/textures/auxie/head/017.png" id="18_4nvqe"]
+
+[node name="Head" type="Node2D"]
+
+[node name="Sprite000" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_d5dpe")
+
+[node name="Sprite001" type="Sprite2D" parent="Sprite000"]
+texture = ExtResource("2_euywy")
+
+[node name="Sprite002" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_y5vjg")
+
+[node name="Sprite003" type="Sprite2D" parent="Sprite002"]
+texture = ExtResource("4_56jg5")
+
+[node name="Head" type="Sprite2D" parent="."]
+texture = ExtResource("5_j5u3r")
+
+[node name="HeadphoneHighlight" type="Sprite2D" parent="Head"]
+texture = ExtResource("6_n6md5")
+
+[node name="Mouth" type="Sprite2D" parent="Head"]
+texture = ExtResource("7_3tqws")
+
+[node name="Eyes" type="Sprite2D" parent="Head"]
+texture = ExtResource("8_qwf07")
+
+[node name="Iris" type="Sprite2D" parent="Head/Eyes"]
+texture = ExtResource("9_83lhx")
+
+[node name="Eyelashes" type="Sprite2D" parent="Head/Eyes"]
+texture = ExtResource("10_64kys")
+
+[node name="Visor" type="Sprite2D" parent="Head"]
+texture = ExtResource("11_1mtxt")
+
+[node name="Highlight" type="Sprite2D" parent="Head/Visor"]
+texture = ExtResource("12_ipwt6")
+
+[node name="Sprite012" type="Sprite2D" parent="."]
+texture = ExtResource("13_h770u")
+
+[node name="Sprite013" type="Sprite2D" parent="."]
+texture = ExtResource("14_pybvo")
+
+[node name="Sprite014" type="Sprite2D" parent="."]
+texture = ExtResource("15_ewdsx")
+
+[node name="Sprite015" type="Sprite2D" parent="Sprite014"]
+texture = ExtResource("16_y1ak2")
+
+[node name="Sprite016" type="Sprite2D" parent="."]
+texture = ExtResource("17_e4a7b")
+
+[node name="Sprite017" type="Sprite2D" parent="."]
+texture = ExtResource("18_4nvqe")
