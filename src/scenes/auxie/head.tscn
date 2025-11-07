@@ -1,78 +1,105 @@
 [gd_scene load_steps=19 format=3 uid="uid://dwxvrkiaql2qj"]
 
-[ext_resource type="Texture2D" uid="uid://do08mqnk8e4ld" path="res://assets/textures/auxie/head/000.png" id="1_d5dpe"]
-[ext_resource type="Texture2D" uid="uid://dykub6iwpvuen" path="res://assets/textures/auxie/head/001.png" id="2_euywy"]
-[ext_resource type="Texture2D" uid="uid://t504tbe8jnu0" path="res://assets/textures/auxie/head/002.png" id="3_y5vjg"]
-[ext_resource type="Texture2D" uid="uid://ce3ea0t3gxodm" path="res://assets/textures/auxie/head/003.png" id="4_56jg5"]
-[ext_resource type="Texture2D" uid="uid://c2mm5a2uv4x8h" path="res://assets/textures/auxie/head/004.png" id="5_j5u3r"]
-[ext_resource type="Texture2D" uid="uid://0iblupgttqij" path="res://assets/textures/auxie/head/005.png" id="6_n6md5"]
-[ext_resource type="Texture2D" uid="uid://85thd1pntavw" path="res://assets/textures/auxie/head/006.png" id="7_3tqws"]
-[ext_resource type="Texture2D" uid="uid://3out1arrr61r" path="res://assets/textures/auxie/head/007.png" id="8_qwf07"]
-[ext_resource type="Texture2D" uid="uid://bklrxi1ee812w" path="res://assets/textures/auxie/head/008.png" id="9_83lhx"]
-[ext_resource type="Texture2D" uid="uid://b1f4axaiwlea0" path="res://assets/textures/auxie/head/009.png" id="10_64kys"]
-[ext_resource type="Texture2D" uid="uid://dj3k5qa3p2nja" path="res://assets/textures/auxie/head/010.png" id="11_1mtxt"]
-[ext_resource type="Texture2D" uid="uid://bj1u1saxsd023" path="res://assets/textures/auxie/head/011.png" id="12_ipwt6"]
-[ext_resource type="Texture2D" uid="uid://36sgi5dgs3v8" path="res://assets/textures/auxie/head/012.png" id="13_h770u"]
-[ext_resource type="Texture2D" uid="uid://bm8qdwgr21432" path="res://assets/textures/auxie/head/013.png" id="14_pybvo"]
-[ext_resource type="Texture2D" uid="uid://bh7edu8155fx1" path="res://assets/textures/auxie/head/014.png" id="15_ewdsx"]
-[ext_resource type="Texture2D" uid="uid://bksakctp5ro2b" path="res://assets/textures/auxie/head/015.png" id="16_y1ak2"]
-[ext_resource type="Texture2D" uid="uid://bqwmwudn4c1lk" path="res://assets/textures/auxie/head/016.png" id="17_e4a7b"]
-[ext_resource type="Texture2D" uid="uid://dhn177d3isxr3" path="res://assets/textures/auxie/head/017.png" id="18_4nvqe"]
+[ext_resource type="Texture2D" uid="uid://c0jl5e2fmo1lr" path="res://assets/textures/auxie/head/000.png" id="1_d5dpe"]
+[ext_resource type="Texture2D" uid="uid://np6i2e2i0xpq" path="res://assets/textures/auxie/head/001.png" id="2_euywy"]
+[ext_resource type="Texture2D" uid="uid://b0lyngwdnta14" path="res://assets/textures/auxie/head/002.png" id="3_y5vjg"]
+[ext_resource type="Texture2D" uid="uid://cifi8kx5n1pea" path="res://assets/textures/auxie/head/003.png" id="4_56jg5"]
+[ext_resource type="Texture2D" uid="uid://mrxisllorihn" path="res://assets/textures/auxie/head/004.png" id="5_j5u3r"]
+[ext_resource type="Texture2D" uid="uid://bxjlbx24uahy2" path="res://assets/textures/auxie/head/005.png" id="6_n6md5"]
+[ext_resource type="Texture2D" uid="uid://fwwkffjhpcb0" path="res://assets/textures/auxie/head/006.png" id="7_3tqws"]
+[ext_resource type="Texture2D" uid="uid://b7astf3hdudpi" path="res://assets/textures/auxie/head/007.png" id="8_qwf07"]
+[ext_resource type="Texture2D" uid="uid://kl226pnbn5vk" path="res://assets/textures/auxie/head/008.png" id="9_83lhx"]
+[ext_resource type="Texture2D" uid="uid://cgdh1fu2eumre" path="res://assets/textures/auxie/head/009.png" id="10_64kys"]
+[ext_resource type="Texture2D" uid="uid://dapqer21qr1g5" path="res://assets/textures/auxie/head/010.png" id="11_1mtxt"]
+[ext_resource type="Texture2D" uid="uid://bxiopo7ysbc06" path="res://assets/textures/auxie/head/011.png" id="12_ipwt6"]
+[ext_resource type="Texture2D" uid="uid://c6bdqsi6yse6r" path="res://assets/textures/auxie/head/012.png" id="13_h770u"]
+[ext_resource type="Texture2D" uid="uid://k1d8l7x52ylr" path="res://assets/textures/auxie/head/013.png" id="14_pybvo"]
+[ext_resource type="Texture2D" uid="uid://bwmacfr48gnta" path="res://assets/textures/auxie/head/014.png" id="15_ewdsx"]
+[ext_resource type="Texture2D" uid="uid://bc781s4g5ao54" path="res://assets/textures/auxie/head/015.png" id="16_y1ak2"]
+[ext_resource type="Texture2D" uid="uid://bhuodit6jho7l" path="res://assets/textures/auxie/head/016.png" id="17_e4a7b"]
+[ext_resource type="Texture2D" uid="uid://86lk3rde4gxe" path="res://assets/textures/auxie/head/017.png" id="18_4nvqe"]
 
 [node name="Head" type="Node2D"]
 
-[node name="Sprite000" type="Sprite2D" parent="."]
-z_index = -1
-texture = ExtResource("1_d5dpe")
-
-[node name="Sprite001" type="Sprite2D" parent="Sprite000"]
-texture = ExtResource("2_euywy")
-
-[node name="Sprite002" type="Sprite2D" parent="."]
-z_index = -1
-texture = ExtResource("3_y5vjg")
-
-[node name="Sprite003" type="Sprite2D" parent="Sprite002"]
-texture = ExtResource("4_56jg5")
-
 [node name="Head" type="Sprite2D" parent="."]
 texture = ExtResource("5_j5u3r")
+offset = Vector2(0, -130)
+
+[node name="Sprite000" type="Sprite2D" parent="Head"]
+z_index = -1
+position = Vector2(65, -47)
+texture = ExtResource("1_d5dpe")
+offset = Vector2(40, 90)
+
+[node name="Sprite001" type="Sprite2D" parent="Head/Sprite000"]
+position = Vector2(12, 64)
+texture = ExtResource("2_euywy")
+offset = Vector2(29, 10)
+
+[node name="Sprite002" type="Sprite2D" parent="Head"]
+z_index = -1
+position = Vector2(-72, -50)
+texture = ExtResource("3_y5vjg")
+offset = Vector2(-40, 90)
+
+[node name="Sprite003" type="Sprite2D" parent="Head/Sprite002"]
+position = Vector2(-13, 59)
+texture = ExtResource("4_56jg5")
+offset = Vector2(-29, 10)
 
 [node name="HeadphoneHighlight" type="Sprite2D" parent="Head"]
+position = Vector2(0, -79)
 texture = ExtResource("6_n6md5")
 
 [node name="Mouth" type="Sprite2D" parent="Head"]
+position = Vector2(0, -8)
 texture = ExtResource("7_3tqws")
 
 [node name="Eyes" type="Sprite2D" parent="Head"]
+position = Vector2(0, -85)
 texture = ExtResource("8_qwf07")
 
 [node name="Iris" type="Sprite2D" parent="Head/Eyes"]
+position = Vector2(0, -4)
 texture = ExtResource("9_83lhx")
 
 [node name="Eyelashes" type="Sprite2D" parent="Head/Eyes"]
+position = Vector2(-1, -23)
 texture = ExtResource("10_64kys")
 
 [node name="Visor" type="Sprite2D" parent="Head"]
+position = Vector2(0, -87)
 texture = ExtResource("11_1mtxt")
 
 [node name="Highlight" type="Sprite2D" parent="Head/Visor"]
 texture = ExtResource("12_ipwt6")
 
-[node name="Sprite012" type="Sprite2D" parent="."]
+[node name="Sprite012" type="Sprite2D" parent="Head"]
+position = Vector2(-57, -261)
 texture = ExtResource("13_h770u")
+offset = Vector2(-35, 70)
 
-[node name="Sprite013" type="Sprite2D" parent="."]
+[node name="Sprite013" type="Sprite2D" parent="Head"]
+position = Vector2(-22, -279)
 texture = ExtResource("14_pybvo")
+offset = Vector2(-35, 90)
 
-[node name="Sprite014" type="Sprite2D" parent="."]
+[node name="Sprite014" type="Sprite2D" parent="Head"]
+position = Vector2(61, -210)
 texture = ExtResource("15_ewdsx")
+offset = Vector2(-30, 40)
 
-[node name="Sprite015" type="Sprite2D" parent="Sprite014"]
+[node name="Sprite015" type="Sprite2D" parent="Head/Sprite014"]
+position = Vector2(-61, 86)
 texture = ExtResource("16_y1ak2")
+offset = Vector2(14, 12)
 
-[node name="Sprite016" type="Sprite2D" parent="."]
+[node name="Sprite016" type="Sprite2D" parent="Head"]
+position = Vector2(-78, -257)
 texture = ExtResource("17_e4a7b")
+offset = Vector2(-50, 52)
 
-[node name="Sprite017" type="Sprite2D" parent="."]
+[node name="Sprite017" type="Sprite2D" parent="Head"]
+position = Vector2(-78, -263)
 texture = ExtResource("18_4nvqe")
+offset = Vector2(-14, -30)
