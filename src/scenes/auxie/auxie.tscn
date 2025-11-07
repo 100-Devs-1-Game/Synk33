@@ -51,12 +51,6 @@ offset = Vector2(0, 55)
 position = Vector2(19, 16)
 texture = ExtResource("6_sb1nx")
 
-[node name="Neck" type="Sprite2D" parent="Torso/Chest"]
-show_behind_parent = true
-position = Vector2(13, -66)
-texture = ExtResource("7_8s0xc")
-offset = Vector2(0, -50)
-
 [node name="ArmUpperL" type="Sprite2D" parent="Torso/Chest"]
 show_behind_parent = true
 position = Vector2(157, -90)
@@ -84,6 +78,15 @@ position = Vector2(-226, -79)
 texture = ExtResource("12_6wfon")
 offset = Vector2(15, 40)
 
+[node name="Neck" type="Sprite2D" parent="Torso/Chest"]
+show_behind_parent = true
+position = Vector2(13, -66)
+texture = ExtResource("7_8s0xc")
+offset = Vector2(0, -50)
+
+[node name="Head" parent="Torso/Chest/Neck" instance=ExtResource("17_u7u8j")]
+position = Vector2(13, -70)
+
 [node name="ArmUpperR" type="Sprite2D" parent="Torso/Chest"]
 show_behind_parent = true
 position = Vector2(-175, -3)
@@ -102,6 +105,3 @@ texture = ExtResource("15_s16kp")
 [node name="BeltStrap" type="Sprite2D" parent="Torso/Chest/ArmUpperR/ArmLowerR/Sleeve"]
 position = Vector2(-43, -70)
 texture = ExtResource("16_rpakh")
-
-[node name="Head" parent="Torso" instance=ExtResource("17_u7u8j")]
-position = Vector2(10, -628)
