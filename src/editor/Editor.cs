@@ -10,6 +10,8 @@ public partial class Editor : Control {
     private AudioStreamPlayer? _audioStreamPlayer;
     private NoteTime _selectedTime = new(0, 0 ,0);
     private Label _selectedTimeLabel;
+    private Label _selectedLaneLabel;
+    private double _selectedLane;
 
     private int _laneWidth = 100;
     private bool _isPlaying = false;
@@ -27,6 +29,7 @@ public partial class Editor : Control {
         // TODO: load song from file
         _audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         _selectedTimeLabel = GetNode<Label>("%SelectedBeat");
+        _selectedLaneLabel = GetNode<Label>("%SelectedLane");
         GrabFocus();
     }
 
@@ -37,6 +40,7 @@ public partial class Editor : Control {
         // }
 
         SelectBeat();
+        SelectLane();
     }
 
     private void SelectBeat() {
@@ -46,6 +50,12 @@ public partial class Editor : Control {
         var sixteenth = Math.Floor((beatTime) % Chart.BeatsPerMeasure * 4) % 4;
         _selectedTimeLabel.Text = $"{bar + 1}.{beat+1}.{sixteenth + 1}";
         _selectedTime = new NoteTime((int)bar, (int)beat, sixteenth);
+    }
+
+    private void SelectLane() {
+        var mouseX = GetViewport().GetMousePosition().X;
+        _selectedLane = Math.Floor(mouseX / _laneWidth);
+        _selectedLaneLabel.Text = "Lane: " + _selectedLane;
     }
 
     public override void _Draw() {
@@ -72,7 +82,7 @@ public partial class Editor : Control {
     private void DrawSelector() {
         DrawCircle(
             new Vector2(
-                _offsetX, 
+                (float)(_selectedLane * _laneWidth), 
                 -_selectedTime.Bar * Chart.BeatsPerMeasure * _zoom + _panY 
                 - _selectedTime.Beat * _zoom -
                 (float)_selectedTime.Sixteenth / 4  * _zoom

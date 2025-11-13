@@ -1,31 +1,85 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=8 format=3 uid="uid://cx354pa6sbc70"]
+[gd_resource type="Resource" script_class="Chart" load_steps=15 format=3 uid="uid://cx354pa6sbc70"]
 
 [ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_kfae5"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_77crk"]
 
 [sub_resource type="Resource" id="Resource_pm4jv"]
 script = ExtResource("1_kfae5")
+Bar = 1
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_tfmqh"]
 script = ExtResource("1_kfae5")
-Type = 2
-EndBar = 2
+Bar = 1
+Beat = 1
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_ibn45"]
 script = ExtResource("1_kfae5")
 Bar = 1
+Beat = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_kfae5"]
 script = ExtResource("1_kfae5")
-Bar = 2
+Bar = 1
+Beat = 3
+Type = 2
+EndBar = 1
+EndBeat = 4
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_77crk"]
 script = ExtResource("1_kfae5")
+Bar = 2
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_va0l2"]
+script = ExtResource("1_kfae5")
+Bar = 2
+Beat = 1
+Type = 1
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_d17e6"]
+script = ExtResource("1_kfae5")
+Bar = 2
+Beat = 2
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_6kcku"]
+script = ExtResource("1_kfae5")
+Bar = 2
+Beat = 3
+Type = 1
+EndBar = 3
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_kqbd7"]
+script = ExtResource("1_kfae5")
 Bar = 3
+Type = 2
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_4yam8"]
+script = ExtResource("1_kfae5")
+Bar = 3
+Beat = 1
+Type = 1
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_h8j73"]
+script = ExtResource("1_kfae5")
+Bar = 3
+Beat = 2
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_y01f1"]
+script = ExtResource("1_kfae5")
+Bar = 3
+Beat = 3
+Type = 1
+EndBar = 4
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [resource]
@@ -33,5 +87,5 @@ script = ExtResource("2_77crk")
 Designer = "Sarian"
 Level = 2
 Bpm = 125.0
-Notes = Array[Object]([SubResource("Resource_pm4jv"), SubResource("Resource_tfmqh"), SubResource("Resource_ibn45"), SubResource("Resource_kfae5"), SubResource("Resource_77crk")])
+Notes = Array[Object]([SubResource("Resource_pm4jv"), SubResource("Resource_tfmqh"), SubResource("Resource_ibn45"), SubResource("Resource_kfae5"), SubResource("Resource_77crk"), SubResource("Resource_va0l2"), SubResource("Resource_d17e6"), SubResource("Resource_6kcku"), SubResource("Resource_kqbd7"), SubResource("Resource_4yam8"), SubResource("Resource_h8j73"), SubResource("Resource_y01f1")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"
