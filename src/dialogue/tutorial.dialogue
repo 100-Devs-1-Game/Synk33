@@ -41,7 +41,7 @@ if tutorial.sequence_impressive:
 else:
 	auxie [#name=???]: There you go!
 auxie [#name=???]: I hope you enjoyed yourself! I had a blast.
-auxie [#name=???]: What? My name?
+auxie [#name=???]: What?[wait=0.5] My name?
 [i][color=ffffff88]The woman turns red with surpise.[/color][/i]
 auxie [#name=???]: Oh Gosh, I didn’t realise I completely forgot to introduce myself. I got so caught up in synking.
 auxie: I'm [i]Auxie[/i], synkhead extraordinaire. Nice to meet ya.

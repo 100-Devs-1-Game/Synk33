@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2luc4dxvh7j8"]
 
-[ext_resource type="Script" uid="uid://ltwu3y1acd0a" path="res://scenes/dialogue/dialogue.gd" id="1_6q57v"]
-[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_lmpnf"]
+[ext_resource type="Script" uid="uid://ltwu3y1acd0a" path="res://autoloads/dialogue_balloon/dialogue_balloon.gd" id="1_x5jme"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_yi135"]
 
-[node name="Dialogue" type="CanvasLayer"]
-script = ExtResource("1_6q57v")
+[node name="DialogueBalloon" type="CanvasLayer"]
+script = ExtResource("1_x5jme")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -86,7 +86,7 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="DialogueLabel" parent="Balloon/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("2_lmpnf")]
+[node name="DialogueLabel" parent="Balloon/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("2_yi135")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

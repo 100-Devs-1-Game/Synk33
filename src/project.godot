@@ -21,6 +21,7 @@ Transition="*res://autoloads/transition/transition.tscn"
 SettingsManager="*res://autoloads/settings/settings_manager.gd"
 Debug="*res://autoloads/debug/Debug.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+DialogueBalloon="*res://autoloads/dialogue_balloon/dialogue_balloon.tscn"
 
 [dialogue_manager]
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnk0thv8iasnk"]
+[gd_scene load_steps=4 format=3 uid="uid://dnk0thv8iasnk"]
 
 [ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="1_qpju2"]
 [ext_resource type="Script" uid="uid://r62um7roqwig" path="res://scenes/menus/main/tutorial.gd" id="2_qiond"]
 [ext_resource type="Resource" uid="uid://cus44kk21u1cx" path="res://dialogue/tutorial.dialogue" id="3_bep8a"]
-[ext_resource type="PackedScene" uid="uid://d2luc4dxvh7j8" path="res://scenes/dialogue/dialogue.tscn" id="3_bv6an"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,5 +51,3 @@ focus_mode = 0
 text = "Tutorial"
 script = ExtResource("2_qiond")
 dialogue = ExtResource("3_bep8a")
-
-[node name="Dialogue" parent="." instance=ExtResource("3_bv6an")]
