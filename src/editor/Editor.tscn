@@ -59,11 +59,20 @@ popup/item_1/id = 1
 popup/item_2/text = "Properties"
 popup/item_2/id = 2
 
+[node name="SelectedLane" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Lane 1"
+horizontal_alignment = 2
+
 [node name="SelectedBeat" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.05
 text = "1.1.1"
 
 [node name="InfoBox" type="PanelContainer" parent="."]
