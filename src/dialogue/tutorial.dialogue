@@ -15,18 +15,13 @@ auxie [#name=???]: Now, what are you waiting on? Put it on!
 do wait(Transition.animation_player.play(&"transition"))
 auxie [#name=???]: There we go~! I’ve joined your sesh, so now we can synk together.
 auxie [#name=???]: From here it’s easy. Just synk with the rhythm. You see these three lanes?
-auxie [#name=???]: Each lane has two buttons that correspond to that lane.
-auxie [#name=???]: Here, I’ll put them on the screen for you.
-auxie [#name=???]: Just tap the correct lane button when a note reaches the Beat Line in that lane.
-auxie [#name=???]: Tapping either of the two buttons will work. And when a longer note appears, you can hold either of the corresponding lane buttons to hit it.
-auxie [#name=???]: Simple right? Let’s try it out!
 # Highlight lanes
 auxie [#name=???]: Each lane has two buttons that correspond to that lane.
 auxie [#name=???]: Here, I’ll put them on the screen for you.
 # Show button inputs
 auxie [#name=???]: Just tap the correct lane button when a note reaches the Beat Line in that lane.
 # Highlight bottom of lanes
-auxie [#name=???]: apping either of the two buttons will work. And when a longer note appears, you can hold either of the corresponding lane buttons to hit it.
+auxie [#name=???]: Tapping either of the two buttons will work. And when a longer note appears, you can hold either of the corresponding lane buttons to hit it.
 auxie [#name=???]: Simple right? Let’s try it out!
 # Intro sequence 1
 if tutorial.sequence_impressive:
