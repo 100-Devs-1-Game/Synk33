@@ -1,12 +1,50 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dkolwxkedrxfi"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dkolwxkedrxfi"]
 
 [ext_resource type="StyleBox" uid="uid://dyotf8338v8to" path="res://themes/default/song_focus.tres" id="1_ij3x7"]
 [ext_resource type="FontFile" uid="uid://b8n7wbkmoy1cc" path="res://fonts/bbh_sans_hegarty/bbh_sans_hegarty.ttf" id="2_lngu5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij3x7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="SystemFont" id="SystemFont_ij3x7"]
+font_names = PackedStringArray("Calibri")
+font_italic = true
+font_weight = 800
+
+[sub_resource type="SystemFont" id="SystemFont_lngu5"]
+font_names = PackedStringArray("Calibri")
+font_italic = true
+font_weight = 800
+
+[sub_resource type="SystemFont" id="SystemFont_8p387"]
+font_names = PackedStringArray("Calibri")
+font_italic = true
+
+[sub_resource type="SystemFont" id="SystemFont_xu4cx"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="SystemFont" id="SystemFont_55xnb"]
+font_names = PackedStringArray("Calibri")
 
 [resource]
 default_font = ExtResource("2_lngu5")
 default_font_size = 40
 Label/styles/focus = ExtResource("1_ij3x7")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ij3x7")
+RichTextLabel/fonts/bold_font = SubResource("SystemFont_ij3x7")
+RichTextLabel/fonts/bold_italics_font = SubResource("SystemFont_lngu5")
+RichTextLabel/fonts/italics_font = SubResource("SystemFont_8p387")
+RichTextLabel/fonts/mono_font = SubResource("SystemFont_xu4cx")
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_55xnb")
 SongButton/colors/font_credit_color = Color(1, 1, 1, 1)
 SongButton/colors/font_credit_focus_color = Color(0.38431373, 0.94509804, 0.96862745, 1)
 SongButton/colors/font_title_color = Color(1, 1, 1, 1)
