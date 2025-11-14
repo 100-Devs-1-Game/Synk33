@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dtrkrbvbw8ptk"
-path="res://.godot/imported/vendsans_italic.ttf-16b45fd280ec844c8ab1f41efe2da2eb.fontdata"
+uid="uid://f51abutoyf8v"
+path="res://.godot/imported/vendsans_semi_bold_italic.ttf-b1ba0f663a8e05658fcf96e80d00c8fe.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/vendsans/vendsans_italic.ttf"
-dest_files=["res://.godot/imported/vendsans_italic.ttf-16b45fd280ec844c8ab1f41efe2da2eb.fontdata"]
+source_file="res://assets/fonts/vendsans/vendsans_semi_bold_italic.ttf"
+dest_files=["res://.godot/imported/vendsans_semi_bold_italic.ttf-b1ba0f663a8e05658fcf96e80d00c8fe.fontdata"]
 
 [params]
 
