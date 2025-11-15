@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Transition="*res://autoloads/transition/transition.tscn"
+TransitionManager="*res://autoloads/transition_manager/transition_manager.tscn"
 SettingsManager="*res://autoloads/settings/settings_manager.gd"
 Debug="*res://autoloads/debug/Debug.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
