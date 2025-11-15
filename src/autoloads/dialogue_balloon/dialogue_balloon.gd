@@ -27,6 +27,16 @@ func _ready() -> void:
 	hide()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_accept"):
+		get_viewport().set_input_as_handled()
+		
+		if dialogue_label.is_typing:
+			dialogue_label.skip_typing()
+		
+		next(dialogue_line.next_id)
+
+
 func start(p_dialogue_resource:DialogueResource, title:String) -> void:
 	show()
 	dialogue_resource = p_dialogue_resource
@@ -50,8 +60,7 @@ func next(next_id: String) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()\
-			or event.is_action_pressed("ui_accept"):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		get_viewport().set_input_as_handled()
 		
 		if dialogue_label.is_typing:
