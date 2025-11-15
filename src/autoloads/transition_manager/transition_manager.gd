@@ -21,11 +21,14 @@ func _input(_event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
+## Plays a transition. To do something at the end or in the middle of a transition,
+## use [signal transition_midpoint] and [signal transition_endpoint]
 func play_transition(animation_name:StringName = DEFAULT_ANIMATION) -> void:
 	transitioning = true
 	animation_player.play(animation_name)
 
 
+## Transition and change main scene to file.
 func transition_to_file(path:String, animation_name:StringName = DEFAULT_ANIMATION) -> void:
 	play_transition(animation_name)
 	await transition_midpoint
@@ -49,12 +52,12 @@ func dialogue_transition(animation_name:StringName = DEFAULT_ANIMATION,
 		return get_transition_endpoint_time(animation_name)
 
 
-## returns the midpoint time in a transition animation. Returns -1 if not applicable.
+## Returns the midpoint time in a transition animation. Returns -1 if not applicable.
 func get_transition_midpoint_time(animation_name:StringName) -> float:
 	return _get_animation_method_callback_time(animation_name, ^".", &"_transition_midpoint_callback")
 
 
-## returns the endpoint time in a transition animation. Returns -1 if not applicable.
+## Returns the endpoint time in a transition animation. Returns -1 if not applicable.
 func get_transition_endpoint_time(animation_name:StringName) -> float:
 	var animation := animation_player.get_animation(animation_name)
 	if not animation:
@@ -62,7 +65,7 @@ func get_transition_endpoint_time(animation_name:StringName) -> float:
 	return animation.length
 
 
-## Returns the duration from the midpoint to the endpoint. see [method get_transition_midpoint_time]
+## Returns the duration from the midpoint to the endpoint. See [method get_transition_midpoint_time]
 ## and [method get_transition_endpoint_time].
 func get_transition_mid_to_end_time(animation_name:StringName) -> float:
 	return get_transition_endpoint_time(animation_name) - get_transition_midpoint_time(animation_name)
