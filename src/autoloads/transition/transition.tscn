@@ -84,7 +84,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nc1h4"]
 _data = {
 &"RESET": SubResource("Animation_086p3"),
-&"transition": SubResource("Animation_dmvch")
+&"wipe": SubResource("Animation_dmvch")
 }
 
 [node name="Transition" type="CanvasLayer"]
