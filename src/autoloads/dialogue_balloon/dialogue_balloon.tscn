@@ -100,10 +100,10 @@ mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
 
 [node name="DialogueLabel" parent="Balloon/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("2_yi135")]
 unique_name_in_owner = true
