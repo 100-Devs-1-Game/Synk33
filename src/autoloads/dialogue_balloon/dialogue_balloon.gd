@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+
 ## The base balloon anchor
 @onready var balloon: Control = %Balloon
 
@@ -7,6 +8,8 @@ extends CanvasLayer
 @onready var character_label: Label = %CharacterLabel
 
 @onready var character_label_panel: PanelContainer = %CharacterLabelPanel
+
+@onready var character_anchor_dock: Control = %CharacterAnchor.get_child(0)
 
 ## The label showing the currently spoken dialogue
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
@@ -23,6 +26,9 @@ var dialogue_line: DialogueLine:
 			hide()
 
 var gamestate_info:Array = []
+
+var character_active: bool
+var character_anchor_tween: Tween
 
 
 func _ready() -> void:
@@ -50,8 +56,19 @@ func apply_dialogue_line() -> void:
 	if character_name.is_empty():
 		character_name = dialogue_line.character
 	
-	character_label_panel.visible = not character_name.is_empty()
+	var new_activity: bool = not character_name.is_empty()
+	
+	character_label_panel.visible = new_activity
 	character_label.text = tr(character_name, "dialogue")
+	
+	if new_activity != character_active:
+		if character_anchor_tween and character_anchor_tween.is_valid():
+			character_anchor_tween.kill()
+		character_anchor_tween = create_tween().set_parallel()
+		character_anchor_tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+		
+		character_active_fade(character_anchor_dock, new_activity, character_anchor_tween)
+		character_active = new_activity
 	
 	dialogue_label.dialogue_line = dialogue_line
 	dialogue_label.type_out()
@@ -70,3 +87,25 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 			return
 		
 		next(dialogue_line.next_id)
+
+
+func character_active_fade(
+		node:CanvasItem, 
+		activity:bool, 
+		tween:Tween, 
+		duration:float = 0.25) -> void:
+	tween.set_parallel()
+	if activity:
+		tween.tween_property(node, ^"scale", Vector2.ONE, 
+				duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property(node, ^"position:y", 0,
+				duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property(node, ^"modulate", Color.WHITE, 
+				duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	else:
+		tween.tween_property(node, ^"scale", Vector2(0.975, 0.975), 
+				duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property(node, ^"position:y", 15,
+				duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tween.tween_property(node, ^"modulate", Color(0.7, 0.7, 0.7), 
+				duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
