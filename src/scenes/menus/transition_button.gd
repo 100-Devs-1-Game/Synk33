@@ -4,4 +4,4 @@ extends Button
 
 
 func _pressed() -> void:
-	Transition.transition_to_file(scene_path)
+	TransitionManager.transition_to_file(scene_path)
