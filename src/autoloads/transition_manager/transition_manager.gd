@@ -32,13 +32,40 @@ func transition_to_file(path:String, animation_name:StringName = DEFAULT_ANIMATI
 	get_tree().change_scene_to_file(path)
 
 
+## A  version of [method play_transition] that returns the amount of time to wait for either 
+## The midpoint or endpoint of the animation. Meant to be used in dialogue, wrapped in
+## [code]wait()[/code], as a shorthand for 
+## [codeblock]
+## do TransitionManager.play_transition(&"wipe")
+## do wait(TransitionManaget.get_transition_midpoint_time(&"wipe"))
+## [/codeblock]
+func dialogue_transition(animation_name:StringName = DEFAULT_ANIMATION, 
+		use_midpoint:bool = true) -> float:
+	play_transition(animation_name)
+	
+	if use_midpoint:
+		return get_transition_midpoint_time(animation_name)
+	else:
+		return get_transition_endpoint_time(animation_name)
+
+
 ## returns the midpoint time in a transition animation. Returns -1 if not applicable.
 func get_transition_midpoint_time(animation_name:StringName) -> float:
 	return _get_animation_method_callback_time(animation_name, ^".", &"_transition_midpoint_callback")
 
+
 ## returns the endpoint time in a transition animation. Returns -1 if not applicable.
 func get_transition_endpoint_time(animation_name:StringName) -> float:
-	return _get_animation_method_callback_time(animation_name, ^".", &"_transition_endpoint_callback")
+	var animation := animation_player.get_animation(animation_name)
+	if not animation:
+		return -1
+	return animation.length
+
+
+## Returns the duration from the midpoint to the endpoint. see [method get_transition_midpoint_time]
+## and [method get_transition_endpoint_time].
+func get_transition_mid_to_end_time(animation_name:StringName) -> float:
+	return get_transition_endpoint_time(animation_name) - get_transition_midpoint_time(animation_name)
 
 
 func _get_animation_method_callback_time(animation_name:StringName, 
@@ -68,6 +95,7 @@ func _transition_midpoint_callback() -> void:
 	transition_midpoint.emit()
 
 
-func _transition_endpoint_callback() -> void:
-	transitioning = false
-	transition_endpoint.emit()
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name != &"RESET":
+		transitioning = false
+		transition_endpoint.emit()
