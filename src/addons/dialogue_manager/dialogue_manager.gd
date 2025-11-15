@@ -721,8 +721,6 @@ func _mutate(mutation: Dictionary, extra_game_states: Array, is_inline_mutation:
 				mutated.emit(mutation.merged({ is_inline = is_inline_mutation }))
 				if args[0] is float:
 					await Engine.get_main_loop().create_timer(float(args[0])).timeout
-				else:
-					print("wait args: ", args)
 				return
 
 			&"debug", &"Debug":
