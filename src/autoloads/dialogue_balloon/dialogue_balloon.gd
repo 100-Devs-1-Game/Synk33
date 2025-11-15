@@ -6,6 +6,8 @@ extends CanvasLayer
 ## The label showing the name of the currently speaking character
 @onready var character_label: Label = %CharacterLabel
 
+@onready var character_label_panel: PanelContainer = %CharacterLabelPanel
+
 ## The label showing the currently spoken dialogue
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 
@@ -48,7 +50,7 @@ func apply_dialogue_line() -> void:
 	if character_name.is_empty():
 		character_name = dialogue_line.character
 	
-	character_label.visible = not character_name.is_empty()
+	character_label_panel.visible = not character_name.is_empty()
 	character_label.text = tr(character_name, "dialogue")
 	
 	dialogue_label.dialogue_line = dialogue_line
