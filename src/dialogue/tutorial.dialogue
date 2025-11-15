@@ -12,7 +12,8 @@ auxie [#name=???]: You’re lucky I always carry my spare. Don’t judge me, I�
 auxie [#name=???]: Now, what are you waiting on? Put it on!
 [i][color=ffffff88]You put on the device and…[/color][/i]
 # Flicker transition to game
-do wait(Transition.animation_player.play(&"transition"))
+do Transition.animation_player.play(&"transition")
+do wait(Transition.get_transition_endpoint_time(&"transition"))
 auxie [#name=???]: There we go~! I’ve joined your sesh, so now we can synk together.
 auxie [#name=???]: From here it’s easy. Just synk with the rhythm. You see these three lanes?
 # Highlight lanes
