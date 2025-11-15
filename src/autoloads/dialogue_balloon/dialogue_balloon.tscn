@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2luc4dxvh7j8"]
+[gd_scene load_steps=4 format=3 uid="uid://d2luc4dxvh7j8"]
 
 [ext_resource type="Script" uid="uid://ltwu3y1acd0a" path="res://autoloads/dialogue_balloon/dialogue_balloon.gd" id="1_x5jme"]
+[ext_resource type="PackedScene" uid="uid://eqrv7avptp3b" path="res://scenes/auxie/auxie.tscn" id="2_eso2r"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_yi135"]
 
 [node name="DialogueBalloon" type="CanvasLayer"]
@@ -14,6 +15,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CharacterAnchor" type="Control" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 226.0
+offset_top = -225.0
+offset_right = 226.0
+offset_bottom = -225.0
+grow_vertical = 0
+
+[node name="Auxie" parent="Balloon/CharacterAnchor" instance=ExtResource("2_eso2r")]
+scale = Vector2(0.5, 0.5)
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
