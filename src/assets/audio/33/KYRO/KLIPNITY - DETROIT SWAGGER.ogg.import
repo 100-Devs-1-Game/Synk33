@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b4jp12jmp5sb7"
+path="res://.godot/imported/KLIPNITY - DETROIT SWAGGER.ogg-bfe0e14d71f0dd4d16c61e1cc757c7a7.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/33/KYRO/KLIPNITY - DETROIT SWAGGER.ogg"
+dest_files=["res://.godot/imported/KLIPNITY - DETROIT SWAGGER.ogg-bfe0e14d71f0dd4d16c61e1cc757c7a7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
