@@ -109,7 +109,6 @@ text = "Dialogue..."
 
 [node name="OutburstAnchor" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -120,15 +119,14 @@ offset_right = 33.0
 offset_bottom = -717.0
 grow_vertical = 0
 
-[node name="OutburstLabel" type="Label" parent="OutburstAnchor"]
-unique_name_in_owner = true
+[node name="Shrinker" type="HBoxContainer" parent="OutburstAnchor"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
 offset_right = 294.0
-offset_bottom = 70.0
-grow_vertical = 0
+offset_bottom = 78.0
+
+[node name="OutburstLabel" type="Label" parent="OutburstAnchor/Shrinker"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_type_variation = &"CharacterOutburst"
 text = "You suck lil bro"
 
