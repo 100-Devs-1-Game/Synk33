@@ -1,7 +1,25 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dkolwxkedrxfi"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dkolwxkedrxfi"]
 
 [ext_resource type="StyleBox" uid="uid://dyotf8338v8to" path="res://themes/default/song_focus.tres" id="1_ij3x7"]
+[ext_resource type="Script" uid="uid://beusqcv0inspx" path="res://classes/style_box_outburst.gd" id="1_lngu5"]
 [ext_resource type="FontFile" uid="uid://b8n7wbkmoy1cc" path="res://fonts/bbh_sans_hegarty/bbh_sans_hegarty.ttf" id="2_lngu5"]
+
+[sub_resource type="SystemFont" id="SystemFont_55xnb"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="StyleBox" id="StyleBox_lngu5"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+script = ExtResource("1_lngu5")
+top_left_offset = Vector2(-20, 0)
+top_right_offset = Vector2(30, -5)
+bottom_left_offset = Vector2(0, 10)
+tail_offset = Vector2(-2, 12)
+metadata/_custom_type_script = "uid://beusqcv0inspx"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij3x7"]
 bg_color = Color(0, 0, 0, 1)
@@ -32,12 +50,12 @@ font_italic = true
 [sub_resource type="SystemFont" id="SystemFont_xu4cx"]
 font_names = PackedStringArray("Calibri")
 
-[sub_resource type="SystemFont" id="SystemFont_55xnb"]
-font_names = PackedStringArray("Calibri")
-
 [resource]
 default_font = ExtResource("2_lngu5")
 default_font_size = 40
+CharacterOutburst/base_type = &"Label"
+CharacterOutburst/fonts/font = SubResource("SystemFont_55xnb")
+CharacterOutburst/styles/normal = SubResource("StyleBox_lngu5")
 Label/styles/focus = ExtResource("1_ij3x7")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ij3x7")
 RichTextLabel/fonts/bold_font = SubResource("SystemFont_ij3x7")
