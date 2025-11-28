@@ -7,18 +7,9 @@
 [node name="DialogueBalloon" type="CanvasLayer"]
 script = ExtResource("1_x5jme")
 
-[node name="Balloon" type="Control" parent="."]
+[node name="CharacterAnchor" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CharacterAnchor" type="Control" parent="Balloon"]
-unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -28,10 +19,22 @@ offset_right = 226.0
 offset_bottom = -225.0
 grow_vertical = 0
 
-[node name="CharacterDock" type="Node2D" parent="Balloon/CharacterAnchor"]
+[node name="CharacterDock" type="CanvasGroup" parent="CharacterAnchor"]
 
-[node name="Auxie" parent="Balloon/CharacterAnchor/CharacterDock" instance=ExtResource("2_eso2r")]
+[node name="Auxie" parent="CharacterAnchor/CharacterDock" instance=ExtResource("2_eso2r")]
 scale = Vector2(0.5, 0.5)
+
+[node name="CharacterDockBottom" type="Marker2D" parent="CharacterAnchor"]
+position = Vector2(0, 225)
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
