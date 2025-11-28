@@ -22,6 +22,8 @@ const CHARACTER_OUT_RIGHTSHIFT := -100
 ## The label showing the currently spoken dialogue
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 
+@onready var outburst_anchor: Control = %OutburstAnchor
+@onready var outburst_label: Label = %OutburstLabel
 
 var dialogue_resource: DialogueResource
 
@@ -39,10 +41,12 @@ var gamestate_info:Array = [
 
 var character_active: bool
 var character_anchor_tween: Tween
+var outburst_tween: Tween
 
 
 func _ready() -> void:
 	balloon.hide()
+	outburst_anchor.hide()
 	character_anchor_dock.hide()
 	character_anchor_dock.position.y = character_anchor_dock_bottom.position.y
 
@@ -103,6 +107,24 @@ func move_auxie(move_in:bool, duration:float = 0.4) -> float:
 		character_anchor_dock, move_in, character_anchor_tween, duration
 	)
 	return duration
+
+
+func say_outburst(message:String, duration:float) -> void:
+	outburst_label.text = message
+	outburst_anchor.show()
+	outburst_tween = create_tween_overkill(outburst_tween, outburst_anchor)
+	outburst_tween.tween_property(outburst_label, ^"position:y", 0, 0.2)\
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)\
+			.from(20)
+	outburst_tween.parallel().tween_property(outburst_label, ^"modulate:a", 1, 0.2)\
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)\
+			.from(0)
+	outburst_tween.chain().tween_interval(duration)
+	outburst_tween.chain().tween_property(outburst_label, ^"position:y", -20, 0.2)\
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	outburst_tween.parallel().tween_property(outburst_label, ^"modulate:a", 0, 0.2)\
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	outburst_tween.chain().tween_callback(outburst_anchor.hide)
 
 
 func open_balloon() -> void:
