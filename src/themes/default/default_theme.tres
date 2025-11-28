@@ -1,11 +1,12 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dkolwxkedrxfi"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dkolwxkedrxfi"]
 
+[ext_resource type="FontFile" uid="uid://di54smy3sg4ob" path="res://fonts/vendsans/vendsans_bold.ttf" id="1_3l6es"]
 [ext_resource type="StyleBox" uid="uid://dyotf8338v8to" path="res://themes/default/song_focus.tres" id="1_ij3x7"]
 [ext_resource type="Script" uid="uid://beusqcv0inspx" path="res://classes/style_box_outburst.gd" id="1_lngu5"]
 [ext_resource type="FontFile" uid="uid://b8n7wbkmoy1cc" path="res://fonts/bbh_sans_hegarty/bbh_sans_hegarty.ttf" id="2_lngu5"]
-
-[sub_resource type="SystemFont" id="SystemFont_55xnb"]
-font_names = PackedStringArray("Calibri")
+[ext_resource type="FontFile" uid="uid://d0lygexvh0nc4" path="res://fonts/vendsans/vendsans_boldItalic.ttf" id="4_6eagn"]
+[ext_resource type="FontFile" uid="uid://q62icyvq5caf" path="res://fonts/vendsans/vendsans_italic.ttf" id="5_g628g"]
+[ext_resource type="FontFile" uid="uid://bdl5yxv708e0s" path="res://fonts/vendsans/vendsans_regular.ttf" id="6_xi2r2"]
 
 [sub_resource type="StyleBox" id="StyleBox_lngu5"]
 resource_local_to_scene = false
@@ -33,36 +34,18 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="SystemFont" id="SystemFont_ij3x7"]
-font_names = PackedStringArray("Calibri")
-font_italic = true
-font_weight = 800
-
-[sub_resource type="SystemFont" id="SystemFont_lngu5"]
-font_names = PackedStringArray("Calibri")
-font_italic = true
-font_weight = 800
-
-[sub_resource type="SystemFont" id="SystemFont_8p387"]
-font_names = PackedStringArray("Calibri")
-font_italic = true
-
-[sub_resource type="SystemFont" id="SystemFont_xu4cx"]
-font_names = PackedStringArray("Calibri")
-
 [resource]
 default_font = ExtResource("2_lngu5")
 default_font_size = 40
 CharacterOutburst/base_type = &"Label"
-CharacterOutburst/fonts/font = SubResource("SystemFont_55xnb")
+CharacterOutburst/fonts/font = ExtResource("1_3l6es")
 CharacterOutburst/styles/normal = SubResource("StyleBox_lngu5")
 Label/styles/focus = ExtResource("1_ij3x7")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ij3x7")
-RichTextLabel/fonts/bold_font = SubResource("SystemFont_ij3x7")
-RichTextLabel/fonts/bold_italics_font = SubResource("SystemFont_lngu5")
-RichTextLabel/fonts/italics_font = SubResource("SystemFont_8p387")
-RichTextLabel/fonts/mono_font = SubResource("SystemFont_xu4cx")
-RichTextLabel/fonts/normal_font = SubResource("SystemFont_55xnb")
+RichTextLabel/fonts/bold_font = ExtResource("1_3l6es")
+RichTextLabel/fonts/bold_italics_font = ExtResource("4_6eagn")
+RichTextLabel/fonts/italics_font = ExtResource("5_g628g")
+RichTextLabel/fonts/normal_font = ExtResource("6_xi2r2")
 SongButton/colors/font_credit_color = Color(1, 1, 1, 1)
 SongButton/colors/font_credit_focus_color = Color(0.38431373, 0.94509804, 0.96862745, 1)
 SongButton/colors/font_title_color = Color(1, 1, 1, 1)
