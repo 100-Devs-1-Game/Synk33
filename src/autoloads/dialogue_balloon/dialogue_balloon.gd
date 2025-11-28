@@ -2,7 +2,7 @@ extends CanvasLayer
 
 const CHARACTER_INACTIVE_DOWNSHIFT := 15.0
 const CHARACTER_INACTIVE_COLOR := Color(0.7, 0.7, 0.7)
-const CHARACTER_INACTIVE_SCALE := 15
+const CHARACTER_INACTIVE_SCALE := Vector2(0.975, 0.975)
 
 const CHARACTER_OUT_RIGHTSHIFT := -100
 
@@ -170,7 +170,8 @@ func character_active_fade(
 		tween.parallel().tween_property(node, ^"self_modulate", Color.WHITE, duration)\
 				.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	else:
-		tween.tween_property(node, ^"scale", CHARACTER_INACTIVE_COLOR, duration)\
+	
+		tween.tween_property(node, ^"scale", CHARACTER_INACTIVE_SCALE, duration)\
 				.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		tween.parallel().tween_property(node, ^"position:y", CHARACTER_INACTIVE_DOWNSHIFT, duration)\
 				.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
