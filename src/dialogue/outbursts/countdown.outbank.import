@@ -1,0 +1,14 @@
+[remap]
+
+importer="outbursts"
+type="Resource"
+uid="uid://d033sk6t526ub"
+path="res://.godot/imported/countdown.outbank-c3ddce693d2d2307080e195e52db2391.res"
+
+[deps]
+
+source_file="res://dialogue/outbursts/countdown.outbank"
+dest_files=["res://.godot/imported/countdown.outbank-c3ddce693d2d2307080e195e52db2391.res"]
+
+[params]
+

@@ -1,0 +1,10 @@
+<seq>
+  <rand> 
+    <line>Ready?</line>
+    <line>Ready to Synk?</line>
+  </rand>
+  <line dur="0.2" >3</line>
+  <line dur="0.2" >2</line>
+  <line dur="0.2" >1</line>
+  <line dur="0.2" >Go!</line>
+</seq>
