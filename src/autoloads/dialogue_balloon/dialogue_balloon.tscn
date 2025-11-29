@@ -22,6 +22,19 @@ grow_vertical = 0
 [node name="CharacterDock" type="CanvasGroup" parent="CharacterAnchor"]
 position = Vector2(0, 225)
 
+[node name="OutburstAnchor" type="Node2D" parent="CharacterAnchor/CharacterDock"]
+unique_name_in_owner = true
+position = Vector2(-141, -717)
+
+[node name="OutburstLabel" type="Label" parent="CharacterAnchor/CharacterDock/OutburstAnchor"]
+unique_name_in_owner = true
+offset_right = 294.0
+offset_bottom = 70.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_type_variation = &"CharacterOutburst"
+text = "You suck lil bro"
+
 [node name="Auxie" parent="CharacterAnchor/CharacterDock" instance=ExtResource("2_eso2r")]
 scale = Vector2(0.5, 0.5)
 
@@ -106,28 +119,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
-
-[node name="OutburstAnchor" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 85.0
-offset_top = -717.0
-offset_right = 85.0
-offset_bottom = -717.0
-grow_vertical = 0
-
-[node name="OutburstLabel" type="Label" parent="OutburstAnchor"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 294.0
-offset_bottom = 70.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_type_variation = &"CharacterOutburst"
-text = "You suck lil bro"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
