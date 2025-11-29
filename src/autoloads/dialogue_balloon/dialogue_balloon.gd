@@ -22,7 +22,7 @@ const CHARACTER_OUT_RIGHTSHIFT := -100
 ## The label showing the currently spoken dialogue
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 
-@onready var outburst_anchor: Control = %OutburstAnchor
+@onready var outburst_anchor: Node2D = %OutburstAnchor
 @onready var outburst_label: Label = %OutburstLabel
 
 @onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
