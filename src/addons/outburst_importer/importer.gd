@@ -2,16 +2,20 @@
 extends EditorImportPlugin
 
 
-static var tag_map:Dictionary[String, Callable] = {
+const BASE_AUDIO_DIALOGUE_PATH:String = "res://assets/audio/dialogue/"
+
+
+var tag_map:Dictionary[String, Callable] = {
 	"line":importer_mapped.bind(OutburstLine, {
-		"@text":&"line",
-		"dur":&"duration"
+		"@text":map_direct.bind(&"line"),
+		"dur":map_basic.bind(&"duration"),
+		"snd":map_resource.bind(&"audio", BASE_AUDIO_DIALOGUE_PATH, "AudioStream")
 	}),
 	"rand":importer_mapped.bind(OutburstRandom, {
-		"@elements":&"lines"
+		"@elements":map_direct.bind(&"lines")
 	}),
 	"seq":importer_mapped.bind(OutburstSequence, {
-		"@elements":&"lines"
+		"@elements":map_direct.bind(&"lines")
 	}),
 }
 
@@ -75,10 +79,11 @@ func _import(
 
 ## Imports an XML tag as type. 'Map' defines the attribute -> variable map.
 ## the key "@text" will import the text of the tag, and "@elements" the elements.
-static func importer_mapped(
+func importer_mapped(
 		parser:XMLParser,
 		type:Script, 
-		map:Dictionary, 
+		map:Dictionary,
+		process_info:Dictionary = {},
 	) -> Outburst:
 	var instance:Outburst = type.new()
 	
@@ -88,7 +93,7 @@ static func importer_mapped(
 			push_error("attribute ", name, " does not exist on tag!")
 			push_error("value: ", str_to_var(parser.get_attribute_value(i)))
 			continue
-		instance.set(map[name], str_to_var(parser.get_attribute_value(i)))
+		map[name].call(parser.get_attribute_value(i), instance)
 	
 	var text_combined:String = ""
 	var elements_combined:Array[Outburst] = []
@@ -117,15 +122,42 @@ static func importer_mapped(
 			_:
 				push_error("Unexpected XML node: ", parser.get_node_type())
 	if "@text" in map:
-		instance.set(map["@text"], text_combined)
+		map["@text"].call(text_combined, instance)
 	if "@elements" in map:
-		instance.set(map["@elements"], elements_combined)
+		map["@elements"].call(elements_combined, instance)
 	return instance
 
 
-static func find_importer(parser:XMLParser) -> Outburst:
+func find_importer(parser:XMLParser) -> Outburst:
 	var tag_name := parser.get_node_name()
 	if not tag_name in tag_map:
 		push_error("No importer found for tag ", tag_name)
 		return null
 	return tag_map[tag_name].call(parser)
+
+## Basic variable interpretation of value
+func map_basic(value:String, target:Object, property:StringName) -> void:
+	target.set(property, str_to_var(value))
+
+## Directly maps contents to value
+func map_direct(value:Variant, target:Object, property:StringName) -> void:
+	target.set(property, value)
+
+## Loads a resource from the value path (with optional base path and type hint)
+func map_resource(
+		value:String, 
+		target:Object, 
+		property:StringName,
+		base_path:String = "",
+		resource_type_hint:String = "",
+	) -> void:
+	var path := base_path.path_join(value)
+	if not path.is_absolute_path():
+		push_error('Path "%s" is not a valid resource path' % path)
+		return
+	if not ResourceLoader.exists(path, resource_type_hint):
+		if resource_type_hint.is_empty():
+			resource_type_hint = "Resource"
+		push_error('No Resource of type %s exists at path "%s"' % [resource_type_hint, path])
+		return
+	target.set(property, ResourceLoader.load(path, resource_type_hint))
