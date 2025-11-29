@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2luc4dxvh7j8"]
+[gd_scene load_steps=5 format=3 uid="uid://d2luc4dxvh7j8"]
 
 [ext_resource type="Script" uid="uid://ltwu3y1acd0a" path="res://autoloads/dialogue_balloon/dialogue_balloon.gd" id="1_x5jme"]
+[ext_resource type="Script" uid="uid://c4rj2ygwp6w2n" path="res://scenes/menus/scale_container.gd" id="2_ajgy2"]
 [ext_resource type="PackedScene" uid="uid://eqrv7avptp3b" path="res://scenes/auxie/auxie.tscn" id="2_eso2r"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_yi135"]
 
@@ -26,14 +27,23 @@ position = Vector2(0, 225)
 unique_name_in_owner = true
 position = Vector2(-141, -717)
 
-[node name="OutburstLabel" type="Label" parent="CharacterAnchor/CharacterDock/OutburstAnchor"]
-unique_name_in_owner = true
-offset_right = 294.0
+[node name="Shrinker" type="HBoxContainer" parent="CharacterAnchor/CharacterDock/OutburstAnchor"]
+offset_top = -363.0
+offset_right = 361.0
 offset_bottom = 70.0
+
+[node name="ScaleContainer" type="Container" parent="CharacterAnchor/CharacterDock/OutburstAnchor/Shrinker"]
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+script = ExtResource("2_ajgy2")
+metadata/_custom_type_script = "uid://c4rj2ygwp6w2n"
+
+[node name="OutburstLabel" type="Label" parent="CharacterAnchor/CharacterDock/OutburstAnchor/Shrinker/ScaleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_type_variation = &"CharacterOutburst"
-text = "You suck lil bro"
+text = "You suck lil' bro"
 
 [node name="Auxie" parent="CharacterAnchor/CharacterDock" instance=ExtResource("2_eso2r")]
 scale = Vector2(0.5, 0.5)
