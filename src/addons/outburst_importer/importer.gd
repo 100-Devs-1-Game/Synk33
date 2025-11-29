@@ -9,7 +9,7 @@ var tag_map:Dictionary[String, Callable] = {
 	"line":importer_mapped.bind(OutburstLine, {
 		"@text":map_direct.bind(&"line"),
 		"dur":map_basic.bind(&"duration"),
-		"snd":map_resource.bind(&"audio", BASE_AUDIO_DIALOGUE_PATH, "AudioStream")
+		"snd":map_resource.bind(&"stream", BASE_AUDIO_DIALOGUE_PATH, "AudioStream")
 	}),
 	"rand":importer_mapped.bind(OutburstRandom, {
 		"@elements":map_direct.bind(&"lines")
@@ -160,4 +160,4 @@ func map_resource(
 			resource_type_hint = "Resource"
 		push_error('No Resource of type %s exists at path "%s"' % [resource_type_hint, path])
 		return
-	target.set(property, ResourceLoader.load(path, resource_type_hint))
+	target.set(property, ResourceLoader.load(path, "AudioStream"))

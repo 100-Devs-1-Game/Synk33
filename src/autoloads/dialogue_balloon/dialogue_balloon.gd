@@ -25,6 +25,9 @@ const CHARACTER_OUT_RIGHTSHIFT := -100
 @onready var outburst_anchor: Control = %OutburstAnchor
 @onready var outburst_label: Label = %OutburstLabel
 
+@onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
+
+
 var dialogue_resource: DialogueResource
 
 var dialogue_line: DialogueLine:
@@ -65,6 +68,11 @@ func start(p_dialogue_resource:DialogueResource, title:String) -> void:
 	open_balloon()
 	dialogue_resource = p_dialogue_resource
 	next(title)
+
+
+func play_audio(stream:AudioStream) -> void:
+	audio_stream_player.stream = stream
+	audio_stream_player.play()
 
 
 func apply_dialogue_line() -> void:
@@ -125,6 +133,7 @@ func say_outburst(message:String, duration:float) -> void:
 	outburst_tween.parallel().tween_property(outburst_label, ^"modulate:a", 0, 0.2)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	outburst_tween.chain().tween_callback(outburst_anchor.hide)
+	await outburst_tween.finished
 
 
 func open_balloon() -> void:

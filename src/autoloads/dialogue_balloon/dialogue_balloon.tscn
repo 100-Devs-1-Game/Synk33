@@ -130,4 +130,6 @@ layout_mode = 2
 theme_type_variation = &"CharacterOutburst"
 text = "You suck lil bro"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
