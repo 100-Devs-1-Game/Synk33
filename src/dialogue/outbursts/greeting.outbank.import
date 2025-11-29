@@ -1,0 +1,14 @@
+[remap]
+
+importer="outbursts"
+type="Resource"
+uid="uid://hcupt0dcqnr3"
+path="res://.godot/imported/greeting.outbank-7253b9a194206b64b61cebbbc96c4509.res"
+
+[deps]
+
+source_file="res://dialogue/outbursts/greeting.outbank"
+dest_files=["res://.godot/imported/greeting.outbank-7253b9a194206b64b61cebbbc96c4509.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="outbursts"
+type="Resource"
+uid="uid://ds3m86wikteb5"
+path="res://.godot/imported/bye.outbank-7ce7c16336aeca03530793ba2f0ed490.res"
+
+[deps]
+
+source_file="res://dialogue/outbursts/bye.outbank"
+dest_files=["res://.godot/imported/bye.outbank-7ce7c16336aeca03530793ba2f0ed490.res"]
+
+[params]
+
