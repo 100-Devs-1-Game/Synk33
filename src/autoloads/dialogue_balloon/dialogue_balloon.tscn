@@ -113,14 +113,14 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 33.0
+offset_left = 85.0
 offset_top = -717.0
-offset_right = 33.0
+offset_right = 85.0
 offset_bottom = -717.0
 grow_vertical = 0
 
 [node name="Shrinker" type="HBoxContainer" parent="OutburstAnchor"]
-layout_mode = 1
+layout_mode = 0
 offset_right = 294.0
 offset_bottom = 78.0
 
