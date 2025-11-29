@@ -1,0 +1,14 @@
+[remap]
+
+importer="outbursts"
+type="Resource"
+uid="uid://b6dtqp1001c3x"
+path="res://.godot/imported/you_suck.outbank-8e5b5f40dd4876ad9a6ab80f53601b37.res"
+
+[deps]
+
+source_file="res://dialogue/outbursts/you_suck.outbank"
+dest_files=["res://.godot/imported/you_suck.outbank-8e5b5f40dd4876ad9a6ab80f53601b37.res"]
+
+[params]
+
