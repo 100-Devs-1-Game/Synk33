@@ -1,7 +1,8 @@
 @tool
 extends EditorPlugin
 
-var importer = load("res://addons/outburst_importer/importer.gd").new()
+
+var importer:EditorImportPlugin
 
 
 func _enable_plugin() -> void:
@@ -9,10 +10,11 @@ func _enable_plugin() -> void:
 
 
 func _disable_plugin() -> void:
-	pass
+	remove_import_plugin(importer)
 
 
 func _enter_tree() -> void:
+	importer = load("res://addons/outburst_importer/importer.gd").new()
 	add_import_plugin(importer)
 
 func _exit_tree() -> void:
