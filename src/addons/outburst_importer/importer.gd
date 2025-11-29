@@ -20,6 +20,10 @@ func _get_importer_name() -> String:
 	return "outbursts"
 
 
+func _can_import_threaded() -> bool:
+	return true # I'm pretty sure this is fine
+
+
 func _get_visible_name():
 	return "Outburst Bank"
 
