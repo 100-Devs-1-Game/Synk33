@@ -119,14 +119,13 @@ offset_right = 85.0
 offset_bottom = -717.0
 grow_vertical = 0
 
-[node name="Shrinker" type="HBoxContainer" parent="OutburstAnchor"]
+[node name="OutburstLabel" type="Label" parent="OutburstAnchor"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 294.0
-offset_bottom = 78.0
-
-[node name="OutburstLabel" type="Label" parent="OutburstAnchor/Shrinker"]
-unique_name_in_owner = true
-layout_mode = 2
+offset_bottom = 70.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_type_variation = &"CharacterOutburst"
 text = "You suck lil bro"
 
