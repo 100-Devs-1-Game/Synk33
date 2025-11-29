@@ -64,25 +64,36 @@ func _draw(canvas_item: RID, rect: Rect2) -> void:
 		bottom_left.move_toward(bottom_right, 20),
 		bottom_left,
 	])
-	var bodies:Array[PackedVector2Array] = Geometry2D.offset_polygon(
+	var colors := PackedColorArray()
+	colors.resize(len(body_points))
+	colors.fill(body_color)
+	RenderingServer.canvas_item_add_polygon(
+		canvas_item,
+		body_points,
+		colors
+	)
+	
+	var outerline:Array[PackedVector2Array] = Geometry2D.offset_polygon(
 		body_points, outline_thickness / 2.0 + outerline_thickness, Geometry2D.JOIN_MITER
 	)
-	for polygon in bodies:
-		var colors := PackedColorArray()
+	for polygon in outerline:
 		colors.resize(len(polygon))
 		colors.fill(body_color)
-		RenderingServer.canvas_item_add_polygon(
+		polygon.append(polygon[0])
+		RenderingServer.canvas_item_add_polyline(
 			canvas_item,
 			polygon,
-			colors
+			colors,
+			outerline_thickness,
+			true
 		)
 	body_points.append(body_points[0])
-	var outline_colors := PackedColorArray()
-	outline_colors.resize(len(body_points))
-	outline_colors.fill(outline_color)
+	colors.resize(len(body_points))
+	colors.fill(outline_color)
 	RenderingServer.canvas_item_add_polyline(
 		canvas_item,
 		body_points, 
-		outline_colors,
-		outline_thickness
+		colors,
+		outline_thickness,
+		true
 	)
