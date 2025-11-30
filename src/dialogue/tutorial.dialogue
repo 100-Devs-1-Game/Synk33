@@ -1,6 +1,6 @@
 ~ start
 [i][color=ffffff88]It's a beautiful day outside.[/color][/i]
-do wait(move_auxie(true))
+do wait(DialogueBalloon.move_auxie(true))
 auxie [#name=???]: Oh. Hey there! [ID:aux/tut/greet]
 auxie [#name=???]: Are you also here to [color=8839f2]synk[/color]? It’s so pretty out here. I guess we had the same idea. [ID:aux/tut/same_idea]
 auxie [#name=???]: Huh? You don’t know what synking is? [ID:aux/tut/know_synk]
