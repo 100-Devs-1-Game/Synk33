@@ -84,9 +84,7 @@ func _get_animation_method_callback_time(animation_name:StringName,
 	
 	for key_idx in animation.track_get_key_count(track_idx):
 		var callback: Dictionary = animation.track_get_key_value(track_idx, key_idx)
-		print(callback)
 		if callback["method"] == method:
-			print(animation.track_get_key_time(track_idx, key_idx))
 			return animation.track_get_key_time(track_idx, key_idx)
 	
 	push_error("Animation \"%s\" has no method call for node \"%s\" method \"\"" % 
