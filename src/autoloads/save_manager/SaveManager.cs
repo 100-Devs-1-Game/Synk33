@@ -9,7 +9,7 @@ public partial class SaveManager : Node, ISaveInfo
 {
     
 
-    private const string SavePath = "user://save.tres"; // TODO: We
+    private const string SavePath = "user://save.tres"; // TODO: in Release this shouldn't be .tres
 
     private SaveData save;
     
@@ -22,14 +22,14 @@ public partial class SaveManager : Node, ISaveInfo
         }
         save = ResourceLoader.Load<SaveData>(SavePath);
     }
-
-    public override void _Notification(int what)
+    // TODO: When saving actually matters, uncomment this
+    /*public override void _Notification(int what)
     {
         if (what == NotificationWMCloseRequest)
         {
             ResourceSaver.Save(save, SavePath);
         }
-    }
+    }*/
 
     public long GetSongPerformance(StringName song)
     {
