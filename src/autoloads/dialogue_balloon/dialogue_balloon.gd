@@ -1,5 +1,11 @@
 extends CanvasLayer
 
+const DIALOGUE_BASE_AUDIO_PATH := "res://assets/audio/dialogue/"
+# Since these won't be playing frequently and
+# there will be quite a bit(tm) of dialogue audio, I think ogg makes
+# sense for its high compression
+const DIALOGUE_AUDIO_FORMAT := ".ogg" 
+
 const CHARACTER_INACTIVE_DOWNSHIFT := 15.0
 const CHARACTER_INACTIVE_COLOR := Color(0.7, 0.7, 0.7)
 const CHARACTER_INACTIVE_SCALE := Vector2(0.975, 0.975)
@@ -80,6 +86,8 @@ func apply_dialogue_line() -> void:
 	if character_name.is_empty():
 		character_name = dialogue_line.character
 	
+	attempt_apply_dialogue_audio()
+	
 	var new_activity: bool = not character_name.is_empty()
 	
 	character_label_panel.visible = new_activity
@@ -92,6 +100,17 @@ func apply_dialogue_line() -> void:
 	
 	dialogue_label.dialogue_line = dialogue_line
 	dialogue_label.type_out()
+
+
+func attempt_apply_dialogue_audio() -> void:
+	# translation key = static line ID, aka what we'll use to determine audio clip
+	if dialogue_line.translation_key.is_empty():
+		return
+	var path := DIALOGUE_BASE_AUDIO_PATH + dialogue_line.translation_key + DIALOGUE_AUDIO_FORMAT
+	if not ResourceLoader.exists(path, "AudioStream"):
+		return
+	audio_stream_player.stream = load(path)
+	audio_stream_player.play()
 
 
 func next(next_id: String) -> void:
