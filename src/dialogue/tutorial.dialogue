@@ -1,27 +1,27 @@
 ~ start
 [i][color=ffffff88]It's a beautiful day outside.[/color][/i]
 do wait(move_auxie(true))
-auxie [#name=???]: Oh. Hey there!
-auxie [#name=???]: Are you also here to [color=8839f2]synk[/color]? It’s so pretty out here. I guess we had the same idea.
-auxie [#name=???]: Huh? You don’t know what synking is?
-auxie [#name=???]: Guess you are new in [City Name]. It’s all the latest rage here.
-auxie [#name=???]: Look. See this headset? That’s a device called [color=e31f9d]Synk33[/color].
-auxie [#name=???]: It lets you really [i]feel[/i] the music you are listening to with your whole body.
-auxie [#name=???]: That is what we call [color=8839f2]synking[/color] with the music.
-auxie [#name=???]: But y’know. Don’t just take it from me. Try it. Here, take this.
+auxie [#name=???]: Oh. Hey there! [ID:aux/tut/greet]
+auxie [#name=???]: Are you also here to [color=8839f2]synk[/color]? It’s so pretty out here. I guess we had the same idea. [ID:aux/tut/same_idea]
+auxie [#name=???]: Huh? You don’t know what synking is? [ID:aux/tut/know_synk]
+auxie [#name=???]: Guess you are new in [City Name]. It’s all the latest rage here. [ID:aux/tut/latest_rage]
+auxie [#name=???]: Look. See this headset? That’s a device called [color=e31f9d]Synk33[/color]. [ID:aux/tut/synk_show]
+auxie [#name=???]: It lets you really [i]feel[/i] the music you are listening to with your whole body. [ID:aux/tut/lets_you_feel]
+auxie [#name=???]: That is what we call [color=8839f2]synking[/color] with the music. [ID:aux/tut/called_synking]
+auxie [#name=???]: But y’know. Don’t just take it from me. Try it. Here, take this. [ID:aux/tut/take_this]
 [i][color=ffffff88]The woman hands you a similar-looking device.[/color][/i]
-auxie [#name=???]: You’re lucky I always carry my spare. Don’t judge me, I’m a real synkhead.
-auxie [#name=???]: Now, what are you waiting on? Put it on!
+auxie [#name=???]: You’re lucky I always carry my spare. Don’t judge me, I’m a real synkhead. [ID:aux/tut/dont_judge]
+auxie [#name=???]: Now, what are you waiting on? Put it on! [ID:aux/tut/put_on]
 [i][color=ffffff88]You put on the device and…[/color][/i]
 # Flicker transition to game
 do wait(TransitionManager.dialogue_transition(&"wipe", false))
-auxie [#name=???]: There we go~! I’ve joined your sesh, so now we can synk together.
-auxie [#name=???]: From here it’s easy. Just synk with the rhythm. You see these three lanes?
+auxie [#name=???]: There we go~! I’ve joined your sesh, so now we can synk together. [ID:aux/tut/session/join]
+auxie [#name=???]: From here it’s easy. Just synk with the rhythm. You see these three lanes? [ID:aux/tut/session/its_easy]
 # Highlight lanes
-auxie [#name=???]: Each lane has two buttons that correspond to that lane.
-auxie [#name=???]: Here, I’ll put them on the screen for you.
+auxie [#name=???]: Each lane has two buttons that correspond to that lane. [ID:aux/tut/session/two_buttons]
+auxie [#name=???]: Here, I’ll put them on the screen for you. [ID:aux/tut/session/put_on_screen]
 # Show button inputs
-auxie [#name=???]: Just tap the correct lane button when a note reaches the Beat Line in that lane.
+auxie [#name=???]: Just tap the correct lane button when a note reaches the Beat Line in that lane. [ID:aux/tut/session/just_time_it]
 # Highlight bottom of lanes
 auxie [#name=???]: Tapping either of the two buttons will work. And when a longer note appears, you can hold either of the corresponding lane buttons to hit it.
 auxie [#name=???]: Simple right? Let’s try it out!
