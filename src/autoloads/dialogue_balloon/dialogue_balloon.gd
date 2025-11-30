@@ -45,7 +45,6 @@ var dialogue_line: DialogueLine:
 			close_balloon()
 
 var gamestate_info:Array = [
-	self
 ]
 
 
