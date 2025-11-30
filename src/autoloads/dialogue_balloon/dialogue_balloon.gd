@@ -48,9 +48,13 @@ var gamestate_info:Array = [
 	self
 ]
 
+
 var character_active: bool
 var character_anchor_tween: Tween
 var outburst_tween: Tween
+
+# DO NOT SET THIS FOR THE LOVE OF GOD. Use grab/release_skip
+var _allow_skip: int = 0
 
 
 func _ready() -> void:
@@ -121,6 +125,9 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		get_viewport().set_input_as_handled()
 		
+		if _allow_skip > 0:
+			return
+		
 		if dialogue_label.is_typing:
 			dialogue_label.skip_typing()
 			return
@@ -169,6 +176,17 @@ func close_balloon() -> void:
 	character_shift(
 		character_anchor_dock, character_anchor_dock_bottom.position.y, false, character_anchor_tween
 	)
+
+
+## Denies the player's ability to skip
+func grab_skip() -> void:
+	_allow_skip += 1
+
+
+## Releases the grab from [method grab_skip].
+func release_skip() -> void:
+	_allow_skip -= 1
+	assert(_allow_skip >= 0, "Skip released more times than it was grabbed")
 
 
 ## Kills input tween if it is valid. Returns a newly created Tween from [param]tween_source[/param]
@@ -228,6 +246,7 @@ func character_move(
 		move_in:bool,
 		tween:Tween, 
 		duration:float = 0.4) -> void:
+	grab_skip()
 	if move_in:
 		tween.tween_callback(node.show)
 		tween.tween_property(node, ^"position:x", 0, duration)\
@@ -240,3 +259,4 @@ func character_move(
 		tween.parallel().tween_property(node, ^"self_modulate:a", 0, duration)\
 				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).from(1)
 		tween.tween_callback(node.hide)
+	tween.chain().tween_callback(release_skip)
