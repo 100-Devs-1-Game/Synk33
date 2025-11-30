@@ -11,7 +11,7 @@ public partial class SaveManager : Node, ISaveInfo
 
     private const string SavePath = "user://save.tres"; // TODO: in Release this shouldn't be .tres
 
-    private SaveData save;
+    private readonly SaveData save;
     
     public SaveManager()
     {
