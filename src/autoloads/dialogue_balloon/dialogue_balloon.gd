@@ -54,6 +54,7 @@ var outburst_tween: Tween
 
 # DO NOT SET THIS FOR THE LOVE OF GOD. Use grab/release_skip
 var _allow_skip: int = 0
+var tween_killable: bool = true
 
 
 func _ready() -> void:
@@ -188,13 +189,17 @@ func release_skip() -> void:
 	assert(_allow_skip >= 0, "Skip released more times than it was grabbed")
 
 
+func release_tween_killing() -> void:
+	tween_killable = true
+
+
 ## Kills input tween if it is valid. Returns a newly created Tween from [param]tween_source[/param]
 ## if a source was provided, otherwise will return a tween created by the [SceneTree].
 ## Designed to be used as [code]tween_var = create_tween_overkill(tween_var, self)[/code]
 ## or similarly.
 func create_tween_overkill(input:Tween, source:Node = null) -> Tween:
-	if input and input.is_valid():
-			input.kill()
+	if input and input.is_valid() and tween_killable:
+		input.kill()
 	if source:
 		return source.create_tween()
 	return create_tween()
@@ -246,6 +251,7 @@ func character_move(
 		tween:Tween, 
 		duration:float = 0.4) -> void:
 	grab_skip()
+	tween_killable = false
 	if move_in:
 		tween.tween_callback(node.show)
 		tween.tween_property(node, ^"position:x", 0, duration)\
@@ -253,9 +259,10 @@ func character_move(
 		tween.parallel().tween_property(node, ^"self_modulate:a", 1, duration)\
 				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).from(0)
 	else:
-		tween.tween_property(node, ^"position:y", CHARACTER_OUT_RIGHTSHIFT, duration)\
+		tween.tween_property(node, ^"position:x", CHARACTER_OUT_RIGHTSHIFT, duration)\
 				.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT).from(0)
 		tween.parallel().tween_property(node, ^"self_modulate:a", 0, duration)\
 				.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT).from(1)
 		tween.tween_callback(node.hide)
-	tween.chain().tween_callback(release_skip)
+	tween.tween_callback(release_skip)
+	tween.tween_callback(release_tween_killing)
