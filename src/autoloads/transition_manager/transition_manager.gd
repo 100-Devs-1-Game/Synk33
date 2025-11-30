@@ -87,7 +87,7 @@ func _get_animation_method_callback_time(animation_name:StringName,
 		if callback["method"] == method:
 			return animation.track_get_key_time(track_idx, key_idx)
 	
-	push_error("Animation \"%s\" has no method call for node \"%s\" method \"\"" % 
+	push_error("Animation \"%s\" has no method call for node \"%s\" method \"%s\"" % 
 			[animation_name, node, method])
 	return -1
 
