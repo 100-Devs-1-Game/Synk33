@@ -13,10 +13,10 @@ public partial class GodotNote : Resource {
         Beat =  note.Beat;
         Sixteenth = note.Sixteenth;
         Type = note.Type;
-        if (note is not Note.Hold) return;
-        EndBar = note.Bar;
-        EndBeat = note.Beat;
-        EndSixteenth = note.Sixteenth;
+        if (note is not Note.Hold holdNote) return;
+        EndBar = holdNote.EndNote.Bar;
+        EndBeat = holdNote.EndNote.Beat;
+        EndSixteenth = holdNote.EndNote.Sixteenth;
     }
     [Export] public int Bar { get; set; }
     [Export] public int Beat { get; set; }
