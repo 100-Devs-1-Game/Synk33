@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://d2i6u8ixu12r2" path="res://core/GameManager.cs" id="2_sekht"]
 [ext_resource type="Texture2D" uid="uid://bl4y7udpesfni" path="res://assets/notes/note.png" id="2_wuxcy"]
 [ext_resource type="PackedScene" uid="uid://cjcavdxicliet" path="res://spawner/spawner.tscn" id="3_m8rsu"]
-[ext_resource type="Resource" uid="uid://cx354pa6sbc70" path="res://assets/charts/debug_song/debug_song_easy.tres" id="4_a3tso"]
 [ext_resource type="Script" uid="uid://cn66yvsvfpaxu" path="res://core/InputManager.cs" id="4_s2mv0"]
+[ext_resource type="Resource" path="res://assets/charts/test/test.tres" id="4_sekht"]
 [ext_resource type="Script" uid="uid://cvtcbn8yijcak" path="res://core/JudgementManager.cs" id="5_8juq1"]
 [ext_resource type="Script" uid="uid://dh0e0xamdv8xm" path="res://autoloads/debug/Debug.gd" id="9_sekht"]
 
@@ -24,7 +24,7 @@ Spawner = NodePath("../Spawner")
 
 [node name="Conductor" type="Node" parent="." node_paths=PackedStringArray("Player")]
 script = ExtResource("1_r3gm0")
-Chart = ExtResource("4_a3tso")
+Chart = ExtResource("4_sekht")
 Player = NodePath("../AudioStreamPlayer")
 Bpm = 125.0
 
