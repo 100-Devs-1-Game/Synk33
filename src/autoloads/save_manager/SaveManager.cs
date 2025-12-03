@@ -31,13 +31,13 @@ public partial class SaveManager : Node, ISaveInfo
         }
     }*/
 
-    public long GetSongPerformance(StringName song)
+    public long GetSongPerformance(string chartUID)
     {
-        return save.GetSongPerformance(song);
+        return save.GetSongPerformance(chartUID);
     }
 
-    public void SetSongPerformance(StringName song, long points)
+    public void SetSongPerformance(string chartUID, long points)
     {
-        save.SetSongPerformance(song, points);
+        save.SetSongPerformance(chartUID, points);
     }
 }
