@@ -1,10 +1,12 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dkolwxkedrxfi"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dkolwxkedrxfi"]
 
 [ext_resource type="FontFile" uid="uid://di54smy3sg4ob" path="res://fonts/vendsans/vendsans_bold.ttf" id="1_3l6es"]
 [ext_resource type="StyleBox" uid="uid://dyotf8338v8to" path="res://themes/default/song_focus.tres" id="1_ij3x7"]
 [ext_resource type="Script" uid="uid://beusqcv0inspx" path="res://classes/style_box_outburst.gd" id="1_lngu5"]
 [ext_resource type="FontFile" uid="uid://b8n7wbkmoy1cc" path="res://fonts/bbh_sans_hegarty/bbh_sans_hegarty.ttf" id="2_lngu5"]
+[ext_resource type="Texture2D" uid="uid://dbuw67j57tdgy" path="res://assets/textures/ui/slider_grabber.svg" id="3_g628g"]
 [ext_resource type="FontFile" uid="uid://d0lygexvh0nc4" path="res://fonts/vendsans/vendsans_boldItalic.ttf" id="4_6eagn"]
+[ext_resource type="Texture2D" uid="uid://bwbj1oyd47m7i" path="res://assets/textures/ui/slider_grabber_highlight.svg" id="4_xi2r2"]
 [ext_resource type="FontFile" uid="uid://q62icyvq5caf" path="res://fonts/vendsans/vendsans_italic.ttf" id="5_g628g"]
 [ext_resource type="FontFile" uid="uid://bdl5yxv708e0s" path="res://fonts/vendsans/vendsans_regular.ttf" id="6_xi2r2"]
 
@@ -21,6 +23,20 @@ top_right_offset = Vector2(30, -5)
 bottom_left_offset = Vector2(0, 10)
 tail_offset = Vector2(-2, 12)
 metadata/_custom_type_script = "uid://beusqcv0inspx"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kwpv"]
+resource_name = "HSlider Area"
+bg_color = Color(0.890196, 0.121569, 0.615686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7nf7"]
+resource_name = "HSlider Area Highlighy"
+bg_color = Color(1.2064236, 0.18473722, 0.84883344, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g628g"]
+resource_name = "HSlider"
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.44291073, 0.4429108, 0.4429106, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij3x7"]
 bg_color = Color(0, 0, 0, 1)
@@ -40,6 +56,11 @@ default_font_size = 40
 CharacterOutburst/base_type = &"Label"
 CharacterOutburst/fonts/font = ExtResource("1_3l6es")
 CharacterOutburst/styles/normal = SubResource("StyleBox_lngu5")
+HSlider/icons/grabber = ExtResource("3_g628g")
+HSlider/icons/grabber_highlight = ExtResource("4_xi2r2")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6kwpv")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_p7nf7")
+HSlider/styles/slider = SubResource("StyleBoxFlat_g628g")
 Label/styles/focus = ExtResource("1_ij3x7")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ij3x7")
 RichTextLabel/fonts/bold_font = ExtResource("1_3l6es")
