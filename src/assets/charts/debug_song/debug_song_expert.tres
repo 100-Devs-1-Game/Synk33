@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=23 format=3 uid="uid://4i0pmvvhnnyv"]
+[gd_resource type="Resource" script_class="Chart" load_steps=24 format=3 uid="uid://4i0pmvvhnnyv"]
 
-[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/DebugNote.cs" id="1_f8ume"]
+[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_f8ume"]
+[ext_resource type="Resource" uid="uid://blarvatodptiw" path="res://assets/charts/debug_song/debug_song.tres" id="2_rpyet"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_ycwed"]
 
 [sub_resource type="Resource" id="Resource_qvmu7"]
@@ -90,8 +91,7 @@ metadata/_custom_type_script = "uid://bmvioldybpoam"
 [resource]
 script = ExtResource("2_ycwed")
 Designer = "Sarian"
-Difficulty = 3
 Level = 1
-Bpm = 125.0
+Song = ExtResource("2_rpyet")
 Notes = Array[Object]([SubResource("Resource_qvmu7"), SubResource("Resource_ppkk4"), SubResource("Resource_ceeje"), SubResource("Resource_rk2we"), SubResource("Resource_lyuvh"), SubResource("Resource_rkw86"), SubResource("Resource_guutq"), SubResource("Resource_1xq6w"), SubResource("Resource_d1hux"), SubResource("Resource_dm37s"), SubResource("Resource_oq1cs"), SubResource("Resource_yftsa"), SubResource("Resource_thnbw"), SubResource("Resource_0jn2v"), SubResource("Resource_gtqs8"), SubResource("Resource_vb8px"), SubResource("Resource_ow3ot"), SubResource("Resource_3te3r"), SubResource("Resource_5dxv4"), SubResource("Resource_1oihr")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

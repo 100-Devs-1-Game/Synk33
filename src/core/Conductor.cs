@@ -17,6 +17,8 @@ public partial class Conductor : Node {
 
     public override void _Ready() {
         base._Ready();
+        Player.Stream = Chart.Song.Audio;
+        Player.SetPitchScale(Chart.TempoModifier);
         Player.Play();
         Bpm = Chart.Bpm;
         StartingTimestamp = Time.GetUnixTimeFromSystem();
