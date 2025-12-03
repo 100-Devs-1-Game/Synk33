@@ -10,5 +10,6 @@ Name = "Placeholder"
 Author = "Not Sarian"
 Audio = ExtResource("1_wteio")
 Cover = ExtResource("2_6ivtt")
-Charts = null
+Bpm = 120.0
+Difficulties = 5
 metadata/_custom_type_script = "uid://8gji4fyvkdmy"

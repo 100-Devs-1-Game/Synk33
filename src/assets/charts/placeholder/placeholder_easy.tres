@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=6 format=3 uid="uid://6ify6yqyshev"]
+[gd_resource type="Resource" script_class="Chart" load_steps=7 format=3 uid="uid://6ify6yqyshev"]
 
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="1_0brar"]
 [ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_0w044"]
+[ext_resource type="Resource" uid="uid://cs2k8n7u8ily2" path="res://assets/charts/placeholder/placeholder.tres" id="2_k13bl"]
 
 [sub_resource type="Resource" id="Resource_k13bl"]
 script = ExtResource("1_0w044")
@@ -22,6 +23,6 @@ metadata/_custom_type_script = "uid://bmvioldybpoam"
 script = ExtResource("1_0brar")
 Designer = "Sarian"
 Level = 1
-Bpm = 120.0
+Song = ExtResource("2_k13bl")
 Notes = Array[Object]([SubResource("Resource_k13bl"), SubResource("Resource_4acl2"), SubResource("Resource_earhr")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"
