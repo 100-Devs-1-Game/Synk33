@@ -6,9 +6,9 @@ namespace SYNK33.Saving;
 
 interface ISaveInfo
 {
-    public long GetSongPerformance(StringName song);
+    public long GetSongPerformance(string chartUID);
 
-    public void SetSongPerformance(StringName song, long points);
+    public void SetSongPerformance(string chartUID, long points);
 }
 
 public partial class SaveData : Resource, ISaveInfo
@@ -18,19 +18,19 @@ public partial class SaveData : Resource, ISaveInfo
     /// </summary>
     [Export] public bool TutorialCompleted = false;
     /// <summary>
-    /// Points highscore of songs
+    /// Points highscore of charts by their resource UID.
     /// </summary>
-    [Export] private Dictionary<StringName, long> SongMap = [];
+    [Export] private Dictionary<string, long> ChartMap = [];
 
-    public long GetSongPerformance(StringName song)
+    public long GetSongPerformance(string chartUID)
     {
         long points = -1;
-        SongMap.TryGetValue(song, out points);
+        ChartMap.TryGetValue(chartUID, out points);
         return points;
     }
 
-    public void SetSongPerformance(StringName song, long points)
+    public void SetSongPerformance(string chartUID, long points)
     {
-        SongMap[song] = points;
+        ChartMap[chartUID] = points;
     }
 }
