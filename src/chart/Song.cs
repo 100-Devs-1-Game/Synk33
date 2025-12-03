@@ -11,16 +11,14 @@ public partial class Song : Resource {
 	[Export] public Texture2D Cover { get; set; }
 	[Export] public float Bpm { get; set; }
 	[Export(PropertyHint.Flags, "Easy,Normal,Hard,Expert")] public int Difficulties { get; set; }
-	private static Dictionary<Difficulty, string> DifficultyMap = new Dictionary<Difficulty, string>
-	{
+	private static Dictionary<Difficulty, string> DifficultyMap = new Dictionary<Difficulty, string> {
 		{ Difficulty.Easy, "easy" },
 		{ Difficulty.Normal, "normal" },
 		{ Difficulty.Hard, "hard" },
 		{ Difficulty.Expert, "expert" }
 	};
 
-	public Chart? GetChartByDifficulty(Difficulty difficulty)
-	{
+	public Chart? GetChartByDifficulty(Difficulty difficulty) {
 		if ((Difficulties & (int)difficulty) == 0)
 		{
 			return null;
@@ -29,7 +27,7 @@ public partial class Song : Resource {
 		string path = $"res://songs/{ResourcePath.GetBaseName()}_{DifficultyMap[difficulty]}.tres";
 		return GD.Load<Chart>(path);
 	}
-	}
+}
 
 public enum Difficulty {
 	Easy = 1,
