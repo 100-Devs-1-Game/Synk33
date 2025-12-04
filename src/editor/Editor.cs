@@ -7,6 +7,8 @@ namespace SYNK33.editor;
 
 public partial class Editor : Control {
     [Export] public required Chart Chart;
+    [Export] public AudioStream? TapSound;
+    [Export] public AudioStream? HoldSound;
     
     public EditorState State { get; private set; } = new();
     
@@ -59,11 +61,13 @@ public partial class Editor : Control {
     }
 
     private void InitializeAudioSounds() {
-        EditorAudio.CreateHitSound(_hitSoundPlayer!);
-        EditorAudio.CreateHoldSound(_holdSoundPlayer!);
+        GD.Print("Initializing editor audio sounds...");
+        EditorAudio.CreateHitSound(_hitSoundPlayer!, TapSound);
+        EditorAudio.CreateHoldSound(_holdSoundPlayer!, HoldSound);
+        GD.Print($"TapSound provided: {TapSound != null}, HoldSound provided: {HoldSound != null}");
     }
 
-    public void UpdateInfoDisplay() {
+    private void UpdateInfoDisplay() {
         _designerLabel.Text = $"Designer: {Chart.Designer}";
         _difficultyLabel.Text = $"Difficulty: {Chart.Difficulty}";
         _levelLabel.Text = $"Level: {Chart.Level}";
@@ -163,4 +167,3 @@ public partial class Editor : Control {
     private void OnLoadChartFileSelected(string path) => 
         EditorChartIO.OnLoadChartFileSelected(path, State, ref Chart, _statusLabel, GetTree(), UpdateInfoDisplay, QueueRedraw);
 }
-
