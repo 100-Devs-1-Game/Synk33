@@ -27,7 +27,7 @@ var current_difficulty:Difficulty:
 @onready var song_info_length:Control = %LengthSongInfo
 @onready var song_info_highscore:Control = %HighscoreSongInfo
 
-@onready var difficulty_select:TabBar = %DifficultySelect
+@onready var difficulty_select:DifficultySelect = %DifficultySelect
 @onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
 
 
@@ -51,6 +51,11 @@ func change_song(to:Song) -> void:
 	if chart == null:
 		assert(false, "No chart found for current difficulty")
 		return
+	for difficulty in len(Difficulty):
+		difficulty_select.set_tab_availability(
+			difficulty, 
+			to.HasChart(difficulty)
+		)
 	change_chart(chart)
 
 
