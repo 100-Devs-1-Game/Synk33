@@ -46,8 +46,6 @@ func _ready() -> void:
 
 
 func change_song(to:Song) -> void:
-	print("song: %s" % to.Name)
-	print(to.HasChart(current_difficulty))
 	var chart:Chart = to.GetChartByDifficulty(current_difficulty)
 	if chart == null:
 		assert(false, "No chart found for current difficulty")
