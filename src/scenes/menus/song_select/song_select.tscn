@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=21 format=3 uid="uid://c75ew37wbtpa2"]
 
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
 [ext_resource type="Script" uid="uid://b0uu18ukygn2r" path="res://scenes/menus/song_select/song_select.gd" id="1_4vbmx"]
@@ -32,6 +32,8 @@ _limits = [0.0, 1.0, -3.0, 3.0]
 bake_resolution = 6
 _data = [Vector2(-3, 0.5), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.5), 0.0, -1.0, 0, 1]
 point_count = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phqb6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibs4a"]
 bg_color = Color(0, 0, 0, 1)
@@ -100,6 +102,17 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_yknkk")
 scale_curve = SubResource("Curve_4m66x")
+
+[node name="DifficultySelect" type="TabBar" parent="HBoxContainer/SongSelect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_phqb6")
+current_tab = 0
+tab_count = 4
+tab_0/title = "EASY"
+tab_1/title = "NORMAL"
+tab_2/title = "HARD"
+tab_3/title = "EXPERT"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -179,6 +192,7 @@ size_flags_vertical = 6
 theme_override_constants/separation = 32
 
 [node name="BPMSongInfo" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongInfoContainer" instance=ExtResource("4_ibs4a")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 7
 info = "160BPM"
@@ -217,3 +231,5 @@ script = ExtResource("2_jefun")
 scene_path = "res://scenes/menus/main/main_menu.tscn"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="tab_changed" from="HBoxContainer/SongSelect/VBoxContainer/DifficultySelect" to="." method="_on_difficulty_select_tab_changed"]

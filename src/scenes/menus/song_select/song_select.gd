@@ -1,13 +1,32 @@
 extends Control
 
 
+enum Difficulty {
+	Easy,
+	Normal,
+	Hard,
+	Exper
+}
+
+
+
 @export var songs:Array[Song] 
+
+
+var current_difficulty:Difficulty:
+	set(new):
+		if current_difficulty == new:
+			return
+		current_difficulty = new
+		filter_songs()
 
 
 @onready var song_container:Container = %SongContainer
 @onready var song_cover:TextureRect = %SongCover
+@onready var song_info_bpm:Control = %BPMSongInfo
 @onready var song_info_length:Control = %LengthSongInfo
 
+@onready var difficulty_select:TabBar = %DifficultySelect
 @onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
 
 
@@ -23,9 +42,37 @@ func _ready() -> void:
 		song_button.credit = song.Author
 		song_button.focus_entered.connect(change_song.bind(song))
 		song_container.add_child(song_button)
+	filter_songs()
+
 
 func change_song(to:Song) -> void:
-	song_cover.texture = to.Cover
-	song_info_length.info = time_as_string(to.Audio.get_length())
-	audio_stream_player.stream = to.Audio
+	print("song: %s" % to.Name)
+	print(to.HasChart(current_difficulty))
+	var chart:Chart = to.GetChartByDifficulty(current_difficulty)
+	if chart == null:
+		assert(false, "No chart found for current difficulty")
+		return
+	change_chart(chart)
+
+
+func change_chart(to:Chart) -> void:
+	song_cover.texture = to.Song.Cover
+	song_info_bpm.info = "%03dBPM" % to.Song.Bpm
+	song_info_length.info = time_as_string(to.Song.Audio.get_length())
+	audio_stream_player.stream = to.Song.Audio
 	audio_stream_player.play()
+
+
+func filter_songs() -> void:
+	# This is weird and I don't like that we aren't looping
+	# over the actual song buttons
+	for i in len(songs): 
+		var song:Song = songs[i]
+		if not song.HasChart(current_difficulty):
+			(song_container.get_child(i) as Control).hide()
+			continue
+		(song_container.get_child(i) as Control).show()
+
+
+func _on_difficulty_select_tab_changed(tab: int) -> void:
+	current_difficulty = tab as Difficulty
