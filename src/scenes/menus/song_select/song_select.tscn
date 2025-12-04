@@ -205,7 +205,8 @@ size_flags_horizontal = 7
 info = "03:25"
 type = "LENGTH"
 
-[node name="SongInfoLabel" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongInfoContainer" instance=ExtResource("4_ibs4a")]
+[node name="HighscoreSongInfo" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongInfoContainer" instance=ExtResource("4_ibs4a")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 7
 info = "85000"

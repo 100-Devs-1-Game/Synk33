@@ -25,6 +25,7 @@ var current_difficulty:Difficulty:
 @onready var song_cover:TextureRect = %SongCover
 @onready var song_info_bpm:Control = %BPMSongInfo
 @onready var song_info_length:Control = %LengthSongInfo
+@onready var song_info_highscore:Control = %HighscoreSongInfo
 
 @onready var difficulty_select:TabBar = %DifficultySelect
 @onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
@@ -57,6 +58,10 @@ func change_chart(to:Chart) -> void:
 	song_cover.texture = to.Song.Cover
 	song_info_bpm.info = "%03dBPM" % to.Song.Bpm
 	song_info_length.info = time_as_string(to.Song.Audio.get_length())
+	
+	song_info_highscore.info = str(SaveManager.GetChartPerformance(
+		ResourceLoader.get_resource_uid(to.resource_path)
+	))
 	audio_stream_player.stream = to.Song.Audio
 	audio_stream_player.play()
 
