@@ -110,8 +110,15 @@ func _child_order_changed() -> void:
 func _sort_children() -> void:
 	if not is_instance_valid(scale_curve):
 		return
-	var count:int = get_child_count()
-	var children := get_children()
+	
+	# IT'S FUCKING O(n * 3) NOW I HATE THIS
+	var children := get_children().filter(
+		func (c) -> bool:
+			if c is not Control:
+				return false
+			return c.visible
+	)
+	var count:int = len(children)
 	
 	_cumulative = 0.0
 	_mousewrap_offset = 0
@@ -123,6 +130,7 @@ func _sort_children() -> void:
 			continue
 		
 		var child:Control = children[i]
+		
 		child.scale = Vector2.ONE * scale_curve.sample(wrapf(i - selected, -count / 2.0, count / 2.0))
 		child.position.y = _cumulative
 		_cumulative += child.get_rect().size.y
