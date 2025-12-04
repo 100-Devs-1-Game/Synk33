@@ -111,13 +111,7 @@ func _sort_children() -> void:
 	if not is_instance_valid(scale_curve):
 		return
 	
-	# IT'S FUCKING O(n * 3) NOW I HATE THIS
-	var children := get_children().filter(
-		func (c) -> bool:
-			if c is not Control:
-				return false
-			return c.visible
-	)
+	var children := get_children()
 	var count:int = len(children)
 	
 	_cumulative = 0.0
