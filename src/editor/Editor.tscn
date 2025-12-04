@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbje615ewpyvp"]
+[gd_scene load_steps=6 format=3 uid="uid://bbje615ewpyvp"]
 
 [ext_resource type="Script" uid="uid://ng27ey3h4538" path="res://editor/Editor.cs" id="1_3cn80"]
 [ext_resource type="Resource" uid="uid://4i0pmvvhnnyv" path="res://assets/charts/debug_song/debug_song_expert.tres" id="2_i1ssp"]
 [ext_resource type="AudioStream" uid="uid://b1xh0x4ctylao" path="res://assets/charts/debug_song/debug_song.wav" id="3_i1ssp"]
+[ext_resource type="AudioStream" uid="uid://bp3b2i603qdv3" path="res://assets/editor/hit_note_01.wav" id="3_jp84s"]
+[ext_resource type="AudioStream" uid="uid://boxotbbbr6bgy" path="res://assets/editor/hold_note_01.wav" id="4_i0yaw"]
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -14,6 +16,8 @@ grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_3cn80")
 Chart = ExtResource("2_i1ssp")
+TapSound = ExtResource("3_jp84s")
+HoldSound = ExtResource("4_i0yaw")
 
 [node name="MenuBar" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -79,7 +83,6 @@ text = "1.1.1"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = ""
 
 [node name="InfoBox" type="PanelContainer" parent="."]
 layout_mode = 0
