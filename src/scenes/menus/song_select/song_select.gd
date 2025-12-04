@@ -72,9 +72,9 @@ func filter_songs() -> void:
 	for i in len(songs): 
 		var song:Song = songs[i]
 		if not song.HasChart(current_difficulty):
-			(song_container.get_child(i) as Control).hide()
+			(song_container.get_child(i) as Control).change_disabled(true)
 			continue
-		(song_container.get_child(i) as Control).show()
+		(song_container.get_child(i) as Control).change_disabled(false)
 
 
 func _on_difficulty_select_tab_changed(tab: int) -> void:

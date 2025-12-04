@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw05rhk6d6iip"]
+[gd_scene load_steps=5 format=3 uid="uid://bw05rhk6d6iip"]
 
 [ext_resource type="Script" uid="uid://cyn8pjq31t334" path="res://scenes/menus/song_select/song_button.gd" id="1_6l0g4"]
+[ext_resource type="Shader" uid="uid://dwfypbyhy6ooy" path="res://scenes/menus/song_select/song_button.gdshader" id="1_7e14a"]
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="2_62avn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uv50t"]
+resource_local_to_scene = true
+shader = ExtResource("1_7e14a")
+shader_parameter/greyscale = true
 
 [node name="SongButton" type="BaseButton"]
 _import_path = NodePath("")
@@ -26,7 +32,7 @@ z_as_relative = true
 y_sort_enabled = false
 texture_filter = 0
 texture_repeat = 0
-material = null
+material = SubResource("ShaderMaterial_uv50t")
 use_parent_material = false
 clip_contents = false
 custom_minimum_size = Vector2(0, 0)
