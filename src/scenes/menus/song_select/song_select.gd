@@ -5,7 +5,7 @@ enum Difficulty {
 	Easy,
 	Normal,
 	Hard,
-	Exper
+	Expert
 }
 
 
