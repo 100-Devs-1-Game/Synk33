@@ -20,6 +20,8 @@ bg_color = Color(0.039215688, 0.050980393, 0.07058824, 1)
 font_size = 104
 font_color = Color(0.53333336, 0.22352941, 0.9490196, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phqb6"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yknkk"]
 bg_color = Color(1, 1, 1, 1)
 border_width_top = 32
@@ -32,8 +34,6 @@ _limits = [0.0, 1.0, -3.0, 3.0]
 bake_resolution = 6
 _data = [Vector2(-3, 0.5), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.5), 0.0, -1.0, 0, 1]
 point_count = 3
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phqb6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibs4a"]
 bg_color = Color(0, 0, 0, 1)
@@ -90,6 +90,17 @@ layout_mode = 2
 text = "SELECT SONG"
 label_settings = SubResource("LabelSettings_4m66x")
 
+[node name="DifficultySelect" type="TabBar" parent="HBoxContainer/SongSelect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_phqb6")
+current_tab = 0
+tab_count = 4
+tab_0/title = "EASY"
+tab_1/title = "NORMAL"
+tab_2/title = "HARD"
+tab_3/title = "EXPERT"
+
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/SongSelect/VBoxContainer"]
 clip_children = 1
 layout_mode = 2
@@ -102,17 +113,6 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_yknkk")
 scale_curve = SubResource("Curve_4m66x")
-
-[node name="DifficultySelect" type="TabBar" parent="HBoxContainer/SongSelect/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_phqb6")
-current_tab = 0
-tab_count = 4
-tab_0/title = "EASY"
-tab_1/title = "NORMAL"
-tab_2/title = "HARD"
-tab_3/title = "EXPERT"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
