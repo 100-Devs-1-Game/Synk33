@@ -4,7 +4,14 @@ using Godot;
 namespace SYNK33.editor;
 
 public static class EditorAudio {
-    public static void CreateHitSound(AudioStreamPlayer player) {
+    public static void CreateHitSound(AudioStreamPlayer player, AudioStream? userStream = null) {
+        if (userStream != null) {
+            GD.Print("Using user-provided tap sound stream for editor");
+            player.Stream = userStream;
+            player.VolumeDb = 0;
+            return;
+        }
+
         const double sampleHz = 44100.0;
         const double frequency = 800.0;
         const double duration = 0.05;
@@ -16,9 +23,18 @@ public static class EditorAudio {
         stream.Data = data;
         player.Stream = stream;
         player.VolumeDb = 0;
+        GD.Print("Created procedural tap sound for editor");
     }
 
-    public static void CreateHoldSound(AudioStreamPlayer player) {
+    public static void CreateHoldSound(AudioStreamPlayer player, AudioStream? userStream = null) {
+        if (userStream != null) {
+            GD.Print("Using user-provided hold sound stream for editor");
+            player.Stream = userStream;
+            player.VolumeDb = -6;
+            player.StreamPaused = false;
+            return;
+        }
+
         const double sampleHz = 44100.0;
         const double frequency = 400.0;
         const double duration = 1.0;
@@ -30,6 +46,7 @@ public static class EditorAudio {
         stream.Data = data;
         player.Stream = stream;
         player.VolumeDb = -12;
+        GD.Print("Created procedural hold sound for editor");
     }
 
     private static AudioStreamWav CreateAudioStream(double sampleHz, double duration, bool looping) {
@@ -79,4 +96,3 @@ public static class EditorAudio {
         return data;
     }
 }
-
