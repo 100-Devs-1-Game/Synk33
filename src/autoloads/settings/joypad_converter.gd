@@ -2,7 +2,7 @@ class_name JoypadConverter
 extends Object
 
 
-const _JOYBUTTON_NAMES:PackedStringArray = [
+const _JOYBUTTON_NAMES: PackedStringArray = [
 	"A",
 	"B",
 	"X",
@@ -25,9 +25,9 @@ const _JOYBUTTON_NAMES:PackedStringArray = [
 	"Paddle4",
 	"Touchpad",
 ]
-const _UNKNOWN_BUTTON_PREFIX:String = "Button"
+const _UNKNOWN_BUTTON_PREFIX: String = "Button"
 
-const _JOYAXIS_NAMES:PackedStringArray = [
+const _JOYAXIS_NAMES: PackedStringArray = [
 	"LeftX",
 	"LeftY",
 	"RightX",
@@ -35,14 +35,14 @@ const _JOYAXIS_NAMES:PackedStringArray = [
 	"LeftTrigger",
 	"RightTrigger"
 ]
-const _UNKNOWN_AXIS_PREFIX:String = "Axis"
+const _UNKNOWN_AXIS_PREFIX: String = "Axis"
 
 # A ""constant"" reverse lookup table for _JOYBUTTON_NAMES
-static var _JOYBUTTON_NAME_REVERSE_LOOKUP:Dictionary[String, JoyButton] = {}
+static var _JOYBUTTON_NAME_REVERSE_LOOKUP: Dictionary[String, JoyButton] = {}
 # Ditto prev for _JOYAXIS_NAMES
-static var _JOYAXIS_NAME_REVERSE_LOOKUP:Dictionary[String, JoyAxis] = {}
+static var _JOYAXIS_NAME_REVERSE_LOOKUP: Dictionary[String, JoyAxis] = {}
 
-static var _joyaxis_regex:RegEx = RegEx.create_from_string(r"(-)?(.+)")
+static var _joyaxis_regex: RegEx = RegEx.create_from_string(r"(-)?(.+)")
 
 
 static func _static_init() -> void:
@@ -56,13 +56,13 @@ static func _static_init() -> void:
 
 ## Returns [code]true[/code] if a proper name for the [enum JoyButton] is defined (in practice,
 ## every button defined by the SDL should have a name defined).
-static func joybutton_has_name(button:JoyButton) -> bool:
+static func joybutton_has_name(button: JoyButton) -> bool:
 	return button >= 0 and button < len(_JOYBUTTON_NAMES)
 
 
 ## Returns [code]true[/code] if a proper name for the [enum JoyAxis] is defined (in practice,
 ## every axis defined by the SDL should have a name defined).
-static func joyaxis_has_name(axis:JoyAxis) -> bool:
+static func joyaxis_has_name(axis: JoyAxis) -> bool:
 	return axis >= 0 and axis < len(_JOYAXIS_NAMES)
 
 
@@ -73,7 +73,7 @@ static func joyaxis_has_name(axis:JoyAxis) -> bool:
 ## print(JoypadConverter.get_joybutton_string(JOY_BUTTON_BACK))                 # Prints "Back"
 ## print(JoypadConverter.get_joybutton_string(100 as JoyButton))                # Prints "Button100"
 ## [/codeblock]
-static func get_joybutton_string(button:JoyButton) -> String:
+static func get_joybutton_string(button: JoyButton) -> String:
 	if not joybutton_has_name(button):
 		# Fallback to an int version to preserve compat with buttons outside the SDL
 		return _UNKNOWN_BUTTON_PREFIX + str(button)
@@ -88,8 +88,8 @@ static func get_joybutton_string(button:JoyButton) -> String:
 ## print(JoypadConverter.get_joyaxis_string(JOY_AXIS_TRIGGER_LEFT, true))       # Prints "-LeftTrigger"
 ## print(JoypadConverter.get_joyaxis_string(8 as JoyAxis))                      # Prints "Axis8"
 ## [/codeblock]
-static func get_joyaxis_string(axis:JoyAxis, negative:bool = false) -> String:
-	var constructed:String = ""
+static func get_joyaxis_string(axis: JoyAxis,negative: booll = false) -> String:
+	var constructed: String = ""
 	if not joyaxis_has_name(axis):
 		constructed = _UNKNOWN_AXIS_PREFIX + str(axis)
 	else:
@@ -102,7 +102,7 @@ static func get_joyaxis_string(axis:JoyAxis, negative:bool = false) -> String:
 ## Returns the proper name for the Joypad [InputEvent] (see [method get_joybutton_string] 
 ## and [method get_joyaxis_string]). Asserts false if [param event] is not an 
 ## [InputEventJoypadButton] or [InputEventMotion].
-static func get_joypad_event_string(event:InputEvent) -> String:
+static func get_joypad_event_string(event: InputEvent) -> String:
 	if event is InputEventJoypadButton:
 		return get_joybutton_string(event.button_index)
 	if event is InputEventJoypadMotion:
@@ -115,7 +115,7 @@ static func get_joypad_event_string(event:InputEvent) -> String:
 
 ## Finds the [enum JoyButton] corresponding to the [String], or 
 ## [constant @GlobalScope.JOY_BUTTON_INVALID] if one couldn't be found.
-static func find_joybutton_from_string(string:String) -> JoyButton:
+static func find_joybutton_from_string(string: String) -> JoyButton:
 	if _JOYBUTTON_NAME_REVERSE_LOOKUP.has(string):
 		return _JOYBUTTON_NAME_REVERSE_LOOKUP[string]
 	if string.begins_with(_UNKNOWN_BUTTON_PREFIX):
@@ -128,7 +128,7 @@ static func find_joybutton_from_string(string:String) -> JoyButton:
 
 ## Finds the [enum JoyAxis] corresponding to the [String], or 
 ## [constant @GlobalScope.JOY_AXIS_INVALID] if one couldn't be found.
-static func find_joyaxis_from_string(string:String) -> JoyAxis:
+static func find_joyaxis_from_string(string: String) -> JoyAxis:
 	if _JOYAXIS_NAME_REVERSE_LOOKUP.has(string):
 		return _JOYAXIS_NAME_REVERSE_LOOKUP[string]
 	if string.begins_with(_UNKNOWN_AXIS_PREFIX) and string.substr(len(_UNKNOWN_AXIS_PREFIX)).is_valid_int():
@@ -139,7 +139,7 @@ static func find_joyaxis_from_string(string:String) -> JoyAxis:
 	return JOY_AXIS_INVALID
 
 
-static func joypad_input_event_from_string(string:String) -> InputEvent:
+static func joypad_input_event_from_string(string: String) -> InputEvent:
 	var button_index := find_joybutton_from_string(string)
 	if button_index != JOY_BUTTON_INVALID:
 		var event := InputEventJoypadButton.new()

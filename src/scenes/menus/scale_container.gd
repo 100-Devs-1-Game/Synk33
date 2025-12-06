@@ -6,7 +6,7 @@ extends Container
 ## times this value.
 @export_custom(
 	PROPERTY_HINT_LINK, ""
-) var contents_scale:Vector2 = Vector2.ONE:
+) var contents_scale: Vector2 = Vector2.ONE:
 	set(new):
 		if contents_scale == new:
 			return
@@ -37,12 +37,12 @@ func _sort_children() -> void:
 func _get_minimum_size() -> Vector2:
 	# Calling get_minimum_size here causes an
 	# infinite loop as you might expect
-	var largest:Vector2 = custom_minimum_size 
+	var largest: Vector2 = custom_minimum_size 
 	
 	for child in get_children():
 		if child is not Control:
 			continue
-		var child_minsize:Vector2 = (child as Control).get_combined_minimum_size()
+		var child_minsize: Vector2 = (child as Control).get_combined_minimum_size()
 		largest = largest.max(child_minsize)
 	
 	largest *= contents_scale

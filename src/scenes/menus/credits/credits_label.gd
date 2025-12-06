@@ -4,18 +4,18 @@ extends RichTextLabel
 ## type HeaderMedium. Other properties are ignored.
 
 
-const _THEME_TYPE_HEADER:StringName = &"HeaderMedium"
+const _THEME_TYPE_HEADER: StringName = &"HeaderMedium"
 
 
-@export_file("*.txt") var credits_path:String
+@export_file("*.txt") var credits_path: String
 
 
 #region Themecache
-var tc_header_font_color:Color
-var tc_font_outline_color:Color
-var tc_outline_size:int
-var tc_header_font:Font
-var tc_header_font_size:int
+var tc_header_font_color: Color
+var tc_font_outline_color: Color
+var tc_outline_size: int
+var tc_header_font: Font
+var tc_header_font_size: int
 #endregion Themecache
 
 
@@ -32,8 +32,8 @@ func _notification(what: int) -> void:
 		tc_header_font_size = get_theme_font_size(&"font_size", _THEME_TYPE_HEADER)
 
 
-func load_credits(file:FileAccess) -> void:
-	var current_section_credits:PackedStringArray = []
+func load_credits(file: FileAccess) -> void:
+	var current_section_credits: PackedStringArray = []
 	
 	while not file.eof_reached():
 		var line := file.get_line().strip_edges()
@@ -49,14 +49,14 @@ func load_credits(file:FileAccess) -> void:
 	add_section(current_section_credits)
 
 
-func add_section(section_credits:PackedStringArray) -> void:
+func add_section(section_credits: PackedStringArray) -> void:
 	section_credits.sort()
 	for credit in section_credits:
 		add_text(credit + "\n")
 	add_text("\n")
 
 
-func add_section_header(header:String) -> void:
+func add_section_header(header: String) -> void:
 	push_context()
 	push_bold()
 	push_color(tc_header_font_color)

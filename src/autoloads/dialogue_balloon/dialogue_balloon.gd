@@ -31,7 +31,7 @@ const CHARACTER_OUT_RIGHTSHIFT := -100
 @onready var outburst_anchor: Node2D = %OutburstAnchor
 @onready var outburst_label: Label = %OutburstLabel
 
-@onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 var dialogue_resource: DialogueResource
@@ -44,7 +44,7 @@ var dialogue_line: DialogueLine:
 		else:
 			close_balloon()
 
-var gamestate_info:Array = [
+var gamestate_info: Array = [
 ]
 
 
@@ -74,13 +74,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 
 
-func start(p_dialogue_resource:DialogueResource, title:String) -> void:
+func start(p_dialogue_resource: DialogueResource,title: Stringg) -> void:
 	open_balloon()
 	dialogue_resource = p_dialogue_resource
 	next(title)
 
 
-func play_audio(stream:AudioStream) -> void:
+func play_audio(stream: AudioStream) -> void:
 	audio_stream_player.stream = stream
 	audio_stream_player.play()
 
@@ -135,7 +135,7 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 
 
-func move_auxie(move_in:bool, duration:float = 0.4) -> float:
+func move_auxie(move_in: bool,duration: floatt = 0.4) -> float:
 	character_anchor_tween = create_tween_overkill(character_anchor_tween, character_anchor_dock)
 	character_move(
 		character_anchor_dock, move_in, character_anchor_tween, duration
@@ -143,7 +143,7 @@ func move_auxie(move_in:bool, duration:float = 0.4) -> float:
 	return duration
 
 
-func say_outburst(message:String, duration:float) -> void:
+func say_outburst(message: String,duration: floatt) -> void:
 	outburst_label.text = message
 	outburst_anchor.show()
 	outburst_tween = create_tween_overkill(outburst_tween, outburst_anchor)
@@ -197,7 +197,7 @@ func release_tween_killing() -> void:
 ## if a source was provided, otherwise will return a tween created by the [SceneTree].
 ## Designed to be used as [code]tween_var = create_tween_overkill(tween_var, self)[/code]
 ## or similarly.
-func create_tween_overkill(input:Tween, source:Node = null) -> Tween:
+func create_tween_overkill(input: Tween,source: Nodee = null) -> Tween:
 	if input and input.is_valid() and tween_killable:
 		input.kill()
 	if source:
@@ -207,10 +207,10 @@ func create_tween_overkill(input:Tween, source:Node = null) -> Tween:
 
 ## Fade character to/from active state
 func character_active_fade(
-		node:CanvasItem, 
-		activity:bool, 
-		tween:Tween,
-		duration:float = 0.25) -> void:
+		node: CanvasItem, 
+		activity: bool, 
+		tween: Tween,
+		duration: float = 0.25) -> void:
 	
 	if activity:
 		tween.tween_property(node, ^"scale", Vector2.ONE, duration)\
@@ -231,11 +231,11 @@ func character_active_fade(
 
 ## Shift character up/down for dialogue box open/close
 func character_shift(
-		node:CanvasItem,
-		bottom:float,
-		shift_up:bool,
-		tween:Tween, 
-		duration:float = 0.25) -> void:
+		node: CanvasItem,
+		bottom: float,
+		shift_up: bool,
+		tween: Tween, 
+		duration: float = 0.25) -> void:
 	if shift_up:
 		tween.tween_property(node, ^"position:y", 0, duration)\
 				.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).from(bottom)
@@ -246,10 +246,10 @@ func character_shift(
 
 ## Move character in/out 
 func character_move(
-		node:CanvasItem,
-		move_in:bool,
-		tween:Tween, 
-		duration:float = 0.4) -> void:
+		node: CanvasItem,
+		move_in: bool,
+		tween: Tween, 
+		duration: float = 0.4) -> void:
 	grab_skip()
 	tween_killable = false
 	if move_in:

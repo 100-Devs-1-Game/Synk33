@@ -2,23 +2,23 @@
 class_name StyleBoxOutburst
 extends StyleBox
 
-@export var body_color:Color = Color.BLACK:
+@export var body_color: Color = Color.BLACK:
 	set(new):
 		if body_color != new:
 			body_color = new
 			changed.emit()
-@export var outline_color:Color = Color.WHITE:
+@export var outline_color: Color = Color.WHITE:
 	set(new):
 		if outline_color != new:
 			outline_color = new
 			changed.emit()
 
-@export var outline_thickness:float = 6.0:
+@export var outline_thickness: float = 6.0:
 	set(new):
 		if outline_thickness != new:
 			outline_thickness = new
 			changed.emit()
-@export var outerline_thickness:float = 3.0:
+@export var outerline_thickness: float = 3.0:
 	set(new):
 		if outerline_thickness != new:
 			outerline_thickness = new
@@ -73,7 +73,7 @@ func _draw(canvas_item: RID, rect: Rect2) -> void:
 		colors
 	)
 	
-	var outerline:Array[PackedVector2Array] = Geometry2D.offset_polygon(
+	var outerline: Array[PackedVector2Array] = Geometry2D.offset_polygon(
 		body_points, outline_thickness / 2.0 + outerline_thickness, Geometry2D.JOIN_MITER
 	)
 	for polygon in outerline:
