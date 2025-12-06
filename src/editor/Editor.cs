@@ -52,8 +52,51 @@ public partial class Editor : Control {
         InitializeUiElements();
         InitializeMenuBar();
         InitializeAudioSounds();
+
+        TryAutoLoadLastChart();
+
         UpdateInfoDisplay();
         GrabFocus();
+    }
+
+    private void TryAutoLoadLastChart() {
+        try {
+            if (!FileAccess.FileExists("user://last_chart_path.txt")) return;
+            using var fa = FileAccess.Open("user://last_chart_path.txt", FileAccess.ModeFlags.Read);
+            var path = fa.GetAsText().Trim();
+            fa.Close();
+            if (string.IsNullOrEmpty(path)) return;
+
+            GD.Print($"Attempting to auto-load last chart: {path}");
+            var loadedChart = ResourceLoader.Load<Chart>(path);
+            if (loadedChart == null) {
+                GD.PrintErr($"Auto-load failed: could not load chart at {path}");
+                return;
+            }
+
+            Chart = loadedChart;
+            State.CurrentChartPath = path;
+
+            // Load audio if available
+            if (_audioStreamPlayer != null) {
+                if (Chart.Song?.Audio != null) {
+                    _audioStreamPlayer.Stream = Chart.Song.Audio;
+                    GD.Print($"Auto-loaded audio from song: {Chart.Song.Name}");
+                } else {
+                    _audioStreamPlayer.Stream = null;
+                }
+            }
+
+            // Apply a slight pan so the loaded chart is visible in the editor view
+            // Use a fraction of the viewport height so behavior adapts to window size
+            State.PanY = Size.Y * 0.5f;
+
+             UpdateInfoDisplay();
+             QueueRedraw();
+             GD.Print($"Auto-loaded chart: {path}");
+        } catch (Exception e) {
+            GD.PrintErr($"Error while auto-loading last chart: {e.Message}");
+        }
     }
 
     private void InitializeAudioPlayers() {
@@ -117,9 +160,8 @@ public partial class Editor : Control {
         
         var filePopup = _fileMenuButton.GetPopup();
         filePopup.Clear();
-        filePopup.AddItem("New Chart", 0);
-        filePopup.AddItem("Load Chart", 1);
-        filePopup.AddItem("Save Chart", 2);
+        filePopup.AddItem("Load Chart", 0);
+        filePopup.AddItem("Save Chart", 1);
         
         filePopup.IndexPressed += OnFileMenuIndexPressed;
         
@@ -130,12 +172,9 @@ public partial class Editor : Control {
         GD.Print($"Menu item pressed: index={index}");
         switch (index) {
             case 0:
-                NewChart();
-                break;
-            case 1:
                 LoadChart();
                 break;
-            case 2:
+            case 1:
                 SaveChart();
                 break;
             default:
@@ -143,23 +182,6 @@ public partial class Editor : Control {
                 break;
         }
     }
-
-    private void NewChart() {
-        Chart = EditorChartIO.CreateNewChart();
-        State.CurrentChartPath = "";
-        
-        // Clear audio since new chart has no audio
-        if (_audioStreamPlayer != null) {
-            _audioStreamPlayer.Stream = null;
-        }
-        
-        _statusLabel.Text = "New chart created";
-        UpdateInfoDisplay();
-        QueueRedraw();
-        GetTree().CreateTimer(2.0).Timeout += () => _statusLabel.Text = "";
-        GD.Print("New chart created");
-    }
-
 
     private void OnNoteModeButtonPressed() {
         ToggleNoteMode();
@@ -258,7 +280,14 @@ public partial class Editor : Control {
         EditorSelection.SelectLane(State, GetViewport().GetMousePosition(), Size.X, _selectedLaneLabel);
         
         if (State.IsPlaying) {
-            EditorPlayback.CheckAndPlayNoteHits(Chart, _audioStreamPlayer, _hitSoundPlayer, _holdSoundPlayer, _playedNotes, _activeHoldNotes);
+            EditorPlayback.CheckAndPlayNoteHits(
+                Chart,
+                _audioStreamPlayer, 
+                _hitSoundPlayer, 
+                _holdSoundPlayer, 
+                _playedNotes, 
+                _activeHoldNotes
+            );
         }
     }
 
@@ -319,13 +348,16 @@ public partial class Editor : Control {
         GD.Print($"Triplet grid toggled: {State.IsTriplet}");
     }
 
-    public void SaveChart() => EditorChartIO.SaveChart(State, Chart, _statusLabel, this, OnSaveChartFileSelected);
+    public void SaveChart() => EditorChartIO.SaveChart(State, this, OnSaveChartFileSelected);
     
     private void OnSaveChartFileSelected(string path) => 
         EditorChartIO.OnSaveChartFileSelected(path, State, Chart, _statusLabel, GetTree());
 
     public void LoadChart() => EditorChartIO.LoadChart(State, this, OnLoadChartFileSelected);
     
-    private void OnLoadChartFileSelected(string path) => 
+    private void OnLoadChartFileSelected(string path) {
         EditorChartIO.OnLoadChartFileSelected(path, State, ref Chart, _statusLabel, GetTree(), UpdateInfoDisplay, QueueRedraw, _audioStreamPlayer);
+        State.PanY = Size.Y * 0.5f;
+        QueueRedraw();
+    }
 }

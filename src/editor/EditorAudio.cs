@@ -49,7 +49,11 @@ public static class EditorAudio {
         GD.Print("Created procedural hold sound for editor");
     }
 
-    private static AudioStreamWav CreateAudioStream(double sampleHz, double duration, bool looping) {
+    private static AudioStreamWav CreateAudioStream(
+        double sampleHz,
+        double duration,
+        bool looping
+    ) {
         var stream = new AudioStreamWav {
             Format = AudioStreamWav.FormatEnum.Format16Bits,
             MixRate = (int)sampleHz,
@@ -65,7 +69,12 @@ public static class EditorAudio {
         return stream;
     }
 
-    private static byte[] GenerateSineWaveWithDecay(double sampleHz, double frequency, double duration, double amplitude) {
+    private static byte[] GenerateSineWaveWithDecay(
+        double sampleHz,
+        double frequency,
+        double duration,
+        double amplitude
+    ) {
         var dataLength = (int)(duration * sampleHz);
         var data = new byte[dataLength * 2];
 
@@ -81,7 +90,12 @@ public static class EditorAudio {
         return data;
     }
 
-    private static byte[] GenerateContinuousSineWave(double sampleHz, double frequency, double duration, double amplitude) {
+    private static byte[] GenerateContinuousSineWave(
+        double sampleHz,
+        double frequency,
+        double duration,
+        double amplitude
+    ) {
         var dataLength = (int)(duration * sampleHz);
         var data = new byte[dataLength * 2];
 

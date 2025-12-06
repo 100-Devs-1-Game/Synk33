@@ -26,10 +26,26 @@ public static class EditorPlayback {
             var isHoldNote = EditorNoteHelpers.IsHoldNote(note);
             
             if (isHoldNote) {
-                HandleHoldNotePlayback(noteId, noteTimeInSeconds, note, songPosition, secondsPerBeat, 
-                    chart, hitSoundPlayer, holdSoundPlayer, playedNotes, activeHoldNotes);
+                HandleHoldNotePlayback(
+                    noteId,
+                    noteTimeInSeconds,
+                    note,
+                    songPosition,
+                    secondsPerBeat,
+                    chart,
+                    hitSoundPlayer,
+                    holdSoundPlayer,
+                    playedNotes,
+                    activeHoldNotes
+                );
             } else {
-                HandleTapNotePlayback(noteId, noteTimeInSeconds, songPosition, hitSoundPlayer, playedNotes);
+                HandleTapNotePlayback(
+                    noteId,
+                    noteTimeInSeconds,
+                    songPosition,
+                    hitSoundPlayer,
+                    playedNotes
+                );
             }
         }
     }
@@ -107,4 +123,3 @@ public static class EditorPlayback {
         activeHoldNotes.Clear();
     }
 }
-

@@ -31,7 +31,14 @@ public static class EditorNoteHelpers {
         return Color.FromHsv(hue, 0.8f, 1f);
     }
 
-    public static float CalculateNoteYPosition(int bar, int beat, double sixteenth, Chart chart, float zoom, float panY)
+    public static float CalculateNoteYPosition(
+        int bar,
+        int beat,
+        double sixteenth,
+        Chart chart,
+        float zoom,
+        float panY
+    )
         => -bar * chart.BeatsPerMeasure * zoom + panY 
            - beat * zoom 
            - (float)sixteenth / 4 * zoom;
@@ -39,7 +46,11 @@ public static class EditorNoteHelpers {
     public static bool IsHoldNote(GodotNote note) 
         => note.EndBar != 0 || note.EndBeat != 0 || note.EndSixteenth != 0;
 
-    public static bool NoteExistsAt(Chart chart, NoteTime time, NoteType type) {
+    public static bool NoteExistsAt(
+        Chart chart,
+        NoteTime time,
+        NoteType type
+    ) {
         foreach (var note in chart.Notes) {
             if (note.Bar == time.Bar && 
                 note.Beat == time.Beat && 
@@ -51,10 +62,13 @@ public static class EditorNoteHelpers {
         return false;
     }
 
-    public static bool IsValidHoldNoteEnd(NoteTime start, NoteTime end, Chart chart) {
+    public static bool IsValidHoldNoteEnd(
+        NoteTime start,
+        NoteTime end,
+        Chart chart
+    ) {
         var startTotal = start.Bar * chart.BeatsPerMeasure * 4 + start.Beat * 4 + start.Sixteenth;
         var endTotal = end.Bar * chart.BeatsPerMeasure * 4 + end.Beat * 4 + end.Sixteenth;
         return endTotal > startTotal;
     }
 }
-
