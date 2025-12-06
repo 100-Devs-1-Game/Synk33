@@ -4,8 +4,7 @@ using Godot.Collections;
 
 namespace SYNK33.Saving;
 
-interface ISaveInfo
-{
+interface ISaveInfo {
     public long GetChartPerformance(long chartUID);
 
     public void SetChartPerformance(long chartUID, long points);
