@@ -52,4 +52,3 @@ public static class EditorConstants {
     public const float HoldNoteStartHeadHeight = 20f;
     public const float HoldNoteEndHeadHeight = 14f;
 }
-

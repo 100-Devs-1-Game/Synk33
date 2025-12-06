@@ -47,8 +47,8 @@ public static class EditorChartIO {
             FileMode = FileDialog.FileModeEnum.OpenFile,
             Filters = ["*.tres ; Godot Resource File"],
             Title = "Load Chart",
-            CurrentDir = string.IsNullOrEmpty(state.CurrentChartPath) 
-                ? "res://assets/charts/" 
+            CurrentDir = string.IsNullOrEmpty(state.CurrentChartPath)
+                ? "res://assets/charts/"
                 : System.IO.Path.GetDirectoryName(state.CurrentChartPath)
         };
         
@@ -61,14 +61,34 @@ public static class EditorChartIO {
         fileDialog.PopupCentered(new Vector2I(800, 600));
     }
 
-    public static void OnLoadChartFileSelected(string path, EditorState state, ref Chart chart, Label statusLabel, 
-                                                SceneTree sceneTree, Action updateInfoDisplay, Action queueRedraw) {
+    public static void OnLoadChartFileSelected(
+        string path, 
+        EditorState state, 
+        ref Chart chart, 
+        Label statusLabel, 
+        SceneTree sceneTree, 
+        Action updateInfoDisplay, 
+        Action queueRedraw,
+        AudioStreamPlayer? audioPlayer
+    ) {
         GD.Print($"Loading chart from: {path}");
         var loadedChart = ResourceLoader.Load<Chart>(path);
         
         if (loadedChart != null) {
             chart = loadedChart;
             state.CurrentChartPath = path;
+            
+            // Load audio from Song
+            if (audioPlayer != null) {
+                if (chart.Song?.Audio != null) {
+                    audioPlayer.Stream = chart.Song.Audio;
+                    GD.Print($"Loaded audio from song: {chart.Song.Name}");
+                } else {
+                    audioPlayer.Stream = null;
+                    GD.PrintErr("Chart loaded but no audio available in Song");
+                }
+            }
+            
             statusLabel.Text = $"Loaded: {System.IO.Path.GetFileName(path)} ({chart.Notes.Count} notes)";
             GD.Print($"Chart loaded: {chart.Notes.Count} notes");
             updateInfoDisplay();
@@ -79,6 +99,27 @@ public static class EditorChartIO {
         }
         
         sceneTree.CreateTimer(3.0).Timeout += () => statusLabel.Text = "";
+    }
+
+    public static Chart CreateNewChart() {
+        // Create a default song
+        var defaultSong = new Song {
+            Name = "New Song",
+            Author = "Unknown Artist",
+            Bpm = 120f,
+            Difficulties = 0
+        };
+        
+        var newChart = new Chart {
+            Designer = "Unknown",
+            Level = 1,
+            TempoModifier = 1f,
+            BeatsPerMeasure = 4,
+            Song = defaultSong,
+            Notes = new Godot.Collections.Array<GodotNote>()
+        };
+        GD.Print("Created new chart with default song");
+        return newChart;
     }
 }
 
