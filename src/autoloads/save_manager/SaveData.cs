@@ -11,8 +11,7 @@ interface ISaveInfo
     public void SetChartPerformance(long chartUID, long points);
 }
 
-public partial class SaveData : Resource, ISaveInfo
-{
+public partial class SaveData : Resource, ISaveInfo{
     /// <summary>
     /// Whether the player has completed the tutorial.
     /// </summary>
@@ -22,15 +21,13 @@ public partial class SaveData : Resource, ISaveInfo
     /// </summary>
     [Export] private Dictionary<long, long> ChartMap = [];
 
-    public long GetChartPerformance(long chartUID)
-    {
+    public long GetChartPerformance(long chartUID) {
         long points = -1;
         ChartMap.TryGetValue(chartUID, out points);
         return points;
     }
 
-    public void SetChartPerformance(long chartUID, long points)
-    {
+    public void SetChartPerformance(long chartUID, long points) {
         ChartMap[chartUID] = points;
     }
 }
