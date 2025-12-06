@@ -21,8 +21,7 @@ public partial class SaveData : Resource, ISaveInfo
     /// </summary>
     [Export] private Dictionary<long, long> ChartMap = [];
 
-    public long GetChartPerformance(long chartUID)
-    {
+    public long GetChartPerformance(long chartUID) {
         long points = -1;
         ChartMap.TryGetValue(chartUID, out points);
         return points;
