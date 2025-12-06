@@ -1,6 +1,6 @@
 extends Button
 
-@export_file_path("*.tscn") var scene_path:String
+@export_file_path("*.tscn") var scene_path: String
 
 
 func _pressed() -> void:

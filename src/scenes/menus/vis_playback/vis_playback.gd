@@ -1,10 +1,10 @@
 extends Control
 
 
-@export var player:AudioStreamPlayer
+@export var player: AudioStreamPlayer
 
 
-@onready var slider:HSlider = $PlaySlider
+@onready var slider: HSlider = $PlaySlider
 
 
 func _process(delta: float) -> void:

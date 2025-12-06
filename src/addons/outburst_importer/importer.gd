@@ -2,10 +2,10 @@
 extends EditorImportPlugin
 
 
-const BASE_AUDIO_DIALOGUE_PATH:String = "res://assets/audio/dialogue/"
+const BASE_AUDIO_DIALOGUE_PATH: String = "res://assets/audio/dialogue/"
 
 
-var tag_map:Dictionary[String, Callable] = {
+var tag_map: Dictionary[String, Callable] = {
 	"line":importer_mapped.bind(OutburstLine, {
 		"@text":map_direct.bind(&"line"),
 		"dur":map_basic.bind(&"duration"),
@@ -80,12 +80,12 @@ func _import(
 ## Imports an XML tag as type. 'Map' defines the attribute -> variable map.
 ## the key "@text" will import the text of the tag, and "@elements" the elements.
 func importer_mapped(
-		parser:XMLParser,
-		type:Script, 
-		map:Dictionary,
-		process_info:Dictionary = {},
+		parser: XMLParser,
+		type: Script, 
+		map: Dictionary,
+		process_info: Dictionary = {},
 	) -> Outburst:
-	var instance:Outburst = type.new()
+	var instance: Outburst = type.new()
 	
 	for i in parser.get_attribute_count():
 		var name := parser.get_attribute_name(i)
@@ -95,8 +95,8 @@ func importer_mapped(
 			continue
 		map[name].call(parser.get_attribute_value(i), instance)
 	
-	var text_combined:String = ""
-	var elements_combined:Array[Outburst] = []
+	var text_combined: String = ""
+	var elements_combined: Array[Outburst] = []
 	while true:
 		var err := parser.read()
 		if err != OK:
@@ -128,7 +128,7 @@ func importer_mapped(
 	return instance
 
 
-func find_importer(parser:XMLParser) -> Outburst:
+func find_importer(parser: XMLParser) -> Outburst:
 	var tag_name := parser.get_node_name()
 	if not tag_name in tag_map:
 		push_error("No importer found for tag ", tag_name)
@@ -136,20 +136,20 @@ func find_importer(parser:XMLParser) -> Outburst:
 	return tag_map[tag_name].call(parser)
 
 ## Basic variable interpretation of value
-func map_basic(value:String, target:Object, property:StringName) -> void:
+func map_basic(value: String, target: Object, property: StringName) -> void:
 	target.set(property, str_to_var(value))
 
 ## Directly maps contents to value
-func map_direct(value:Variant, target:Object, property:StringName) -> void:
+func map_direct(value: Variant, target: Object, property: StringName) -> void:
 	target.set(property, value)
 
 ## Loads a resource from the value path (with optional base path and type hint)
 func map_resource(
-		value:String, 
-		target:Object, 
-		property:StringName,
-		base_path:String = "",
-		resource_type_hint:String = "",
+		value: String, 
+		target: Object, 
+		property: StringName,
+		base_path: String = "",
+		resource_type_hint: String = "",
 	) -> void:
 	var path := base_path.path_join(value)
 	if not path.is_absolute_path():

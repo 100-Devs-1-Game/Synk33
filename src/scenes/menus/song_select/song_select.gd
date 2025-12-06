@@ -30,13 +30,13 @@ var current_difficulty: Difficulty:
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
-static func time_as_string(time:float) -> String:
+static func time_as_string(time: float) -> String:
 	return "%02d:%02d" % [time / 60, fmod(time, 60)]
 
 
 func _ready() -> void:
 	for song in songs:
-		var song_button:SongButton = preload("res://scenes/menus/song_select/song_button.tscn").instantiate()
+		var song_button: SongButton = preload("res://scenes/menus/song_select/song_button.tscn").instantiate()
 		song_button.icon = song.Cover
 		song_button.title = song.Name
 		song_button.credit = song.Author
@@ -45,8 +45,8 @@ func _ready() -> void:
 	filter_songs()
 
 
-func change_song(to:Song) -> void:
-	var chart:Chart = to.GetChartByDifficulty(current_difficulty)
+func change_song(to: Song) -> void:
+	var chart: Chart = to.GetChartByDifficulty(current_difficulty)
 	if chart == null:
 		assert(false, "No chart found for current difficulty")
 		return
@@ -58,7 +58,7 @@ func change_song(to:Song) -> void:
 	change_chart(chart)
 
 
-func change_chart(to:Chart) -> void:
+func change_chart(to: Chart) -> void:
 	song_cover.texture = to.Song.Cover
 	song_info_bpm.info = "%03dBPM" % to.Song.Bpm
 	song_info_length.info = time_as_string(to.Song.Audio.get_length())

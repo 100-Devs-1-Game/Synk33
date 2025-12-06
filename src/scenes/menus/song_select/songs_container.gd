@@ -2,10 +2,10 @@
 extends Container
 
 
-const TARGET_SNAP_MARGIN:float = 0.01
+const TARGET_SNAP_MARGIN: float = 0.01
 
 
-@export var scale_curve:Curve:
+@export var scale_curve: Curve:
 	set(new):
 		if scale_curve != null:
 			scale_curve.changed.disconnect(queue_sort)
@@ -14,15 +14,15 @@ const TARGET_SNAP_MARGIN:float = 0.01
 			scale_curve.changed.connect(queue_sort)
 
 
-var selected:float = 0.0:
+var selected: float = 0.0:
 	set(new):
 		if selected == new:
 			return
 		selected = new
 		queue_sort()
-var target_selected:int = 0
-var _mousewrap_offset:float = 0
-var _cumulative:float = 0
+var target_selected: int = 0
+var _mousewrap_offset: float = 0
+var _cumulative: float = 0
 
 
 func _init() -> void:
@@ -77,10 +77,10 @@ func _get_allowed_size_flags_vertical() -> PackedInt32Array:
 	return [SIZE_SHRINK_BEGIN]
 
 
-func _wrap_mouse(gpos:Vector2) -> Vector2:
+func _wrap_mouse(gpos: Vector2) -> Vector2:
 	var global_rect := get_global_rect()
-	var minv:float = _mousewrap_offset + global_rect.size.y / 2.0 + global_rect.position.y
-	var maxv:float = _mousewrap_offset + _cumulative + global_rect.size.y / 2.0 + global_rect.position.y
+	var minv: float = _mousewrap_offset + global_rect.size.y / 2.0 + global_rect.position.y
+	var maxv: float = _mousewrap_offset + _cumulative + global_rect.size.y / 2.0 + global_rect.position.y
 	gpos.y = wrapf(
 		gpos.y,
 		minv,
@@ -90,9 +90,9 @@ func _wrap_mouse(gpos:Vector2) -> Vector2:
 
 
 func _child_order_changed() -> void:
-	var count:int = get_child_count()
+	var count: int = get_child_count()
 	for i in count:
-		var child:Control = get_child(i)
+		var child: Control = get_child(i)
 		if Engine.is_editor_hint():
 			return
 		if child.focus_entered.is_connected(_goto):
@@ -117,14 +117,13 @@ func _sort_children() -> void:
 	_cumulative = 0.0
 	_mousewrap_offset = 0
 	
-	var select_centered_cumulative:float = 0.0
+	var select_centered_cumulative: float = 0.0
 	
 	for i in count:
 		if children[i] is not Control:
 			continue
 		
-		var child:Control = children[i]
-		
+		var child: Control = children[i]
 		child.scale = Vector2.ONE * scale_curve.sample(wrapf(i - selected, -count / 2.0, count / 2.0))
 		child.position.y = _cumulative
 		_cumulative += child.get_rect().size.y
@@ -137,13 +136,13 @@ func _sort_children() -> void:
 		if children[i] is not Control:
 			continue
 		
-		var child:Control = children[i]
+		var child: Control = children[i]
 		child.position.y += select_centered_cumulative + size.y / 2.0
 	_mousewrap_offset = select_centered_cumulative
 	_update_repeat(_cumulative)
 
 
-func _size_child(child:Control) -> void:
+func _size_child(child: Control) -> void:
 	var child_size := child.get_combined_minimum_size()
 	child.position.x = 0
 	
@@ -157,10 +156,10 @@ func _size_child(child:Control) -> void:
 	child.size = child_size
 
 
-func _goto(index:int) -> void:
-	var period:int = get_child_count()
-	var period_half:float = period / 2.0
-	var delta:int = (index - target_selected) % period
+func _goto(index: int) -> void:
+	var period: int = get_child_count()
+	var period_half: float = period / 2.0
+	var delta: int = (index - target_selected) % period
 	if delta < -period_half:
 		selected -= period
 	elif delta > period_half:
@@ -168,11 +167,11 @@ func _goto(index:int) -> void:
 	target_selected = index
 
 
-func _update_repeat(childsize:float) -> void:
+func _update_repeat(childsize: float) -> void:
 	RenderingServer.canvas_set_item_repeat(get_canvas_item(), Vector2(0, childsize), 2)
 
 
-func _on_label_gui_input(event: InputEvent, index:int) -> void:
+func _on_label_gui_input(event: InputEvent, index: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index != MOUSE_BUTTON_LEFT:
 			return

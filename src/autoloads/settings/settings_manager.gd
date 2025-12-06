@@ -1,11 +1,11 @@
 extends Node
 
-const OPTIONS_SAVE_PATH:String = "user://options.cfg"
+const OPTIONS_SAVE_PATH: String = "user://options.cfg"
 
-var current:SettingsSave
+var current: SettingsSave
 ## Options duplicate used as a scratchboard for all the settings that are not yet
 ## applied
-var tenative:SettingsSave
+var tenative: SettingsSave
 
 
 func _ready() -> void:

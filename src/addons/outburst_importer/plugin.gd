@@ -2,7 +2,7 @@
 extends EditorPlugin
 
 
-var importer:EditorImportPlugin
+var importer: EditorImportPlugin
 
 
 func _enable_plugin() -> void:

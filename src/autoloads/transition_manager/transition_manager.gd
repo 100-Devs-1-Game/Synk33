@@ -10,10 +10,10 @@ signal transition_midpoint()
 signal transition_endpoint()
 
 
-var transitioning:bool
+var transitioning: bool
 
 
-@onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _input(_event: InputEvent) -> void:
@@ -23,13 +23,13 @@ func _input(_event: InputEvent) -> void:
 
 ## Plays a transition. To do something at the end or in the middle of a transition,
 ## use [signal transition_midpoint] and [signal transition_endpoint]
-func play_transition(animation_name:StringName = DEFAULT_ANIMATION) -> void:
+func play_transition(animation_name: StringName = DEFAULT_ANIMATION) -> void:
 	transitioning = true
 	animation_player.play(animation_name)
 
 
 ## Transition and change main scene to file.
-func transition_to_file(path:String, animation_name:StringName = DEFAULT_ANIMATION) -> void:
+func transition_to_file(path: String, animation_name: StringName = DEFAULT_ANIMATION) -> void:
 	play_transition(animation_name)
 	await transition_midpoint
 	get_tree().change_scene_to_file(path)
@@ -42,8 +42,8 @@ func transition_to_file(path:String, animation_name:StringName = DEFAULT_ANIMATI
 ## do TransitionManager.play_transition(&"wipe")
 ## do wait(TransitionManaget.get_transition_midpoint_time(&"wipe"))
 ## [/codeblock]
-func dialogue_transition(animation_name:StringName = DEFAULT_ANIMATION, 
-		use_midpoint:bool = true) -> float:
+func dialogue_transition(animation_name: StringName = DEFAULT_ANIMATION, 
+		use_midpoint: bool = true) -> float:
 	play_transition(animation_name)
 	
 	if use_midpoint:
@@ -53,12 +53,12 @@ func dialogue_transition(animation_name:StringName = DEFAULT_ANIMATION,
 
 
 ## Returns the midpoint time in a transition animation. Returns -1 if not applicable.
-func get_transition_midpoint_time(animation_name:StringName) -> float:
+func get_transition_midpoint_time(animation_name: StringName) -> float:
 	return _get_animation_method_callback_time(animation_name, ^".", &"_transition_midpoint_callback")
 
 
 ## Returns the endpoint time in a transition animation. Returns -1 if not applicable.
-func get_transition_endpoint_time(animation_name:StringName) -> float:
+func get_transition_endpoint_time(animation_name: StringName) -> float:
 	var animation := animation_player.get_animation(animation_name)
 	if not animation:
 		return -1
@@ -67,12 +67,12 @@ func get_transition_endpoint_time(animation_name:StringName) -> float:
 
 ## Returns the duration from the midpoint to the endpoint. See [method get_transition_midpoint_time]
 ## and [method get_transition_endpoint_time].
-func get_transition_mid_to_end_time(animation_name:StringName) -> float:
+func get_transition_mid_to_end_time(animation_name: StringName) -> float:
 	return get_transition_endpoint_time(animation_name) - get_transition_midpoint_time(animation_name)
 
 
-func _get_animation_method_callback_time(animation_name:StringName, 
-		node:NodePath, method:StringName) -> float:
+func _get_animation_method_callback_time(animation_name: StringName, 
+		node: NodePath, method: StringName) -> float:
 	var animation := animation_player.get_animation(animation_name)
 	if not animation:
 		return -1
