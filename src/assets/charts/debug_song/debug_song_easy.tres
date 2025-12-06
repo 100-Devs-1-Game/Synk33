@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=9 format=3 uid="uid://cx354pa6sbc70"]
+[gd_resource type="Resource" script_class="Chart" load_steps=6 format=3 uid="uid://cx354pa6sbc70"]
 
 [ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_kfae5"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_77crk"]
@@ -14,25 +14,10 @@ Type = 2
 EndBar = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
-[sub_resource type="Resource" id="Resource_ibn45"]
-script = ExtResource("1_kfae5")
-Bar = 1
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_kfae5"]
-script = ExtResource("1_kfae5")
-Bar = 2
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_77crk"]
-script = ExtResource("1_kfae5")
-Bar = 3
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
 [resource]
 script = ExtResource("2_77crk")
 Designer = "Sarian"
 Level = 2
 Song = ExtResource("2_va0l2")
-Notes = Array[Object]([SubResource("Resource_pm4jv"), SubResource("Resource_tfmqh"), SubResource("Resource_ibn45"), SubResource("Resource_kfae5"), SubResource("Resource_77crk")])
+Notes = Array[Object]([SubResource("Resource_pm4jv"), SubResource("Resource_tfmqh")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

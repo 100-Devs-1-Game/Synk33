@@ -1,19 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbje615ewpyvp"]
+[gd_scene load_steps=8 format=3 uid="uid://bbje615ewpyvp"]
 
 [ext_resource type="Script" uid="uid://ng27ey3h4538" path="res://editor/Editor.cs" id="1_3cn80"]
+[ext_resource type="FontFile" uid="uid://bdl5yxv708e0s" path="res://fonts/vendsans/vendsans_regular.ttf" id="1_i0yaw"]
 [ext_resource type="Resource" uid="uid://4i0pmvvhnnyv" path="res://assets/charts/debug_song/debug_song_expert.tres" id="2_i1ssp"]
 [ext_resource type="AudioStream" uid="uid://b1xh0x4ctylao" path="res://assets/charts/debug_song/debug_song.wav" id="3_i1ssp"]
 [ext_resource type="AudioStream" uid="uid://bp3b2i603qdv3" path="res://assets/editor/hit_note_01.wav" id="3_jp84s"]
 [ext_resource type="AudioStream" uid="uid://boxotbbbr6bgy" path="res://assets/editor/hold_note_01.wav" id="4_i0yaw"]
+
+[sub_resource type="Theme" id="Theme_85wto"]
+default_font = ExtResource("1_i0yaw")
+default_font_size = 32
 
 [node name="Editor" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
+theme = SubResource("Theme_85wto")
 script = ExtResource("1_3cn80")
 Chart = ExtResource("2_i1ssp")
 TapSound = ExtResource("3_jp84s")
@@ -23,7 +31,7 @@ HoldSound = ExtResource("4_i0yaw")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 33.0
+offset_bottom = 68.0
 grow_horizontal = 2
 
 [node name="MenuBar" type="MenuBar" parent="MenuBar"]
@@ -38,30 +46,92 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 
-[node name="MenuButton" type="MenuButton" parent="MenuBar/MenuBar/HBoxContainer"]
+[node name="FileMenu" type="MenuButton" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "File"
 switch_on_hover = true
-item_count = 3
-popup/item_0/text = "Save"
+item_count = 5
+popup/item_0/text = "New Chart"
 popup/item_0/id = 0
-popup/item_1/text = "Load"
+popup/item_1/text = "Load Chart"
 popup/item_1/id = 1
-popup/item_2/text = "Properties"
+popup/item_2/text = "Save Chart"
 popup/item_2/id = 2
+popup/item_3/id = 3
+popup/item_3/separator = true
+popup/item_4/text = "Chart Properties"
+popup/item_4/id = 3
 
-[node name="MenuButton2" type="MenuButton" parent="MenuBar/MenuBar/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MenuBar/MenuBar/HBoxContainer"]
 layout_mode = 2
-text = "Audio
-"
-switch_on_hover = true
-item_count = 3
-popup/item_0/text = "Save"
-popup/item_0/id = 0
-popup/item_1/text = "Load"
-popup/item_1/id = 1
-popup/item_2/text = "Properties"
-popup/item_2/id = 2
+
+[node name="NoteModeButton" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Toggle between Tap and Hold note types (T key)"
+toggle_mode = true
+text = "Tap (T)"
+
+[node name="TripletButton" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Toggle triplet grid (Y key)"
+toggle_mode = true
+text = "Triplet (Y)"
+
+[node name="VSeparator2" type="VSeparator" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="GridLabel" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
+text = "Grid:"
+vertical_alignment = 1
+
+[node name="Grid1Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Whole notes (1 key)"
+text = "1"
+
+[node name="Grid2Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Half notes (2 key)"
+text = "2"
+
+[node name="Grid4Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Quarter notes (3 key)"
+text = "4"
+
+[node name="Grid8Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Eighth notes (4 key)"
+text = "8"
+
+[node name="Grid16Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Sixteenth notes (5 key)"
+text = "16"
+
+[node name="Grid32Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "32nd notes (6 key)"
+text = "32"
+
+[node name="Grid64Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "64th notes (7 key)"
+text = "64"
+
+[node name="VSeparator3" type="VSeparator" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
 
 [node name="SelectedLane" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
@@ -87,9 +157,9 @@ size_flags_horizontal = 3
 [node name="InfoBox" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 47.0
-offset_right = 401.0
-offset_bottom = 288.0
+offset_top = 126.0
+offset_right = 478.0
+offset_bottom = 570.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="InfoBox"]
@@ -104,7 +174,7 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Title" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+[node name="ChartTitle" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Chart Info"
 horizontal_alignment = 1
@@ -113,39 +183,72 @@ horizontal_alignment = 1
 layout_mode = 2
 mouse_filter = 2
 
+[node name="FileName" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "File: (not saved)"
+
 [node name="Designer" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Designer: N/A"
-
-[node name="Difficulty" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Difficulty: N/A"
 
 [node name="Level" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Level: N/A"
 
-[node name="BPM" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+[node name="TempoModifier" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "BPM: N/A"
+text = "Tempo: 1.0x"
 
 [node name="BeatsPerMeasure" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Beats/Measure: N/A"
 
-[node name="HSeparator2" type="HSeparator" parent="InfoBox/MarginContainer/VBoxContainer"]
+[node name="HSeparatorSong" type="HSeparator" parent="InfoBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="NoteMode" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+[node name="SongTitle" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Song Info"
+horizontal_alignment = 1
+
+[node name="HSeparatorSong2" type="HSeparator" parent="InfoBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SongName" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Mode: Tap (T)"
+text = "Name: N/A"
+
+[node name="SongAuthor" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Author: N/A"
+
+[node name="SongBPM" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Base BPM: N/A"
+
+[node name="Difficulty" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Difficulty: N/A"
+
+[node name="BPM" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Effective BPM: N/A"
+
+[node name="HSeparator2" type="HSeparator" parent="InfoBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
 
 [node name="NotesCount" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

@@ -10,45 +10,37 @@ metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_tfmqh"]
 script = ExtResource("1_nhw2w")
-Beat = 5.0
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_ibn45"]
 script = ExtResource("1_nhw2w")
-Beat = 9.0
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_nhw2w"]
 script = ExtResource("1_nhw2w")
-Beat = 10.0
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_fxy2j"]
 script = ExtResource("1_nhw2w")
-Beat = 11.0
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_f3bgd"]
 script = ExtResource("1_nhw2w")
-Beat = 12.0
 Type = 1
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_bu7j4"]
 script = ExtResource("1_nhw2w")
-Beat = 13.0
 Type = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_2540l"]
 script = ExtResource("1_nhw2w")
-Beat = 14.0
 Type = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_kis7c"]
 script = ExtResource("1_nhw2w")
-Beat = 15.0
 Type = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 

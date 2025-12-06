@@ -17,3 +17,5 @@ public partial class Chart : Resource {
 
     public float Bpm => Song.Bpm * TempoModifier;
 }
+
+

@@ -8,6 +8,8 @@ public static class EditorInput {
             case MouseButton.Left when mouseEvent.Pressed:
                 editor.AddNote();
                 break;
+            case MouseButton.Left when !mouseEvent.Pressed:
+                break;
             case MouseButton.Right when mouseEvent.Pressed:
                 editor.RemoveNote();
                 break;
@@ -58,6 +60,7 @@ public static class EditorInput {
     }
 
     private static void HandleSnappingControls(InputEventKey keyEvent, Editor editor) {
+        var oldSnapping = editor.State.Snapping;
         editor.State.Snapping = keyEvent.Keycode switch {
             Key.Key1 => 1,
             Key.Key2 => 2,
@@ -70,6 +73,9 @@ public static class EditorInput {
             Key.Minus => System.Math.Max(editor.State.Snapping / 2, 1),
             _ => editor.State.Snapping
         };
+        
+        if (oldSnapping != editor.State.Snapping) {
+            editor.UpdateGridButtons();
+        }
     }
 }
-
