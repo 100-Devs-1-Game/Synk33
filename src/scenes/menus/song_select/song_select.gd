@@ -9,11 +9,10 @@ enum Difficulty {
 }
 
 
+@export var songs: Array[Song] 
 
-@export var songs:Array[Song] 
 
-
-var current_difficulty:Difficulty:
+var current_difficulty: Difficulty:
 	set(new):
 		if current_difficulty == new:
 			return
@@ -21,14 +20,14 @@ var current_difficulty:Difficulty:
 		filter_songs()
 
 
-@onready var song_container:Container = %SongContainer
-@onready var song_cover:TextureRect = %SongCover
-@onready var song_info_bpm:Control = %BPMSongInfo
-@onready var song_info_length:Control = %LengthSongInfo
-@onready var song_info_highscore:Control = %HighscoreSongInfo
+@onready var song_container: Container = %SongContainer
+@onready var song_cover: TextureRect = %SongCover
+@onready var song_info_bpm: Control = %BPMSongInfo
+@onready var song_info_length: Control = %LengthSongInfo
+@onready var song_info_highscore: Control = %HighscoreSongInfo
 
-@onready var difficulty_select:DifficultySelect = %DifficultySelect
-@onready var audio_stream_player:AudioStreamPlayer = $AudioStreamPlayer
+@onready var difficulty_select: DifficultySelect = %DifficultySelect
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 static func time_as_string(time:float) -> String:
