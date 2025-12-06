@@ -1,0 +1,20 @@
+[remap]
+
+importer="svg"
+type="DPITexture"
+uid="uid://bwbj1oyd47m7i"
+path="res://.godot/imported/slider_grabber_highlight.svg-db1be4cd17cd2dcb5aa208b11034b3f7.dpitex"
+
+[deps]
+
+source_file="res://assets/textures/ui/slider_grabber_highlight.svg"
+dest_files=["res://.godot/imported/slider_grabber_highlight.svg-db1be4cd17cd2dcb5aa208b11034b3f7.dpitex"]
+
+[params]
+
+base_scale=1.0
+saturation=1.0
+color_map={
+Color(1, 1, 1, 1): Color(1.2064236, 0.18473722, 0.84883344, 1)
+}
+compress=true

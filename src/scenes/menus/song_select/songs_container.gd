@@ -110,8 +110,9 @@ func _child_order_changed() -> void:
 func _sort_children() -> void:
 	if not is_instance_valid(scale_curve):
 		return
-	var count: int = get_child_count()
+	
 	var children := get_children()
+	var count:int = len(children)
 	
 	_cumulative = 0.0
 	_mousewrap_offset = 0

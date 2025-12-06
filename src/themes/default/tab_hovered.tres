@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://cw855gpordsda"]
+
+[resource]
+resource_name = "Tab Selected"
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_bottom = 4
+corner_detail = 4

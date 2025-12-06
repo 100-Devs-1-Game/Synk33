@@ -13,10 +13,8 @@ public partial class SaveManager : Node, ISaveInfo
 
     private readonly SaveData save;
     
-    public SaveManager()
-    {
-        if (!FileAccess.FileExists(SavePath))
-        {
+    public SaveManager() {
+        if (!FileAccess.FileExists(SavePath)) {
             save = new SaveData();
             return;
         }
@@ -31,13 +29,11 @@ public partial class SaveManager : Node, ISaveInfo
         }
     }*/
 
-    public long GetSongPerformance(StringName song)
-    {
-        return save.GetSongPerformance(song);
+    public long GetChartPerformance(long chartUID) {
+        return save.GetChartPerformance(chartUID);
     }
 
-    public void SetSongPerformance(StringName song, long points)
-    {
-        save.SetSongPerformance(song, points);
+    public void SetChartPerformance(long chartUID, long points) {
+        save.SetChartPerformance(chartUID, points);
     }
 }

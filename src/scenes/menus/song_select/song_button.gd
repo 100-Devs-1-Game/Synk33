@@ -206,3 +206,9 @@ func _set_shaped_text(shaped: RID, string: String) -> void:
 		return
 	text_server.shaped_text_clear(shaped)
 	text_server.shaped_text_add_string(shaped, string, _tc_font.get_rids(), _tc_font_size)
+
+
+func change_disabled(new:bool) -> void:
+	disabled = new
+	focus_mode = Control.FOCUS_NONE if new else Control.FOCUS_ALL
+	(material as ShaderMaterial).set_shader_parameter(&"greyscale", new)

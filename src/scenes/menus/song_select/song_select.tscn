@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=21 format=3 uid="uid://c75ew37wbtpa2"]
 
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
 [ext_resource type="Script" uid="uid://b0uu18ukygn2r" path="res://scenes/menus/song_select/song_select.gd" id="1_4vbmx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c6til1ee26leu" path="res://scenes/menus/song_select/song_info/song_info_widget.tscn" id="4_ibs4a"]
 [ext_resource type="PackedScene" uid="uid://cp7yjs0djkg5v" path="res://scenes/menus/song_select/song_info/song_credit_widget.tscn" id="4_jn1ix"]
 [ext_resource type="Resource" uid="uid://blarvatodptiw" path="res://assets/charts/debug_song/debug_song.tres" id="4_neb33"]
+[ext_resource type="PackedScene" uid="uid://cux45wgmlgehs" path="res://scenes/menus/song_select/difficulty_select/difficulty_select.tscn" id="6_neb33"]
 [ext_resource type="PackedScene" uid="uid://bb1hkgpvpke6e" path="res://scenes/menus/vis_playback/vis_playback.tscn" id="8_01aqb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfngb"]
@@ -87,6 +88,10 @@ theme_override_constants/margin_bottom = -15
 layout_mode = 2
 text = "SELECT SONG"
 label_settings = SubResource("LabelSettings_4m66x")
+
+[node name="DifficultySelect" parent="HBoxContainer/SongSelect/VBoxContainer" instance=ExtResource("6_neb33")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/SongSelect/VBoxContainer"]
 clip_children = 1
@@ -179,6 +184,7 @@ size_flags_vertical = 6
 theme_override_constants/separation = 32
 
 [node name="BPMSongInfo" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongInfoContainer" instance=ExtResource("4_ibs4a")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 7
 info = "160BPM"
@@ -191,7 +197,8 @@ size_flags_horizontal = 7
 info = "03:25"
 type = "LENGTH"
 
-[node name="SongInfoLabel" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongInfoContainer" instance=ExtResource("4_ibs4a")]
+[node name="HighscoreSongInfo" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongInfoContainer" instance=ExtResource("4_ibs4a")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 7
 info = "85000"
@@ -217,3 +224,5 @@ script = ExtResource("2_jefun")
 scene_path = "res://scenes/menus/main/main_menu.tscn"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="tab_changed" from="HBoxContainer/SongSelect/VBoxContainer/DifficultySelect" to="." method="_on_difficulty_select_tab_changed"]

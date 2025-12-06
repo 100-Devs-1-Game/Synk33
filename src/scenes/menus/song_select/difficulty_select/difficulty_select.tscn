@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://cux45wgmlgehs"]
+
+[ext_resource type="Script" uid="uid://cd6puephdvynh" path="res://scenes/menus/song_select/difficulty_select/difficulty_select.gd" id="1_3yd7x"]
+[ext_resource type="PackedScene" uid="uid://b0rodlyca7r4j" path="res://scenes/menus/song_select/difficulty_select/difficulty_select_button.tscn" id="2_wbsun"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yd7x"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbsun"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0k131"]
+resource_name = "Easy Unselected"
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+border_width_bottom = 4
+border_color = Color(0.384314, 0.945098, 0.968627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiaj4"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o38mb"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpxx5"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pw1u0"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogwcr"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.27058825, 0.27058825, 1)
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o210o"]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+
+[node name="DifficultySelect" type="HBoxContainer"]
+theme_override_constants/separation = 6
+alignment = 1
+script = ExtResource("1_3yd7x")
+
+[node name="Easy" parent="." instance=ExtResource("2_wbsun")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_3yd7x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wbsun")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0k131")
+text = "EASY"
+color = Color(0.384314, 0.945098, 0.968627, 1)
+selected = SubResource("StyleBoxFlat_wbsun")
+unselected = SubResource("StyleBoxFlat_3yd7x")
+
+[node name="Medium" parent="." instance=ExtResource("2_wbsun")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tiaj4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o38mb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tiaj4")
+text = "MEDIUM"
+color = Color(0.980392, 0.34902, 0.180392, 1)
+selected = SubResource("StyleBoxFlat_o38mb")
+unselected = SubResource("StyleBoxFlat_tiaj4")
+
+[node name="Hard" parent="." instance=ExtResource("2_wbsun")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xpxx5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pw1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xpxx5")
+text = "HARD"
+color = Color(0.533333, 0.223529, 0.94902, 1)
+selected = SubResource("StyleBoxFlat_pw1u0")
+unselected = SubResource("StyleBoxFlat_xpxx5")
+
+[node name="Expert" parent="." instance=ExtResource("2_wbsun")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ogwcr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o210o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ogwcr")
+text = "EXPERT"
+color = Color(0.890196, 0.121569, 0.615686, 1)
+selected = SubResource("StyleBoxFlat_o210o")
+unselected = SubResource("StyleBoxFlat_ogwcr")
