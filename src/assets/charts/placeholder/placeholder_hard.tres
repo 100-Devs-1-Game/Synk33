@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=8 format=3 uid="uid://6h6y7aehbpbo"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://6h6y7aehbpbo"]
 
-[ext_resource type="Resource" uid="uid://cs2k8n7u8ily2" path="res://assets/charts/placeholder/placeholder.tres" id="2_ceeje"]
 [ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="2_ppkk4"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_qvmu7"]
 
@@ -29,7 +28,8 @@ metadata/_custom_type_script = "uid://bmvioldybpoam"
 [resource]
 script = ExtResource("2_qvmu7")
 Designer = "Sarian"
+Difficulty = 2
 Level = 1
-Song = ExtResource("2_ceeje")
+Bpm = 120.0
 Notes = Array[Object]([SubResource("Resource_guutq"), SubResource("Resource_qvmu7"), SubResource("Resource_ppkk4"), SubResource("Resource_ceeje")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"
