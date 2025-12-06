@@ -116,7 +116,7 @@ func save_config(path: String) -> void:
 	file.save(path)
 
 
-func set_bus_volume(bus_index: int,linear_volume: floatt) -> void:
+func set_bus_volume(bus_index: int, linear_volume: float) -> void:
 	assert(len(bus_volumes) > bus_index, "bus index '0' does not already exist in bus volumes!")
 	bus_volumes[bus_index] = linear_volume
 

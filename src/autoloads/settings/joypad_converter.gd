@@ -88,7 +88,7 @@ static func get_joybutton_string(button: JoyButton) -> String:
 ## print(JoypadConverter.get_joyaxis_string(JOY_AXIS_TRIGGER_LEFT, true))       # Prints "-LeftTrigger"
 ## print(JoypadConverter.get_joyaxis_string(8 as JoyAxis))                      # Prints "Axis8"
 ## [/codeblock]
-static func get_joyaxis_string(axis: JoyAxis,negative: booll = false) -> String:
+static func get_joyaxis_string(axis: JoyAxis, negative: bool = false) -> String:
 	var constructed: String = ""
 	if not joyaxis_has_name(axis):
 		constructed = _UNKNOWN_AXIS_PREFIX + str(axis)

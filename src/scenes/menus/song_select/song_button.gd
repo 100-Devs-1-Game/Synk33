@@ -190,7 +190,7 @@ func _get_font_color(shaped_index: int) -> Color:
 	return _tc_font_colors[index]
 
 
-func _get_tex_size(width: float,height: floatt) -> Vector2:
+func _get_tex_size(width: float, height: float) -> Vector2:
 	if not is_instance_valid(icon):
 		return Vector2.ZERO
 	

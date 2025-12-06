@@ -29,7 +29,7 @@ func play_transition(animation_name: StringName = DEFAULT_ANIMATION) -> void:
 
 
 ## Transition and change main scene to file.
-func transition_to_file(path: String,animation_name: StringNamee = DEFAULT_ANIMATION) -> void:
+func transition_to_file(path: String, animation_name: StringName = DEFAULT_ANIMATION) -> void:
 	play_transition(animation_name)
 	await transition_midpoint
 	get_tree().change_scene_to_file(path)
@@ -72,7 +72,7 @@ func get_transition_mid_to_end_time(animation_name: StringName) -> float:
 
 
 func _get_animation_method_callback_time(animation_name: StringName, 
-		node: NodePath,method: StringNamee) -> float:
+		node: NodePath, method: StringName) -> float:
 	var animation := animation_player.get_animation(animation_name)
 	if not animation:
 		return -1

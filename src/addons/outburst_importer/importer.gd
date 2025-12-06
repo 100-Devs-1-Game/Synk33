@@ -136,11 +136,11 @@ func find_importer(parser: XMLParser) -> Outburst:
 	return tag_map[tag_name].call(parser)
 
 ## Basic variable interpretation of value
-func map_basic(value: String,target: Objecttproperty: StringNameme) -> void:
+func map_basic(value: String, target: Object, property: StringName) -> void:
 	target.set(property, str_to_var(value))
 
 ## Directly maps contents to value
-func map_direct(value: Variant,target: Objecttproperty: StringNameme) -> void:
+func map_direct(value: Variant, target: Object, property: StringName) -> void:
 	target.set(property, value)
 
 ## Loads a resource from the value path (with optional base path and type hint)

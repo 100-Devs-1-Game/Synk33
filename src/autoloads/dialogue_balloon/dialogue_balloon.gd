@@ -74,7 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 
 
-func start(p_dialogue_resource: DialogueResource,title: Stringg) -> void:
+func start(p_dialogue_resource: DialogueResource, title: String) -> void:
 	open_balloon()
 	dialogue_resource = p_dialogue_resource
 	next(title)
@@ -135,7 +135,7 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 
 
-func move_auxie(move_in: bool,duration: floatt = 0.4) -> float:
+func move_auxie(move_in: bool, duration: float = 0.4) -> float:
 	character_anchor_tween = create_tween_overkill(character_anchor_tween, character_anchor_dock)
 	character_move(
 		character_anchor_dock, move_in, character_anchor_tween, duration
@@ -143,7 +143,7 @@ func move_auxie(move_in: bool,duration: floatt = 0.4) -> float:
 	return duration
 
 
-func say_outburst(message: String,duration: floatt) -> void:
+func say_outburst(message: String, duration: float) -> void:
 	outburst_label.text = message
 	outburst_anchor.show()
 	outburst_tween = create_tween_overkill(outburst_tween, outburst_anchor)
@@ -197,7 +197,7 @@ func release_tween_killing() -> void:
 ## if a source was provided, otherwise will return a tween created by the [SceneTree].
 ## Designed to be used as [code]tween_var = create_tween_overkill(tween_var, self)[/code]
 ## or similarly.
-func create_tween_overkill(input: Tween,source: Nodee = null) -> Tween:
+func create_tween_overkill(input: Tween, source: Node = null) -> Tween:
 	if input and input.is_valid() and tween_killable:
 		input.kill()
 	if source:
