@@ -28,8 +28,7 @@ public partial class SaveData : Resource, ISaveInfo
         return points;
     }
 
-    public void SetChartPerformance(long chartUID, long points)
-    {
+    public void SetChartPerformance(long chartUID, long points) {
         ChartMap[chartUID] = points;
     }
 }
