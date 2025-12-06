@@ -121,7 +121,6 @@ public partial class Editor : Control {
         _songNameLabel = GetNode<Label>("%SongName");
         _songAuthorLabel = GetNode<Label>("%SongAuthor");
         _songBpmLabel = GetNode<Label>("%SongBPM");
-        _noteModeLabel = GetNode<Label>("%NoteMode");
         _notesCountLabel = GetNode<Label>("%NotesCount");
         
         _noteModeButton = GetNode<Button>("%NoteModeButton");

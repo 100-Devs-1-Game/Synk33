@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Godot;
 using SYNK33.chart;
 
@@ -39,8 +40,8 @@ public static class EditorNoteHelpers {
         float zoom,
         float panY
     )
-        => -bar * chart.BeatsPerMeasure * zoom + panY 
-           - beat * zoom 
+        => -bar * chart.BeatsPerMeasure * zoom + panY
+           - beat * zoom
            - (float)sixteenth / 4 * zoom;
 
     public static bool IsHoldNote(GodotNote note) 
@@ -51,15 +52,12 @@ public static class EditorNoteHelpers {
         NoteTime time,
         NoteType type
     ) {
-        foreach (var note in chart.Notes) {
-            if (note.Bar == time.Bar && 
-                note.Beat == time.Beat && 
-                Math.Abs(note.Sixteenth - time.Sixteenth) < 0.01 &&
-                note.Type == type) {
-                return true;
-            }
-        }
-        return false;
+        return chart.Notes.Any(note =>
+            note.Bar == time.Bar &&
+            note.Beat == time.Beat &&
+            Math.Abs(note.Sixteenth - time.Sixteenth) < 0.01 &&
+            note.Type == type
+        );
     }
 
     public static bool IsValidHoldNoteEnd(

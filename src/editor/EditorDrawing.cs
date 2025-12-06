@@ -20,7 +20,14 @@ public static class EditorDrawing {
         canvas.DrawLine(new Vector2(0, yPosition), new Vector2(canvas.GetViewportRect().Size.X, yPosition), Colors.White);
     }
 
-    private static void DrawBeatLines(CanvasItem canvas, int barIndex, Chart chart, int effectiveSnapping, float zoom, float panY) {
+    private static void DrawBeatLines(
+        CanvasItem canvas, 
+        int barIndex, 
+        Chart chart, 
+        int effectiveSnapping, 
+        float zoom,
+        float panY
+    ) {
         var totalSixteenthsPerBar = chart.BeatsPerMeasure * 4.0;
         var snapGridSize = totalSixteenthsPerBar / effectiveSnapping;
 
@@ -40,7 +47,14 @@ public static class EditorDrawing {
         }
     }
 
-    public static void DrawGridLines(CanvasItem canvas, AudioStreamPlayer? audioStreamPlayer, Chart chart, int effectiveSnapping, float zoom, float panY) {
+    public static void DrawGridLines(
+        CanvasItem canvas, 
+        AudioStreamPlayer? audioStreamPlayer, 
+        Chart chart, 
+        int effectiveSnapping, 
+        float zoom, 
+        float panY
+    ) {
         var songLength = audioStreamPlayer?.Stream.GetLength() / 60 * chart.Bpm / chart.BeatsPerMeasure;
         for (var i = 0; i < songLength; i++) {
             DrawBeatLines(canvas, i, chart, effectiveSnapping, zoom, panY);
