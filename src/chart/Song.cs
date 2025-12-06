@@ -19,8 +19,7 @@ public partial class Song : Resource {
 	};
 
 	public Chart? GetChartByDifficulty(Difficulty difficulty) {
-		if (!HasChart(difficulty))
-		{
+		if (!HasChart(difficulty)) {
 			return null;
 		}
 
