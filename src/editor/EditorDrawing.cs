@@ -15,12 +15,12 @@ public static class EditorDrawing {
         }
     }
 
-    public static void DrawBarLines(CanvasItem canvas, int barIndex, Chart chart, float zoom, float panY) {
+    private static void DrawBarLines(CanvasItem canvas, int barIndex, Chart chart, float zoom, float panY) {
         var yPosition = -barIndex * zoom * chart.BeatsPerMeasure + panY;
         canvas.DrawLine(new Vector2(0, yPosition), new Vector2(canvas.GetViewportRect().Size.X, yPosition), Colors.White);
     }
 
-    public static void DrawBeatLines(CanvasItem canvas, int barIndex, Chart chart, int effectiveSnapping, float zoom, float panY) {
+    private static void DrawBeatLines(CanvasItem canvas, int barIndex, Chart chart, int effectiveSnapping, float zoom, float panY) {
         var totalSixteenthsPerBar = chart.BeatsPerMeasure * 4.0;
         var snapGridSize = totalSixteenthsPerBar / effectiveSnapping;
 
@@ -48,14 +48,21 @@ public static class EditorDrawing {
         }
     }
 
-    public static void DrawTapNote(CanvasItem canvas, float laneLeft, float laneWidthInner, float noteY, Color baseColor) {
+    private static void DrawTapNote(CanvasItem canvas, float laneLeft, float laneWidthInner, float noteY, Color baseColor) {
         var bgColor = baseColor.Darkened(0.2f);
         canvas.DrawRect(new Rect2(laneLeft, noteY - EditorConstants.TapNoteHeight / 2, laneWidthInner, EditorConstants.TapNoteHeight), bgColor);
         canvas.DrawRect(new Rect2(laneLeft + 2, noteY - EditorConstants.TapNoteHeight / 2 + 2, laneWidthInner - 4, EditorConstants.TapNoteHeight - 4), baseColor);
     }
 
-    public static void DrawHoldNote(CanvasItem canvas, GodotNote note, float laneLeft, float laneWidthInner, 
-                                     float startY, float endY, Color baseColor, float hue) {
+    private static void DrawHoldNote(
+        CanvasItem canvas,
+        float laneLeft,
+        float laneWidthInner,
+        float startY,
+        float endY,
+        Color baseColor,
+        float hue
+    ) {
         var topY = Math.Min(startY, endY);
         var bottomY = Math.Max(startY, endY);
         var bodyHeight = Math.Max(6f, bottomY - topY);
@@ -67,8 +74,15 @@ public static class EditorDrawing {
         DrawHoldNoteHead(canvas, laneLeft, laneWidthInner, endY, baseColor, EditorConstants.HoldNoteEndHeadHeight, true);
     }
 
-    private static void DrawHoldNoteHead(CanvasItem canvas, float laneLeft, float laneWidthInner, float yPosition, 
-                                         Color baseColor, float height, bool isEnd) {
+    private static void DrawHoldNoteHead(
+        CanvasItem canvas,
+        float laneLeft,
+        float laneWidthInner,
+        float yPosition,
+        Color baseColor,
+        float height,
+        bool isEnd
+    ) {
         var outerColor = baseColor.Darkened(isEnd ? 0.35f : 0.25f);
         var innerColor = isEnd ? baseColor.Lightened(0.1f) : baseColor;
         
@@ -77,7 +91,7 @@ public static class EditorDrawing {
     }
 
     public static void DrawNotes(CanvasItem canvas, Chart chart, EditorState state, AudioStreamPlayer? audioStreamPlayer) {
-        var totalLaneWidth = EditorConstants.MaxLanes * EditorConstants.LaneWidth;
+        const int totalLaneWidth = EditorConstants.MaxLanes * EditorConstants.LaneWidth;
         var startX = (canvas.GetViewportRect().Size.X - totalLaneWidth) / 2;
         
         foreach (var godotNote in chart.Notes) {
@@ -91,7 +105,7 @@ public static class EditorDrawing {
             if (EditorNoteHelpers.IsHoldNote(godotNote)) {
                 var endY = EditorNoteHelpers.CalculateNoteYPosition(godotNote.EndBar, godotNote.EndBeat, godotNote.EndSixteenth, chart, state.Zoom, state.PanY);
                 var hue = EditorNoteHelpers.GetHueForLane(godotNote.Type);
-                DrawHoldNote(canvas, godotNote, laneLeft, laneWidthInner, noteY, endY, baseColor, hue);
+                DrawHoldNote(canvas, laneLeft, laneWidthInner, noteY, endY, baseColor, hue);
             } else {
                 DrawTapNote(canvas, laneLeft, laneWidthInner, noteY, baseColor);
             }
@@ -99,7 +113,7 @@ public static class EditorDrawing {
     }
 
     public static void DrawPlayhead(CanvasItem canvas, AudioStreamPlayer? audioPlayer, float zoom, float panY, float bpm) {
-        if (audioPlayer == null || !audioPlayer.Playing) return;
+        if (audioPlayer is not { Playing: true }) return;
         
         var songPosition = audioPlayer.GetPlaybackPosition() +
             AudioServer.GetTimeSinceLastMix() - AudioServer.GetOutputLatency();
@@ -107,15 +121,23 @@ public static class EditorDrawing {
         canvas.DrawLine(new Vector2(0, playPosition), new Vector2(canvas.GetViewportRect().Size.X, playPosition), Colors.Red);
     }
 
-    public static void DrawNormalSelector(CanvasItem canvas, float selectorX, float selectorY, NoteMode noteMode) {
+    private static void DrawNormalSelector(CanvasItem canvas, float selectorX, float selectorY, NoteMode noteMode) {
         var color = noteMode == NoteMode.Tap 
             ? Color.FromHsv(120, 1, 1, 0.5f)
             : Color.FromHsv(60, 1, 1, 0.5f);
         canvas.DrawCircle(new Vector2(selectorX, selectorY), 15, color);
     }
 
-    public static void DrawHoldNotePreview(CanvasItem canvas, float startX, float selectorX, float selectorY, 
-                                           float startY, float startXLane, int selectedLane, NoteType? holdNoteLane) {
+    private static void DrawHoldNotePreview(
+        CanvasItem canvas,
+        float startX,
+        float selectorX,
+        float selectorY,
+        float startY,
+        float startXLane,
+        int selectedLane,
+        NoteType? holdNoteLane
+    ) {
         canvas.DrawCircle(new Vector2(startXLane, startY), 15, Color.FromHsv(60, 1, 1, 0.7f));
         
         if (selectedLane == (int)holdNoteLane!) {
@@ -126,18 +148,17 @@ public static class EditorDrawing {
     }
 
     public static void DrawSelector(CanvasItem canvas, Chart chart, EditorState state) {
-        var totalLaneWidth = EditorConstants.MaxLanes * EditorConstants.LaneWidth;
+        const int totalLaneWidth = EditorConstants.MaxLanes * EditorConstants.LaneWidth;
         var startX = (canvas.GetViewportRect().Size.X - totalLaneWidth) / 2;
         var selectorY = EditorNoteHelpers.CalculateNoteYPosition(state.SelectedTime.Bar, state.SelectedTime.Beat, state.SelectedTime.Sixteenth, chart, state.Zoom, state.PanY);
-        var selectorX = startX + state.SelectedLane * EditorConstants.LaneWidth + EditorConstants.LaneWidth / 2;
+        var selectorX = startX + state.SelectedLane * EditorConstants.LaneWidth + EditorConstants.LaneWidth / 2f;
         
-        if (state.NoteMode == NoteMode.Hold && state.HoldNoteStart != null && state.HoldNoteLane != null) {
+        if (state is { NoteMode: NoteMode.Hold, HoldNoteStart: not null, HoldNoteLane: not null }) {
             var startY = EditorNoteHelpers.CalculateNoteYPosition(state.HoldNoteStart.Bar, state.HoldNoteStart.Beat, state.HoldNoteStart.Sixteenth, chart, state.Zoom, state.PanY);
-            var startXLane = startX + (int)state.HoldNoteLane! * EditorConstants.LaneWidth + EditorConstants.LaneWidth / 2;
+            var startXLane = startX + (int)state.HoldNoteLane! * EditorConstants.LaneWidth + EditorConstants.LaneWidth / 2f;
             DrawHoldNotePreview(canvas, startX, selectorX, selectorY, startY, startXLane, state.SelectedLane, state.HoldNoteLane);
         } else {
             DrawNormalSelector(canvas, selectorX, selectorY, state.NoteMode);
         }
     }
 }
-

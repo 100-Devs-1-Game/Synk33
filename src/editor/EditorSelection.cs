@@ -5,7 +5,13 @@ using SYNK33.chart;
 namespace SYNK33.editor;
 
 public static class EditorSelection {
-    public static void SelectBeat(EditorState state, Chart chart, Vector2 mousePosition, float viewportHeight, Label selectedTimeLabel) {
+    public static void SelectBeat(
+        EditorState state,
+        Chart chart,
+        Vector2 mousePosition,
+        float viewportHeight,
+        Label selectedTimeLabel
+    ) {
         var beatTime = -(mousePosition.Y - state.PanY) / state.Zoom;
         if (beatTime < 0) beatTime = 0;
 
@@ -25,8 +31,13 @@ public static class EditorSelection {
         state.SelectedTime = new NoteTime((int)bar, (int)beat, sixteenth);
     }
 
-    public static void SelectLane(EditorState state, Vector2 mousePosition, float viewportWidth, Label selectedLaneLabel) {
-        var totalLaneWidth = EditorConstants.MaxLanes * EditorConstants.LaneWidth;
+    public static void SelectLane(
+        EditorState state,
+        Vector2 mousePosition,
+        float viewportWidth,
+        Label selectedLaneLabel
+    ) {
+        const int totalLaneWidth = EditorConstants.MaxLanes * EditorConstants.LaneWidth;
         var startX = (viewportWidth - totalLaneWidth) / 2;
         var relativeX = mousePosition.X - startX;
         
@@ -40,4 +51,3 @@ public static class EditorSelection {
         selectedLaneLabel.Text = $"Lane: {state.SelectedLane}";
     }
 }
-

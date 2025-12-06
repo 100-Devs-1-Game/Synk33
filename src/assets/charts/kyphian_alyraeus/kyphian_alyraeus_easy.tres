@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=16 format=3]
+
+[ext_resource type="Resource" path="res://assets/charts/kyphian_alyraeus/kyphian_alyraeus.tres" id="1_hkba8"]
+[ext_resource type="Script" path="res://chart/GodotNote.cs" id="1_i25kf"]
+[ext_resource type="Script" path="res://chart/Chart.cs" id="2_m6wsf"]
+
+[sub_resource type="Resource" id="Resource_3hawl"]
+script = ExtResource("1_i25kf")
+Bar = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_ccsl2"]
+script = ExtResource("1_i25kf")
+Bar = 2
+Type = 1
+
+[sub_resource type="Resource" id="Resource_vo7fv"]
+script = ExtResource("1_i25kf")
+Bar = 3
+Type = 1
+
+[sub_resource type="Resource" id="Resource_wf32h"]
+script = ExtResource("1_i25kf")
+Bar = 3
+Beat = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_bi5ae"]
+script = ExtResource("1_i25kf")
+Bar = 3
+Beat = 2
+Type = 1
+
+[sub_resource type="Resource" id="Resource_fohvo"]
+script = ExtResource("1_i25kf")
+Bar = 3
+Beat = 3
+Type = 1
+
+[sub_resource type="Resource" id="Resource_6cf5i"]
+script = ExtResource("1_i25kf")
+Bar = 4
+Type = 1
+
+[sub_resource type="Resource" id="Resource_gb27a"]
+script = ExtResource("1_i25kf")
+Bar = 6
+EndBar = 8
+
+[sub_resource type="Resource" id="Resource_s0yww"]
+script = ExtResource("1_i25kf")
+Bar = 8
+Type = 1
+
+[sub_resource type="Resource" id="Resource_wwm8m"]
+script = ExtResource("1_i25kf")
+Bar = 8
+Type = 2
+
+[sub_resource type="Resource" id="Resource_vccw6"]
+script = ExtResource("1_i25kf")
+Bar = 8
+Beat = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_d307h"]
+script = ExtResource("1_i25kf")
+Bar = 8
+Beat = 2
+Type = 1
+
+[resource]
+script = ExtResource("2_m6wsf")
+Designer = "Sarian"
+Level = 4
+Song = ExtResource("1_hkba8")
+Notes = [SubResource("Resource_3hawl"), SubResource("Resource_ccsl2"), SubResource("Resource_vo7fv"), SubResource("Resource_wf32h"), SubResource("Resource_bi5ae"), SubResource("Resource_fohvo"), SubResource("Resource_6cf5i"), SubResource("Resource_gb27a"), SubResource("Resource_s0yww"), SubResource("Resource_wwm8m"), SubResource("Resource_vccw6"), SubResource("Resource_d307h")]
+metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

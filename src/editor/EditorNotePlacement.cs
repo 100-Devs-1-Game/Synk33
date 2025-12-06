@@ -6,7 +6,13 @@ using SYNK33.chart;
 namespace SYNK33.editor;
 
 public static class EditorNotePlacement {
-    public static void AddNote(Chart chart, EditorState state, HashSet<(int, int, double, NoteType)> playedNotes, Action updateInfoDisplay, Action queueRedraw) {
+    public static void AddNote(
+        Chart chart,
+        EditorState state,
+        HashSet<(int, int, double, NoteType)> playedNotes,
+        Action updateInfoDisplay,
+        Action queueRedraw
+    ) {
         var noteType = EditorNoteHelpers.GetNoteTypeFromLane(state.SelectedLane);
         
         if (state.NoteMode == NoteMode.Tap) {
@@ -16,9 +22,14 @@ public static class EditorNotePlacement {
         }
     }
 
-    private static void AddTapNote(Chart chart, EditorState state, NoteType noteType, 
-                                   HashSet<(int, int, double, NoteType)> playedNotes, 
-                                   Action updateInfoDisplay, Action queueRedraw) {
+    private static void AddTapNote(
+        Chart chart,
+        EditorState state,
+        NoteType noteType,
+        HashSet<(int, int, double, NoteType)> playedNotes,
+        Action updateInfoDisplay,
+        Action queueRedraw
+    ) {
         if (EditorNoteHelpers.NoteExistsAt(chart, state.SelectedTime, noteType)) {
             GD.Print($"Note already exists at {state.SelectedTime}");
             return;
@@ -36,9 +47,14 @@ public static class EditorNotePlacement {
         queueRedraw();
     }
 
-    private static void AddHoldNote(Chart chart, EditorState state, NoteType noteType,
-                                    HashSet<(int, int, double, NoteType)> playedNotes,
-                                    Action updateInfoDisplay, Action queueRedraw) {
+    private static void AddHoldNote(
+        Chart chart,
+        EditorState state,
+        NoteType noteType,
+        HashSet<(int, int, double, NoteType)> playedNotes,
+        Action updateInfoDisplay,
+        Action queueRedraw
+    ) {
         if (state.HoldNoteStart == null) {
             StartHoldNotePlacement(state, noteType);
         } else {
@@ -52,9 +68,14 @@ public static class EditorNotePlacement {
         GD.Print($"Hold note start: {state.SelectedTime} Lane:{noteType}");
     }
 
-    private static void CompleteHoldNotePlacement(Chart chart, EditorState state, NoteType noteType,
-                                                  HashSet<(int, int, double, NoteType)> playedNotes,
-                                                  Action updateInfoDisplay, Action queueRedraw) {
+    private static void CompleteHoldNotePlacement(
+        Chart chart,
+        EditorState state,
+        NoteType noteType,
+        HashSet<(int, int, double, NoteType)> playedNotes,
+        Action updateInfoDisplay,
+        Action queueRedraw
+    ) {
         if (noteType != state.HoldNoteLane) {
             GD.Print("Hold note must be on same lane");
             CancelHoldNotePlacement(state);
@@ -86,11 +107,16 @@ public static class EditorNotePlacement {
         state.HoldNoteLane = null;
     }
 
-    public static void RemoveNote(Chart chart, EditorState state, Action updateInfoDisplay, Action queueRedraw) {
+    public static void RemoveNote(
+        Chart chart,
+        EditorState state,
+        Action updateInfoDisplay,
+        Action queueRedraw
+    ) {
         var noteType = EditorNoteHelpers.GetNoteTypeFromLane(state.SelectedLane);
         GD.Print($"Removing note at {state.SelectedTime} Lane:{noteType}");
         
-        for (int i = chart.Notes.Count - 1; i >= 0; i--) {
+        for (var i = chart.Notes.Count - 1; i >= 0; i--) {
             var note = chart.Notes[i];
             if (note.Bar == state.SelectedTime.Bar && 
                 note.Beat == state.SelectedTime.Beat && 
@@ -105,4 +131,3 @@ public static class EditorNotePlacement {
         }
     }
 }
-

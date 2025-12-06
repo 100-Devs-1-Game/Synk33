@@ -5,7 +5,11 @@ using SYNK33.chart;
 namespace SYNK33.editor;
 
 public static class EditorChartIO {
-    public static void SaveChart(EditorState state, Chart chart, Label statusLabel, Control parent, FileDialog.FileSelectedEventHandler onFileSelected) {
+    public static void SaveChart(
+        EditorState state,
+        Control parent,
+        FileDialog.FileSelectedEventHandler onFileSelected
+    ) {
         var fileDialog = new FileDialog {
             Access = FileDialog.AccessEnum.Filesystem,
             FileMode = FileDialog.FileModeEnum.SaveFile,
@@ -25,7 +29,13 @@ public static class EditorChartIO {
         fileDialog.PopupCentered(new Vector2I(800, 600));
     }
 
-    public static void OnSaveChartFileSelected(string path, EditorState state, Chart chart, Label statusLabel, SceneTree sceneTree) {
+    public static void OnSaveChartFileSelected(
+        string path,
+        EditorState state,
+        Chart chart,
+        Label statusLabel,
+        SceneTree sceneTree
+    ) {
         GD.Print($"Saving chart to: {path}");
         var error = ResourceSaver.Save(chart, path);
         
@@ -33,6 +43,14 @@ public static class EditorChartIO {
             state.CurrentChartPath = path;
             statusLabel.Text = $"Saved: {System.IO.Path.GetFileName(path)}";
             GD.Print($"Chart saved successfully");
+
+            try {
+                using var fa = FileAccess.Open("user://last_chart_path.txt", FileAccess.ModeFlags.Write);
+                fa.StoreString(path);
+                fa.Close();
+            } catch (Exception e) {
+                GD.PrintErr($"Failed to persist last chart path: {e.Message}");
+            }
         } else {
             statusLabel.Text = $"Save failed: {error}";
             GD.PrintErr($"Failed to save: {error}");
@@ -41,7 +59,11 @@ public static class EditorChartIO {
         sceneTree.CreateTimer(3.0).Timeout += () => statusLabel.Text = "";
     }
 
-    public static void LoadChart(EditorState state, Control parent, FileDialog.FileSelectedEventHandler onFileSelected) {
+    public static void LoadChart(
+        EditorState state,
+        Control parent,
+        FileDialog.FileSelectedEventHandler onFileSelected
+    ) {
         var fileDialog = new FileDialog {
             Access = FileDialog.AccessEnum.Filesystem,
             FileMode = FileDialog.FileModeEnum.OpenFile,
@@ -77,6 +99,14 @@ public static class EditorChartIO {
         if (loadedChart != null) {
             chart = loadedChart;
             state.CurrentChartPath = path;
+
+            try {
+                using var fa = FileAccess.Open("user://last_chart_path.txt", FileAccess.ModeFlags.Write);
+                fa.StoreString(path);
+                fa.Close();
+            } catch (Exception e) {
+                GD.PrintErr($"Failed to persist last chart path: {e.Message}");
+            }
             
             // Load audio from Song
             if (audioPlayer != null) {
@@ -100,26 +130,4 @@ public static class EditorChartIO {
         
         sceneTree.CreateTimer(3.0).Timeout += () => statusLabel.Text = "";
     }
-
-    public static Chart CreateNewChart() {
-        // Create a default song
-        var defaultSong = new Song {
-            Name = "New Song",
-            Author = "Unknown Artist",
-            Bpm = 120f,
-            Difficulties = 0
-        };
-        
-        var newChart = new Chart {
-            Designer = "Unknown",
-            Level = 1,
-            TempoModifier = 1f,
-            BeatsPerMeasure = 4,
-            Song = defaultSong,
-            Notes = new Godot.Collections.Array<GodotNote>()
-        };
-        GD.Print("Created new chart with default song");
-        return newChart;
-    }
 }
-

@@ -5,7 +5,7 @@ namespace SYNK33.editor;
 
 public enum NoteMode { Tap, Hold }
 
-public partial class EditorState {
+public class EditorState {
     public NoteTime SelectedTime { get; set; } = new(0, 0, 0);
     public int SelectedLane { get; set; }
     public NoteMode NoteMode { get; set; } = NoteMode.Tap;
