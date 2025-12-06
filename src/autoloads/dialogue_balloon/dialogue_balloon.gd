@@ -65,6 +65,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not balloon.visible: return # stupid solution but it'll do
 	if event.is_action_pressed(&"ui_accept"):
 		get_viewport().set_input_as_handled()
 		
