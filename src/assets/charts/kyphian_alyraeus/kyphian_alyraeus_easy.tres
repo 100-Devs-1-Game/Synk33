@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=16 format=3]
+[gd_resource type="Resource" script_class="Chart" load_steps=16 format=3 uid="uid://cttrjmsv5403k"]
 
-[ext_resource type="Resource" path="res://assets/charts/kyphian_alyraeus/kyphian_alyraeus.tres" id="1_hkba8"]
-[ext_resource type="Script" path="res://chart/GodotNote.cs" id="1_i25kf"]
-[ext_resource type="Script" path="res://chart/Chart.cs" id="2_m6wsf"]
+[ext_resource type="Resource" uid="uid://xsisuln5d5vb" path="res://assets/charts/kyphian_alyraeus/kyphian_alyraeus.tres" id="1_hkba8"]
+[ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_i25kf"]
+[ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_m6wsf"]
 
 [sub_resource type="Resource" id="Resource_3hawl"]
 script = ExtResource("1_i25kf")

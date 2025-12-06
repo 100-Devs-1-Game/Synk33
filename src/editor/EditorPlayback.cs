@@ -69,10 +69,8 @@ public static class EditorPlayback {
                 holdSoundPlayer.Play();
                 activeHoldNotes.Add(noteId);
             }
-        } else if (activeHoldNotes.Remove(noteId)) {
-            if (activeHoldNotes.Count == 0) {
-                holdSoundPlayer.Stop();
-            }
+        } else if (activeHoldNotes.Remove(noteId) && activeHoldNotes.Count == 0) {
+            holdSoundPlayer.Stop();
         }
         
         var timeDiff = songPosition - noteTimeInSeconds;
