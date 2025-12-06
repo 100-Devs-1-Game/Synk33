@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://chb47cyobhuxk"]
+
+[resource]
+resource_local_to_scene = true
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)

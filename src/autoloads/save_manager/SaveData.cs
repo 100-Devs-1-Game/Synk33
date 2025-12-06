@@ -4,33 +4,29 @@ using Godot.Collections;
 
 namespace SYNK33.Saving;
 
-interface ISaveInfo
-{
-    public long GetSongPerformance(StringName song);
+interface ISaveInfo {
+    public long GetChartPerformance(long chartUID);
 
-    public void SetSongPerformance(StringName song, long points);
+    public void SetChartPerformance(long chartUID, long points);
 }
 
-public partial class SaveData : Resource, ISaveInfo
-{
+public partial class SaveData : Resource, ISaveInfo{
     /// <summary>
     /// Whether the player has completed the tutorial.
     /// </summary>
     [Export] public bool TutorialCompleted = false;
     /// <summary>
-    /// Points highscore of songs
+    /// Points highscore of charts by their resource UID.
     /// </summary>
-    [Export] private Dictionary<StringName, long> SongMap = [];
+    [Export] private Dictionary<long, long> ChartMap = [];
 
-    public long GetSongPerformance(StringName song)
-    {
+    public long GetChartPerformance(long chartUID) {
         long points = -1;
-        SongMap.TryGetValue(song, out points);
+        ChartMap.TryGetValue(chartUID, out points);
         return points;
     }
 
-    public void SetSongPerformance(StringName song, long points)
-    {
-        SongMap[song] = points;
+    public void SetChartPerformance(long chartUID, long points) {
+        ChartMap[chartUID] = points;
     }
 }

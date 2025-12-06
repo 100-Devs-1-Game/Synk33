@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0rodlyca7r4j"]
+
+[ext_resource type="StyleBox" uid="uid://dui0grsp7q4ay" path="res://scenes/menus/song_select/difficulty_select/unselected.tres" id="1_nqs72"]
+[ext_resource type="StyleBox" uid="uid://cxqcp4gyvoteo" path="res://scenes/menus/song_select/difficulty_select/disabled.tres" id="1_wqcsr"]
+[ext_resource type="StyleBox" uid="uid://chb47cyobhuxk" path="res://scenes/menus/song_select/difficulty_select/selected.tres" id="2_0111x"]
+[ext_resource type="Script" uid="uid://c6lyxrgty6nqe" path="res://scenes/menus/song_select/difficulty_select/difficulty_select_button.gd" id="2_ta8tv"]
+[ext_resource type="ButtonGroup" uid="uid://ccmg6la4ym0fs" path="res://scenes/menus/song_select/difficulty_select/difficulty_select_button.tres" id="4_ado5t"]
+
+[node name="Easy" type="Button"]
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/normal = ExtResource("1_nqs72")
+theme_override_styles/pressed = ExtResource("2_0111x")
+theme_override_styles/hover = ExtResource("1_nqs72")
+theme_override_styles/disabled = ExtResource("1_wqcsr")
+toggle_mode = true
+action_mode = 0
+button_group = ExtResource("4_ado5t")
+text = "DIFFICULTY"
+script = ExtResource("2_ta8tv")
+selected = ExtResource("2_0111x")
+unselected = ExtResource("1_nqs72")

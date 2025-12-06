@@ -19,19 +19,22 @@ public partial class Song : Resource {
 	};
 
 	public Chart? GetChartByDifficulty(Difficulty difficulty) {
-		if ((Difficulties & (int)difficulty) == 0)
-		{
+		if (!HasChart(difficulty)) {
 			return null;
 		}
 
-		string path = $"res://songs/{ResourcePath.GetBaseName()}_{DifficultyMap[difficulty]}.tres";
+		string path = $"{ResourcePath.GetBaseName()}_{DifficultyMap[difficulty]}.tres";
 		return GD.Load<Chart>(path);
+	}
+
+	public bool HasChart(Difficulty difficulty) {
+		return (Difficulties & (1 << (int)difficulty)) != 0;
 	}
 }
 
 public enum Difficulty {
-	Easy = 1,
-	Normal = 1 << 1,
-	Hard = 1 << 2,
-	Expert = 1 << 3
+	Easy,
+	Normal,
+	Hard,
+	Expert
 }
