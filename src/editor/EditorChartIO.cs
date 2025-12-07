@@ -37,6 +37,16 @@ public static class EditorChartIO {
         SceneTree sceneTree
     ) {
         GD.Print($"Saving chart to: {path}");
+        
+        // Sort notes by time (Bar, Beat, Sixteenth) before saving to ensure correct order
+        var sortedNotes = new System.Collections.Generic.List<GodotNote>(chart.Notes);
+        sortedNotes.Sort((a, b) => {
+            if (a.Bar != b.Bar) return a.Bar.CompareTo(b.Bar);
+            if (a.Beat != b.Beat) return a.Beat.CompareTo(b.Beat);
+            return a.Sixteenth.CompareTo(b.Sixteenth);
+        });
+        chart.Notes = new Godot.Collections.Array<GodotNote>(sortedNotes);
+        
         var error = ResourceSaver.Save(chart, path);
         
         if (error == Error.Ok) {
@@ -107,6 +117,15 @@ public static class EditorChartIO {
             } catch (Exception e) {
                 GD.PrintErr($"Failed to persist last chart path: {e.Message}");
             }
+            
+            // Sort notes by time (Bar, Beat, Sixteenth) to ensure correct gameplay order
+            var sortedNotes = new System.Collections.Generic.List<GodotNote>(chart.Notes);
+            sortedNotes.Sort((a, b) => {
+                if (a.Bar != b.Bar) return a.Bar.CompareTo(b.Bar);
+                if (a.Beat != b.Beat) return a.Beat.CompareTo(b.Beat);
+                return a.Sixteenth.CompareTo(b.Sixteenth);
+            });
+            chart.Notes = new Godot.Collections.Array<GodotNote>(sortedNotes);
             
             // Load audio from Song
             if (audioPlayer != null) {
