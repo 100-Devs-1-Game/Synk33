@@ -23,7 +23,7 @@ Debug="*res://autoloads/debug/Debug.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DialogueBalloon="*res://autoloads/dialogue_balloon/dialogue_balloon.tscn"
 SaveManager="*res://autoloads/save_manager/SaveManager.cs"
-SceneManager="*res://autoloads/scene_manager/scene_manager.tscn"
+SceneManager="*res://autoloads/scene_manager/SceneManager.cs"
 
 [dialogue_manager]
 

@@ -12,7 +12,12 @@ public enum BasicScene {
 }
 
 public partial class SceneManager : Node {
-
+	private static PackedScene MainMenuPacked = ResourceLoader.Load<PackedScene>("uid://dnk0thv8iasnk");
+	private static PackedScene SettingsPacked = ResourceLoader.Load<PackedScene>("uid://bwpjtqjpf7sp0");
+	private static PackedScene SongSelectPacked = ResourceLoader.Load<PackedScene>("uid://c75ew37wbtpa2");
+	private static PackedScene CreditsPacked = ResourceLoader.Load<PackedScene>("uid://ovi7mj6ghtqq");
+	private bool isCurrentSceneForeign = true;
+	
 	private Node MainMenu = null!;
 	private Node Settings = null!;
 	private Node SongSelect = null!;
@@ -20,10 +25,10 @@ public partial class SceneManager : Node {
 
 	public override void _Ready() {
 		base._Ready();
-		MainMenu = GetAndRemoveNode("MainMenu");
-		Settings = GetAndRemoveNode("Settings");
-		SongSelect = GetAndRemoveNode("SongSelect");
-		Credits = GetAndRemoveNode("Credits");
+		MainMenu = MainMenuPacked.Instantiate();
+		Settings = SettingsPacked.Instantiate();
+		SongSelect = SongSelectPacked.Instantiate();
+		Credits = CreditsPacked.Instantiate();
 	}
 	/// <summary>
 	/// Switch to a basic scene that requires no arguments 
@@ -45,11 +50,13 @@ public partial class SceneManager : Node {
 				newScene = Credits;
 				break;
 		}
-        GD.Print($"Changing Scene to {newScene}...");
-	    Node currentScene = GetTree().CurrentScene;
-        currentScene.GetParent().RemoveChild(currentScene);
-		GetTree().Root.AddChild(newScene);
-		GetTree().CurrentScene = newScene;
+		SceneSwap(newScene);
+		isCurrentSceneForeign = false;
+	}
+	public void ChangeSceneToForeignScene(PackedScene scene) {
+		Node newScene = scene.Instantiate();
+		SceneSwap(newScene);
+		isCurrentSceneForeign = true;
 	}
 	public void ChangeSceneToGame(Chart chart) {
 		// TODO: Implement this
@@ -57,14 +64,13 @@ public partial class SceneManager : Node {
 	public void ChangeSceneToResults() {
 		// TODO: Implement this
 	}
-	private Node GetAndRemoveNode(NodePath path){
-		Node node = GetNode(path);
-		RemoveChild(node);
-		return node;
-	}
-	private N GetAndRemoveNode<N>(NodePath path) where N : Node{
-		N node = GetNode<N>(path);
-		RemoveChild(node);
-		return node;
+	private void SceneSwap(Node newScene) {
+		Node currentScene = GetTree().CurrentScene;
+		currentScene.GetParent().RemoveChild(currentScene);
+		if (isCurrentSceneForeign) {
+			currentScene.QueueFree();
+		}
+		GetTree().Root.AddChild(newScene);
+		GetTree().CurrentScene = newScene;
 	}
 }
