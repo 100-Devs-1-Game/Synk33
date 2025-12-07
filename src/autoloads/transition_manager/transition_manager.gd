@@ -27,7 +27,8 @@ func play_transition(animation_name:StringName = DEFAULT_ANIMATION) -> void:
 	transitioning = true
 	animation_player.play(animation_name)
 
-
+## @deprecated
+## please use [method play_transition] and [method SceneManager.SwitchToBasicScene].[br]
 ## Transition and change main scene to file.
 func transition_to_file(path:String, animation_name:StringName = DEFAULT_ANIMATION) -> void:
 	play_transition(animation_name)

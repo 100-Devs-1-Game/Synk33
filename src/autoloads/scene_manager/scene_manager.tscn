@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn0m52o3w6r73"]
+
+[ext_resource type="Script" uid="uid://cqeo4xul0cw0c" path="res://autoloads/scene_manager/SceneManager.cs" id="1_d8wwt"]
+[ext_resource type="PackedScene" uid="uid://dnk0thv8iasnk" path="res://scenes/menus/main/main_menu.tscn" id="2_rldo2"]
+[ext_resource type="PackedScene" uid="uid://ovi7mj6ghtqq" path="res://scenes/menus/credits/credits.tscn" id="3_vjg5r"]
+[ext_resource type="PackedScene" uid="uid://bwpjtqjpf7sp0" path="res://scenes/menus/settings/settings.tscn" id="4_6jtsr"]
+[ext_resource type="PackedScene" uid="uid://c75ew37wbtpa2" path="res://scenes/menus/song_select/song_select.tscn" id="5_gxb8b"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_d8wwt")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_rldo2")]
+
+[node name="Credits" parent="." instance=ExtResource("3_vjg5r")]
+
+[node name="Settings" parent="." instance=ExtResource("4_6jtsr")]
+
+[node name="SongSelect" parent="." instance=ExtResource("5_gxb8b")]

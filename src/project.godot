@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SYNK33"
-run/main_scene="uid://h5kimkeas70"
+run/main_scene="uid://dbphk0q6jnudl"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ Debug="*res://autoloads/debug/Debug.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DialogueBalloon="*res://autoloads/dialogue_balloon/dialogue_balloon.tscn"
 SaveManager="*res://autoloads/save_manager/SaveManager.cs"
+SceneManager="*res://autoloads/scene_manager/scene_manager.tscn"
 
 [dialogue_manager]
 
