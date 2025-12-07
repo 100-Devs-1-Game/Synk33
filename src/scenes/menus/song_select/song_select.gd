@@ -26,6 +26,7 @@ var current_difficulty: Difficulty:
 @onready var song_info_length: Control = %LengthSongInfo
 @onready var song_info_highscore: Control = %HighscoreSongInfo
 @onready var song_credit_charter: Control = %CharterSongCredit
+@onready var song_credit_genre: Control = %GenreSongCredit
 
 @onready var difficulty_select: DifficultySelect = %DifficultySelect
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -69,6 +70,7 @@ func change_chart(to:Chart) -> void:
 	))
 	
 	song_credit_charter.info = to.Designer.to_upper()
+	song_credit_genre.info = to.Song.Genre.to_upper()
 	
 	audio_stream_player.stream = to.Song.Audio
 	audio_stream_player.play()

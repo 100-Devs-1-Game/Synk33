@@ -153,6 +153,7 @@ info = "SARIAN"
 type = "CHARTER"
 
 [node name="GenreSongCredit" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
+unique_name_in_owner = true
 layout_mode = 2
 info = "NEOTRANCE"
 type = "GENRE"
