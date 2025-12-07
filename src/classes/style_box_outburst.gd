@@ -21,12 +21,12 @@ static var random_inital_state: int
 			outline_color = new
 			emit_changed()
 
-@export var outline_thickness:float = 6.0:
+@export var outline_thickness:float = 4.0:
 	set(new):
 		if outline_thickness != new:
 			outline_thickness = new
 			emit_changed()
-@export var outerline_thickness:float = 3.0:
+@export var outerline_thickness:float = 2.0:
 	set(new):
 		if outerline_thickness != new:
 			outerline_thickness = new
