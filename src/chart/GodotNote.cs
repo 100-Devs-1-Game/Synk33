@@ -18,12 +18,12 @@ public partial class GodotNote : Resource {
         EndBeat = holdNote.EndNote.Beat;
         EndSixteenth = holdNote.EndNote.Sixteenth;
     }
-    [Export] public int Bar { get; set; }
-    [Export] public int Beat { get; set; }
+    [Export] public long Bar { get; set; }
+    [Export] public long Beat { get; set; }
     [Export] public double Sixteenth { get; set; }
     [Export] public NoteType Type { get; set; }
-    [Export] public int EndBar { get; set; }
-    [Export] public int EndBeat { get; set; }
+    [Export] public long EndBar { get; set; }
+    [Export] public long EndBeat { get; set; }
     [Export] public double EndSixteenth { get; set; }
 
     public Note ToNote() {

@@ -25,12 +25,12 @@ public partial class NoteObject : Node2D {
         Position = Position with { Y = (float)(Position.Y + Speed * delta) };
     }
 
-    public void SetMissed(NoteType type, int bar, int beat, double sixteenth) {
+    public void SetMissed(NoteType type, long bar, long beat, double sixteenth) {
         if (!IsEventMatching(type, bar, beat, sixteenth)) return;
         SetModulate(SelfModulate.Darkened(1f));
     }
 
-    public void SetHit(NoteType type, int bar, int beat, double sixteenth, Judgement judgement) {
+    public void SetHit(NoteType type, long bar, long beat, double sixteenth, Judgement judgement) {
         if (!IsEventMatching(type, bar, beat, sixteenth)) return;
         SetModulate(judgement switch {
             Judgement.Perfect => new Color(255, 255, 255),
@@ -41,7 +41,7 @@ public partial class NoteObject : Node2D {
         });
     }
 
-    protected bool IsEventMatching(NoteType type,  int bar, int beat, double sixteenth) {
+    protected bool IsEventMatching(NoteType type,  long bar, long beat, double sixteenth) {
         return IsEventMatching(type, new NoteTime(bar, beat, sixteenth));
     }
     protected bool IsEventMatching(NoteType type, NoteTime time) {
