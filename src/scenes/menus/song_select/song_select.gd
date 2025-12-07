@@ -22,11 +22,13 @@ var current_difficulty: Difficulty:
 
 @onready var song_container: Container = %SongContainer
 @onready var song_cover: TextureRect = %SongCover
-@onready var song_info_bpm: Control = %BPMSongInfo
-@onready var song_info_length: Control = %LengthSongInfo
+@onready var song_credit_bpm: Control = %BPMSongCredit
+@onready var song_credit_length: Control = %LengthSongCredit
 @onready var song_info_highscore: Control = %HighscoreSongInfo
 @onready var song_credit_charter: Control = %CharterSongCredit
 @onready var song_credit_genre: Control = %GenreSongCredit
+@onready var song_name: Label = %SongName
+@onready var song_credit: Label = %SongCredit
 
 @onready var difficulty_select: DifficultySelect = %DifficultySelect
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -62,8 +64,8 @@ func change_song(to:Song) -> void:
 
 func change_chart(to:Chart) -> void:
 	song_cover.texture = to.Song.Cover
-	song_info_bpm.info = "%03dBPM" % to.Song.Bpm
-	song_info_length.info = time_as_string(to.Song.Audio.get_length())
+	song_credit_bpm.info = "%03dBPM" % to.Song.Bpm
+	song_credit_length.info = time_as_string(to.Song.Audio.get_length())
 	
 	song_info_highscore.info = str(SaveManager.GetChartPerformance(
 		ResourceLoader.get_resource_uid(to.resource_path)
@@ -71,6 +73,9 @@ func change_chart(to:Chart) -> void:
 	
 	song_credit_charter.info = to.Designer.to_upper()
 	song_credit_genre.info = to.Song.Genre.to_upper()
+	
+	song_name.text = to.Song.Name
+	song_credit.text = to.Song.Author
 	
 	audio_stream_player.stream = to.Song.Audio
 	audio_stream_player.play()
