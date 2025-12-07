@@ -6,10 +6,10 @@
 font_color = Color(0.5529412, 0.5529412, 0.5529412, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xfngb"]
-font_size = 32
+font_size = 28
 
 [node name="SongCreditWidget" type="VBoxContainer"]
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 theme_override_constants/separation = -8
 alignment = 1
 script = ExtResource("1_iftv2")
@@ -18,14 +18,13 @@ type = "INFOTYPE"
 
 [node name="Type" type="Label" parent="."]
 layout_mode = 2
-size_flags_horizontal = 6
 text = "INFOTYPE"
 label_settings = SubResource("LabelSettings_33v4w")
 horizontal_alignment = 1
 
 [node name="Info" type="Label" parent="."]
 layout_mode = 2
-size_flags_horizontal = 6
 text = "INFO"
 label_settings = SubResource("LabelSettings_xfngb")
 horizontal_alignment = 1
+text_overrun_behavior = 4
