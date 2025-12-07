@@ -1,0 +1,132 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca72nuqqx5fa3"]
+
+[ext_resource type="Texture2D" uid="uid://bq623lc385k45" path="res://scenes/menus/song_select/grade_sheet.png" id="1_2vi1v"]
+[ext_resource type="FontFile" uid="uid://di54smy3sg4ob" path="res://fonts/vendsans/vendsans_bold.ttf" id="2_t5byx"]
+[ext_resource type="Script" uid="uid://beusqcv0inspx" path="res://classes/style_box_outburst.gd" id="3_5m01h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlbdd"]
+atlas = ExtResource("1_2vi1v")
+region = Rect2(0, 0, 101, 90)
+
+[sub_resource type="StyleBox" id="StyleBox_d0q8g"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("3_5m01h")
+top_right_offset = Vector2(4, -3)
+bottom_left_offset = Vector2(-12.5, 0)
+bottom_right_offset = Vector2(0, 9)
+tail_offset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://beusqcv0inspx"
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Results" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "RESULTS"
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="PerfectsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Perfects"
+
+[node name="PerfectsCount" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "30"
+
+[node name="HitsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Hits"
+
+[node name="HitsCount" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "122"
+
+[node name="MissesLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Misses"
+
+[node name="MissesCount" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "3,188"
+
+[node name="RankLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "RANK"
+horizontal_alignment = 1
+
+[node name="Rank" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wlbdd")
+stretch_mode = 5
+
+[node name="PlayAgain" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -77.0
+offset_right = -22.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_t5byx")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBox_d0q8g")
+text = "PLAY AGAIN?"
