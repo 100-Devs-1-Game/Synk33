@@ -1,7 +1,9 @@
 extends Button
 
-@export_file_path("*.tscn") var scene_path:String
+@export_enum("Main Menu","Settings","Song Select","Credits") var scene:int = 0
 
 
 func _pressed() -> void:
-	TransitionManager.transition_to_file(scene_path)
+	TransitionManager.play_transition()
+	await TransitionManager.transition_midpoint
+	SceneManager.ChangeSceneToBasicScene(scene)

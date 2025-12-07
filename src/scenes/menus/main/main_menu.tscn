@@ -31,19 +31,19 @@ alignment = 1
 layout_mode = 2
 text = "Song Select"
 script = ExtResource("1_qpju2")
-scene_path = "res://scenes/menus/song_select/song_select.tscn"
+scene = 2
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 script = ExtResource("1_qpju2")
-scene_path = "res://scenes/menus/settings/settings.tscn"
+scene = 1
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Credits"
 script = ExtResource("1_qpju2")
-scene_path = "res://scenes/menus/credits/credits.tscn"
+scene = 3
 
 [node name="Tutorial" type="Button" parent="VBoxContainer"]
 layout_mode = 2
