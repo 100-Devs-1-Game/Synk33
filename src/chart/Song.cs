@@ -7,6 +7,7 @@ namespace SYNK33.chart;
 public partial class Song : Resource {
 	[Export] public string Name { get; set; }
 	[Export] public string Author { get; set; }
+	[Export] public string Genre { get; set; }
 	[Export] public AudioStream Audio { get; set; }
 	[Export] public Texture2D Cover { get; set; }
 	[Export] public float Bpm { get; set; }
