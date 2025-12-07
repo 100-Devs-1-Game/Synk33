@@ -33,8 +33,8 @@ public static class EditorNoteHelpers {
     }
 
     public static float CalculateNoteYPosition(
-        int bar,
-        int beat,
+        long bar,
+        long beat,
         double sixteenth,
         Chart chart,
         float zoom,

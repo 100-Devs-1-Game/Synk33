@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_lbbwi")
+Name = "Debug Song"
 Author = "Sarian"
 Audio = ExtResource("1_4idyj")
 Cover = ExtResource("3_niuwm")

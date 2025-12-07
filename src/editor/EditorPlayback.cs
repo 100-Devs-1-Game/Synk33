@@ -10,8 +10,8 @@ public static class EditorPlayback {
         AudioStreamPlayer? audioStreamPlayer,
         AudioStreamPlayer? hitSoundPlayer,
         AudioStreamPlayer? holdSoundPlayer,
-        HashSet<(int, int, double, NoteType)> playedNotes,
-        HashSet<(int, int, double, NoteType)> activeHoldNotes) {
+        HashSet<(long, long, double, NoteType)> playedNotes,
+        HashSet<(long, long, double, NoteType)> activeHoldNotes) {
         
         if (audioStreamPlayer == null || hitSoundPlayer == null || holdSoundPlayer == null) return;
         if (!audioStreamPlayer.Playing) return;
@@ -51,7 +51,7 @@ public static class EditorPlayback {
     }
 
     private static void HandleHoldNotePlayback(
-        (int, int, double, NoteType) noteId,
+        (long, long, double, NoteType) noteId,
         double noteTimeInSeconds,
         GodotNote note,
         double songPosition,
@@ -59,8 +59,8 @@ public static class EditorPlayback {
         Chart chart,
         AudioStreamPlayer hitSoundPlayer,
         AudioStreamPlayer holdSoundPlayer,
-        HashSet<(int, int, double, NoteType)> playedNotes,
-        HashSet<(int, int, double, NoteType)> activeHoldNotes) {
+        HashSet<(long, long, double, NoteType)> playedNotes,
+        HashSet<(long, long, double, NoteType)> activeHoldNotes) {
         
         var endTimeInSeconds = (note.EndBar * chart.BeatsPerMeasure + note.EndBeat + note.EndSixteenth / 4.0) * secondsPerBeat;
         
@@ -81,11 +81,11 @@ public static class EditorPlayback {
     }
 
     private static void HandleTapNotePlayback(
-        (int, int, double, NoteType) noteId,
+        (long, long, double, NoteType) noteId,
         double noteTimeInSeconds,
         double songPosition,
         AudioStreamPlayer hitSoundPlayer,
-        HashSet<(int, int, double, NoteType)> playedNotes) {
+        HashSet<(long, long, double, NoteType)> playedNotes) {
         
         var timeDiff = songPosition - noteTimeInSeconds;
         if (timeDiff is >= 0 and <= 0.1 && !playedNotes.Contains(noteId)) {
@@ -98,7 +98,7 @@ public static class EditorPlayback {
         AudioStreamPlayer? audioStreamPlayer,
         NoteTime selectedTime,
         Chart chart,
-        HashSet<(int, int, double, NoteType)> playedNotes) {
+        HashSet<(long, long, double, NoteType)> playedNotes) {
         
         var seekTime = selectedTime.ToMilliseconds(chart.BeatsPerMeasure, 60.0f / chart.Bpm);
         GD.Print($"Playing preview from Bar:{selectedTime.Bar} Beat:{selectedTime.Beat} ({seekTime:F2}s)");
@@ -111,8 +111,8 @@ public static class EditorPlayback {
     public static void StopPreview(
         AudioStreamPlayer? audioStreamPlayer,
         AudioStreamPlayer? holdSoundPlayer,
-        HashSet<(int, int, double, NoteType)> playedNotes,
-        HashSet<(int, int, double, NoteType)> activeHoldNotes) {
+        HashSet<(long, long, double, NoteType)> playedNotes,
+        HashSet<(long, long, double, NoteType)> activeHoldNotes) {
         
         GD.Print("Stopping preview");
         audioStreamPlayer?.Stop();

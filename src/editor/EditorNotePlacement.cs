@@ -9,7 +9,7 @@ public static class EditorNotePlacement {
     public static void AddNote(
         Chart chart,
         EditorState state,
-        HashSet<(int, int, double, NoteType)> playedNotes,
+        HashSet<(long, long, double, NoteType)> playedNotes,
         Action updateInfoDisplay,
         Action queueRedraw
     ) {
@@ -26,7 +26,7 @@ public static class EditorNotePlacement {
         Chart chart,
         EditorState state,
         NoteType noteType,
-        HashSet<(int, int, double, NoteType)> playedNotes,
+        HashSet<(long, long, double, NoteType)> playedNotes,
         Action updateInfoDisplay,
         Action queueRedraw
     ) {
@@ -51,7 +51,7 @@ public static class EditorNotePlacement {
         Chart chart,
         EditorState state,
         NoteType noteType,
-        HashSet<(int, int, double, NoteType)> playedNotes,
+        HashSet<(long, long, double, NoteType)> playedNotes,
         Action updateInfoDisplay,
         Action queueRedraw
     ) {
@@ -72,7 +72,7 @@ public static class EditorNotePlacement {
         Chart chart,
         EditorState state,
         NoteType noteType,
-        HashSet<(int, int, double, NoteType)> playedNotes,
+        HashSet<(long, long, double, NoteType)> playedNotes,
         Action updateInfoDisplay,
         Action queueRedraw
     ) {

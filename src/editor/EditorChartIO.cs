@@ -23,7 +23,7 @@ public static class EditorChartIO {
         if (!string.IsNullOrEmpty(state.CurrentChartPath)) {
             fileDialog.CurrentPath = state.CurrentChartPath;
         }
-        
+
         fileDialog.FileSelected += onFileSelected;
         parent.AddChild(fileDialog);
         fileDialog.PopupCentered(new Vector2I(800, 600));
@@ -77,7 +77,7 @@ public static class EditorChartIO {
         if (!string.IsNullOrEmpty(state.CurrentChartPath)) {
             fileDialog.CurrentPath = state.CurrentChartPath;
         }
-        
+
         fileDialog.FileSelected += onFileSelected;
         parent.AddChild(fileDialog);
         fileDialog.PopupCentered(new Vector2I(800, 600));

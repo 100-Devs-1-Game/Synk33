@@ -43,8 +43,8 @@ public partial class Editor : Control {
     private Button? _grid32Button;
     private Button? _grid64Button;
     
-    private readonly HashSet<(int, int, double, NoteType)> _playedNotes = new();
-    private readonly HashSet<(int, int, double, NoteType)> _activeHoldNotes = new();
+    private readonly HashSet<(long, long, double, NoteType)> _playedNotes = [];
+    private readonly HashSet<(long, long, double, NoteType)> _activeHoldNotes = [];
 
     public override void _Ready() {
         base._Ready();

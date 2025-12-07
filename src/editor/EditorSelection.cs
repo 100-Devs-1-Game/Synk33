@@ -28,7 +28,7 @@ public static class EditorSelection {
         var sixteenth = remainingSixteenths % 4.0;
 
         selectedTimeLabel.Text = $"{bar + 1}.{beat + 1}.{sixteenth + 1} (snap: {state.GetSnapName()})";
-        state.SelectedTime = new NoteTime((int)bar, (int)beat, sixteenth);
+        state.SelectedTime = new NoteTime((long)bar, (long)beat, sixteenth);
     }
 
     public static void SelectLane(

@@ -8,16 +8,16 @@ namespace SYNK33.core;
 
 public partial class JudgementManager : Node {
     [Signal]
-    public delegate void NoteMissedEventHandler(NoteType type, int bar, int beat, double sixteenth);
+    public delegate void NoteMissedEventHandler(NoteType type, long bar, long beat, double sixteenth);
 
     [Signal]
-    public delegate void NoteHitEventHandler(NoteType type, int bar, int beat, double sixteenth, Judgement judgement);
+    public delegate void NoteHitEventHandler(NoteType type, long bar, long beat, double sixteenth, Judgement judgement);
 
     [Signal]
-    public delegate void NoteHeldEventHandler(NoteType type, int bar, int beat, double sixteenth);
+    public delegate void NoteHeldEventHandler(NoteType type, long bar, long beat, double sixteenth);
 
     [Signal]
-    public delegate void NoteReleasedEventHandler(NoteType type, int bar, int beat, double sixteenth);
+    public delegate void NoteReleasedEventHandler(NoteType type, long bar, long beat, double sixteenth);
 
     [Export] public required Conductor Conductor;
     [Export] public required InputManager InputManager;
@@ -115,11 +115,11 @@ public partial class JudgementManager : Node {
 }
 
 public static class Extensions {
-    public static double Time(this Note note, float secondsPerBeat, int notesBerBar) {
+    public static double Time(this Note note, float secondsPerBeat, long notesBerBar) {
         return (note.Bar * notesBerBar + note.Beat + note.Sixteenth / 4.0) * secondsPerBeat;
     }
     
-    public static double EndTime(this Note.Hold note, float secondsPerBeat, int notesBerBar) {
+    public static double EndTime(this Note.Hold note, float secondsPerBeat, long notesBerBar) {
         return (note.EndNote.Bar * notesBerBar + note.EndNote.Beat + note.EndNote.Sixteenth / 4.0) * secondsPerBeat;
     }
 }
