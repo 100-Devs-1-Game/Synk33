@@ -125,10 +125,10 @@ func _sort_children() -> void:
 		
 		var child:Control = children[i]
 		
-		#child.scale = Vector2.ONE * scale_curve.sample(wrapf(i - selected, -count / 2.0, count / 2.0))
+		child.scale = Vector2.ONE * scale_curve.sample(wrapf(i - selected, -count / 2.0, count / 2.0))
 		child.position.y = _cumulative
 		_cumulative += child.get_rect().size.y
-		#_size_child(child)
+		_size_child(child)
 		
 		select_centered_cumulative -= child.get_rect().size.y * clampf(
 			wrapf(selected + 0.5, 0, count) - i, 0, 1)

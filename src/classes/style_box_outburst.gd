@@ -3,7 +3,11 @@ class_name StyleBoxOutburst
 extends StyleBox
 
 ## Amount of boil slices to generate
-const BOIL_AMOUNT:int = 3
+const BOIL_AMOUNT:int = 5
+
+
+static var random := RandomNumberGenerator.new()
+static var random_inital_state: int
 
 
 @export var body_color:Color = Color.BLACK:
@@ -71,7 +75,13 @@ const BOIL_AMOUNT:int = 3
 			emit_changed()
 
 
+static func _static_init() -> void:
+	random.randomize()
+	random_inital_state = random.state
+
+
 func _draw(canvas_item: RID, rect: Rect2) -> void:
+	random.state = random_inital_state
 	if not boiling:
 		draw_box(
 			canvas_item, 
@@ -157,6 +167,6 @@ func draw_box(
 
 func _vector_boil(base:Vector2) -> Vector2:
 	return Vector2(
-		randf_range(-boil_intensity.x, boil_intensity.x),
-		randf_range(-boil_intensity.y, boil_intensity.y),
+		random.randf_range(-boil_intensity.x, boil_intensity.x),
+		random.randf_range(-boil_intensity.y, boil_intensity.y),
 	) + base
