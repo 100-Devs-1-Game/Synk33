@@ -10,49 +10,49 @@ const BOIL_AMOUNT:int = 3
 	set(new):
 		if body_color != new:
 			body_color = new
-			changed.emit()
+			emit_changed()
 @export var outline_color:Color = Color.WHITE:
 	set(new):
 		if outline_color != new:
 			outline_color = new
-			changed.emit()
+			emit_changed()
 
 @export var outline_thickness:float = 6.0:
 	set(new):
 		if outline_thickness != new:
 			outline_thickness = new
-			changed.emit()
+			emit_changed()
 @export var outerline_thickness:float = 3.0:
 	set(new):
 		if outerline_thickness != new:
 			outerline_thickness = new
-			changed.emit()
+			emit_changed()
 
 @export var top_left_offset := Vector2(0,0):
 	set(new):
 		if top_left_offset != new:
 			top_left_offset = new
-			changed.emit()
+			emit_changed()
 @export var top_right_offset := Vector2(0,0):
 	set(new):
 		if top_right_offset != new:
 			top_right_offset = new
-			changed.emit()
+			emit_changed()
 @export var bottom_left_offset := Vector2(0,0):
 	set(new):
 		if bottom_left_offset != new:
 			bottom_left_offset = new
-			changed.emit()
+			emit_changed()
 @export var bottom_right_offset := Vector2(0,0):
 	set(new):
 		if bottom_right_offset != new:
 			bottom_right_offset = new
-			changed.emit()
+			emit_changed()
 @export var tail_offset := Vector2(0,20):
 	set(new):
 		if tail_offset != new:
 			tail_offset = new
-			changed.emit()
+			emit_changed()
 
 @export_group("Boiling")
 @export_custom(PROPERTY_HINT_GROUP_ENABLE, "") var boiling: bool = false
@@ -61,14 +61,14 @@ const BOIL_AMOUNT:int = 3
 	set(new):
 		if boil_speed != new:
 			boil_speed = new
-			changed.emit()
+			emit_changed()
 
 @export_custom(PROPERTY_HINT_RANGE, "0,20,1,or_greater") \
 		var boil_intensity: Vector2 = Vector2(10, 10):
 	set(new):
 		if boil_intensity != new:
 			boil_intensity = new
-			changed.emit()
+			emit_changed()
 
 
 func _draw(canvas_item: RID, rect: Rect2) -> void:
