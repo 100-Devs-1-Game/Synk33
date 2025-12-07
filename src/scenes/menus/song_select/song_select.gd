@@ -99,6 +99,8 @@ func filter_songs() -> void:
 
 func _on_difficulty_select_tab_changed(tab: int) -> void:
 	current_difficulty = tab as Difficulty
+	if not current_song:
+		return
 	if current_song.HasChart(tab as Difficulty):
 		change_chart(current_song.GetChartByDifficulty(tab as Difficulty))
 	else:
