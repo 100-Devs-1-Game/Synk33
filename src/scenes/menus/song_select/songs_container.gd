@@ -12,6 +12,7 @@ const TARGET_SNAP_MARGIN:float = 0.01
 		scale_curve = new
 		if scale_curve != null:
 			scale_curve.changed.connect(queue_sort)
+@export var spacing:int = 16
 
 
 var selected:float = 0.0:
@@ -127,11 +128,11 @@ func _sort_children() -> void:
 		
 		child.scale = Vector2.ONE * scale_curve.sample(wrapf(i - selected, -count / 2.0, count / 2.0))
 		child.position.y = _cumulative
-		_cumulative += child.get_rect().size.y
+		_cumulative += child.get_rect().size.y + spacing
 		_size_child(child)
 		
-		select_centered_cumulative -= child.get_rect().size.y * clampf(
-			wrapf(selected + 0.5, 0, count) - i, 0, 1)
+		select_centered_cumulative -= (child.get_rect().size.y + spacing) * clampf(
+			wrapf(selected + 0.5, 0, count) - i, 0, 1) 
 	
 	for i in count:
 		if children[i] is not Control:

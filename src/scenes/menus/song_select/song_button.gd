@@ -23,14 +23,14 @@ enum Grade {
 		if title == new:
 			return
 		title = new
-		_set_shaped_text(_shaped_text[_SHAPED_TITLE], new)
+		_set_shaped_text(_shaped_text[_SHAPED_TITLE], new, _tc_title_font)
 		queue_redraw()
 @export var credit:String:
 	set(new):
 		if credit == new:
 			return
 		credit = new
-		_set_shaped_text(_shaped_text[_SHAPED_CREDIT], new)
+		_set_shaped_text(_shaped_text[_SHAPED_CREDIT], new, _tc_font)
 		queue_redraw()
 @export var grade:Grade = Grade.NONE:
 	set(new):
@@ -59,6 +59,8 @@ var _tc_font_colors:PackedColorArray
 var _tc_icon_seperation:int
 
 var _tc_font:Font
+
+var _tc_title_font:Font
 
 var _tc_font_size:int
 
@@ -92,13 +94,14 @@ func _update_themecache() -> void:
 	_tc_icon_seperation = get_theme_constant(&"seperation", _THEME_TYPE)
 	
 	_tc_font = get_theme_font(&"font", _THEME_TYPE)
+	_tc_title_font = get_theme_font(&"title_font", _THEME_TYPE)
 	
 	_tc_font_size = get_theme_font_size(&"font_size", _THEME_TYPE)
 	
 	_tc_focus = get_theme_stylebox(&"focus", _THEME_TYPE)
 	
-	_set_shaped_text(_shaped_text[_SHAPED_TITLE], title)
-	_set_shaped_text(_shaped_text[_SHAPED_CREDIT], credit)
+	_set_shaped_text(_shaped_text[_SHAPED_TITLE], title, _tc_title_font)
+	_set_shaped_text(_shaped_text[_SHAPED_CREDIT], credit, _tc_font)
 	update_minimum_size()
 	queue_redraw()
 
@@ -200,11 +203,11 @@ func _get_tex_size(width:float, height:float) -> Vector2:
 	return tex_size
 
 
-func _set_shaped_text(shaped:RID, string:String) -> void:
+func _set_shaped_text(shaped:RID, string:String, font:Font) -> void:
 	if not is_instance_valid(_tc_font):
 		return
 	text_server.shaped_text_clear(shaped)
-	text_server.shaped_text_add_string(shaped, string, _tc_font.get_rids(), _tc_font_size)
+	text_server.shaped_text_add_string(shaped, string, font.get_rids(), _tc_font_size)
 
 
 func change_disabled(new:bool) -> void:
