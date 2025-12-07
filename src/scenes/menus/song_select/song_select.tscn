@@ -81,6 +81,7 @@ theme_override_constants/margin_bottom = -15
 
 [node name="Label" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/ScaleContainer/MarginContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderSmall"
 text = "SELECT SONG"
 label_settings = SubResource("LabelSettings_4m66x")
 
@@ -136,6 +137,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
 text = "A Long Title For Debug Feat. John Rhythm"
 horizontal_alignment = 1
 autowrap_mode = 3

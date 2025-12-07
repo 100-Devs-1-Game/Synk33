@@ -18,12 +18,14 @@ type = "INFOTYPE"
 
 [node name="Type" type="Label" parent="."]
 layout_mode = 2
+theme_type_variation = &"HeaderSmall"
 text = "INFOTYPE"
 label_settings = SubResource("LabelSettings_33v4w")
 horizontal_alignment = 1
 
 [node name="Info" type="Label" parent="."]
 layout_mode = 2
+theme_type_variation = &"HeaderSmall"
 text = "INFO"
 label_settings = SubResource("LabelSettings_xfngb")
 horizontal_alignment = 1
