@@ -100,6 +100,7 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_yknkk")
 scale_curve = SubResource("Curve_4m66x")
+spacing = null
 
 [node name="SongDisplayCard" type="Container" parent="HBoxContainer"]
 layout_mode = 2
