@@ -147,6 +147,7 @@ size_flags_vertical = 6
 alignment = 1
 
 [node name="CharterSongCredit" parent="HBoxContainer/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
+unique_name_in_owner = true
 layout_mode = 2
 info = "SARIAN"
 type = "CHARTER"
