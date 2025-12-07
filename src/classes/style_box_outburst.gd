@@ -2,6 +2,10 @@
 class_name StyleBoxOutburst
 extends StyleBox
 
+## Amount of boil slices to generate
+const BOIL_AMOUNT:int = 3
+
+
 @export var body_color:Color = Color.BLACK:
 	set(new):
 		if body_color != new:
@@ -50,14 +54,66 @@ extends StyleBox
 			tail_offset = new
 			changed.emit()
 
+@export_group("Boiling")
+@export_custom(PROPERTY_HINT_GROUP_ENABLE, "") var boiling: bool = false
+## Times per second that a new boil frame is drawn
+@export var boil_speed: float = 3:
+	set(new):
+		if boil_speed != new:
+			boil_speed = new
+			changed.emit()
+
+@export_custom(PROPERTY_HINT_RANGE, "0,20,1,or_greater") \
+		var boil_intensity: Vector2 = Vector2(10, 10):
+	set(new):
+		if boil_intensity != new:
+			boil_intensity = new
+			changed.emit()
+
 
 func _draw(canvas_item: RID, rect: Rect2) -> void:
-	var bottom_right := rect.position + Vector2(rect.size.x, rect.size.y) + bottom_right_offset
-	var bottom_left := rect.position + Vector2(0, rect.size.y) + bottom_left_offset
+	if not boiling:
+		draw_box(
+			canvas_item, 
+			rect, 
+			top_left_offset, 
+			top_right_offset, 
+			bottom_left_offset,
+			bottom_right_offset
+		)
+		return
+	
+	var boil_rate := 1.0 / boil_speed
+	var animation_length := BOIL_AMOUNT * boil_rate
+	
+	for i in BOIL_AMOUNT:
+		RenderingServer.canvas_item_add_animation_slice(
+			canvas_item, animation_length, 0, boil_rate, i * boil_rate
+		)
+		draw_box(
+			canvas_item,
+			rect,
+			_vector_boil(top_left_offset),
+			_vector_boil(top_right_offset),
+			_vector_boil(bottom_left_offset),
+			_vector_boil(bottom_right_offset)
+		)
+
+
+func draw_box(
+		canvas_item: RID, 
+		rect: Rect2, 
+		box_top_left_offset: Vector2, 
+		box_top_right_offset: Vector2,
+		box_bottom_left_offset: Vector2,
+		box_bottom_right_offset: Vector2
+	) -> void:
+	var bottom_right := rect.position + Vector2(rect.size.x, rect.size.y) + box_bottom_right_offset
+	var bottom_left := rect.position + Vector2(0, rect.size.y) + box_bottom_left_offset
 	
 	var body_points := PackedVector2Array([
-		rect.position + top_left_offset,
-		rect.position + Vector2(rect.size.x, 0) + top_right_offset,
+		rect.position + box_top_left_offset,
+		rect.position + Vector2(rect.size.x, 0) + box_top_right_offset,
 		bottom_right,
 		bottom_left.move_toward(bottom_right, 40),
 		bottom_left.move_toward(bottom_right, 40) + tail_offset,
@@ -97,3 +153,10 @@ func _draw(canvas_item: RID, rect: Rect2) -> void:
 		outline_thickness,
 		true
 	)
+
+
+func _vector_boil(base:Vector2) -> Vector2:
+	return Vector2(
+		randf_range(-boil_intensity.x, boil_intensity.x),
+		randf_range(-boil_intensity.y, boil_intensity.y),
+	) + base
