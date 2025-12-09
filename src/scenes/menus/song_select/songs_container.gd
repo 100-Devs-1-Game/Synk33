@@ -54,21 +54,32 @@ func _input(event: InputEvent) -> void:
 	if not visible:
 		return
 	if event is InputEventMouseButton: #We
+		if not event.pressed:
+			return
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			get_child(wrapi(target_selected - 1, 0, get_child_count())).grab_focus()
+			accept_event()
+			return
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			get_child(wrapi(target_selected + 1, 0, get_child_count())).grab_focus()
+			accept_event()
+			return
 		var global_rect := get_global_rect()
 		if not global_rect.has_point(event.global_position):
 			return
-		if not event.pressed:
+		if event.button_index != MOUSE_BUTTON_LEFT:
 			return
 		
 		assert(
 			event.global_position.is_equal_approx(event.position), 
 			"SongSelect container cannot have a mismatch between viewport local and global input coordinates"
-		) 
-		
-		event.global_position = _wrap_mouse(event.global_position)
-		# TODO: Make this system compatible with viewport local coordinates.
-		# I'm lazy and don't want to find the correct matrix
-		event.position = event.global_position
+		)
+		accept_event()
+		var event_position = _wrap_mouse(event.global_position)
+		for child:Control in get_children():
+			if child.get_global_rect().has_point(event_position):
+				child.grab_focus()
+				return
 
 
 func _get_allowed_size_flags_horizontal() -> PackedInt32Array:
@@ -99,10 +110,6 @@ func _child_order_changed() -> void:
 		if child.focus_entered.is_connected(_goto):
 			child.focus_entered.disconnect(_goto)
 		child.focus_entered.connect(_goto.bind(i))
-		
-		if child.gui_input.is_connected(_on_label_gui_input):
-			child.gui_input.disconnect(_on_label_gui_input)
-		child.gui_input.connect(_on_label_gui_input.bind(i))
 		
 		child.focus_neighbor_top = child.get_path_to(get_child(wrapi(i - 1, 0, count)))
 		child.focus_neighbor_bottom = child.get_path_to(get_child(wrapi(i + 1, 0, count)))
@@ -171,12 +178,3 @@ func _goto(index:int) -> void:
 
 func _update_repeat(childsize:float) -> void:
 	RenderingServer.canvas_set_item_repeat(get_canvas_item(), Vector2(0, childsize), 2)
-
-
-func _on_label_gui_input(event: InputEvent, index:int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index != MOUSE_BUTTON_LEFT:
-			return
-		if not event.is_pressed():
-			return
-		(get_child(index) as Control).grab_focus()
