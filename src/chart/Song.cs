@@ -11,10 +11,10 @@ public partial class Song : Resource {
 	[Export] public AudioStream Audio { get; set; }
 	[Export] public Texture2D Cover { get; set; }
 	[Export] public float Bpm { get; set; }
-	[Export(PropertyHint.Flags, "Easy,Normal,Hard,Expert")] public int Difficulties { get; set; }
+	[Export(PropertyHint.Flags, "Easy,Medium,Hard,Expert")] public int Difficulties { get; set; }
 	private static Dictionary<Difficulty, string> DifficultyMap = new Dictionary<Difficulty, string> {
 		{ Difficulty.Easy, "easy" },
-		{ Difficulty.Normal, "normal" },
+		{ Difficulty.Medium, "medium" },
 		{ Difficulty.Hard, "hard" },
 		{ Difficulty.Expert, "expert" }
 	};
@@ -35,7 +35,7 @@ public partial class Song : Resource {
 
 public enum Difficulty {
 	Easy,
-	Normal,
+	Medium,
 	Hard,
 	Expert
 }
