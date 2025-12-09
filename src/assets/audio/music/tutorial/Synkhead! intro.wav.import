@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cb08s7lycdugu"
+path="res://.godot/imported/Synkhead! intro.wav-32b7e2515f73a6d0b3020ce750baa346.sample"
+
+[deps]
+
+source_file="res://audio/music/tutorial/Synkhead! intro.wav"
+dest_files=["res://.godot/imported/Synkhead! intro.wav-32b7e2515f73a6d0b3020ce750baa346.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
