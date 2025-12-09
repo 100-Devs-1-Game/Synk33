@@ -1,5 +1,9 @@
+using System;
+using System.Linq;
+using System.Reflection;
 using Godot;
 using Godot.Collections;
+using SYNK33.chart;
 
 
 namespace SYNK33.Saving;
@@ -7,18 +11,18 @@ namespace SYNK33.Saving;
 
 public partial class SaveManager : Node, ISaveInfo
 {
-    
-
-    private const string SavePath = "user://save.tres"; // TODO: in Release this shouldn't be .tres
+    private const string SavePath = "user://save.sav";
+    private const string ChartMapSavePath = "user://chart_map_save.dat";
 
     private readonly SaveData save;
     
     public SaveManager() {
+        save = new SaveData();
         if (!FileAccess.FileExists(SavePath)) {
-            save = new SaveData();
+            Save();
             return;
         }
-        save = ResourceLoader.Load<SaveData>(SavePath);
+        Load();
     }
     // TODO: When saving actually matters, uncomment this
     /*public override void _Notification(int what)
@@ -28,12 +32,43 @@ public partial class SaveManager : Node, ISaveInfo
             ResourceSaver.Save(save, SavePath);
         }
     }*/
-
-    public long GetChartPerformance(long chartUID) {
+    public bool HasChartPerformance(long chartUID) {
+        return save.HasChartPerformance(chartUID);
+    }
+    
+    public ChartPerformance? GetChartPerformance(long chartUID) {
         return save.GetChartPerformance(chartUID);
     }
 
-    public void SetChartPerformance(long chartUID, long points) {
-        save.SetChartPerformance(chartUID, points);
+    public long GetChartHighscore(long chartUID) {
+        ChartPerformance? performance = save.GetChartPerformance(chartUID);
+        if (!performance.HasValue) {
+            return -1;
+        }
+        return performance.Value.Highscore;
+    }
+
+    public void SetChartPerformance(long chartUID, ChartPerformance chartPerformance) {
+        save.SetChartPerformance(chartUID, chartPerformance);
+    }
+
+    public void Save() {
+        save.Save(SavePath);
+        FileAccess file = FileAccess.Open(ChartMapSavePath, FileAccess.ModeFlags.Write);
+        save.SerializeChartMap(file);
+        file.Close();
+    }
+
+    public void Load() {
+        save.Load(SavePath);
+        FileAccess file = FileAccess.Open(ChartMapSavePath, FileAccess.ModeFlags.Read);
+        save.DeserializeChartMap(file);
+        file.Close();
+    }
+
+    public void PrintoutChartMap() {
+        FileAccess file = FileAccess.Open(ChartMapSavePath, FileAccess.ModeFlags.Read);
+        save.PrintoutChartMap(file);
+        file.Close();
     }
 }
