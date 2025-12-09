@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=20 format=3 uid="uid://c75ew37wbtpa2"]
 
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
 [ext_resource type="Script" uid="uid://b0uu18ukygn2r" path="res://scenes/menus/song_select/song_select.gd" id="1_4vbmx"]
@@ -230,7 +230,6 @@ grow_vertical = 0
 shortcut = ExtResource("1_aprlc")
 text = "Back"
 script = ExtResource("2_jefun")
-scene_path = "res://scenes/menus/main/main_menu.tscn"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
