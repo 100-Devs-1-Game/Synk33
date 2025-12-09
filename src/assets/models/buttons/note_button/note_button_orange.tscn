@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://c0woujy5p5rdh"]
 
-[ext_resource type="Material" uid="uid://c3arkj22cceg4" path="res://assets/materials/simple/orange.tres" id="1_xrsb7"]
-[ext_resource type="Material" uid="uid://dnmfjt8tc7ulh" path="res://assets/materials/emission/orange_e.tres" id="2_urnh8"]
-[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://assets/materials/simple/black.tres" id="3_lv8u7"]
+[ext_resource type="Material" uid="uid://c3arkj22cceg4" path="res://materials/simple/orange.tres" id="1_xrsb7"]
+[ext_resource type="Material" uid="uid://dnmfjt8tc7ulh" path="res://materials/emission/orange_e.tres" id="2_urnh8"]
+[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://materials/simple/black.tres" id="3_lv8u7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2n2s"]
 
