@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cc144sek6kt6b"
-path="res://.godot/imported/Synkhead! final section.wav-e4cddf299d26e336c107d43c1463abce.sample"
+path="res://.godot/imported/Synkhead! final section.wav-fbd022d93bb71990a32012d39b10651b.sample"
 
 [deps]
 
-source_file="res://audio/music/tutorial/Synkhead! final section.wav"
-dest_files=["res://.godot/imported/Synkhead! final section.wav-e4cddf299d26e336c107d43c1463abce.sample"]
+source_file="res://assets/audio/music/tutorial/Synkhead! final section.wav"
+dest_files=["res://.godot/imported/Synkhead! final section.wav-fbd022d93bb71990a32012d39b10651b.sample"]
 
 [params]
 

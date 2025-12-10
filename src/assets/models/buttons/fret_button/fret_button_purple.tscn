@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://db0oq6el5wm2v"]
+[gd_scene load_steps=15 format=4 uid="uid://db0oq6el5wm2v"]
 
-[ext_resource type="Material" uid="uid://ccah1txx0qs6x" path="res://materials/simple/purple.tres" id="1_qggp8"]
-[ext_resource type="Material" uid="uid://comjj4tt18835" path="res://materials/emission/purple_e.tres" id="2_t30w3"]
-[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://materials/simple/black.tres" id="3_t30w3"]
-[ext_resource type="Material" uid="uid://ci0d8esrpyasu" path="res://materials/simple/trans_alpha.tres" id="4_cigcp"]
+[ext_resource type="Material" uid="uid://ccah1txx0qs6x" path="res://assets/materials/simple/purple.tres" id="1_qggp8"]
+[ext_resource type="Material" uid="uid://comjj4tt18835" path="res://assets/materials/emission/purple_e.tres" id="2_t30w3"]
+[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://assets/materials/simple/black.tres" id="3_t30w3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1erc"]
 
@@ -187,15 +186,6 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_qggp8")
 surface_material_override/1 = ExtResource("2_t30w3")
 surface_material_override/2 = ExtResource("3_t30w3")
-
-[node name="fret_button_hold" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1512015, 0.10674861, 0)
-visible = false
-mesh = SubResource("ArrayMesh_qh7x4")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_cigcp")
-surface_material_override/1 = ExtResource("2_t30w3")
-surface_material_override/2 = ExtResource("4_cigcp")
 
 [node name="fret_button_top" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025692422, 0)

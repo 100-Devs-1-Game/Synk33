@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c70oawmiysos1"
-path="res://.godot/imported/hold_note_01.wav-360b539d8b31486400d0eabd865d4b31.sample"
+path="res://.godot/imported/hold_note_01.wav-998848d0df34e684a3fc9add601e5ac9.sample"
 
 [deps]
 
-source_file="res://audio/sfx/notes/hold_note_01.wav"
-dest_files=["res://.godot/imported/hold_note_01.wav-360b539d8b31486400d0eabd865d4b31.sample"]
+source_file="res://assets/audio/sfx/notes/hold_note_01.wav"
+dest_files=["res://.godot/imported/hold_note_01.wav-998848d0df34e684a3fc9add601e5ac9.sample"]
 
 [params]
 

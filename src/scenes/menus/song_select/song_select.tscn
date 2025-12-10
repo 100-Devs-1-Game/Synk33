@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c75ew37wbtpa2"]
+[gd_scene load_steps=30 format=3 uid="uid://c75ew37wbtpa2"]
 
 [ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="1_4m66x"]
 [ext_resource type="Script" uid="uid://b0uu18ukygn2r" path="res://scenes/menus/song_select/song_select.gd" id="1_4vbmx"]
@@ -11,9 +11,17 @@
 [ext_resource type="PackedScene" uid="uid://c6til1ee26leu" path="res://scenes/menus/song_select/song_info/song_info_widget.tscn" id="4_ibs4a"]
 [ext_resource type="PackedScene" uid="uid://cp7yjs0djkg5v" path="res://scenes/menus/song_select/song_info/song_credit_widget.tscn" id="4_jn1ix"]
 [ext_resource type="Resource" uid="uid://blarvatodptiw" path="res://assets/charts/debug_song/debug_song.tres" id="4_neb33"]
-[ext_resource type="Resource" uid="uid://xsisuln5d5vb" path="res://assets/charts/kyphian_alyraeus/kyphian_alyraeus.tres" id="5_phqb6"]
+[ext_resource type="Resource" uid="uid://xsisuln5d5vb" path="res://assets/charts/KLIPNITY/kyphian_alyraeus.tres" id="5_phqb6"]
+[ext_resource type="Resource" uid="uid://c807g2eyc5isi" path="res://assets/charts/Fae/freedom_and_consequences.tres" id="5_rrltr"]
+[ext_resource type="Resource" uid="uid://d06i7vw3jwqca" path="res://assets/charts/Fae/neverending_lullaby.tres" id="6_cy4u7"]
 [ext_resource type="PackedScene" uid="uid://cux45wgmlgehs" path="res://scenes/menus/song_select/difficulty_select/difficulty_select.tscn" id="6_neb33"]
+[ext_resource type="Resource" uid="uid://ydx3fv6dcogp" path="res://assets/charts/Fae/stranded.tres" id="7_8dyqt"]
 [ext_resource type="PackedScene" uid="uid://bb1hkgpvpke6e" path="res://scenes/menus/vis_playback/vis_playback.tscn" id="8_01aqb"]
+[ext_resource type="Resource" uid="uid://cjqg4b17aubw2" path="res://assets/charts/Fae/uwu.tres" id="8_7mlxc"]
+[ext_resource type="Resource" uid="uid://dsuq8i3rkdncg" path="res://assets/charts/Fae/who_we_are.tres" id="9_lgsxi"]
+[ext_resource type="Resource" uid="uid://c5wxov6ngfqyg" path="res://assets/charts/KLIPNITY/the_distance.tres" id="10_h61ne"]
+[ext_resource type="Resource" uid="uid://c6av4x1ftefbs" path="res://assets/charts/KLIPNITY/reaperman.tres" id="11_6bawy"]
+[ext_resource type="Resource" uid="uid://bx16wega6rjd" path="res://assets/charts/KLIPNITY/pixel_machine.tres" id="12_iny62"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfngb"]
 bg_color = Color(0.039215688, 0.050980393, 0.07058824, 1)
@@ -55,7 +63,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4vbmx")
-songs = Array[ExtResource("2_w3xl6")]([ExtResource("3_01aqb"), ExtResource("4_neb33"), ExtResource("3_01aqb"), ExtResource("4_neb33"), ExtResource("5_phqb6"), ExtResource("4_neb33")])
+songs = Array[ExtResource("2_w3xl6")]([ExtResource("3_01aqb"), ExtResource("4_neb33"), ExtResource("5_rrltr"), ExtResource("6_cy4u7"), ExtResource("7_8dyqt"), ExtResource("8_7mlxc"), ExtResource("9_lgsxi"), ExtResource("10_h61ne"), ExtResource("11_6bawy"), ExtResource("12_iny62"), ExtResource("5_phqb6")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -222,7 +230,6 @@ grow_vertical = 0
 shortcut = ExtResource("1_aprlc")
 text = "Back"
 script = ExtResource("2_jefun")
-scene_path = "res://scenes/menus/main/main_menu.tscn"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 

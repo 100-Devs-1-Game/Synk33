@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://h5kimkeas70"]
+[gd_scene load_steps=9 format=3 uid="uid://h5kimkeas70"]
 
 [ext_resource type="Script" uid="uid://dbbkpkhl7jysd" path="res://core/Conductor.cs" id="1_r3gm0"]
-[ext_resource type="AudioStream" uid="uid://c1ux4uvf4llw4" path="res://assets/charts/kyphian_alyraeus/Kyphian Alyraeus.ogg" id="1_sekht"]
 [ext_resource type="Script" uid="uid://d2i6u8ixu12r2" path="res://core/GameManager.cs" id="2_sekht"]
 [ext_resource type="Texture2D" uid="uid://bl4y7udpesfni" path="res://assets/notes/note.png" id="2_wuxcy"]
 [ext_resource type="PackedScene" uid="uid://cjcavdxicliet" path="res://spawner/spawner.tscn" id="3_m8rsu"]
-[ext_resource type="Resource" uid="uid://cttrjmsv5403k" path="res://assets/charts/kyphian_alyraeus/kyphian_alyraeus_easy.tres" id="4_a3tso"]
+[ext_resource type="Resource" uid="uid://byxwa3076fx2n" path="res://assets/charts/kyphian_alyraeus/kyphian_alyraeus_easy.tres" id="4_a3tso"]
 [ext_resource type="Script" uid="uid://cn66yvsvfpaxu" path="res://core/InputManager.cs" id="4_s2mv0"]
 [ext_resource type="Script" uid="uid://cvtcbn8yijcak" path="res://core/JudgementManager.cs" id="5_8juq1"]
 [ext_resource type="Script" uid="uid://dh0e0xamdv8xm" path="res://autoloads/debug/Debug.gd" id="9_sekht"]
@@ -13,7 +12,6 @@
 [node name="Sandbox" type="Node2D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_sekht")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("Conductor", "InputManager", "JudgementManager", "Spawner")]
 script = ExtResource("2_sekht")

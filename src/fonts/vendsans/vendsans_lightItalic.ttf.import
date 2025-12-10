@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cttn43o7b6a0a"
-path="res://.godot/imported/vendsans_lightItalic.ttf-4947ee94748221b85e4f8f0939185b85.fontdata"
+path="res://.godot/imported/vendsans_lightItalic.ttf-2633cffb6908438fce3d36206ecdcabb.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/vendsans/vendsans_lightItalic.ttf"
-dest_files=["res://.godot/imported/vendsans_lightItalic.ttf-4947ee94748221b85e4f8f0939185b85.fontdata"]
+source_file="res://fonts/vendsans/vendsans_lightItalic.ttf"
+dest_files=["res://.godot/imported/vendsans_lightItalic.ttf-2633cffb6908438fce3d36206ecdcabb.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ddy0umyra01mv"
-path="res://.godot/imported/vendsans_semi_bold.ttf-dfe0db8d296c466e594ba3b53795a190.fontdata"
+path="res://.godot/imported/vendsans_semi_bold.ttf-37988c8ae839fc283a54441c15465d47.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/vendsans/vendsans_semi_bold.ttf"
-dest_files=["res://.godot/imported/vendsans_semi_bold.ttf-dfe0db8d296c466e594ba3b53795a190.fontdata"]
+source_file="res://fonts/vendsans/vendsans_semi_bold.ttf"
+dest_files=["res://.godot/imported/vendsans_semi_bold.ttf-37988c8ae839fc283a54441c15465d47.fontdata"]
 
 [params]
 

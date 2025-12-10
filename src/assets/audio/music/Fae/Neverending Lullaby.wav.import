@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://btnux80fyutic"
-path="res://.godot/imported/Neverending Lullaby.wav-ddaf764b447a97e84b8e288e90adc9ac.sample"
+path="res://.godot/imported/Neverending Lullaby.wav-ad3ab406441f40bd410a22b8855287dc.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/Fae/Neverending Lullaby.wav"
-dest_files=["res://.godot/imported/Neverending Lullaby.wav-ddaf764b447a97e84b8e288e90adc9ac.sample"]
+source_file="res://assets/audio/music/Fae/Neverending Lullaby.wav"
+dest_files=["res://.godot/imported/Neverending Lullaby.wav-ad3ab406441f40bd410a22b8855287dc.sample"]
 
 [params]
 

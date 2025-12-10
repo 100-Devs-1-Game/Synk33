@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b0qffkw7nvirg"
-path="res://.godot/imported/Freedom and consequences (Ft. JW_Hardt).wav-78f41b753ebcce2edb23a2be42e86994.sample"
+path="res://.godot/imported/Freedom and consequences (Ft. JW_Hardt).wav-043edcf23ad1f8b16f048fb736a6cded.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/Fae/Freedom and consequences (Ft. JW_Hardt).wav"
-dest_files=["res://.godot/imported/Freedom and consequences (Ft. JW_Hardt).wav-78f41b753ebcce2edb23a2be42e86994.sample"]
+source_file="res://assets/audio/music/Fae/Freedom and consequences (Ft. JW_Hardt).wav"
+dest_files=["res://.godot/imported/Freedom and consequences (Ft. JW_Hardt).wav-043edcf23ad1f8b16f048fb736a6cded.sample"]
 
 [params]
 

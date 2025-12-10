@@ -48,7 +48,7 @@ func _ready() -> void:
 func change_song(to:Song) -> void:
 	var chart:Chart = to.GetChartByDifficulty(current_difficulty)
 	if chart == null:
-		assert(false, "No chart found for current difficulty")
+		#assert(false, "No chart found for current difficulty")
 		return
 	for difficulty in len(Difficulty):
 		difficulty_select.set_tab_availability(

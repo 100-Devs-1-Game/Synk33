@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dtvxuiis6h7gv"
-path="res://.godot/imported/Who we are (Ft. Infami).wav-066b7b7d82dc50f4fc3103e239e88dfb.sample"
+path="res://.godot/imported/Who we are (Ft. Infami).wav-27f235a19179e67dbfae41615585a919.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/Fae/Who we are (Ft. Infami).wav"
-dest_files=["res://.godot/imported/Who we are (Ft. Infami).wav-066b7b7d82dc50f4fc3103e239e88dfb.sample"]
+source_file="res://assets/audio/music/Fae/Who we are (Ft. Infami).wav"
+dest_files=["res://.godot/imported/Who we are (Ft. Infami).wav-27f235a19179e67dbfae41615585a919.sample"]
 
 [params]
 

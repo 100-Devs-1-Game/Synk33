@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://d26fwfre324mr"]
+[gd_scene load_steps=9 format=4 uid="uid://d26fwfre324mr"]
 
-[ext_resource type="Material" uid="uid://dehc5w1b53pe4" path="res://materials/simple/blue.tres" id="1_tb112"]
-[ext_resource type="Material" uid="uid://cs6bk5a1qpt7a" path="res://materials/emission/blue_e.tres" id="2_qgxnx"]
-[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://materials/simple/black.tres" id="3_3aste"]
-[ext_resource type="Shader" uid="uid://dbc2jx2sgon03" path="res://scripts/shaders/orb.gdshader" id="4_qgxnx"]
+[ext_resource type="Material" uid="uid://dehc5w1b53pe4" path="res://assets/materials/simple/blue.tres" id="1_tb112"]
+[ext_resource type="Material" uid="uid://cs6bk5a1qpt7a" path="res://assets/materials/emission/blue_e.tres" id="2_qgxnx"]
+[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://assets/materials/simple/black.tres" id="3_3aste"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2n2s"]
 
@@ -89,23 +88,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7ad0b")
 
-[sub_resource type="BoxMesh" id="BoxMesh_3aste"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p31d2"]
-render_priority = 0
-shader = ExtResource("4_qgxnx")
-shader_parameter/trail_color = Color(0.24705882, 0.8117647, 0.9529412, 1)
-shader_parameter/particle_count = 4
-shader_parameter/trail_speed = 0.890000018525
-shader_parameter/glow_brightness = 2.0
-shader_parameter/particle_size = 0.02500000083824
-shader_parameter/tail_length = 1.40000006417093
-shader_parameter/tail_fade = 1.8
-shader_parameter/wiggle_freq = 4.0
-shader_parameter/wiggle_amp = 0.14
-shader_parameter/edge_fade = 0.14
-shader_parameter/fade_strength = 1.0
-
 [node name="note_button" type="Node3D"]
 
 [node name="note_button" type="MeshInstance3D" parent="."]
@@ -116,10 +98,3 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_tb112")
 surface_material_override/1 = ExtResource("2_qgxnx")
 surface_material_override/2 = ExtResource("3_3aste")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.009230137, 0, 0, 0, 2.0080683, 0, 0, -1.0148606)
-visible = false
-cast_shadow = 0
-mesh = SubResource("BoxMesh_3aste")
-surface_material_override/0 = SubResource("ShaderMaterial_p31d2")
