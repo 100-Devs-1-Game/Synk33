@@ -41,7 +41,7 @@ public partial class NoteObject : Node2D {
         });
     }
 
-    protected bool IsEventMatching(NoteType type,  long bar, long beat, double sixteenth) {
+    protected bool IsEventMatching(NoteType type, long bar, long beat, double sixteenth) {
         return IsEventMatching(type, new NoteTime(bar, beat, sixteenth));
     }
     protected bool IsEventMatching(NoteType type, NoteTime time) {

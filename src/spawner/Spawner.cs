@@ -13,7 +13,7 @@ public partial class Spawner : Node2D {
 
     [Export] public NodePath Conductor { get; set; }
     [Export] public JudgementManager JudgementManager { get; set; }
-    
+
     private Chart _chart;
 
     private Conductor _conductor;
@@ -32,7 +32,7 @@ public partial class Spawner : Node2D {
     private void SpawnNotes() {
         var judgementY = GetNode<Marker2D>(JudgementLine).GlobalPosition.Y;
         foreach (var note in _chart.Notes) {
-            var absoluteBeat = note.Bar * _chart.BeatsPerMeasure + note.Beat + (float)note.Sixteenth/ 4.0f + AudioOffset;
+            var absoluteBeat = note.Bar * _chart.BeatsPerMeasure + note.Beat + (float)note.Sixteenth / 4.0f + AudioOffset;
             var spawnY = absoluteBeat * ScrollSpeed * judgementY;
             SpawnNote(note.ToNote(), new Vector2(960f, -spawnY));
         }
@@ -45,7 +45,7 @@ public partial class Spawner : Node2D {
             Note.Tap => _noteScene.Instantiate<NoteObject>(),
             _ => throw new ArgumentOutOfRangeException(nameof(note), note, null)
         };
-        
+
         if (noteInstance is HoldNoteObject holdNoteInstance) {
             if (note is Note.Hold holdNote) {
                 var pixelsPerBeat = ScrollSpeed * judgementY;
