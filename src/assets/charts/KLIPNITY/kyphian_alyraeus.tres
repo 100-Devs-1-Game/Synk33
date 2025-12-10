@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Song" load_steps=4 format=3 uid="uid://xsisuln5d5vb"]
+
+[ext_resource type="AudioStream" uid="uid://b3yqjg0mm767n" path="res://assets/audio/music/KLIPNITY/Kyphian Alyraeus.wav" id="1_yf146"]
+[ext_resource type="Texture2D" uid="uid://cfn33lqxlnt8l" path="res://assets/audio/music/KLIPNITY/Kyphian Alyraeus_cover.jpg" id="2_x3skt"]
+[ext_resource type="Script" uid="uid://8gji4fyvkdmy" path="res://chart/Song.cs" id="3_ed0tp"]
+
+[resource]
+script = ExtResource("3_ed0tp")
+Name = "Kyphian Alyraeus"
+Author = "KLIPNITY"
+Audio = ExtResource("1_yf146")
+Cover = ExtResource("2_x3skt")
+Bpm = 130.0
+Difficulties = 2
+metadata/_custom_type_script = "uid://8gji4fyvkdmy"

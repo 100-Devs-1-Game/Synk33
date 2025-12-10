@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://byvhid2lri5ul"
-path="res://.godot/imported/UwU!.wav-79c4347e4f27b3d306763e46b24e19f3.sample"
+path="res://.godot/imported/UwU!.wav-669c48eebc75806c87d228f1ce9dd3fa.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/Fae/UwU!.wav"
-dest_files=["res://.godot/imported/UwU!.wav-79c4347e4f27b3d306763e46b24e19f3.sample"]
+source_file="res://assets/audio/music/Fae/UwU!.wav"
+dest_files=["res://.godot/imported/UwU!.wav-669c48eebc75806c87d228f1ce9dd3fa.sample"]
 
 [params]
 

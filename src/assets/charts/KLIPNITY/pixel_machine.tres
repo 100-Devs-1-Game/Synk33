@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Song" load_steps=4 format=3 uid="uid://bx16wega6rjd"]
+
+[ext_resource type="AudioStream" uid="uid://cq41c3mh8ul5c" path="res://assets/audio/music/KLIPNITY/Pixel Machine.wav" id="1_0swci"]
+[ext_resource type="Script" uid="uid://8gji4fyvkdmy" path="res://chart/Song.cs" id="1_bansb"]
+[ext_resource type="Texture2D" uid="uid://dy6dty77f24ok" path="res://assets/audio/music/KLIPNITY/Pixel Machine_cover.jpg" id="2_p1n08"]
+
+[resource]
+script = ExtResource("1_bansb")
+Name = "Pixel Machine"
+Author = "KLIPNITY"
+Audio = ExtResource("1_0swci")
+Cover = ExtResource("2_p1n08")
+Bpm = 165.0
+metadata/_custom_type_script = "uid://8gji4fyvkdmy"

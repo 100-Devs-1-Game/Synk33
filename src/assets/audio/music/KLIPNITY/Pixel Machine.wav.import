@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cq41c3mh8ul5c"
-path="res://.godot/imported/Pixel Machine.wav-22b0fd17a742415e4dfefa36813dada3.sample"
+path="res://.godot/imported/Pixel Machine.wav-ce90062704060804df1923de36d03194.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/KLIPNITY/Pixel Machine.wav"
-dest_files=["res://.godot/imported/Pixel Machine.wav-22b0fd17a742415e4dfefa36813dada3.sample"]
+source_file="res://assets/audio/music/KLIPNITY/Pixel Machine.wav"
+dest_files=["res://.godot/imported/Pixel Machine.wav-ce90062704060804df1923de36d03194.sample"]
 
 [params]
 

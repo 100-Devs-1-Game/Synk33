@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfn33lqxlnt8l"
-path="res://.godot/imported/Kyphian Alyraeus_cover.jpg-1fc1ed7f3da687ff579de2de3cf2733f.ctex"
+path="res://.godot/imported/Kyphian Alyraeus_cover.jpg-26cc583cf8c4057188a5438b4d3f5826.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/music/originals/KLIPNITY/Kyphian Alyraeus_cover.jpg"
-dest_files=["res://.godot/imported/Kyphian Alyraeus_cover.jpg-1fc1ed7f3da687ff579de2de3cf2733f.ctex"]
+source_file="res://assets/audio/music/KLIPNITY/Kyphian Alyraeus_cover.jpg"
+dest_files=["res://.godot/imported/Kyphian Alyraeus_cover.jpg-26cc583cf8c4057188a5438b4d3f5826.ctex"]
 
 [params]
 

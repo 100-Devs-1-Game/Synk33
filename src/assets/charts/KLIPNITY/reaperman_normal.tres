@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://cr08iqcm1ur3o"]
+
+[ext_resource type="Resource" uid="uid://c6av4x1ftefbs" path="res://assets/charts/KLIPNITY/reaperman.tres" id="2_tgff7"]
+[ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="3_vhuvg"]
+
+[resource]
+script = ExtResource("3_vhuvg")
+Designer = "Sarian"
+Level = 4
+Song = ExtResource("2_tgff7")
+Notes = null
+metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

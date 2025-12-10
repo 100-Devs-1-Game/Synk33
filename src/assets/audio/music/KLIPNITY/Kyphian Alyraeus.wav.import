@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b3yqjg0mm767n"
-path="res://.godot/imported/Kyphian Alyraeus.wav-ad908d454be4dab40e9bde6d64f167ad.sample"
+path="res://.godot/imported/Kyphian Alyraeus.wav-1cc42d2ce462d9f6b36d9aa672d85fd6.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/KLIPNITY/Kyphian Alyraeus.wav"
-dest_files=["res://.godot/imported/Kyphian Alyraeus.wav-ad908d454be4dab40e9bde6d64f167ad.sample"]
+source_file="res://assets/audio/music/KLIPNITY/Kyphian Alyraeus.wav"
+dest_files=["res://.godot/imported/Kyphian Alyraeus.wav-1cc42d2ce462d9f6b36d9aa672d85fd6.sample"]
 
 [params]
 

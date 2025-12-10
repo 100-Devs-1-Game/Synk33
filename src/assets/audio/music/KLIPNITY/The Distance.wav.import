@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://6aoqhi3ypnje"
-path="res://.godot/imported/The Distance.wav-9c38f8d8854e3f870d2967294811c1b8.sample"
+path="res://.godot/imported/The Distance.wav-76037254a925bb5b39fb77f6aef01c66.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/KLIPNITY/The Distance.wav"
-dest_files=["res://.godot/imported/The Distance.wav-9c38f8d8854e3f870d2967294811c1b8.sample"]
+source_file="res://assets/audio/music/KLIPNITY/The Distance.wav"
+dest_files=["res://.godot/imported/The Distance.wav-76037254a925bb5b39fb77f6aef01c66.sample"]
 
 [params]
 

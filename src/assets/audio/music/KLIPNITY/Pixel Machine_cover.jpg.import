@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dy6dty77f24ok"
-path="res://.godot/imported/Pixel Machine_cover.jpg-4fbd3ae6cc0e6b6cac6bb4778c0b85ec.ctex"
+path="res://.godot/imported/Pixel Machine_cover.jpg-46282b244e263ef898c4d765f56d19da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/music/originals/KLIPNITY/Pixel Machine_cover.jpg"
-dest_files=["res://.godot/imported/Pixel Machine_cover.jpg-4fbd3ae6cc0e6b6cac6bb4778c0b85ec.ctex"]
+source_file="res://assets/audio/music/KLIPNITY/Pixel Machine_cover.jpg"
+dest_files=["res://.godot/imported/Pixel Machine_cover.jpg-46282b244e263ef898c4d765f56d19da.ctex"]
 
 [params]
 

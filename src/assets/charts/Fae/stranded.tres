@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Song" load_steps=4 format=3 uid="uid://ydx3fv6dcogp"]
+
+[ext_resource type="Script" uid="uid://8gji4fyvkdmy" path="res://chart/Song.cs" id="1_dc3va"]
+[ext_resource type="AudioStream" uid="uid://8rko6mcgrl13" path="res://assets/audio/music/Fae/Stranded.wav" id="1_jibav"]
+[ext_resource type="Texture2D" uid="uid://dst3has6m0f4t" path="res://assets/charts/placeholder/Placeholder.png" id="2_4csxg"]
+
+[resource]
+script = ExtResource("1_dc3va")
+Name = "Stranded"
+Author = "Willow Leyline /Fae"
+Audio = ExtResource("1_jibav")
+Cover = ExtResource("2_4csxg")
+Bpm = 182.0
+metadata/_custom_type_script = "uid://8gji4fyvkdmy"

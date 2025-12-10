@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b7n700gdk7wjk"
-path="res://.godot/imported/Synkhead! riser (Spam note).wav-d3497f32efc9b8cbc558735bdf4c7996.sample"
+path="res://.godot/imported/Synkhead! riser (Spam note).wav-6ef8c2d4e194d0f9df1b4a775c0eda02.sample"
 
 [deps]
 
-source_file="res://audio/music/tutorial/Synkhead! riser (Spam note).wav"
-dest_files=["res://.godot/imported/Synkhead! riser (Spam note).wav-d3497f32efc9b8cbc558735bdf4c7996.sample"]
+source_file="res://assets/audio/music/tutorial/Synkhead! riser (Spam note).wav"
+dest_files=["res://.godot/imported/Synkhead! riser (Spam note).wav-6ef8c2d4e194d0f9df1b4a775c0eda02.sample"]
 
 [params]
 

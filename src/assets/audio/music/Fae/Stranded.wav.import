@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://8rko6mcgrl13"
-path="res://.godot/imported/Stranded.wav-35d372e8f70ff5bb328f646acf9c5601.sample"
+path="res://.godot/imported/Stranded.wav-71cb3d6b25b5b6c00ea24fbd16bb2042.sample"
 
 [deps]
 
-source_file="res://audio/music/originals/Fae/Stranded.wav"
-dest_files=["res://.godot/imported/Stranded.wav-35d372e8f70ff5bb328f646acf9c5601.sample"]
+source_file="res://assets/audio/music/Fae/Stranded.wav"
+dest_files=["res://.godot/imported/Stranded.wav-71cb3d6b25b5b6c00ea24fbd16bb2042.sample"]
 
 [params]
 
