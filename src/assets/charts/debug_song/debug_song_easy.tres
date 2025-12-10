@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=6 format=3 uid="uid://cx354pa6sbc70"]
+[gd_resource type="Resource" script_class="Chart" load_steps=13 format=3 uid="uid://cnylwicbcsa1k"]
 
 [ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_kfae5"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="2_77crk"]
@@ -14,10 +14,43 @@ Type = 2
 EndBar = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
+[sub_resource type="Resource" id="Resource_abvnw"]
+script = ExtResource("1_kfae5")
+Bar = 1
+
+[sub_resource type="Resource" id="Resource_1cvb2"]
+script = ExtResource("1_kfae5")
+Bar = 2
+
+[sub_resource type="Resource" id="Resource_wxcee"]
+script = ExtResource("1_kfae5")
+Bar = 3
+
+[sub_resource type="Resource" id="Resource_a37tu"]
+script = ExtResource("1_kfae5")
+Bar = 3
+Type = 1
+EndBar = 4
+
+[sub_resource type="Resource" id="Resource_83oed"]
+script = ExtResource("1_kfae5")
+Bar = 4
+Type = 2
+EndBar = 5
+
+[sub_resource type="Resource" id="Resource_di5l2"]
+script = ExtResource("1_kfae5")
+Bar = 4
+
+[sub_resource type="Resource" id="Resource_ic0d2"]
+script = ExtResource("1_kfae5")
+Bar = 4
+Beat = 3
+
 [resource]
 script = ExtResource("2_77crk")
 Designer = "Sarian"
 Level = 2
 Song = ExtResource("2_va0l2")
-Notes = Array[Object]([SubResource("Resource_pm4jv"), SubResource("Resource_tfmqh")])
+Notes = Array[ExtResource("1_kfae5")]([SubResource("Resource_pm4jv"), SubResource("Resource_tfmqh"), SubResource("Resource_abvnw"), SubResource("Resource_1cvb2"), SubResource("Resource_wxcee"), SubResource("Resource_a37tu"), SubResource("Resource_83oed"), SubResource("Resource_di5l2"), SubResource("Resource_ic0d2")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

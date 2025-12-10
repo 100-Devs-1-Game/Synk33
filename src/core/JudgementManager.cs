@@ -25,6 +25,7 @@ public partial class JudgementManager : Node {
 
     private readonly List<Note> _notes = [];
     private readonly List<Note.Hold> _heldNotes = [];
+    private readonly Dictionary<Note.Hold, Key> _heldNotesPressedKey = new();
 
     public override void _Ready() {
         base._Ready();
@@ -73,12 +74,16 @@ public partial class JudgementManager : Node {
             case true:
                 if (JudgeTiming(input, note) is not { } judgement) return;
                 _heldNotes.Add(note);
+                _heldNotesPressedKey[note] = input.PhysicalKey;
                 _notes.Remove(note);
                 EmitSignalNoteHeld(note.Type, note.Bar, note.Beat, note.Sixteenth);
                 break;
             case false:
-                _heldNotes.Remove(note);
-                EmitSignalNoteReleased(note.Type, note.Bar, note.Beat, note.Sixteenth);
+                if (_heldNotesPressedKey.TryGetValue(note, out var pressedKey) && pressedKey == input.PhysicalKey) {
+                    _heldNotes.Remove(note);
+                    _heldNotesPressedKey.Remove(note);
+                    EmitSignalNoteReleased(note.Type, note.Bar, note.Beat, note.Sixteenth);
+                }
                 break;
         }
     }
@@ -108,6 +113,7 @@ public partial class JudgementManager : Node {
             var time = Conductor.SongPosition - note.EndTime(Conductor.SecondsPerBeat, Conductor.Chart.BeatsPerMeasure);
             if (time > 0) {
                 _heldNotes.Remove(note);
+                _heldNotesPressedKey.Remove(note);
                 EmitSignalNoteReleased(note.Type, note.Bar, note.Beat, note.Sixteenth);
             }
         }

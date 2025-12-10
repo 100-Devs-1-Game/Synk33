@@ -6,7 +6,7 @@ namespace SYNK33.core;
 
 public partial class InputManager : Node {
     [Export] public double SongStartTime { get; set; } = 0;
-    private readonly Queue<RhythmInput> _inputs = new();
+    private readonly Queue<RhythmInput> _inputs = new Queue<RhythmInput>();
 
     public override void _Ready() {
         base._Ready();
@@ -26,7 +26,7 @@ public partial class InputManager : Node {
         };
 
         if (noteType.HasValue) {
-            AddInput(noteType.Value, @event.IsPressed());
+            AddInput(noteType.Value, @event.IsPressed(), keyEvent.PhysicalKeycode);
         }
     }
 
@@ -34,9 +34,9 @@ public partial class InputManager : Node {
         return _inputs.Count > 0 ? _inputs.Dequeue() : null;
     }
 
-    private void AddInput(NoteType type, bool pressed) {
+    private void AddInput(NoteType type, bool pressed, Key physicalKey) {
         var timestamp = Time.GetUnixTimeFromSystem();
-        var hit = new RhythmInput(type, pressed, timestamp - SongStartTime);
+        var hit = new RhythmInput(type, pressed, timestamp - SongStartTime, physicalKey);
         _inputs.Enqueue(hit);
     }
 }
@@ -44,5 +44,6 @@ public partial class InputManager : Node {
 public record RhythmInput(
     NoteType NoteType,
     bool Pressed,
-    double Timestamp
+    double Timestamp,
+    Key PhysicalKey
 );
