@@ -26,7 +26,7 @@ public static class EditorInput {
     }
 
     public static void HandleKeyInput(InputEventKey keyEvent, Editor editor) {
-        if (keyEvent.IsActionPressed("editor_play")) {
+        if (keyEvent.IsActionPressed("editor_play") || keyEvent is { Keycode: Key.Space, Pressed: true }) {
             editor.TogglePlayback();
             return;
         }
