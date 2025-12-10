@@ -1,0 +1,73 @@
+using System;
+using Godot;
+using SYNK33.chart;
+using SYNK33.core;
+
+namespace SYNK33.spawner;
+
+public partial class Spawner3D : Node3D {
+	[Export] public float ScrollSpeed { get; set; } = 1.0f;
+	[Export] public float AudioOffset { get; set; }
+
+	[Export] public required NodePath JudgementLine { get; set; }
+
+	[Export] public required NodePath Conductor { get; set; }
+	[Export] public required JudgementManager JudgementManager { get; set; }
+	
+	private Chart _chart;
+
+	private Conductor _conductor;
+
+	private PackedScene _noteScene;
+	private PackedScene _holdNoteScene;
+
+	public override void _Ready() {
+		_conductor = GetNode<Conductor>(Conductor);
+		_chart = _conductor.Chart;
+		_noteScene = GD.Load<PackedScene>("res://chart/NoteObject3D.tscn");
+		_holdNoteScene = GD.Load<PackedScene>("res://chart/HoldNoteObject3D.tscn");
+		SpawnNotes();
+	}
+
+	private void SpawnNotes() {
+		var judgementY = GetNode<Marker3D>(JudgementLine).GlobalPosition.Z;
+		foreach (var note in _chart.Notes) {
+			var absoluteBeat = note.Bar * _chart.BeatsPerMeasure + note.Beat + (float)note.Sixteenth/ 4.0f + AudioOffset;
+			var spawnY = absoluteBeat * ScrollSpeed * judgementY;
+			SpawnNote(note.ToNote(), new Vector2(0, -spawnY));
+		}
+	}
+
+	private void SpawnNote(Note note, Vector2 position) {
+		var judgementY = GetNode<Marker3D>(JudgementLine).GlobalPosition.Z;
+		NoteObject3D noteInstance = note switch {
+			Note.Hold => _holdNoteScene.Instantiate<NoteObject3D>(),
+			Note.Tap => _noteScene.Instantiate<NoteObject3D>(),
+			_ => throw new ArgumentOutOfRangeException(nameof(note), note, null)
+		};
+		
+		if (noteInstance is HoldNoteObject3D holdNoteInstance) {
+			if (note is Note.Hold holdNote) {
+				holdNoteInstance.EndTime = holdNote.EndNote;
+				holdNoteInstance.BeatsPerMeasure = _chart.BeatsPerMeasure;
+				holdNoteInstance.UnitsPerBeat = ScrollSpeed;
+				JudgementManager.NoteHeld += holdNoteInstance.StartHold;
+				JudgementManager.NoteReleased += holdNoteInstance.EndHold;
+			}
+		}
+
+		noteInstance.Speed = -judgementY / _conductor.SecondsPerBeat * ScrollSpeed;
+		noteInstance.Type = note.Type;
+		var lanePosition = note.Type switch {
+			NoteType.Left => position.X - 1f,
+			NoteType.Middle => position.X,
+			NoteType.Right => position.X + 1f,
+			_ => throw new ArgumentOutOfRangeException()
+		};
+		noteInstance.Position = new Vector3(lanePosition, 0, (judgementY - position.Y));
+		noteInstance.StartTime = note.StartTime;
+		JudgementManager.NoteMissed += noteInstance.SetMissed;
+		JudgementManager.NoteHit += noteInstance.SetHit;
+		AddChild(noteInstance);
+	}
+}
