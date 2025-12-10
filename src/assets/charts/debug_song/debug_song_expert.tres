@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=24 format=3 uid="uid://4i0pmvvhnnyv"]
+[gd_resource type="Resource" script_class="Chart" load_steps=72 format=3 uid="uid://dnxsyxpims5nl"]
 
 [ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_f8ume"]
 [ext_resource type="Resource" uid="uid://blarvatodptiw" path="res://assets/charts/debug_song/debug_song.tres" id="2_rpyet"]
@@ -8,14 +8,25 @@
 script = ExtResource("1_f8ume")
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
+[sub_resource type="Resource" id="Resource_gtqs8"]
+script = ExtResource("1_f8ume")
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_1oihr"]
+script = ExtResource("1_f8ume")
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_5dxv4"]
+script = ExtResource("1_f8ume")
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
 [sub_resource type="Resource" id="Resource_ppkk4"]
 script = ExtResource("1_f8ume")
 Type = 1
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
-[sub_resource type="Resource" id="Resource_ceeje"]
+[sub_resource type="Resource" id="Resource_d1hux"]
 script = ExtResource("1_f8ume")
-Type = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_rk2we"]
@@ -30,30 +41,18 @@ metadata/_custom_type_script = "uid://bmvioldybpoam"
 script = ExtResource("1_f8ume")
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
-[sub_resource type="Resource" id="Resource_guutq"]
+[sub_resource type="Resource" id="Resource_yftsa"]
 script = ExtResource("1_f8ume")
+Type = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
-[sub_resource type="Resource" id="Resource_1xq6w"]
+[sub_resource type="Resource" id="Resource_ceeje"]
 script = ExtResource("1_f8ume")
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_d1hux"]
-script = ExtResource("1_f8ume")
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_dm37s"]
-script = ExtResource("1_f8ume")
-Type = 1
+Type = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_oq1cs"]
 script = ExtResource("1_f8ume")
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_yftsa"]
-script = ExtResource("1_f8ume")
-Type = 2
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_thnbw"]
@@ -61,10 +60,6 @@ script = ExtResource("1_f8ume")
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
 [sub_resource type="Resource" id="Resource_0jn2v"]
-script = ExtResource("1_f8ume")
-metadata/_custom_type_script = "uid://bmvioldybpoam"
-
-[sub_resource type="Resource" id="Resource_gtqs8"]
 script = ExtResource("1_f8ume")
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
@@ -80,18 +75,284 @@ metadata/_custom_type_script = "uid://bmvioldybpoam"
 script = ExtResource("1_f8ume")
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
-[sub_resource type="Resource" id="Resource_5dxv4"]
+[sub_resource type="Resource" id="Resource_dm37s"]
+script = ExtResource("1_f8ume")
+Type = 1
+metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_guutq"]
 script = ExtResource("1_f8ume")
 metadata/_custom_type_script = "uid://bmvioldybpoam"
 
-[sub_resource type="Resource" id="Resource_1oihr"]
+[sub_resource type="Resource" id="Resource_1xq6w"]
 script = ExtResource("1_f8ume")
 metadata/_custom_type_script = "uid://bmvioldybpoam"
+
+[sub_resource type="Resource" id="Resource_fwnyt"]
+script = ExtResource("1_f8ume")
+Beat = 1
+
+[sub_resource type="Resource" id="Resource_jo008"]
+script = ExtResource("1_f8ume")
+Beat = 2
+Type = 2
+EndBar = 1
+
+[sub_resource type="Resource" id="Resource_yx8mm"]
+script = ExtResource("1_f8ume")
+Beat = 2
+
+[sub_resource type="Resource" id="Resource_yiw1v"]
+script = ExtResource("1_f8ume")
+Beat = 3
+
+[sub_resource type="Resource" id="Resource_btgx6"]
+script = ExtResource("1_f8ume")
+Bar = 1
+Type = 1
+EndBar = 2
+
+[sub_resource type="Resource" id="Resource_cxyjj"]
+script = ExtResource("1_f8ume")
+Bar = 1
+
+[sub_resource type="Resource" id="Resource_xfv87"]
+script = ExtResource("1_f8ume")
+Bar = 1
+Beat = 2
+Type = 1
+
+[sub_resource type="Resource" id="Resource_n8tvx"]
+script = ExtResource("1_f8ume")
+Bar = 2
+
+[sub_resource type="Resource" id="Resource_b7yhb"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 1
+
+[sub_resource type="Resource" id="Resource_gqljk"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 1
+Type = 2
+
+[sub_resource type="Resource" id="Resource_od38b"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_puvwq"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 2
+Type = 2
+
+[sub_resource type="Resource" id="Resource_rfix2"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 2
+
+[sub_resource type="Resource" id="Resource_twi55"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 2
+Type = 1
+EndBar = 3
+
+[sub_resource type="Resource" id="Resource_3lw10"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 3
+
+[sub_resource type="Resource" id="Resource_ttsag"]
+script = ExtResource("1_f8ume")
+Bar = 2
+Beat = 3
+Type = 2
+
+[sub_resource type="Resource" id="Resource_6ji3i"]
+script = ExtResource("1_f8ume")
+Bar = 3
+Type = 2
+EndBar = 3
+EndBeat = 2
+
+[sub_resource type="Resource" id="Resource_wgg6y"]
+script = ExtResource("1_f8ume")
+Bar = 3
+
+[sub_resource type="Resource" id="Resource_u5rlj"]
+script = ExtResource("1_f8ume")
+Bar = 3
+Beat = 1
+
+[sub_resource type="Resource" id="Resource_c84y3"]
+script = ExtResource("1_f8ume")
+Bar = 3
+Beat = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_kf0hm"]
+script = ExtResource("1_f8ume")
+Bar = 3
+Beat = 2
+EndBar = 4
+
+[sub_resource type="Resource" id="Resource_xhpu2"]
+script = ExtResource("1_f8ume")
+Bar = 3
+Beat = 2
+Type = 1
+
+[sub_resource type="Resource" id="Resource_gcdts"]
+script = ExtResource("1_f8ume")
+Bar = 3
+Beat = 3
+Type = 1
+
+[sub_resource type="Resource" id="Resource_v6e1w"]
+script = ExtResource("1_f8ume")
+Bar = 3
+Beat = 3
+Type = 2
+
+[sub_resource type="Resource" id="Resource_2kc4t"]
+script = ExtResource("1_f8ume")
+Bar = 4
+Type = 2
+
+[sub_resource type="Resource" id="Resource_j6abj"]
+script = ExtResource("1_f8ume")
+Bar = 4
+Type = 1
+
+[sub_resource type="Resource" id="Resource_xdihy"]
+script = ExtResource("1_f8ume")
+Bar = 4
+Beat = 1
+
+[sub_resource type="Resource" id="Resource_s2ehb"]
+script = ExtResource("1_f8ume")
+Bar = 4
+Beat = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_a8h0n"]
+script = ExtResource("1_f8ume")
+Bar = 4
+Beat = 1
+Type = 2
+
+[sub_resource type="Resource" id="Resource_8ouvi"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Type = 1
+
+[sub_resource type="Resource" id="Resource_71o1q"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Type = 2
+EndBar = 7
+
+[sub_resource type="Resource" id="Resource_bf46x"]
+script = ExtResource("1_f8ume")
+Bar = 5
+EndBar = 7
+
+[sub_resource type="Resource" id="Resource_y2fg0"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Beat = 1
+Type = 2
+
+[sub_resource type="Resource" id="Resource_hpthe"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Beat = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_tk4j7"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Beat = 2
+
+[sub_resource type="Resource" id="Resource_lqxjb"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Beat = 2
+Type = 1
+
+[sub_resource type="Resource" id="Resource_fn41o"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Beat = 3
+Type = 2
+
+[sub_resource type="Resource" id="Resource_h83cb"]
+script = ExtResource("1_f8ume")
+Bar = 5
+Beat = 3
+Type = 1
+
+[sub_resource type="Resource" id="Resource_2s71g"]
+script = ExtResource("1_f8ume")
+Bar = 6
+
+[sub_resource type="Resource" id="Resource_bvbeq"]
+script = ExtResource("1_f8ume")
+Bar = 6
+Type = 1
+
+[sub_resource type="Resource" id="Resource_6p5lv"]
+script = ExtResource("1_f8ume")
+Bar = 6
+Beat = 1
+Type = 2
+
+[sub_resource type="Resource" id="Resource_7qy32"]
+script = ExtResource("1_f8ume")
+Bar = 6
+Beat = 1
+Type = 1
+
+[sub_resource type="Resource" id="Resource_34qdv"]
+script = ExtResource("1_f8ume")
+Bar = 6
+Beat = 2
+
+[sub_resource type="Resource" id="Resource_wq1ey"]
+script = ExtResource("1_f8ume")
+Bar = 6
+Beat = 2
+Type = 1
+
+[sub_resource type="Resource" id="Resource_1dn4y"]
+script = ExtResource("1_f8ume")
+Bar = 6
+Beat = 3
+Type = 2
+
+[sub_resource type="Resource" id="Resource_s710h"]
+script = ExtResource("1_f8ume")
+Bar = 6
+Beat = 3
+Type = 1
+
+[sub_resource type="Resource" id="Resource_vocmg"]
+script = ExtResource("1_f8ume")
+Bar = 7
+
+[sub_resource type="Resource" id="Resource_m3ln0"]
+script = ExtResource("1_f8ume")
+Bar = 7
+Type = 1
 
 [resource]
 script = ExtResource("2_ycwed")
 Designer = "Sarian"
 Level = 1
 Song = ExtResource("2_rpyet")
-Notes = Array[Object]([SubResource("Resource_qvmu7"), SubResource("Resource_ppkk4"), SubResource("Resource_ceeje"), SubResource("Resource_rk2we"), SubResource("Resource_lyuvh"), SubResource("Resource_rkw86"), SubResource("Resource_guutq"), SubResource("Resource_1xq6w"), SubResource("Resource_d1hux"), SubResource("Resource_dm37s"), SubResource("Resource_oq1cs"), SubResource("Resource_yftsa"), SubResource("Resource_thnbw"), SubResource("Resource_0jn2v"), SubResource("Resource_gtqs8"), SubResource("Resource_vb8px"), SubResource("Resource_ow3ot"), SubResource("Resource_3te3r"), SubResource("Resource_5dxv4"), SubResource("Resource_1oihr")])
+Notes = Array[ExtResource("1_f8ume")]([SubResource("Resource_qvmu7"), SubResource("Resource_gtqs8"), SubResource("Resource_1oihr"), SubResource("Resource_5dxv4"), SubResource("Resource_ppkk4"), SubResource("Resource_d1hux"), SubResource("Resource_rk2we"), SubResource("Resource_lyuvh"), SubResource("Resource_rkw86"), SubResource("Resource_yftsa"), SubResource("Resource_ceeje"), SubResource("Resource_oq1cs"), SubResource("Resource_thnbw"), SubResource("Resource_0jn2v"), SubResource("Resource_vb8px"), SubResource("Resource_ow3ot"), SubResource("Resource_3te3r"), SubResource("Resource_dm37s"), SubResource("Resource_guutq"), SubResource("Resource_1xq6w"), SubResource("Resource_fwnyt"), SubResource("Resource_jo008"), SubResource("Resource_yx8mm"), SubResource("Resource_yiw1v"), SubResource("Resource_btgx6"), SubResource("Resource_cxyjj"), SubResource("Resource_xfv87"), SubResource("Resource_n8tvx"), SubResource("Resource_b7yhb"), SubResource("Resource_gqljk"), SubResource("Resource_od38b"), SubResource("Resource_puvwq"), SubResource("Resource_rfix2"), SubResource("Resource_twi55"), SubResource("Resource_3lw10"), SubResource("Resource_ttsag"), SubResource("Resource_6ji3i"), SubResource("Resource_wgg6y"), SubResource("Resource_u5rlj"), SubResource("Resource_c84y3"), SubResource("Resource_kf0hm"), SubResource("Resource_xhpu2"), SubResource("Resource_gcdts"), SubResource("Resource_v6e1w"), SubResource("Resource_2kc4t"), SubResource("Resource_j6abj"), SubResource("Resource_xdihy"), SubResource("Resource_s2ehb"), SubResource("Resource_a8h0n"), SubResource("Resource_8ouvi"), SubResource("Resource_71o1q"), SubResource("Resource_bf46x"), SubResource("Resource_y2fg0"), SubResource("Resource_hpthe"), SubResource("Resource_tk4j7"), SubResource("Resource_lqxjb"), SubResource("Resource_fn41o"), SubResource("Resource_h83cb"), SubResource("Resource_2s71g"), SubResource("Resource_bvbeq"), SubResource("Resource_6p5lv"), SubResource("Resource_7qy32"), SubResource("Resource_34qdv"), SubResource("Resource_wq1ey"), SubResource("Resource_1dn4y"), SubResource("Resource_s710h"), SubResource("Resource_vocmg"), SubResource("Resource_m3ln0")])
 metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

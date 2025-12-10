@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ccah1txx0qs6x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o84ah"]
+
+[resource]
+next_pass = SubResource("ShaderMaterial_o84ah")
+shading_mode = 0
+albedo_color = Color(0.5137255, 0.21960784, 0.9254902, 1)
