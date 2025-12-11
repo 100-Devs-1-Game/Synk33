@@ -11,13 +11,9 @@ public class WaveformData {
 }
 
 public static class EditorWaveform {
-    /// <summary>
-    /// Analyzes an audio stream and extracts waveform data for both stereo channels
-    /// </summary>
     public static WaveformData? AnalyzeAudioStream(AudioStream? audioStream, int targetHeight) {
         if (audioStream == null) return null;
 
-        // Only support AudioStreamWav for now
         if (audioStream is not AudioStreamWav wavStream) {
             GD.PrintErr("Waveform analysis only supports AudioStreamWav");
             return null;
@@ -35,26 +31,20 @@ public static class EditorWaveform {
         
         GD.Print($"Analyzing waveform: Format={format}, Stereo={isStereo}, MixRate={mixRate}, DataLength={data.Length}");
 
-        // Calculate number of samples based on format
         int sampleCount = format switch {
             AudioStreamWav.FormatEnum.Format8Bits => data.Length,
             AudioStreamWav.FormatEnum.Format16Bits => data.Length / 2,
             AudioStreamWav.FormatEnum.ImaAdpcm => data.Length * 2,
-            _ => data.Length / 4 // Float format
+            _ => data.Length / 4
         };
 
-        // Adjust for stereo
         var totalSamples = isStereo ? sampleCount / 2 : sampleCount;
         var songLength = (double)totalSamples / mixRate;
-        
-        // Calculate samples per pixel to fit the waveform to the display height
         var samplesPerPixel = Math.Max(1, totalSamples / (targetHeight * 100));
-        
         var waveformSamples = totalSamples / samplesPerPixel;
         var leftChannel = new float[waveformSamples];
         var rightChannel = new float[waveformSamples];
 
-        // Extract and downsample waveform data
         for (var i = 0; i < waveformSamples; i++) {
             float leftMax = 0f, rightMax = 0f;
             var startSample = i * samplesPerPixel;
@@ -90,11 +80,10 @@ public static class EditorWaveform {
                     var left = (data[leftIdx] - 128) / 128f;
                     var right = (data[rightIdx] - 128) / 128f;
                     return (left, right);
-                } else {
-                    if (sampleIndex >= data.Length) return (0f, 0f);
-                    var value = (data[sampleIndex] - 128) / 128f;
-                    return (value, value);
                 }
+                if (sampleIndex >= data.Length) return (0f, 0f);
+                var value = (data[sampleIndex] - 128) / 128f;
+                return (value, value);
             }
 
             case AudioStreamWav.FormatEnum.Format16Bits: {
@@ -105,12 +94,11 @@ public static class EditorWaveform {
                     var left = BitConverter.ToInt16(data, leftIdx) / 32768f;
                     var right = BitConverter.ToInt16(data, rightIdx) / 32768f;
                     return (left, right);
-                } else {
-                    var idx = sampleIndex * 2;
-                    if (idx + 1 >= data.Length) return (0f, 0f);
-                    var value = BitConverter.ToInt16(data, idx) / 32768f;
-                    return (value, value);
                 }
+                var idx = sampleIndex * 2;
+                if (idx + 1 >= data.Length) return (0f, 0f);
+                var value = BitConverter.ToInt16(data, idx) / 32768f;
+                return (value, value);
             }
 
             default:
@@ -118,9 +106,6 @@ public static class EditorWaveform {
         }
     }
 
-    /// <summary>
-    /// Draws the stereo waveform on the right side of the editor, aligned with the grid
-    /// </summary>
     public static void DrawWaveform(
         CanvasItem canvas,
         WaveformData? waveformData,
@@ -132,38 +117,19 @@ public static class EditorWaveform {
     ) {
         if (waveformData == null) return;
 
-        // Calculate waveform position (right side of the screen)
         var waveformX = viewportWidth - EditorConstants.WaveformWidth - EditorConstants.WaveformMargin;
         
-        // Draw background
-        var bgRect = new Rect2(
-            waveformX, 
-            0, 
-            EditorConstants.WaveformWidth, 
-            viewportHeight
-        );
+        var bgRect = new Rect2(waveformX, 0, EditorConstants.WaveformWidth, viewportHeight);
         canvas.DrawRect(bgRect, new Color(0.1f, 0.1f, 0.1f, 0.5f));
-        
-        // Draw border
         canvas.DrawRect(bgRect, new Color(0.3f, 0.3f, 0.3f), false, 1);
 
-        // Calculate the vertical scale based on zoom and pan
-        // The waveform should align with the grid vertically
+        const float channelWidth = (EditorConstants.WaveformWidth - EditorConstants.WaveformPadding * 3) / 2;
         var beatsPerSecond = chart.Bpm / 60.0;
-        
-        // Draw both channels
         var leftChannelX = waveformX + EditorConstants.WaveformPadding;
-        var channelWidth = (EditorConstants.WaveformWidth - EditorConstants.WaveformPadding * 3) / 2;
         var rightChannelX = leftChannelX + channelWidth + EditorConstants.WaveformPadding;
         
         DrawChannel(canvas, waveformData.LeftChannel, leftChannelX, channelWidth, zoom, panY, beatsPerSecond, waveformData.SongLength, new Color(0.3f, 0.8f, 1f, 0.8f));
         DrawChannel(canvas, waveformData.RightChannel, rightChannelX, channelWidth, zoom, panY, beatsPerSecond, waveformData.SongLength, new Color(1f, 0.5f, 0.3f, 0.8f));
-        
-        // Draw labels
-        var labelLeft = new Vector2(leftChannelX + channelWidth / 2 - 10, 10);
-        var labelRight = new Vector2(rightChannelX + channelWidth / 2 - 10, 10);
-        canvas.DrawString(ThemeDB.FallbackFont, labelLeft, "L", HorizontalAlignment.Center, -1, 12, Colors.White);
-        canvas.DrawString(ThemeDB.FallbackFont, labelRight, "R", HorizontalAlignment.Center, -1, 12, Colors.White);
     }
 
     private static void DrawChannel(
@@ -180,35 +146,22 @@ public static class EditorWaveform {
         if (channelData.Length == 0) return;
         
         var viewportHeight = canvas.GetViewportRect().Size.Y;
+        var skipFactor = CalculateSkipFactorForZoom(zoom);
         
-        // Calculate step size based on zoom - at higher zoom, draw more samples
-        // At low zoom (50), skip every 10 samples
-        // At medium zoom (100), skip every 5 samples
-        // At high zoom (200+), draw every sample
-        var skipFactor = Math.Max(1, (int)(500f / zoom));
-        
-        // Draw waveform bars aligned to the timeline
         for (var i = 0; i < channelData.Length; i += skipFactor) {
             var amplitude = channelData[i];
-            if (amplitude <= 0.001f) continue; // Skip silent samples for performance
+            if (amplitude <= 0.001f) continue;
 
-            // Calculate time position for this sample
             var timeInSeconds = (i / (double)channelData.Length) * songLength;
             var beat = timeInSeconds * beatsPerSecond;
-            
-            // Convert to screen Y position (aligned with the grid)
             var yPosition = -(float)beat * zoom + panY;
             
-            // Only draw if visible on screen
             if (yPosition < -10 || yPosition > viewportHeight + 10) continue;
 
-            // Draw amplitude bar
             var barWidth = amplitude * channelWidth * 0.95f;
             var centerX = channelX + channelWidth / 2;
             var barLeft = centerX - barWidth / 2;
-            
-            // At high zoom levels, make bars thicker so they're more visible and fill gaps
-            var lineThickness = Math.Max(1.5f, Math.Min(5f, zoom / 40f));
+            var lineThickness = CalculateLineThicknessForZoom(zoom);
             
             canvas.DrawLine(
                 new Vector2(barLeft, yPosition),
@@ -218,5 +171,11 @@ public static class EditorWaveform {
             );
         }
     }
+
+    private static int CalculateSkipFactorForZoom(float zoom) 
+        => Math.Max(1, (int)(500f / zoom));
+
+    private static float CalculateLineThicknessForZoom(float zoom) 
+        => Math.Max(1.5f, Math.Min(5f, zoom / 40f));
 }
 

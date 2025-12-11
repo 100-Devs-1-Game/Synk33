@@ -79,7 +79,6 @@ public partial class Editor : Control {
             Chart = loadedChart;
             State.CurrentChartPath = path;
 
-            // Load audio if available
             if (_audioStreamPlayer != null) {
                 if (Chart.Song?.Audio != null) {
                     _audioStreamPlayer.Stream = Chart.Song.Audio;
@@ -93,13 +92,11 @@ public partial class Editor : Control {
                 }
             }
 
-            // Apply a slight pan so the loaded chart is visible in the editor view
-            // Use a fraction of the viewport height so behavior adapts to window size
             State.PanY = Size.Y * 0.5f;
 
-             UpdateInfoDisplay();
-             QueueRedraw();
-             GD.Print($"Auto-loaded chart: {path}");
+            UpdateInfoDisplay();
+            QueueRedraw();
+            GD.Print($"Auto-loaded chart: {path}");
         } catch (Exception e) {
             GD.PrintErr($"Error while auto-loading last chart: {e.Message}");
         }
@@ -231,7 +228,6 @@ public partial class Editor : Control {
     }
 
     private void UpdateInfoDisplay() {
-        // Update file name display
         if (string.IsNullOrEmpty(State.CurrentChartPath)) {
             _fileNameLabel.Text = "File: (not saved)";
         } else {
@@ -239,14 +235,12 @@ public partial class Editor : Control {
             _fileNameLabel.Text = $"File: {fileName}";
         }
         
-        // Chart Info
         _designerLabel.Text = $"Designer: {Chart.Designer}";
         _levelLabel.Text = $"Level: {Chart.Level}";
         _tempoModifierLabel.Text = $"Tempo: {Chart.TempoModifier:F1}x";
         _beatsPerMeasureLabel.Text = $"Beats/Measure: {Chart.BeatsPerMeasure}";
         _notesCountLabel.Text = $"Notes: {Chart.Notes.Count}";
         
-        // Song Info
         _songNameLabel.Text = $"Name: {Chart.Song.Name}";
         _songAuthorLabel.Text = $"Author: {Chart.Song.Author}";
         _songBpmLabel.Text = $"Base BPM: {Chart.Song.Bpm:F1}";
@@ -281,7 +275,7 @@ public partial class Editor : Control {
     public override void _Process(double delta) {
         base._Process(delta);
         QueueRedraw();
-        EditorSelection.SelectBeat(State, Chart, GetViewport().GetMousePosition(), Size.Y, _selectedTimeLabel);
+        EditorSelection.SelectBeat(State, Chart, GetViewport().GetMousePosition(), _selectedTimeLabel);
         EditorSelection.SelectLane(State, GetViewport().GetMousePosition(), Size.X, _selectedLaneLabel);
         
         if (State.IsPlaying) {
@@ -322,7 +316,7 @@ public partial class Editor : Control {
                 if (State.IsDragging) {
                     EditorView.PanView(State, mouseMotionEvent, QueueRedraw);
                 }
-                QueueRedraw(); // Redraw to update cursor line
+                QueueRedraw();
                 break;
             case InputEventKey keyEvent:
                 EditorInput.HandleKeyInput(keyEvent, this);
@@ -370,7 +364,6 @@ public partial class Editor : Control {
         EditorChartIO.OnLoadChartFileSelected(path, State, ref Chart, _statusLabel, GetTree(), UpdateInfoDisplay, QueueRedraw, _audioStreamPlayer);
         State.PanY = Size.Y * 0.5f;
         
-        // Generate waveform data if audio is loaded
         if (Chart.Song?.Audio != null) {
             _waveformData = EditorWaveform.AnalyzeAudioStream(Chart.Song.Audio, (int)Size.Y);
             GD.Print("Waveform analysis complete");

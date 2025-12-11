@@ -144,7 +144,6 @@ public static class EditorDrawing {
 
     private static void DrawHoldNotePreview(
         CanvasItem canvas,
-        float startX,
         float selectorX,
         float selectorY,
         float startY,
@@ -170,7 +169,7 @@ public static class EditorDrawing {
         if (state is { NoteMode: NoteMode.Hold, HoldNoteStart: not null, HoldNoteLane: not null }) {
             var startY = EditorNoteHelpers.CalculateNoteYPosition(state.HoldNoteStart.Bar, state.HoldNoteStart.Beat, state.HoldNoteStart.Sixteenth, chart, state.Zoom, state.PanY);
             var startXLane = startX + (int)state.HoldNoteLane! * EditorConstants.LaneWidth + EditorConstants.LaneWidth / 2f;
-            DrawHoldNotePreview(canvas, startX, selectorX, selectorY, startY, startXLane, state.SelectedLane, state.HoldNoteLane);
+            DrawHoldNotePreview(canvas, selectorX, selectorY, startY, startXLane, state.SelectedLane, state.HoldNoteLane);
         } else {
             DrawNormalSelector(canvas, selectorX, selectorY, state.NoteMode);
         }
@@ -180,7 +179,6 @@ public static class EditorDrawing {
         var mouseY = state.MousePosition.Y;
         var viewportWidth = canvas.GetViewportRect().Size.X;
         
-        // Draw a subtle horizontal line at the mouse Y position (not snapped to grid)
         canvas.DrawLine(
             new Vector2(0, mouseY),
             new Vector2(viewportWidth, mouseY),

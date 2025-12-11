@@ -9,7 +9,6 @@ public static class EditorSelection {
         EditorState state,
         Chart chart,
         Vector2 mousePosition,
-        float viewportHeight,
         Label selectedTimeLabel
     ) {
         var beatTime = -(mousePosition.Y - state.PanY) / state.Zoom;
