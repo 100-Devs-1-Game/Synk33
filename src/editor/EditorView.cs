@@ -1,6 +1,5 @@
 ﻿using System;
 using Godot;
-using SYNK33.chart;
 
 namespace SYNK33.editor;
 
@@ -39,13 +38,16 @@ public static class EditorView {
         var previousPos = (mousePosition.Y - state.PanY) / oldZoom;
         state.PanY = mousePosition.Y - previousPos * state.Zoom;
         
-        // If currently dragging, update the drag start pan so continued dragging doesn't jump
         if (state.IsDragging) {
-            state.DragStartPan = state.PanY;
-            state.DragStartMouse = mousePosition;
+            UpdateDragReferenceAfterZoom(state, mousePosition);
         }
         
         GD.Print($"Zoom: {oldZoom:F1} \u2192 {state.Zoom:F1}");
         queueRedraw();
+    }
+
+    private static void UpdateDragReferenceAfterZoom(EditorState state, Vector2 mousePosition) {
+        state.DragStartPan = state.PanY;
+        state.DragStartMouse = mousePosition;
     }
 }
