@@ -175,4 +175,17 @@ public static class EditorDrawing {
             DrawNormalSelector(canvas, selectorX, selectorY, state.NoteMode);
         }
     }
+
+    public static void DrawCursorLine(CanvasItem canvas, EditorState state) {
+        var mouseY = state.MousePosition.Y;
+        var viewportWidth = canvas.GetViewportRect().Size.X;
+        
+        // Draw a subtle horizontal line at the mouse Y position (not snapped to grid)
+        canvas.DrawLine(
+            new Vector2(0, mouseY),
+            new Vector2(viewportWidth, mouseY),
+            new Color(1f, 1f, 1f, 0.3f),
+            1f
+        );
+    }
 }
