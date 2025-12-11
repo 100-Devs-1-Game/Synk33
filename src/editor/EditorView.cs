@@ -38,6 +38,13 @@ public static class EditorView {
         state.Zoom = Math.Clamp(newZoom, EditorConstants.MinZoom, EditorConstants.MaxZoom);
         var previousPos = (mousePosition.Y - state.PanY) / oldZoom;
         state.PanY = mousePosition.Y - previousPos * state.Zoom;
+        
+        // If currently dragging, update the drag start pan so continued dragging doesn't jump
+        if (state.IsDragging) {
+            state.DragStartPan = state.PanY;
+            state.DragStartMouse = mousePosition;
+        }
+        
         GD.Print($"Zoom: {oldZoom:F1} \u2192 {state.Zoom:F1}");
         queueRedraw();
     }

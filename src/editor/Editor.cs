@@ -45,6 +45,8 @@ public partial class Editor : Control {
     
     private readonly HashSet<(long, long, double, NoteType)> _playedNotes = [];
     private readonly HashSet<(long, long, double, NoteType)> _activeHoldNotes = [];
+    
+    private WaveformData? _waveformData;
 
     public override void _Ready() {
         base._Ready();
@@ -82,8 +84,12 @@ public partial class Editor : Control {
                 if (Chart.Song?.Audio != null) {
                     _audioStreamPlayer.Stream = Chart.Song.Audio;
                     GD.Print($"Auto-loaded audio from song: {Chart.Song.Name}");
+                    
+                    _waveformData = EditorWaveform.AnalyzeAudioStream(Chart.Song.Audio, (int)Size.Y);
+                    GD.Print("Waveform analysis complete");
                 } else {
                     _audioStreamPlayer.Stream = null;
+                    _waveformData = null;
                 }
             }
 
@@ -298,6 +304,8 @@ public partial class Editor : Control {
         EditorDrawing.DrawLaneBoundaries(this, startX);
         EditorDrawing.DrawGridLines(this, _audioStreamPlayer, Chart, State.GetEffectiveSnapping(), State.Zoom, State.PanY);
         EditorDrawing.DrawNotes(this, Chart, State, _audioStreamPlayer);
+        EditorWaveform.DrawWaveform(this, _waveformData, Chart, State.Zoom, State.PanY, Size.X, Size.Y);
+        EditorDrawing.DrawCursorLine(this, State);
         EditorDrawing.DrawPlayhead(this, _audioStreamPlayer, State.Zoom, State.PanY, Chart.Bpm);
         EditorDrawing.DrawSelector(this, Chart, State);
     }
@@ -309,8 +317,12 @@ public partial class Editor : Control {
             case InputEventMouseButton mouseEvent:
                 EditorInput.HandleMouseButton(mouseEvent, this);
                 break;
-            case InputEventMouseMotion mouseMotionEvent when State.IsDragging:
-                EditorView.PanView(State, mouseMotionEvent, QueueRedraw);
+            case InputEventMouseMotion mouseMotionEvent:
+                State.MousePosition = mouseMotionEvent.Position;
+                if (State.IsDragging) {
+                    EditorView.PanView(State, mouseMotionEvent, QueueRedraw);
+                }
+                QueueRedraw(); // Redraw to update cursor line
                 break;
             case InputEventKey keyEvent:
                 EditorInput.HandleKeyInput(keyEvent, this);
@@ -357,6 +369,15 @@ public partial class Editor : Control {
     private void OnLoadChartFileSelected(string path) {
         EditorChartIO.OnLoadChartFileSelected(path, State, ref Chart, _statusLabel, GetTree(), UpdateInfoDisplay, QueueRedraw, _audioStreamPlayer);
         State.PanY = Size.Y * 0.5f;
+        
+        // Generate waveform data if audio is loaded
+        if (Chart.Song?.Audio != null) {
+            _waveformData = EditorWaveform.AnalyzeAudioStream(Chart.Song.Audio, (int)Size.Y);
+            GD.Print("Waveform analysis complete");
+        } else {
+            _waveformData = null;
+        }
+        
         QueueRedraw();
     }
 }
