@@ -42,6 +42,9 @@ public partial class Editor : Control {
     private Button? _grid16Button;
     private Button? _grid32Button;
     private Button? _grid64Button;
+    private Button? _snapPlaybackButton;
+    private HSlider? _playbackSpeedSlider;
+    private Label? _playbackSpeedLabel;
     
     private readonly HashSet<(long, long, double, NoteType)> _playedNotes = [];
     private readonly HashSet<(long, long, double, NoteType)> _activeHoldNotes = [];
@@ -124,6 +127,7 @@ public partial class Editor : Control {
         _songNameLabel = GetNode<Label>("%SongName");
         _songAuthorLabel = GetNode<Label>("%SongAuthor");
         _songBpmLabel = GetNode<Label>("%SongBPM");
+        _noteModeLabel = GetNode<Label>("%NoteModeLabel");
         _notesCountLabel = GetNode<Label>("%NotesCount");
         
         _noteModeButton = GetNode<Button>("%NoteModeButton");
@@ -153,8 +157,20 @@ public partial class Editor : Control {
         _grid64Button = GetNode<Button>("%Grid64Button");
         _grid64Button.Pressed += () => SetGridSize(64);
         
+        _snapPlaybackButton = GetNode<Button>("%SnapPlaybackButton");
+        _snapPlaybackButton.Toggled += OnSnapPlaybackButtonToggled;
+        _snapPlaybackButton.SetPressedNoSignal(State.SnapPlayback);
+        
+        _playbackSpeedSlider = GetNode<HSlider>("%PlaybackSpeedSlider");
+        _playbackSpeedSlider.ValueChanged += OnPlaybackSpeedChanged;
+        _playbackSpeedSlider.Value = State.PlaybackSpeed;
+        
+        _playbackSpeedLabel = GetNode<Label>("%PlaybackSpeedLabel");
+        UpdatePlaybackSpeedLabel();
+        
         UpdateGridButtons();
         UpdateNoteModeButton();
+        UpdateToggleButtons();
     }
 
     private void InitializeMenuBar() {
@@ -191,11 +207,37 @@ public partial class Editor : Control {
 
     private void OnTripletButtonToggled(bool pressed) {
         State.IsTriplet = pressed;
+        UpdateToggleButtons();
         _statusLabel.Text = State.IsTriplet ? "Triplet grid: ON" : "Triplet grid: OFF";
         UpdateNoteModeLabel();
         UpdateInfoDisplay();
         GetTree().CreateTimer(1.5).Timeout += () => _statusLabel.Text = "";
         GD.Print($"Triplet grid toggled: {State.IsTriplet}");
+    }
+
+    private void OnSnapPlaybackButtonToggled(bool pressed) {
+        State.SnapPlayback = pressed;
+        UpdateToggleButtons();
+        _statusLabel.Text = State.SnapPlayback ? "Snap playback: ON" : "Snap playback: OFF";
+        GetTree().CreateTimer(1.5).Timeout += () => _statusLabel.Text = "";
+        GD.Print($"Snap playback toggled: {State.SnapPlayback}");
+    }
+
+    private void OnPlaybackSpeedChanged(double value) {
+        State.PlaybackSpeed = (float)value;
+        UpdatePlaybackSpeedLabel();
+        
+        if (_audioStreamPlayer != null && State.IsPlaying) {
+            _audioStreamPlayer.PitchScale = State.PlaybackSpeed;
+        }
+        
+        GD.Print($"Playback speed changed to: {State.PlaybackSpeed:F2}x");
+    }
+
+    private void UpdatePlaybackSpeedLabel() {
+        if (_playbackSpeedLabel != null) {
+            _playbackSpeedLabel.Text = $"{State.PlaybackSpeed:F2}x";
+        }
     }
 
     private void SetGridSize(int size) {
@@ -214,6 +256,11 @@ public partial class Editor : Control {
         _grid16Button!.Modulate = State.Snapping == 16 ? new Color(0.5f, 1f, 0.5f) : Colors.White;
         _grid32Button!.Modulate = State.Snapping == 32 ? new Color(0.5f, 1f, 0.5f) : Colors.White;
         _grid64Button!.Modulate = State.Snapping == 64 ? new Color(0.5f, 1f, 0.5f) : Colors.White;
+    }
+
+    private void UpdateToggleButtons() {
+        _tripletButton!.Modulate = State.IsTriplet ? new Color(0.5f, 1f, 0.5f) : Colors.White;
+        _snapPlaybackButton!.Modulate = State.SnapPlayback ? new Color(0.5f, 1f, 0.5f) : Colors.White;
     }
 
     private void UpdateNoteModeButton() {
@@ -330,7 +377,7 @@ public partial class Editor : Control {
     public void TogglePlayback() {
         State.IsPlaying = !State.IsPlaying;
         if (State.IsPlaying) {
-            EditorPlayback.PlayPreview(_audioStreamPlayer, State.SelectedTime, Chart, _playedNotes);
+            EditorPlayback.PlayPreview(_audioStreamPlayer, State.SelectedTime, Chart, _playedNotes, State, State.MousePosition);
         } else {
             EditorPlayback.StopPreview(_audioStreamPlayer, _holdSoundPlayer, _playedNotes, _activeHoldNotes);
         }
@@ -347,6 +394,7 @@ public partial class Editor : Control {
     public void ToggleTripletMode() {
         State.IsTriplet = !State.IsTriplet;
         _tripletButton!.SetPressedNoSignal(State.IsTriplet);
+        UpdateToggleButtons();
         _statusLabel.Text = State.IsTriplet ? "Triplet grid: ON" : "Triplet grid: OFF";
         UpdateInfoDisplay();
         GetTree().CreateTimer(1.5).Timeout += () => _statusLabel.Text = "";

@@ -98,14 +98,27 @@ public static class EditorPlayback {
         AudioStreamPlayer? audioStreamPlayer,
         NoteTime selectedTime,
         Chart chart,
-        HashSet<(long, long, double, NoteType)> playedNotes) {
+        HashSet<(long, long, double, NoteType)> playedNotes,
+        EditorState state,
+        Vector2 mousePosition
+    ) {
         
-        var seekTime = selectedTime.ToMilliseconds(chart.BeatsPerMeasure, 60.0f / chart.Bpm);
-        GD.Print($"Playing preview from Bar:{selectedTime.Bar} Beat:{selectedTime.Beat} ({seekTime:F2}s)");
+        float seekTime;
+        
+        if (state.SnapPlayback) {
+            seekTime = selectedTime.ToMilliseconds(chart.BeatsPerMeasure, 60.0f / chart.Bpm);
+            GD.Print($"Playing preview from Bar:{selectedTime.Bar} Beat:{selectedTime.Beat} ({seekTime:F2}s) [SNAPPED]");
+        } else {
+            seekTime = EditorSelection.GetTimeAtMouseY(mousePosition.Y, state.Zoom, state.PanY, chart.Bpm);
+            GD.Print($"Playing preview from mouse position ({seekTime:F2}s) [UNSNAPPED]");
+        }
         
         playedNotes.Clear();
-        audioStreamPlayer?.Play();
-        audioStreamPlayer?.Seek(seekTime);
+        if (audioStreamPlayer != null) {
+            audioStreamPlayer.PitchScale = state.PlaybackSpeed;
+            audioStreamPlayer.Play();
+            audioStreamPlayer.Seek(seekTime);
+        }
     }
 
     public static void StopPreview(

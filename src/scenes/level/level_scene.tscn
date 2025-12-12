@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dpyixev5hxkpu" path="res://assets/models/buttons/fret_button/fret_button_blue.tscn" id="6_hialq"]
 [ext_resource type="PackedScene" uid="uid://khpu4o08b3bd" path="res://assets/models/buttons/fret_button/fret_button_orange.tscn" id="7_pky24"]
 [ext_resource type="AudioStream" uid="uid://bp3b2i603qdv3" path="res://assets/editor/hit_note_01.wav" id="9_mvjn5"]
-[ext_resource type="Texture2D" uid="uid://cox11lejsp05f" path="res://assets/backgrounds/background_04_done.png" id="9_ytrdw"]
 [ext_resource type="AudioStream" uid="uid://boxotbbbr6bgy" path="res://assets/editor/hold_note_01.wav" id="10_18uvy"]
 [ext_resource type="Script" uid="uid://d2i6u8ixu12r2" path="res://core/GameManager.cs" id="10_mvjn5"]
 [ext_resource type="Script" uid="uid://dbbkpkhl7jysd" path="res://core/Conductor.cs" id="11_18uvy"]
@@ -17,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cvtcbn8yijcak" path="res://core/JudgementManager.cs" id="14_g6p6a"]
 [ext_resource type="PackedScene" uid="uid://b64qfdctfmjg3" path="res://spawner/spawner3d.tscn" id="15_ppdpw"]
 [ext_resource type="Script" uid="uid://dh0e0xamdv8xm" path="res://autoloads/debug/Debug.gd" id="17_f541d"]
+[ext_resource type="Texture2D" uid="uid://ckmfrqen37xbt" path="res://assets/backgrounds/auxie_bg.png" id="17_mvjn5"]
 [ext_resource type="PackedScene" uid="uid://cginamruiifir" path="res://assets/models/speaker/speaker.tscn" id="18_mvjn5"]
 
 [sub_resource type="Environment" id="Environment_wjff2"]
@@ -30,6 +30,12 @@ fog_sky_affect = 0.0
 
 [node name="Gameplay" type="Node" parent="."]
 
+[node name="Conductor" type="Node" parent="Gameplay" node_paths=PackedStringArray("Player")]
+script = ExtResource("11_18uvy")
+Chart = ExtResource("12_ppdpw")
+Player = NodePath("../AudioStreamPlayer")
+Bpm = 130.0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gameplay"]
 
 [node name="GameManager" type="Node" parent="Gameplay" node_paths=PackedStringArray("Conductor", "InputManager", "JudgementManager", "Spawner")]
@@ -38,12 +44,6 @@ Conductor = NodePath("../Conductor")
 InputManager = NodePath("../InputManager")
 JudgementManager = NodePath("../JudgementManager")
 Spawner = NodePath("../Spawner")
-
-[node name="Conductor" type="Node" parent="Gameplay" node_paths=PackedStringArray("Player")]
-script = ExtResource("11_18uvy")
-Chart = ExtResource("12_ppdpw")
-Player = NodePath("../AudioStreamPlayer")
-Bpm = 130.0
 
 [node name="InputManager" type="Node" parent="Gameplay"]
 script = ExtResource("13_78aa7")
@@ -54,7 +54,7 @@ Conductor = NodePath("../Conductor")
 InputManager = NodePath("../InputManager")
 
 [node name="Spawner" parent="Gameplay" node_paths=PackedStringArray("JudgementManager") instance=ExtResource("15_ppdpw")]
-ScrollSpeed = 6.0
+ScrollSpeed = 10.0
 JudgementLine = NodePath("../JudgementDebug")
 Conductor = NodePath("../Conductor")
 JudgementManager = NodePath("../JudgementManager")
@@ -141,8 +141,8 @@ transform = Transform3D(0.89, 0, 0, 0, 0.89, 0, 0, 0, 0.89, 1, 0, 0)
 transform = Transform3D(1.125, 0, 0, 0, 0.258, -1.790449e-08, 0, 3.725289e-09, 1.24, -0.016, -0.091, -0.035)
 
 [node name="background_test" type="Sprite3D" parent="."]
-transform = Transform3D(10.199999, 0, 0, 0, 10.199708, 0.07708368, 0, -0.07708368, 10.199708, 0, -13.017187, -138.63153)
-texture = ExtResource("9_ytrdw")
+transform = Transform3D(15.115571, 0, 0, 0, 14.289564, 2.785952, 0, -3.8288772, 10.397315, 0, -64.747856, -157.49887)
+texture = ExtResource("17_mvjn5")
 
 [node name="speaker_base" parent="." instance=ExtResource("18_mvjn5")]
-transform = Transform3D(0.08660254, 0, -0.05, 0, 0.1, 0, 0.05, 0, 0.08660254, 3, -2.5, -1)
+transform = Transform3D(0.067849174, 0.010427094, -0.072717, 0.006057649, 0.097856246, 0.019684013, 0.073210604, -0.017760392, 0.06576302, 3, -2.5, -1)

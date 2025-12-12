@@ -26,7 +26,15 @@ public static class EditorSelection {
         var beat = Math.Floor(remainingSixteenths / 4.0);
         var sixteenth = remainingSixteenths % 4.0;
 
-        selectedTimeLabel.Text = $"{bar + 1}.{beat + 1}.{sixteenth + 1} (snap: {state.GetSnapName()})";
+        var sixteenthInt = (int)Math.Floor(sixteenth);
+        var sixteenthFrac = sixteenth - sixteenthInt;
+        
+        var timeText = $"{bar + 1}.{beat + 1}.{sixteenthInt + 1}";
+        if (sixteenthFrac > 0.001) {
+            timeText += $"{sixteenthFrac:0.##}".Substring(1) + "+";
+        }
+        
+        selectedTimeLabel.Text = timeText;
         state.SelectedTime = new NoteTime((long)bar, (long)beat, sixteenth);
     }
 
@@ -48,5 +56,18 @@ public static class EditorSelection {
         }
         
         selectedLaneLabel.Text = $"Lane: {state.SelectedLane}";
+    }
+    
+    public static float GetTimeAtMouseY(
+        float mouseY,
+        float zoom,
+        float panY,
+        float bpm
+    ) {
+        var beatTime = -(mouseY - panY) / zoom;
+        if (beatTime < 0) beatTime = 0;
+        
+        var secondsPerBeat = 60.0f / bpm;
+        return beatTime * secondsPerBeat;
     }
 }

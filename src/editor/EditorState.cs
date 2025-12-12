@@ -24,6 +24,9 @@ public class EditorState {
     public string CurrentChartPath { get; set; } = "";
     
     public Vector2 MousePosition { get; set; }
+    
+    public float PlaybackSpeed { get; set; } = 1.0f;
+    public bool SnapPlayback { get; set; } = true;
 
     public int GetEffectiveSnapping() => IsTriplet ? Snapping * 3 : Snapping;
 
@@ -54,7 +57,6 @@ public static class EditorConstants {
     public const float HoldNoteStartHeadHeight = 20f;
     public const float HoldNoteEndHeadHeight = 14f;
     
-    // Waveform display constants
     public const float WaveformWidth = 140f;
     public const float WaveformMargin = 10f;
     public const float WaveformPadding = 8f;

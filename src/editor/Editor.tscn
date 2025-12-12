@@ -62,15 +62,19 @@ layout_mode = 2
 
 [node name="NoteModeButton" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 tooltip_text = "Toggle between Tap and Hold note types (T key)"
+focus_mode = 0
 toggle_mode = true
-text = "Tap (T)"
+text = "Hold (T)"
 
 [node name="TripletButton" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 tooltip_text = "Toggle triplet grid (Y key)"
+focus_mode = 0
 toggle_mode = true
 text = "Triplet (Y)"
 
@@ -84,69 +88,118 @@ vertical_alignment = 1
 
 [node name="Grid1Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 tooltip_text = "Whole notes (1 key)"
+focus_mode = 0
 text = "1"
 
 [node name="Grid2Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 tooltip_text = "Half notes (2 key)"
+focus_mode = 0
 text = "2"
 
 [node name="Grid4Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 tooltip_text = "Quarter notes (3 key)"
+focus_mode = 0
 text = "4"
 
 [node name="Grid8Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 tooltip_text = "Eighth notes (4 key)"
+focus_mode = 0
 text = "8"
 
 [node name="Grid16Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 tooltip_text = "Sixteenth notes (5 key)"
+focus_mode = 0
 text = "16"
 
 [node name="Grid32Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 tooltip_text = "32nd notes (6 key)"
+focus_mode = 0
 text = "32"
 
 [node name="Grid64Button" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 tooltip_text = "64th notes (7 key)"
+focus_mode = 0
 text = "64"
 
 [node name="VSeparator3" type="VSeparator" parent="MenuBar/MenuBar/HBoxContainer"]
 layout_mode = 2
 
+[node name="SnapPlaybackButton" type="Button" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+tooltip_text = "Toggle between snapped playback (at beat) vs direct mouse position playback"
+focus_mode = 0
+toggle_mode = true
+button_pressed = true
+text = "Snap Playback"
+
+[node name="VSeparator4" type="VSeparator" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="PlaybackSpeedLabel2" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
+text = "Speed:"
+vertical_alignment = 1
+
+[node name="PlaybackSpeedSlider" type="HSlider" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Adjust playback speed (useful for charting at slower speeds)"
+focus_mode = 0
+theme_override_constants/grabber_offset = 0
+min_value = 0.25
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="PlaybackSpeedLabel" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "1.00x"
+vertical_alignment = 1
+
+[node name="VSeparator5" type="VSeparator" parent="MenuBar/MenuBar/HBoxContainer"]
+layout_mode = 2
+
 [node name="SelectedLane" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 text = "Lane 1"
-horizontal_alignment = 2
 
 [node name="SelectedBeat" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.05
 text = "1.1.1"
-
-[node name="StatusLabel" type="Label" parent="MenuBar/MenuBar/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="InfoBox" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -244,10 +297,24 @@ text = "Effective BPM: N/A"
 layout_mode = 2
 mouse_filter = 2
 
+[node name="NoteModeLabel" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mode: Tap (T)"
+
 [node name="NotesCount" type="Label" parent="InfoBox/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Notes: 0"
+
+[node name="StatusLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 1023.0
+offset_right = 480.0
+offset_bottom = 1071.0
+size_flags_horizontal = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_i1ssp")
