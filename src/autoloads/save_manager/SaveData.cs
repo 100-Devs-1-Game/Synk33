@@ -9,7 +9,10 @@ public struct ChartPerformance {
     public uint Highscore;
     public uint PerfectHits;
     public uint TotalHits;
+    public uint GhostHits;
     public uint ChartTotalNotes;
+    public uint ChartTotalGhostNotes;
+    public uint MaxCombo;
 
     public readonly double GetGradeRatio() {
         return TotalHits / (double)ChartTotalNotes;
@@ -70,7 +73,10 @@ public partial class SaveData : Resource, ISaveInfo{
             file.Store32(chartPerformance.Highscore);
             file.Store32(chartPerformance.PerfectHits);
             file.Store32(chartPerformance.TotalHits);
+            file.Store32(chartPerformance.GhostHits);
             file.Store32(chartPerformance.ChartTotalNotes);
+            file.Store32(chartPerformance.ChartTotalGhostNotes);
+            file.Store32(chartPerformance.MaxCombo);
         }
     }
 
@@ -82,7 +88,10 @@ public partial class SaveData : Resource, ISaveInfo{
                 Highscore = file.Get32(),
                 PerfectHits = file.Get32(),
                 TotalHits = file.Get32(),
-                ChartTotalNotes = file.Get32()
+                GhostHits = file.Get32(),
+                ChartTotalNotes = file.Get32(),
+                ChartTotalGhostNotes = file.Get32(),
+                MaxCombo = file.Get32(),
             };
             SetChartPerformance(chartUID, chartPerformance);
         }
@@ -96,7 +105,10 @@ public partial class SaveData : Resource, ISaveInfo{
             GD.Print($"\tHighscore:{file.Get32()}");
             GD.Print($"\tPerfect Hits:{file.Get32()}");
             GD.Print($"\tTotal Hits:{file.Get32()}");
+            GD.Print($"\tGhost Hits:{file.Get32()}");
             GD.Print($"\tChart Total Notes:{file.Get32()}");
+            GD.Print($"\tChart Total Ghost Notes:{file.Get32()}");
+            GD.Print($"\tMax Combo:{file.Get32()}");
         }
     }
 }
