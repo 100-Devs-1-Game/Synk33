@@ -43,7 +43,7 @@ public partial class SaveData : Resource, ISaveInfo{
         return ChartMap.ContainsKey(chartHash);
     }
     public ChartPerformance? GetChartPerformance(long chartHash) {
-        if (ChartMap.ContainsKey(chartHash)) {
+        if (!ChartMap.ContainsKey(chartHash)) {
             return null;
         }
         return ChartMap[chartHash];
