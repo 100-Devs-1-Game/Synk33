@@ -63,7 +63,7 @@ func change_chart(to:Chart) -> void:
 	song_info_bpm.info = "%03dBPM" % to.Song.Bpm
 	song_info_length.info = time_as_string(to.Song.Audio.get_length())
 	
-	song_info_highscore.info = str(SaveManager.GetChartPerformance(SaveManager.GetChartHash(to)))
+	song_info_highscore.info = str(SaveManager.GetChartHighscore(to.GetSaveHash()))
 	audio_stream_player.stream = to.Song.Audio
 	audio_stream_player.play()
 
