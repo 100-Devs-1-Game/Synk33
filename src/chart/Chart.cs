@@ -16,6 +16,11 @@ public partial class Chart : Resource {
     [Export] public Array<GodotNote> Notes { get; set; }
 
     public float Bpm => Song.Bpm * TempoModifier;
+
+    /// <returns>The hash used by Save's ChartMap to identify a Chart</returns>
+    public long GetSaveHash() {
+        return GD.Hash(ResourcePath);
+    }
 }
 
 

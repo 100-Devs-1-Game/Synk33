@@ -32,24 +32,24 @@ public partial class SaveManager : Node, ISaveInfo
             ResourceSaver.Save(save, SavePath);
         }
     }*/
-    public bool HasChartPerformance(long chartUID) {
-        return save.HasChartPerformance(chartUID);
+    public bool HasChartPerformance(long chartHash) {
+        return save.HasChartPerformance(chartHash);
     }
     
-    public ChartPerformance? GetChartPerformance(long chartUID) {
-        return save.GetChartPerformance(chartUID);
+    public ChartPerformance? GetChartPerformance(long chartHash) {
+        return save.GetChartPerformance(chartHash);
     }
 
-    public long GetChartHighscore(long chartUID) {
-        ChartPerformance? performance = save.GetChartPerformance(chartUID);
+    public long GetChartHighscore(long chartHash) {
+        ChartPerformance? performance = save.GetChartPerformance(chartHash);
         if (!performance.HasValue) {
             return -1;
         }
         return performance.Value.Highscore;
     }
 
-    public void SetChartPerformance(long chartUID, ChartPerformance chartPerformance) {
-        save.SetChartPerformance(chartUID, chartPerformance);
+    public void SetChartPerformance(long chartHash, ChartPerformance chartPerformance) {
+        save.SetChartPerformance(chartHash, chartPerformance);
     }
 
     public void Save() {
