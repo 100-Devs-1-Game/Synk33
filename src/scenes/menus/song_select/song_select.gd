@@ -69,6 +69,7 @@ func set_current_song(to:Song) -> void:
 		#assert(false, "No chart found for current difficulty")
 		return
 	for difficulty in len(Difficulty):
+		(song_display_card.material as ShaderMaterial).set_shader_parameter(&"greyscale", false)
 		difficulty_select.set_tab_availability(
 			difficulty, 
 			to.HasChart(difficulty)
