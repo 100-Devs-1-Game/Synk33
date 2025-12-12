@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://boxotbbbr6bgy" path="res://assets/editor/hold_note_01.wav" id="10_18uvy"]
 [ext_resource type="Script" uid="uid://d2i6u8ixu12r2" path="res://core/GameManager.cs" id="10_mvjn5"]
 [ext_resource type="Script" uid="uid://dbbkpkhl7jysd" path="res://core/Conductor.cs" id="11_18uvy"]
-[ext_resource type="Resource" uid="uid://b4dh0cpqem4u3" path="res://assets/charts/KLIPNITY/kyphian_alyraeus_normal.tres" id="12_ppdpw"]
+[ext_resource type="Resource" uid="uid://b4dh0cpqem4u3" path="res://assets/charts/KLIPNITY/kyphian_alyraeus_medium.tres" id="12_ppdpw"]
 [ext_resource type="Script" uid="uid://cn66yvsvfpaxu" path="res://core/InputManager.cs" id="13_78aa7"]
 [ext_resource type="Script" uid="uid://cvtcbn8yijcak" path="res://core/JudgementManager.cs" id="14_g6p6a"]
 [ext_resource type="PackedScene" uid="uid://b64qfdctfmjg3" path="res://spawner/spawner3d.tscn" id="15_ppdpw"]

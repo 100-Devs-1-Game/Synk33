@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://c5wxov6ngfqyg" path="res://assets/charts/KLIPNITY/the_distance.tres" id="10_h61ne"]
 [ext_resource type="Resource" uid="uid://c6av4x1ftefbs" path="res://assets/charts/KLIPNITY/reaperman.tres" id="11_6bawy"]
 [ext_resource type="Resource" uid="uid://bx16wega6rjd" path="res://assets/charts/KLIPNITY/pixel_machine.tres" id="12_iny62"]
+[ext_resource type="Shader" path="res://scenes/menus/song_select/song_button.gdshader" id="17_cy4u7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfngb"]
 bg_color = Color(0.039215688, 0.050980393, 0.07058824, 1)
@@ -42,6 +43,10 @@ _limits = [0.0, 1.0, -3.0, 3.0]
 bake_resolution = 6
 _data = [Vector2(-3, 0.5), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.5), 0.0, -1.0, 0, 1]
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dyqt"]
+shader = ExtResource("17_cy4u7")
+shader_parameter/greyscale = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibs4a"]
 bg_color = Color(0, 0, 0, 1)
@@ -111,12 +116,15 @@ script = ExtResource("2_yknkk")
 scale_curve = SubResource("Curve_4m66x")
 
 [node name="SongDisplayCard" type="Container" parent="HBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8dyqt")
 layout_mode = 2
 script = ExtResource("2_ibs4a")
 metadata/_custom_type_script = "uid://c4rj2ygwp6w2n"
 
 [node name="SongCover" type="TextureRect" parent="HBoxContainer/SongDisplayCard"]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("1_4m66x")
@@ -124,24 +132,29 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SongDisplayCard"]
+use_parent_material = true
 layout_mode = 2
 alignment = 2
 
 [node name="SongInfo" type="PanelContainer" parent="HBoxContainer/SongDisplayCard/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibs4a")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo"]
+use_parent_material = true
 layout_mode = 2
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 2
 
 [node name="SongName" type="Label" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+use_parent_material = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -153,6 +166,7 @@ uppercase = true
 
 [node name="SongCredit" type="Label" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+use_parent_material = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -164,51 +178,60 @@ uppercase = true
 
 [node name="VisPlayback" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("8_01aqb")]
 z_index = 1
+use_parent_material = true
 layout_mode = 2
 player = NodePath("../../../../../../AudioStreamPlayer")
 
 [node name="SongCreditContainer" type="HBoxContainer" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 6
 alignment = 1
 
 [node name="SmooshContainer" type="HBoxContainer" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
 [node name="LevelSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer/SmooshContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 info = "16"
 type = "LEVEL"
 
 [node name="BPMSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer/SmooshContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 info = "130"
 type = "BPM"
 
 [node name="LengthSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer/SmooshContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 info = "03:25"
 type = "LENGTH"
 
 [node name="CharterSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 info = "SARIAN"
 type = "CHARTER"
 
 [node name="GenreSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 2
 info = "HI-TECH FULL-ON"
 type = "GENRE"
 
 [node name="TypeSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
 visible = false
+use_parent_material = true
 layout_mode = 2
 info = "ORIGINAL"
 type = "TYPE"
@@ -216,6 +239,7 @@ type = "TYPE"
 [node name="HighscoreSongInfo" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_ibs4a")]
 unique_name_in_owner = true
 visible = false
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 7
 info = "85000"

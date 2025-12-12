@@ -23,6 +23,7 @@ var current_song: Song:
 
 
 @onready var song_container: Container = %SongContainer
+@onready var song_display_card: Container = %SongDisplayCard
 @onready var song_cover: TextureRect = %SongCover
 @onready var song_credit_bpm: Control = %BPMSongCredit
 @onready var song_credit_length: Control = %LengthSongCredit
@@ -66,6 +67,8 @@ func set_current_song(to:Song) -> void:
 	
 	var chart:Chart = to.GetChartByDifficulty(current_difficulty)
 	if chart == null:
+		(song_display_card.material as ShaderMaterial).set_shader_parameter(&"greyscale", true)
+		audio_stream_player.stop()
 		#assert(false, "No chart found for current difficulty")
 		return
 	for difficulty in len(Difficulty):

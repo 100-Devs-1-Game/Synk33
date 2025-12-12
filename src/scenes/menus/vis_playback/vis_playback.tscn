@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bq74aphkt3lpu" path="res://scenes/menus/vis_playback/vis_playback.gd" id="1_2frtt"]
 
 [node name="VisPlayback" type="Control"]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 3
 anchors_preset = 0
@@ -11,6 +12,7 @@ offset_bottom = 16.0
 script = ExtResource("1_2frtt")
 
 [node name="PlaySlider" type="HSlider" parent="."]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

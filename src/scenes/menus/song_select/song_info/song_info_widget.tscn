@@ -21,6 +21,7 @@ info = "INFO"
 type = "INFOTYPE"
 
 [node name="Info" type="Label" parent="."]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 6
 text = "INFO"
@@ -28,6 +29,7 @@ label_settings = SubResource("LabelSettings_xfngb")
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="."]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 6
 text = "INFOTYPE"
