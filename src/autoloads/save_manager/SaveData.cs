@@ -23,9 +23,9 @@ public struct ChartPerformance {
 }
 
 interface ISaveInfo {
-    public bool HasChartPerformance(long chartUID);
-    public ChartPerformance? GetChartPerformance(long chartUID);
-    public void SetChartPerformance(long chartUID, ChartPerformance chartPerformance);
+    public bool HasChartPerformance(long chartHash);
+    public ChartPerformance? GetChartPerformance(long chartHash);
+    public void SetChartPerformance(long chartHash, ChartPerformance chartPerformance);
 }
 
 public partial class SaveData : Resource, ISaveInfo{
@@ -39,18 +39,18 @@ public partial class SaveData : Resource, ISaveInfo{
     /// </summary>
     private System.Collections.Generic.Dictionary<long, ChartPerformance> ChartMap = [];
 
-    public bool HasChartPerformance(long chartUID) {
-        return ChartMap.ContainsKey(chartUID);
+    public bool HasChartPerformance(long chartHash) {
+        return ChartMap.ContainsKey(chartHash);
     }
-    public ChartPerformance? GetChartPerformance(long chartUID) {
-        if (ChartMap.ContainsKey(chartUID)) {
+    public ChartPerformance? GetChartPerformance(long chartHash) {
+        if (ChartMap.ContainsKey(chartHash)) {
             return null;
         }
-        return ChartMap[chartUID];
+        return ChartMap[chartHash];
     }
 
-    public void SetChartPerformance(long chartUID, ChartPerformance chartPerformance) {
-        ChartMap[chartUID] = chartPerformance;
+    public void SetChartPerformance(long chartHash, ChartPerformance chartPerformance) {
+        ChartMap[chartHash] = chartPerformance;
     }
 
     public void Save(string path) {
@@ -83,7 +83,7 @@ public partial class SaveData : Resource, ISaveInfo{
     public void DeserializeChartMap(FileAccess file) {
         uint count = file.Get32();
         for(uint i = 0; i < count; i++) {
-            long chartUID = (long)file.Get64();
+            long chartHash = (long)file.Get64();
             ChartPerformance chartPerformance = new ChartPerformance {
                 Highscore = file.Get32(),
                 PerfectHits = file.Get32(),
@@ -93,7 +93,7 @@ public partial class SaveData : Resource, ISaveInfo{
                 ChartTotalGhostNotes = file.Get32(),
                 MaxCombo = file.Get32(),
             };
-            SetChartPerformance(chartUID, chartPerformance);
+            SetChartPerformance(chartHash, chartPerformance);
         }
     }
 
