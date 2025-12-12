@@ -41,7 +41,7 @@ border_blend = true
 [sub_resource type="Curve" id="Curve_4m66x"]
 _limits = [0.0, 1.0, -3.0, 3.0]
 bake_resolution = 6
-_data = [Vector2(-3, 0.5), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.5), 0.0, -1.0, 0, 1]
+_data = [Vector2(-3, 0.6), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 0.6), 0.0, -1.0, 0, 1]
 point_count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dyqt"]
@@ -51,7 +51,7 @@ shader_parameter/greyscale = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibs4a"]
 bg_color = Color(0, 0, 0, 1)
 border_width_top = 32
-border_color = Color(0.8, 0.8, 0.8, 0)
+border_color = Color(0, 0, 0, 0)
 border_blend = true
 
 [node name="SongSelect" type="Control"]
@@ -78,37 +78,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfngb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SongSelect"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SongSelect"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SongSelect/MarginContainer"]
 layout_mode = 2
 
-[node name="ScaleContainer" type="Container" parent="HBoxContainer/SongSelect/VBoxContainer"]
+[node name="ScaleContainer" type="Container" parent="HBoxContainer/SongSelect/MarginContainer/VBoxContainer"]
 clip_children = 1
 layout_mode = 2
 script = ExtResource("2_ibs4a")
-contents_scale = Vector2(1, 2)
+contents_scale = Vector2(0.9, 1.8)
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SongSelect/VBoxContainer/ScaleContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SongSelect/MarginContainer/VBoxContainer/ScaleContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = -15
 theme_override_constants/margin_bottom = -15
 
-[node name="Label" type="Label" parent="HBoxContainer/SongSelect/VBoxContainer/ScaleContainer/MarginContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/SongSelect/MarginContainer/VBoxContainer/ScaleContainer/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "SELECT SONG"
 label_settings = SubResource("LabelSettings_4m66x")
 
-[node name="DifficultySelect" parent="HBoxContainer/SongSelect/VBoxContainer" instance=ExtResource("6_neb33")]
+[node name="DifficultySelect" parent="HBoxContainer/SongSelect/MarginContainer/VBoxContainer" instance=ExtResource("6_neb33")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/SongSelect/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/SongSelect/MarginContainer/VBoxContainer"]
 clip_children = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yknkk")
 
-[node name="SongContainer" type="Container" parent="HBoxContainer/SongSelect/VBoxContainer/PanelContainer"]
+[node name="SongContainer" type="Container" parent="HBoxContainer/SongSelect/MarginContainer/VBoxContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -178,7 +183,6 @@ uppercase = true
 
 [node name="VisPlayback" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("8_01aqb")]
 z_index = 1
-use_parent_material = true
 layout_mode = 2
 player = NodePath("../../../../../../AudioStreamPlayer")
 
@@ -196,42 +200,36 @@ theme_override_constants/separation = 8
 
 [node name="LevelSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer/SmooshContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 info = "16"
 type = "LEVEL"
 
 [node name="BPMSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer/SmooshContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 info = "130"
 type = "BPM"
 
 [node name="LengthSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer/SmooshContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 info = "03:25"
 type = "LENGTH"
 
 [node name="CharterSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 info = "SARIAN"
 type = "CHARTER"
 
 [node name="GenreSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
 unique_name_in_owner = true
-use_parent_material = true
 layout_mode = 2
 info = "HI-TECH FULL-ON"
 type = "GENRE"
 
 [node name="TypeSongCredit" parent="HBoxContainer/SongDisplayCard/VBoxContainer/SongInfo/VBoxContainer/SongCreditContainer" instance=ExtResource("4_jn1ix")]
 visible = false
-use_parent_material = true
 layout_mode = 2
 info = "ORIGINAL"
 type = "TYPE"
@@ -265,4 +263,4 @@ script = ExtResource("2_jefun")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="tab_changed" from="HBoxContainer/SongSelect/VBoxContainer/DifficultySelect" to="." method="_on_difficulty_select_tab_changed"]
+[connection signal="tab_changed" from="HBoxContainer/SongSelect/MarginContainer/VBoxContainer/DifficultySelect" to="." method="_on_difficulty_select_tab_changed"]
