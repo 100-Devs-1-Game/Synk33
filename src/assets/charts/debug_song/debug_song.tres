@@ -8,6 +8,7 @@
 script = ExtResource("1_lbbwi")
 Name = "Debug Song"
 Author = "Sarian"
+Genre = "Debug-wave"
 Audio = ExtResource("1_4idyj")
 Cover = ExtResource("3_niuwm")
 Bpm = 125.0

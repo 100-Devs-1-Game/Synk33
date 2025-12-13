@@ -18,13 +18,21 @@ var current_difficulty: Difficulty:
 			return
 		current_difficulty = new
 		filter_songs()
+var current_song: Song:
+	set = set_current_song
 
 
 @onready var song_container: Container = %SongContainer
+@onready var song_display_card: Container = %SongDisplayCard
 @onready var song_cover: TextureRect = %SongCover
-@onready var song_info_bpm: Control = %BPMSongInfo
-@onready var song_info_length: Control = %LengthSongInfo
+@onready var song_credit_bpm: Control = %BPMSongCredit
+@onready var song_credit_length: Control = %LengthSongCredit
 @onready var song_info_highscore: Control = %HighscoreSongInfo
+@onready var song_credit_level: Control = %LevelSongCredit
+@onready var song_credit_charter: Control = %CharterSongCredit
+@onready var song_credit_genre: Control = %GenreSongCredit
+@onready var song_name: Label = %SongName
+@onready var song_credit: Label = %SongCredit
 
 @onready var difficulty_select: DifficultySelect = %DifficultySelect
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -40,17 +48,31 @@ func _ready() -> void:
 		song_button.icon = song.Cover
 		song_button.title = song.Name
 		song_button.credit = song.Author
-		song_button.focus_entered.connect(change_song.bind(song))
+		song_button.focus_entered.connect(set_current_song.bind(song))
 		song_container.add_child(song_button)
 	filter_songs()
 
 
-func change_song(to:Song) -> void:
+func set_current_song(to:Song) -> void:
+	if current_song == to:
+		return
+	current_song = to
+	
+	song_cover.texture = to.Cover
+	song_credit_genre.info = to.Genre.to_upper()
+	song_name.text = to.Name
+	song_credit.text = to.Author
+	audio_stream_player.stream = to.Audio
+	audio_stream_player.play()
+	
 	var chart:Chart = to.GetChartByDifficulty(current_difficulty)
 	if chart == null:
+		(song_display_card.material as ShaderMaterial).set_shader_parameter(&"greyscale", true)
+		audio_stream_player.stop()
 		#assert(false, "No chart found for current difficulty")
 		return
 	for difficulty in len(Difficulty):
+		(song_display_card.material as ShaderMaterial).set_shader_parameter(&"greyscale", false)
 		difficulty_select.set_tab_availability(
 			difficulty, 
 			to.HasChart(difficulty)
@@ -59,13 +81,13 @@ func change_song(to:Song) -> void:
 
 
 func change_chart(to:Chart) -> void:
-	song_cover.texture = to.Song.Cover
-	song_info_bpm.info = "%03dBPM" % to.Song.Bpm
-	song_info_length.info = time_as_string(to.Song.Audio.get_length())
+	song_credit_bpm.info = "%03dBPM" % to.Song.Bpm
+	song_credit_length.info = time_as_string(to.Song.Audio.get_length())
 	
 	song_info_highscore.info = str(SaveManager.GetChartHighscore(to.GetSaveHash()))
-	audio_stream_player.stream = to.Song.Audio
-	audio_stream_player.play()
+	
+	song_credit_charter.info = to.Designer.to_upper()
+	song_credit_level.info = str(to.Level)
 
 
 func filter_songs() -> void:
@@ -81,3 +103,9 @@ func filter_songs() -> void:
 
 func _on_difficulty_select_tab_changed(tab: int) -> void:
 	current_difficulty = tab as Difficulty
+	if not current_song:
+		return
+	if current_song.HasChart(tab as Difficulty):
+		change_chart(current_song.GetChartByDifficulty(tab as Difficulty))
+	else:
+		push_warning("Current song does not have a chart for this difficulty")
