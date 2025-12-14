@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnk0thv8iasnk"]
+[gd_scene load_steps=5 format=3 uid="uid://dnk0thv8iasnk"]
 
 [ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="1_qpju2"]
 [ext_resource type="Script" uid="uid://r62um7roqwig" path="res://scenes/menus/main/tutorial.gd" id="2_qiond"]
 [ext_resource type="Resource" uid="uid://cus44kk21u1cx" path="res://dialogue/tutorial.dialogue" id="3_bep8a"]
+[ext_resource type="Texture2D" uid="uid://dkcm542xm2tim" path="res://assets/textures/ui/logo.png" id="4_bv6an"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,15 +15,14 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_left = 0.001
+anchor_top = 0.21900001
+anchor_right = 1.0
+anchor_bottom = 0.95400006
+offset_left = 0.07999992
+offset_top = 0.47998047
+offset_bottom = -0.32006836
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -51,3 +51,17 @@ focus_mode = 0
 text = "Tutorial"
 script = ExtResource("2_qiond")
 dialogue = ExtResource("3_bep8a")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.046000004
+anchor_right = 0.48600003
+anchor_bottom = 0.2
+offset_left = 0.07999802
+offset_top = 0.31999588
+offset_right = 0.37994385
+offset_bottom = 0.5
+texture = ExtResource("4_bv6an")
+expand_mode = 1
