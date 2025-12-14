@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkluvwvfg2iyk"]
+[gd_scene load_steps=26 format=3 uid="uid://dkluvwvfg2iyk"]
 
 [ext_resource type="PackedScene" uid="uid://cbpbta52owj4a" path="res://assets/models/rails/rail_02_better_size.tscn" id="1_gagx4"]
-[ext_resource type="Resource" uid="uid://bybb85qhlhlbn" path="res://assets/charts/KLIPNITY/kyphian_alyraeus_tough.tres" id="2_arua4"]
+[ext_resource type="Resource" uid="uid://b4dh0cpqem4u3" path="res://assets/charts/KLIPNITY/kyphian_alyraeus_medium.tres" id="2_arua4"]
 [ext_resource type="PackedScene" uid="uid://diqccqrvjnp2d" path="res://assets/models/rails/rail_02_better_size_blue.tscn" id="2_nbd8l"]
 [ext_resource type="PackedScene" uid="uid://b6b5i7y5wwrq1" path="res://assets/models/rails/rail_02_better_size_orange.tscn" id="3_hwkc4"]
 [ext_resource type="Script" uid="uid://l5osvw7nm7tr" path="res://core/ScoreManager.cs" id="6_18uvy"]
@@ -22,15 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://ckmfrqen37xbt" path="res://assets/backgrounds/auxie_bg.png" id="17_mvjn5"]
 [ext_resource type="Material" uid="uid://c3arkj22cceg4" path="res://assets/materials/simple/orange.tres" id="17_vls4n"]
 [ext_resource type="Material" uid="uid://dnmfjt8tc7ulh" path="res://assets/materials/emission/orange_e.tres" id="18_8jl8h"]
+[ext_resource type="Environment" uid="uid://cx02jn7kksweo" path="res://environments/level.tres" id="18_f541d"]
 [ext_resource type="PackedScene" uid="uid://cginamruiifir" path="res://assets/models/speaker/speaker.tscn" id="18_mvjn5"]
 [ext_resource type="PackedScene" uid="uid://6ktn83westp0" path="res://assets/models/UI/ui_elemet_02.tscn" id="21_78aa7"]
-
-[sub_resource type="Environment" id="Environment_wjff2"]
-background_mode = 1
-glow_enabled = true
-glow_normalized = true
-glow_blend_mode = 4
-fog_sky_affect = 0.0
 
 [node name="Synk33" type="Node3D"]
 
@@ -126,7 +120,7 @@ keep_aspect = 0
 fov = 70.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Camera & Lights"]
-environment = SubResource("Environment_wjff2")
+environment = ExtResource("18_f541d")
 
 [node name="rails" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
