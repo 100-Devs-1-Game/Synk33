@@ -1,0 +1,169 @@
+[gd_scene load_steps=21 format=3 uid="uid://cx7aavda1upfu"]
+
+[ext_resource type="PackedScene" uid="uid://c7khyundjjmyp" path="res://models/background/bridge/bridge.tscn" id="10_mwbgn"]
+[ext_resource type="PackedScene" uid="uid://brpdx6gi7axfv" path="res://models/background/world_sphere.tscn" id="11_dltsi"]
+[ext_resource type="Material" uid="uid://cvu87ls5buaox" path="res://materials/simple/dark/purple_dark_alpha.tres" id="11_eacye"]
+[ext_resource type="Shader" uid="uid://c71cr2l7tfkny" path="res://scripts/shaders/water_toon.gdshader" id="12_eacye"]
+[ext_resource type="PackedScene" uid="uid://c3ymqyecndvrf" path="res://models/background/vehicles/boat_01.tscn" id="13_7tprj"]
+[ext_resource type="PackedScene" uid="uid://c22fbaxn1rxts" path="res://models/background/buildings/building_01.tscn" id="19_jqagn"]
+[ext_resource type="PackedScene" uid="uid://dfsm7pvaieo6d" path="res://models/background/buildings/building_02.tscn" id="20_bpix6"]
+[ext_resource type="PackedScene" uid="uid://dnm5k0pcv7x0k" path="res://models/background/buildings/building_03.tscn" id="21_1h14y"]
+[ext_resource type="PackedScene" uid="uid://yjhst6c60xya" path="res://models/background/buildings/building_04.tscn" id="22_mq4jo"]
+[ext_resource type="PackedScene" uid="uid://cb3ft362dpj85" path="res://models/background/buildings/building_05.tscn" id="23_js2n0"]
+[ext_resource type="PackedScene" uid="uid://1047yagec1dj" path="res://models/background/buildings/building_06.tscn" id="24_0p0yj"]
+[ext_resource type="PackedScene" uid="uid://basyco6ef40qp" path="res://models/background/buildings/building_07.tscn" id="25_ixccw"]
+[ext_resource type="PackedScene" uid="uid://ey1arftd73f3" path="res://models/background/buildings/building_08.tscn" id="26_byywd"]
+
+[sub_resource type="Environment" id="Environment_wjff2"]
+background_mode = 1
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 4
+fog_sky_affect = 0.0
+
+[sub_resource type="Animation" id="Animation_dltsi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("world_sphere:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mwbgn"]
+resource_name = "world_sphere"
+length = 150.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("world_sphere:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 74.96667, 150),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eacye"]
+_data = {
+&"RESET": SubResource("Animation_dltsi"),
+&"world_sphere": SubResource("Animation_mwbgn")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mwbgn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dltsi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7tprj"]
+render_priority = 0
+shader = ExtResource("12_eacye")
+shader_parameter/color = Color(0.28295252, 0.24433392, 0.68690103, 1)
+shader_parameter/highlight_color = Color(0.05882353, 0.043137256, 0.2, 1)
+shader_parameter/frequency = 2.60000003874312
+shader_parameter/compress = 1.999999966472
+shader_parameter/add_light = 0.0
+shader_parameter/scale = 27.58999938330832
+shader_parameter/speed = 0.10000015050212063
+shader_parameter/x_angle = 1.5699998773626298
+shader_parameter/y_angle = 1.5699998773626298
+shader_parameter/base_alpha = 0.99999998509863
+shader_parameter/refraction_ratio = 10.0
+shader_parameter/clear = 1.0
+shader_parameter/surf_sinpowder = 8.0
+shader_parameter/surf_speed = 1.0000001639131995
+shader_parameter/surf_angle = 1.5699998773626298
+shader_parameter/surf_magnitude = 0.0
+shader_parameter/s11 = 2.2199997268585605
+shader_parameter/sinpowder = 8.0
+
+[node name="Background" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wjff2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.9997294, 0.0010147254, -0.023241032, 0, 0.99904823, 0.043619387, 0.023263175, 0.04360758, -0.99877787, -2.173502, 5.18, -47.421265)
+projection = 1
+current = true
+
+[node name="building_01" parent="." instance=ExtResource("19_jqagn")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 22.023537, -0.012470067, -6.979122)
+
+[node name="building_02" parent="." instance=ExtResource("20_bpix6")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 28.059614, -0.012470067, -5.4984083)
+
+[node name="building_03" parent="." instance=ExtResource("21_1h14y")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 32.46998, -0.012470067, -7.222205)
+
+[node name="building_04" parent="." instance=ExtResource("22_mq4jo")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 36.023758, -0.012470067, -7.132599)
+
+[node name="building_05" parent="." instance=ExtResource("23_js2n0")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 40.826035, -0.012470067, -7.4166465)
+
+[node name="building_06" parent="." instance=ExtResource("24_0p0yj")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, -24.318478, -0.012604058, -5.900692)
+
+[node name="building_07" parent="." instance=ExtResource("25_ixccw")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, -30.136902, -0.012604058, -5.7653)
+
+[node name="building_08" parent="." instance=ExtResource("26_byywd")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, -35.180534, -0.012604058, -5.6479373)
+
+[node name="building_09" parent="." instance=ExtResource("19_jqagn")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, -39.767067, -0.012470067, -5.5412874)
+
+[node name="building_10" parent="." instance=ExtResource("22_mq4jo")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, -44.020313, -0.012470067, -4.9248867)
+
+[node name="building_14" parent="." instance=ExtResource("22_mq4jo")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, -52.375565, -0.012470067, -4.703184)
+
+[node name="building_11" parent="." instance=ExtResource("19_jqagn")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 45.407986, -0.012470067, -7.523266)
+
+[node name="building_12" parent="." instance=ExtResource("19_jqagn")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, -48.610844, -0.012470067, -5.3354974)
+
+[node name="building_13" parent="." instance=ExtResource("22_mq4jo")]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 49.73027, -0.012470067, -7.623843)
+
+[node name="background" type="Node3D" parent="."]
+transform = Transform3D(-2.4993234, 0, -0.058157936, 0, 2.5, 0, 0.058157936, 0, -2.4993234, 21.7346, -6.228866, 103.4133)
+
+[node name="bridge" parent="." instance=ExtResource("10_mwbgn")]
+transform = Transform3D(-0.023263128, 0, 0.9997293, 0, 1, 0, -0.9997293, 0, -0.023263128, -0.5874409, 0.0029999986, -9.3511505)
+
+[node name="world_sphere" parent="." instance=ExtResource("11_dltsi")]
+transform = Transform3D(78.92501, 0, 0, 0, 78.925, 0, 0, 0, 78.92501, -0.28, 52.397, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eacye")
+}
+autoplay = "world_sphere"
+
+[node name="fog" type="MeshInstance3D" parent="."]
+transform = Transform3D(-41.318817, -0.39625952, -0.019128075, 5.4713505e-09, 0.74372995, -18.832058, 0.9614669, -17.029161, -0.8220244, -0.14283061, 5.4087806, -25.231209)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_mwbgn")
+skeleton = NodePath("../Camera3D")
+surface_material_override/0 = ExtResource("11_eacye")
+
+[node name="lake" type="MeshInstance3D" parent="."]
+transform = Transform3D(62.585, 0, 0, 0, 1, 0, 0, 0, 46.47, 0, -0.6339706, -11.7372)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_dltsi")
+surface_material_override/0 = SubResource("ShaderMaterial_7tprj")
+
+[node name="boat_01" parent="." instance=ExtResource("13_7tprj")]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, 12.525, -0.703, -30.552)
