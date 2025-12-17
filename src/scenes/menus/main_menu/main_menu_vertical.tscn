@@ -1,0 +1,187 @@
+[gd_scene load_steps=27 format=3 uid="uid://drwodyis2ob86"]
+
+[ext_resource type="Shader" path="res://assets/shaders/ps2_dream_void.gdshader" id="1_r3ddt"]
+[ext_resource type="PackedScene" uid="uid://cbpbta52owj4a" path="res://assets/models/rails/rail_02_better_size.tscn" id="2_ftfhb"]
+[ext_resource type="PackedScene" uid="uid://cmh013c6fv725" path="res://assets/models/buttons/note_button/note_button_purple.tscn" id="3_g3nb4"]
+[ext_resource type="PackedScene" uid="uid://voqg8e5rgnfh" path="res://assets/models/UI/icons/play_icon.tscn" id="4_0q2xr"]
+[ext_resource type="PackedScene" uid="uid://qmt2eoy0f00s" path="res://assets/models/buttons/note_button/note_button_black.tscn" id="5_s5s71"]
+[ext_resource type="Texture2D" uid="uid://7a6tjoovbsm8" path="res://assets/text/play_text.png" id="6_ig3of"]
+[ext_resource type="PackedScene" uid="uid://b6b5i7y5wwrq1" path="res://assets/models/rails/rail_02_better_size_orange.tscn" id="7_06dd1"]
+[ext_resource type="PackedScene" uid="uid://c0woujy5p5rdh" path="res://assets/models/buttons/note_button/note_button_orange.tscn" id="8_2fgsl"]
+[ext_resource type="PackedScene" uid="uid://dxrybwrc2guc" path="res://assets/models/UI/icons/settings_icon.tscn" id="9_h5nek"]
+[ext_resource type="Texture2D" uid="uid://dewskh1nkq248" path="res://assets/text/settings_text.png" id="10_1uibo"]
+[ext_resource type="PackedScene" uid="uid://b6gsw7ljxbllx" path="res://assets/models/rails/rail_02_better_size_pink.tscn" id="11_iical"]
+[ext_resource type="PackedScene" uid="uid://drdl1xa2kpif2" path="res://assets/models/buttons/note_button/note_button_green.tscn" id="12_qykwf"]
+[ext_resource type="PackedScene" uid="uid://cm8mqxr0asw5k" path="res://assets/models/UI/icons/editor_icon.tscn" id="13_lyi0c"]
+[ext_resource type="Texture2D" uid="uid://bvyom6c0gv638" path="res://assets/text/editor_text.png" id="14_vutja"]
+[ext_resource type="PackedScene" uid="uid://diqccqrvjnp2d" path="res://assets/models/rails/rail_02_better_size_blue.tscn" id="15_oh3t1"]
+[ext_resource type="PackedScene" uid="uid://d26fwfre324mr" path="res://assets/models/buttons/note_button/note_button_blue.tscn" id="16_gepw6"]
+[ext_resource type="PackedScene" uid="uid://bm5yhq60c46er" path="res://assets/models/UI/icons/exit_icon.tscn" id="17_d7my0"]
+[ext_resource type="Texture2D" uid="uid://c05madr6ba3id" path="res://assets/text/exit_text.png" id="18_2eu2f"]
+[ext_resource type="Texture2D" uid="uid://bcnvvyyh2tjjq" path="res://assets/logo/logo_03_alone.png" id="19_u0dwq"]
+[ext_resource type="AudioStream" uid="uid://dnb7gs2ba6f57" path="res://assets/audio/music/main_menu/main_menu_theme.mp3" id="20_chi3q"]
+[ext_resource type="FontFile" uid="uid://dql8wmgpy2u70" path="res://fonts/vendsans/vendsans_bold.ttf" id="21_qdd83"]
+[ext_resource type="Texture2D" uid="uid://vqwptbbsaa4m" path="res://assets/UI/carousel_gallery/01_welcome.png" id="22_g3nb4"]
+[ext_resource type="Texture2D" uid="uid://bolwqq7dgb0v8" path="res://assets/UI/carousel_gallery/carousel_button_action.png" id="23_0q2xr"]
+
+[sub_resource type="Environment" id="Environment_h7u22"]
+background_mode = 1
+tonemap_mode = 2
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 4
+fog_sky_affect = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_e3x1o"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sp4fs"]
+render_priority = 0
+shader = ExtResource("1_r3ddt")
+shader_parameter/global_speed = 2.0
+shader_parameter/nebula_color_1 = Color(0.011764706, 0.043137256, 0.023529412, 1)
+shader_parameter/nebula_color_2 = Color(0.043137256, 0.05490196, 0.078431375, 1)
+shader_parameter/nebula_intensity = 1.0
+shader_parameter/nebula_speed = 0.56000002334012
+shader_parameter/nebula_scale = 3.0
+shader_parameter/nebula_roundness = 1.0
+shader_parameter/nebula_swirl = 0.9
+shader_parameter/base_void_color = Color(0.005, 0.005, 0.015, 1)
+shader_parameter/orb_color_1 = Color(0.38431373, 0.94509804, 0.96862745, 1)
+shader_parameter/orb_color_2 = Color(0.98039216, 0.34901962, 0.18039216, 1)
+shader_parameter/orb_color_3 = Color(0.53333336, 0.22352941, 0.9490196, 1)
+shader_parameter/orb_color_4 = Color(0.8901961, 0.12156863, 0.6156863, 1)
+shader_parameter/orb_count = 16
+shader_parameter/orb_brightness = 1.0
+shader_parameter/orb_size = 0.0030000001425
+shader_parameter/tail_length = 2.0
+shader_parameter/tail_fade = 3.0
+shader_parameter/orb_radius = 1.40000004275
+shader_parameter/orb_lens_size = 0.890000042275
+shader_parameter/orb_lens_opacity = 0.5600000266
+shader_parameter/vignette_strength = 0.890000042275
+shader_parameter/grain_amount = 0.0010000000475
+shader_parameter/scanline_strength = 0.0050000002375
+shader_parameter/chromatic_aberration = 0.0
+
+[node name="Main_Menu" type="Node3D"]
+
+[node name="Camera & Post" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.688128, 0, -3.0633907)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera & Post"]
+environment = SubResource("Environment_h7u22")
+
+[node name="background" type="MeshInstance3D" parent="Camera & Post"]
+transform = Transform3D(-3.496911e-07, 8, 3.496911e-07, 0, -3.496911e-07, 8, 8, 3.496911e-07, 1.5285484e-14, 0, -1.224, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_e3x1o")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_sp4fs")
+
+[node name="Camera3D" type="Camera3D" parent="Camera & Post"]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 4.647, 0)
+projection = 1
+size = 8.0
+
+[node name="rail_02_better_size_purple" parent="." instance=ExtResource("2_ftfhb")]
+transform = Transform3D(-0.35, 0, 3.059797e-08, 0, 0.35, 0, -3.059797e-08, 0, -0.35, 0.6671874, 0, -2.8369198)
+
+[node name="note_button_purple" parent="." instance=ExtResource("3_g3nb4")]
+transform = Transform3D(-3.278354e-08, 0, -0.74999994, 0, 0.42799997, 0, 0.74999994, 0, -3.278354e-08, 0.6671875, 1, -5.16092)
+
+[node name="note_button_purple_black" parent="." instance=ExtResource("5_s5s71")]
+transform = Transform3D(-3.934025e-08, 0, -0.9, 0, 0.667, 0, 0.9, 0, -3.934025e-08, 0.6671875, 0.9908781, -5.16092)
+
+[node name="play_icon" parent="." instance=ExtResource("4_0q2xr")]
+transform = Transform3D(-5.5735727e-09, 0, -0.12750848, 0, 0.12755889, 0, 0.12750848, 0, -5.5735727e-09, 0.6671875, 1.0300536, -5.16092)
+
+[node name="Play" type="Sprite3D" parent="."]
+transform = Transform3D(0.277, 0, 0, 0, -1.2108055e-08, 0.277, 0, -0.277, -1.2108055e-08, 0.68187195, 4.337, -4.46092)
+texture = ExtResource("6_ig3of")
+
+[node name="rail_02_better_size_orange" parent="." instance=ExtResource("7_06dd1")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.6671875, 0, -1.9609197)
+
+[node name="note_button_orange" parent="." instance=ExtResource("8_2fgsl")]
+transform = Transform3D(-3.278354e-08, 0, -0.74999994, 0, 0.74999994, 0, 0.74999994, 0, -3.278354e-08, 1.6671875, 1.20995, -3.66092)
+
+[node name="note_button_orange_black" parent="." instance=ExtResource("5_s5s71")]
+transform = Transform3D(-3.9340254e-08, 0, -0.90000015, 0, 0.66675, 0, 0.90000015, 0, -3.9340254e-08, 1.6671875, 1.20995, -3.66092)
+
+[node name="settings_icon" parent="." instance=ExtResource("9_h5nek")]
+transform = Transform3D(-1.13671454e-08, 2.442564e-16, -0.26005, 5.5879346e-09, 0.26004997, 0, 0.26004997, -5.5879346e-09, -1.1367146e-08, 1.6671875, 1.2400498, -3.66092)
+
+[node name="Settings" type="Sprite3D" parent="."]
+transform = Transform3D(0.237, -8.881784e-16, 0, -3.6804687e-23, -1.03596e-08, 0.237, -8.881784e-16, -0.237, -1.03596e-08, 1.7318721, 2.117, -2.8859198)
+texture = ExtResource("10_1uibo")
+
+[node name="rail_02_better_size_green" parent="." instance=ExtResource("11_iical")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 2.6671872, 0, -1.0959197)
+
+[node name="note_button_green" parent="." instance=ExtResource("12_qykwf")]
+transform = Transform3D(-3.278354e-08, 0, -0.74999994, 0, 0.74999994, 0, 0.74999994, 0, -3.278354e-08, 2.6671872, 1.20995, -2.1609197)
+
+[node name="note_button_green_black" parent="." instance=ExtResource("5_s5s71")]
+transform = Transform3D(-3.9340254e-08, 0, -0.90000015, 0, 0.66675, 0, 0.90000015, 0, -3.9340254e-08, 2.6671872, 1.191, -2.1609197)
+
+[node name="editor_icon" parent="." instance=ExtResource("13_lyi0c")]
+transform = Transform3D(-9.605576e-09, 0, -0.21974997, 0, 0.21974997, 0, 0.21974997, 0, -9.605576e-09, 2.6671872, 1.24, -2.1609197)
+
+[node name="Editor" type="Sprite3D" parent="."]
+transform = Transform3D(0.28500003, -8.881784e-16, 0, 0, -1.2457747e-08, 0.285, 0, -0.285, -1.2457747e-08, 2.6968722, 1.21, -1.5209198)
+texture = ExtResource("14_vutja")
+
+[node name="rail_02_better_size_blue" parent="." instance=ExtResource("15_oh3t1")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 3.6671872, 0, -0.22591972)
+
+[node name="note_button_blue" parent="." instance=ExtResource("16_gepw6")]
+transform = Transform3D(-3.278354e-08, 0, -0.74999994, 0, 0.74999994, 0, 0.74999994, 0, -3.278354e-08, 3.6671872, 1.20995, -0.6609198)
+
+[node name="note_button_blue_black" parent="." instance=ExtResource("5_s5s71")]
+transform = Transform3D(-3.9340254e-08, 0, -0.90000015, 0, 0.66675, 0, 0.90000015, 0, -3.9340254e-08, 3.6671872, 1.20995, -0.6609198)
+
+[node name="exit_icon" parent="." instance=ExtResource("17_d7my0")]
+transform = Transform3D(-1.6492304e-08, 0, -0.37729996, 0, 0.37729996, 0, 0.37729996, 0, -1.6492304e-08, 3.666872, 1.24, -0.7059196)
+
+[node name="Exit" type="Sprite3D" parent="."]
+transform = Transform3D(0.28500006, 0, 0, 0, -1.2457748e-08, 0.28500006, 0, -0.28500006, -1.2457748e-08, 3.7218719, 2.117, 0.024080276)
+texture = ExtResource("18_2eu2f")
+
+[node name="logo" type="Sprite3D" parent="."]
+transform = Transform3D(0.45, 0, 5.293956e-23, 0, -1.9670125e-08, 0.45, 0, -0.45, -1.9670125e-08, -5.6, 0.25, -6.063)
+cast_shadow = 0
+texture = ExtResource("19_u0dwq")
+region_enabled = true
+region_rect = Rect2(0, 0.40149784, 1178, 220.94928)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.688128, 4.647, -3.0633907)
+stream = ExtResource("20_chi3q")
+autoplay = true
+
+[node name="disclaimer" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6, 1, 0.587)
+modulate = Color(0.88235295, 0.88235295, 0.88235295, 0.1764706)
+outline_modulate = Color(0.88235295, 0.88235295, 0.88235295, 0.1764706)
+text = "SYNK:33 is a game being developed as part of the 33 Games Game Jam, hosted by CGGJ (Collaborative Godot Game Jam)."
+font = ExtResource("21_qdd83")
+font_size = 16
+
+[node name="version" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5, 1, 0.772)
+modulate = Color(0.88235295, 0.88235295, 0.88235295, 0.1764706)
+outline_modulate = Color(0.88235295, 0.88235295, 0.88235295, 0.1764706)
+text = "v2025-12-19"
+font = ExtResource("21_qdd83")
+font_size = 16
+
+[node name="carousel_gallery" type="Sprite3D" parent="."]
+transform = Transform3D(0.85000014, 0, 3.7154685e-08, -3.7154685e-08, 1.6240828e-15, 0.85000014, 0, -0.85000014, 1.6240828e-15, -6, 0, -1.25)
+cast_shadow = 0
+texture = ExtResource("22_g3nb4")
+
+[node name="carousel_button_action" type="Sprite3D" parent="."]
+transform = Transform3D(0.85000014, 0, 3.7154685e-08, -3.7154685e-08, 1.6240828e-15, 0.85000014, 0, -0.85000014, 1.6240828e-15, -6, 0, 0.107)
+cast_shadow = 0
+texture = ExtResource("23_0q2xr")
