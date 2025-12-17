@@ -95,7 +95,7 @@ public partial class HoldNoteObject3D : NoteObject3D {
     public void StartHold(NoteType type, long bar, long beat, double sixteenth) {
         if (IsEventMatching(type, bar, beat, sixteenth)) {
             _held = true;
-            GetNode<Node3D>("%note").Visible = false;
+            if (NoteMesh != null) NoteMesh.Visible = false;
             _currentEmission = 16f;
             _targetEmission = 16f;
         }
@@ -110,9 +110,6 @@ public partial class HoldNoteObject3D : NoteObject3D {
 
     public void NoteJudged(NoteType type, long bar, long beat, double sixteenth, Judgement judgement) {
         if (IsEventMatching(type, bar, beat, sixteenth)) {
-            var label = GetNode<Label3D>("Score");
-            label.Text = judgement.ToString();
-            label.GlobalPosition = label.GlobalPosition with { Z = 0 };
         }
     }
 }

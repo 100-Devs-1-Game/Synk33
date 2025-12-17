@@ -1,5 +1,6 @@
 using Godot;
 using SYNK33.chart;
+using SYNK33.ui;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,6 +12,7 @@ public partial class GameManager : Node {
     [Export] public required JudgementManager JudgementManager;
     [Export] public required ScoreManager ScoreManager;
     [Export] public required Node Spawner; // Changed from Spawner to Node to support both Spawner and Spawner3D
+    [Export] public required JudgementIndicatorManager JudgementIndicatorManager { get; set; }
 
     private AudioStreamPlayer? _hitNoteSfx;
     private AudioStreamPlayer? _holdNoteSfx;
@@ -36,10 +38,12 @@ public partial class GameManager : Node {
     private void OnNoteHit(NoteType type, long bar, long beat, double sixteenth, Judgement judgement) {
         ScoreManager.RegisterHit(judgement);
         _hitNoteSfx?.Play();
+        DisplayJudgement(judgement, type);
     }
 
     private void OnNoteMissed(NoteType type, long bar, long beat, double sixteenth) {
         ScoreManager.RegisterMiss();
+        DisplayJudgement(Judgement.Miss, type);
     }
 
     private void OnNoteHeld(NoteType type, long bar, long beat, double sixteenth) {
@@ -53,6 +57,7 @@ public partial class GameManager : Node {
 
     private void OnHoldJudged(NoteType type, long bar, long beat, double sixteenth, Judgement judgement) {
         ScoreManager.RegisterHit(judgement);
+        DisplayJudgement(judgement, type);
     }
 
     private void OnNoteReleased(NoteType type, long bar, long beat, double sixteenth) {
@@ -68,5 +73,9 @@ public partial class GameManager : Node {
         if (_holdPlayersLabel != null) {
             _holdPlayersLabel.Text = string.Join("\n", _holdPlayers.Keys.Select(key => $"{key.type} {key.bar}:{key.beat}:{key.sixteenth}"));
         }
+    }
+    
+    private void DisplayJudgement(Judgement judgement, NoteType noteType, TimingWindow? timing = null) {
+        JudgementIndicatorManager?.ShowJudgement(judgement, noteType, timing);
     }
 }
