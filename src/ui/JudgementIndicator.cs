@@ -32,13 +32,7 @@ public partial class JudgementIndicator : Control {
     public void DisplayJudgement(Judgement judgement, NoteType noteType, float laneOffset, TimingWindow? timing = null) {
         SetJudgementText(judgement);
         SetJudgementColor(judgement);
-        // SetTimingText(timing);
-        var timingTest = new RandomNumberGenerator().RandiRange(0,2) switch {
-            0 => (TimingWindow?)TimingWindow.Early,
-            1 => (TimingWindow?)TimingWindow.Late,
-            _ => null
-        };
-        SetTimingText(timingTest);
+        SetTimingText(timing);
         PositionForLane(noteType, laneOffset);
         PlayAppearAnimation();
     }
@@ -109,28 +103,28 @@ public partial class JudgementIndicator : Control {
     }
     
     private void SetTimingText(TimingWindow? timing) {
-        if (timing == null) {
+        if (timing == null || timing.Offset == TimingOffset.OnTime) {
             _timing.Visible = false;
             return;
         }
         
         _timing.Visible = true;
-        _timingLabel.Text = GetTimingDisplayText(timing.Value);
-        ApplyColorToBackground(GetTimingColor(timing.Value));
+        _timingLabel.Text = GetTimingDisplayText(timing);
+        ApplyColorToBackground(GetTimingColor(timing));
     }
     
     private static string GetTimingDisplayText(TimingWindow timing) {
-        return timing switch {
-            TimingWindow.Early => "Early",
-            TimingWindow.Late => "Late",
+        return timing.Offset switch {
+            TimingOffset.Early => "Early",
+            TimingOffset.Late => "Late",
             _ => ""
         };
     }
     
     private Color GetTimingColor(TimingWindow timing) {
-        return timing switch {
-            TimingWindow.Early => EarlyColor,
-            TimingWindow.Late => LateColor,
+        return timing.Offset switch {
+            TimingOffset.Early => EarlyColor,
+            TimingOffset.Late => LateColor,
             _ => Colors.White
         };
     }
@@ -140,9 +134,4 @@ public partial class JudgementIndicator : Control {
         _animationPlayer.Queue("show");
         _animationPlayer.Queue("disappear");
     }
-}
-
-public enum TimingWindow {
-    Early,
-    Late
 }

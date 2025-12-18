@@ -108,8 +108,9 @@ public partial class HoldNoteObject3D : NoteObject3D {
         }
     }
 
-    public void NoteJudged(NoteType type, long bar, long beat, double sixteenth, Judgement judgement) {
+    public void NoteJudged(NoteType type, long bar, long beat, double sixteenth, Judgement judgement, TimingOffset offset) {
         if (IsEventMatching(type, bar, beat, sixteenth)) {
+            // TODO: Add effect
         }
     }
 }

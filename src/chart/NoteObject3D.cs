@@ -36,11 +36,9 @@ public partial class NoteObject3D : Node3D {
 
     public virtual void SetMissed(NoteType type, long bar, long beat, double sixteenth) {
         if (!IsEventMatching(type, bar, beat, sixteenth)) return;
-        NoteMesh?.SetSurfaceOverrideMaterial(0, null);
-        NoteMesh?.SetSurfaceOverrideMaterial(1, null);
     }
 
-    public void SetHit(NoteType type, long bar, long beat, double sixteenth, Judgement judgement) {
+    public void SetHit(NoteType type, long bar, long beat, double sixteenth, Judgement judgement, TimingOffset offset) {
         if (!IsEventMatching(type, bar, beat, sixteenth)) return;
         if (NoteMesh != null) NoteMesh.Visible = false;
         // TODO: Add hit effects

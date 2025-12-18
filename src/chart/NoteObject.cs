@@ -30,7 +30,7 @@ public partial class NoteObject : Node2D {
         SetModulate(SelfModulate.Darkened(1f));
     }
 
-    public void SetHit(NoteType type, long bar, long beat, double sixteenth, Judgement judgement) {
+    public void SetHit(NoteType type, long bar, long beat, double sixteenth, Judgement judgement, TimingOffset offset) {
         if (!IsEventMatching(type, bar, beat, sixteenth)) return;
         SetModulate(judgement switch {
             Judgement.Perfect => new Color(255, 255, 255),
