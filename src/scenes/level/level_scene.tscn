@@ -70,8 +70,7 @@ InputManager = NodePath("../InputManager")
 script = ExtResource("6_18uvy")
 
 [node name="Spawner" parent="Gameplay" node_paths=PackedStringArray("JudgementManager") instance=ExtResource("15_ppdpw")]
-ScrollSpeed = 12.0
-AudioOffset = -0.18
+ScrollSpeed = 8.0
 JudgementLine = NodePath("../JudgementDebug")
 Conductor = NodePath("../Conductor")
 JudgementManager = NodePath("../JudgementManager")
@@ -85,10 +84,6 @@ NoteMaterialGlow = ExtResource("18_8jl8h")
 [node name="JudgementDebug" type="Marker3D" parent="Gameplay"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 gizmo_extents = 250.0
-
-[node name="note_spawn" type="Marker3D" parent="Gameplay"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
 
 [node name="HitNotePerfectSfx" type="AudioStreamPlayer" parent="Gameplay"]
 unique_name_in_owner = true
@@ -137,6 +132,26 @@ fov = 70.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wjff2")
 
+[node name="Frets" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 0, 0)
+
+[node name="FretPurple" parent="Frets" instance=ExtResource("12_arua4")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1, 0, 0)
+Material = ExtResource("13_neaty")
+MaterialGlow = ExtResource("14_3a7vx")
+
+[node name="FretBlue" parent="Frets" instance=ExtResource("12_arua4")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+ButtonType = 1
+Material = ExtResource("13_f541d")
+MaterialGlow = ExtResource("14_neaty")
+
+[node name="FretOrange" parent="Frets" instance=ExtResource("12_arua4")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1, 0, 0)
+ButtonType = 2
+Material = ExtResource("17_vls4n")
+MaterialGlow = ExtResource("18_8jl8h")
+
 [node name="Rails" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
@@ -148,26 +163,6 @@ transform = Transform3D(0.45, 0, 0, 0, 0.45000002, 0, 0, 0, 0.9030582, 0, 0, -15
 
 [node name="RailOrange" parent="Rails" instance=ExtResource("3_hwkc4")]
 transform = Transform3D(0.45, 0, 0, 0, 0.45000002, 0, 0, 0, 0.9030582, 1, 0, -15)
-
-[node name="Frets" type="Node3D" parent="Rails"]
-transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 1, 0)
-
-[node name="FretPurple" parent="Rails/Frets" instance=ExtResource("12_arua4")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1, 0, 0)
-Material = ExtResource("13_neaty")
-MaterialGlow = ExtResource("14_3a7vx")
-
-[node name="FretBlue" parent="Rails/Frets" instance=ExtResource("12_arua4")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-ButtonType = 1
-Material = ExtResource("13_f541d")
-MaterialGlow = ExtResource("14_neaty")
-
-[node name="FretOrange" parent="Rails/Frets" instance=ExtResource("12_arua4")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1, 0, 0)
-ButtonType = 2
-Material = ExtResource("17_vls4n")
-MaterialGlow = ExtResource("18_8jl8h")
 
 [node name="Background" type="Sprite3D" parent="."]
 transform = Transform3D(15.115571, 0, 0, 0, 14.289564, 2.785952, 0, -3.8288772, 10.397315, 0, -64.747856, -157.49887)

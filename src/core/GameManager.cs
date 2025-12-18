@@ -3,6 +3,7 @@ using Godot;
 using SYNK33.chart;
 using SYNK33.ui;
 using System.Collections.Generic;
+using SYNK33.spawner;
 
 namespace SYNK33.core;
 
@@ -11,7 +12,7 @@ public partial class GameManager : Node {
     [Export] public required InputManager InputManager;
     [Export] public required JudgementManager JudgementManager;
     [Export] public required ScoreManager ScoreManager;
-    [Export] public required Node Spawner; // Changed from Spawner to Node to support both Spawner and Spawner3D
+    [Export] public required Spawner3D Spawner; 
     [Export] public required JudgementIndicatorManager JudgementIndicatorManager { get; set; }
 
     private const int MinComboForBreakEffect = 15;
