@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://brh6hg0h5dv2u"]
+
+[ext_resource type="VideoStream" uid="uid://bl3ii8p5ep42p" path="res://assets/splash_screen/intro_video.ogv" id="1_5o2u3"]
+
+[node name="Intro Video Animation" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("1_5o2u3")
+autoplay = true
