@@ -11,7 +11,13 @@ public partial class JudgementManager : Node {
     public delegate void NoteMissedEventHandler(NoteType type, long bar, long beat, double sixteenth);
 
     [Signal]
-    public delegate void NoteHitEventHandler(NoteType type, long bar, long beat, double sixteenth, Judgement judgement);
+    public delegate void NoteHitEventHandler(
+        NoteType type,
+        long bar,
+        long beat,
+        double sixteenth,
+        Judgement judgement,
+        TimingOffset offset);
 
     [Signal]
     public delegate void NoteHeldEventHandler(NoteType type, long bar, long beat, double sixteenth);
@@ -20,7 +26,13 @@ public partial class JudgementManager : Node {
     public delegate void NoteReleasedEventHandler(NoteType type, long bar, long beat, double sixteenth);
 
     [Signal]
-    public delegate void HoldJudgedEventHandler(NoteType type, long bar, long beat, double sixteenth, Judgement judgement);
+    public delegate void HoldJudgedEventHandler(
+        NoteType type,
+        long bar,
+        long beat,
+        double sixteenth,
+        Judgement judgement,
+        TimingOffset offset);
 
     [Export] public required Conductor Conductor;
     [Export] public required InputManager InputManager;
@@ -65,9 +77,9 @@ public partial class JudgementManager : Node {
     }
 
     private void HandleTapNote(RhythmInput input, Note.Tap note) {
-        if (JudgeTiming(input, note) is not { } judgement) return;
+        if (JudgeTiming(input, note) is not { } timing) return;
         _notes.Remove(note);
-        EmitSignalNoteHit(note.Type, note.Bar, note.Beat, note.Sixteenth, judgement);
+        EmitSignalNoteHit(note.Type, note.Bar, note.Beat, note.Sixteenth, timing.Judgement, timing.Offset);
     }
 
     private void HandleHoldNote(RhythmInput input, Note.Hold note) {
@@ -82,13 +94,14 @@ public partial class JudgementManager : Node {
     }
 
     private void HandleHoldNotePress(RhythmInput input, Note.Hold note) {
-        if (JudgeTiming(input, note) is not { } initialJudgement) return;
+        if (JudgeTiming(input, note) is not { } initialTiming) return;
 
         _heldNotes.Add(note);
         _activeHolds[note] = new HoldNoteState(input.PhysicalKey, Conductor.SongPosition);
         _notes.Remove(note);
 
-        EmitSignalNoteHit(note.Type, note.Bar, note.Beat, note.Sixteenth, initialJudgement);
+        EmitSignalNoteHit(note.Type, note.Bar, note.Beat, note.Sixteenth, initialTiming.Judgement,
+            initialTiming.Offset);
         EmitSignalNoteHeld(note.Type, note.Bar, note.Beat, note.Sixteenth);
     }
 
@@ -102,14 +115,30 @@ public partial class JudgementManager : Node {
         EmitSignalNoteReleased(note.Type, note.Bar, note.Beat, note.Sixteenth);
     }
 
-    private Judgement? JudgeTiming(RhythmInput input, Note note) {
+    private TimingWindow? JudgeTiming(RhythmInput input, Note note) {
         var time = note.Time(Conductor.SecondsPerBeat, Conductor.Chart.BeatsPerMeasure) - input.Timestamp;
         var absoluteTime = Math.Abs(time);
-        return absoluteTime switch {
+
+        var judgement = absoluteTime switch {
             <= JudgementTiming.Perfect => Judgement.Perfect,
             <= JudgementTiming.Great => Judgement.Great,
             <= JudgementTiming.Okay => Judgement.Okay,
-            _ => null
+            _ => (Judgement?)null
+        };
+
+        if (judgement == null) return null;
+
+        var offset = DetermineTimingOffset(judgement.Value, time);
+        return new TimingWindow(judgement.Value, offset);
+    }
+
+    private static TimingOffset DetermineTimingOffset(Judgement judgement, double time) {
+        if (judgement == Judgement.Perfect) return TimingOffset.OnTime;
+
+        return time switch {
+            > 0 => TimingOffset.Early,
+            < 0 => TimingOffset.Late,
+            _ => TimingOffset.OnTime
         };
     }
 
@@ -119,6 +148,10 @@ public partial class JudgementManager : Node {
             if (!(time > JudgementTiming.Miss)) continue;
             _notes.Remove(note);
             EmitSignalNoteMissed(note.Type, note.StartTime.Bar, note.StartTime.Beat, note.Sixteenth);
+            // Dirty hack until we have better hold note handling
+            if (note is Note.Hold) {
+                EmitSignalNoteMissed(note.Type, note.StartTime.Bar, note.StartTime.Beat, note.Sixteenth);
+            }
         }
     }
 
@@ -136,9 +169,8 @@ public partial class JudgementManager : Node {
 
     private void JudgeHoldRelease(Note.Hold note, double startTime) {
         var percentage = CalculateHoldPercentage(note, startTime);
-        var judgement = DetermineHoldJudgement(percentage);
-
-        EmitSignalHoldJudged(note.Type, note.Bar, note.Beat, note.Sixteenth, judgement);
+        var timing = DetermineHoldTiming(percentage);
+        EmitSignalHoldJudged(note.Type, note.Bar, note.Beat, note.Sixteenth, timing.Judgement, timing.Offset);
     }
 
     private double CalculateHoldPercentage(Note.Hold note, double startTime) {
@@ -151,17 +183,21 @@ public partial class JudgementManager : Node {
         return heldDuration / noteDuration;
     }
 
-    private static Judgement DetermineHoldJudgement(double percentage) {
-        return percentage switch {
+    private static TimingWindow DetermineHoldTiming(double percentage) {
+        var judgement = percentage switch {
             >= HoldJudgementTiming.Perfect => Judgement.Perfect,
             >= HoldJudgementTiming.Great => Judgement.Great,
             >= HoldJudgementTiming.Okay => Judgement.Okay,
             _ => Judgement.Miss
         };
+
+        var offset = percentage < 1.0 ? TimingOffset.Early : TimingOffset.OnTime;
+        return new TimingWindow(judgement, offset);
     }
 
     private void JudgeHoldComplete(Note.Hold note) {
-        EmitSignalHoldJudged(note.Type, note.Bar, note.Beat, note.Sixteenth, Judgement.Perfect);
+        var timing = new TimingWindow(Judgement.Perfect, TimingOffset.OnTime);
+        EmitSignalHoldJudged(note.Type, note.Bar, note.Beat, note.Sixteenth, timing.Judgement, timing.Offset);
     }
 
     private sealed record HoldNoteState(Key PressedKey, double StartTime);
@@ -185,10 +221,10 @@ public static class Extensions {
 }
 
 public static class JudgementTiming {
-    public const double Perfect = 0.0165;
-    public const double Great = 0.033;
-    public const double Okay = 0.066;
-    public const double Miss = 0.099;
+    public const double Perfect = 0.033;
+    public const double Great = 0.066;
+    public const double Okay = 0.099;
+    public const double Miss = 0.132;
     // public const double Perfect = 0.05;
     // public const double Great = 0.08;
     // public const double Okay = 0.11;
@@ -200,4 +236,12 @@ public enum Judgement {
     Great,
     Okay,
     Miss,
+}
+
+public sealed record TimingWindow(Judgement Judgement, TimingOffset Offset);
+
+public enum TimingOffset {
+    Early,
+    OnTime,
+    Late,
 }
