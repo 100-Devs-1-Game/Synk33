@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://diaouwk6hgi6c"
+path="res://.godot/imported/Fearless San-Z.wav-d48238f626f4b11af6e8d14faf0eeaec.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/ZZZ/Fearless San-Z.wav"
+dest_files=["res://.godot/imported/Fearless San-Z.wav-d48238f626f4b11af6e8d14faf0eeaec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

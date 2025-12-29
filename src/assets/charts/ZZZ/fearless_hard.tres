@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://baca6jp1dqhnl"]
+
+[ext_resource type="Resource" uid="uid://cps4y0ssqdc2s" path="res://assets/charts/ZZZ/fearless.tres" id="1_e6vrg"]
+[ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="1_spo4g"]
+
+[resource]
+script = ExtResource("1_spo4g")
+Designer = "GOTL"
+Level = 3
+Song = ExtResource("1_e6vrg")
+Notes = null
+metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

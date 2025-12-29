@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://c6rslssdyk1x5"]
+
+[ext_resource type="Resource" uid="uid://dqgeswyl10xp3" path="res://assets/charts/ZZZ/FURYON.tres" id="1_26dqx"]
+[ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="1_nr550"]
+
+[resource]
+script = ExtResource("1_nr550")
+Designer = "GOTL"
+Level = 3
+Song = ExtResource("1_26dqx")
+Notes = null
+metadata/_custom_type_script = "uid://ca6ckpkxkwypv"

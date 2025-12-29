@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Chart" load_steps=766 format=3 uid="uid://ob466rqbx75f"]
 
 [ext_resource type="Script" uid="uid://bmvioldybpoam" path="res://chart/GodotNote.cs" id="1_tog3r"]
-[ext_resource type="AudioStream" path="res://assets/audio/music/ZZZ/問う San-Z.wav" id="2_6qvj0"]
+[ext_resource type="AudioStream" uid="uid://dsb6ghuvdnsbr" path="res://assets/audio/music/ZZZ/問う San-Z.wav" id="2_6qvj0"]
 [ext_resource type="Script" uid="uid://ca6ckpkxkwypv" path="res://chart/Chart.cs" id="3_ekrwr"]
-[ext_resource type="Texture2D" uid="uid://etvwcqrgud7p" path="res://assets/charts/ZZZ/i_ask_cover.jpg" id="3_g065g"]
+[ext_resource type="Texture2D" uid="uid://etvwcqrgud7p" path="res://assets/audio/music/ZZZ/i_ask_cover.jpg" id="3_g065g"]
 [ext_resource type="Script" uid="uid://8gji4fyvkdmy" path="res://chart/Song.cs" id="4_sqjfp"]
 
 [sub_resource type="Resource" id="Resource_dx7gf"]
