@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsb6ghuvdnsbr"
+path="res://.godot/imported/問う San-Z.wav-2fa558442928ef1eecd3275a3a96afa2.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/ZZZ/問う San-Z.wav"
+dest_files=["res://.godot/imported/問う San-Z.wav-2fa558442928ef1eecd3275a3a96afa2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

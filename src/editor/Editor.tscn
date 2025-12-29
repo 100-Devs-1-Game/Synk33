@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ng27ey3h4538" path="res://editor/Editor.cs" id="1_3cn80"]
 [ext_resource type="FontFile" uid="uid://do52clsgwfnk6" path="res://fonts/vendsans/vendsans_regular.ttf" id="1_i0yaw"]
-[ext_resource type="Resource" uid="uid://dnxsyxpims5nl" path="res://assets/charts/debug_song/debug_song_expert.tres" id="2_i1ssp"]
+[ext_resource type="Resource" uid="uid://ob466rqbx75f" path="res://assets/charts/ZZZ/i_ask_medium.tres" id="3_i0yaw"]
 [ext_resource type="AudioStream" uid="uid://b1xh0x4ctylao" path="res://assets/charts/debug_song/debug_song.wav" id="3_i1ssp"]
 [ext_resource type="AudioStream" uid="uid://bp3b2i603qdv3" path="res://assets/editor/hit_note_01.wav" id="3_jp84s"]
 [ext_resource type="AudioStream" uid="uid://boxotbbbr6bgy" path="res://assets/editor/hold_note_01.wav" id="4_i0yaw"]
@@ -23,7 +23,7 @@ grow_vertical = 2
 focus_mode = 2
 theme = SubResource("Theme_85wto")
 script = ExtResource("1_3cn80")
-Chart = ExtResource("2_i1ssp")
+Chart = ExtResource("3_i0yaw")
 TapSound = ExtResource("3_jp84s")
 HoldSound = ExtResource("4_i0yaw")
 
@@ -167,9 +167,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-focus_mode = 0
 size_flags_vertical = 4
 tooltip_text = "Adjust playback speed (useful for charting at slower speeds)"
+focus_mode = 0
 min_value = 0.25
 max_value = 2.0
 step = 0.05
