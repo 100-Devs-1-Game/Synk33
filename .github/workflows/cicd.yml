@@ -22,6 +22,12 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Restore and build .NET project
+        run: |
+          cd src
+          dotnet restore
+          dotnet build
+          
       - name: Build game
         id: build
         uses: firebelley/godot-export@v5.2.1
