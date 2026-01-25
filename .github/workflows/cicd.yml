@@ -17,12 +17,17 @@ jobs:
         with:
           lfs: true
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
       - name: Build game
         id: build
         uses: firebelley/godot-export@v5.2.1
         with:
-          godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz
+          godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_mono_linux_x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot-builds/releases/download/${{ env.GODOT_VERSION }}-stable/Godot_v${{ env.GODOT_VERSION }}-stable_mono_export_templates.tpz
           relative_project_path: ./src
           use_preset_export_path: true
           archive_output: true
