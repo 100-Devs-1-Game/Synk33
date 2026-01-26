@@ -49,19 +49,46 @@ jobs:
         run: |
           dotnet --version
           godot --version
+
+      - name: Import Godot Assets
+        run: |
+          # First pass - import assets only
+          godot --headless --import --quit 2>&1 || true
+          sleep 2
+          # Second pass - run editor mode to complete imports
+          timeout 120 godot --headless -e --quit 2>&1 || true
+          sleep 2
+          # Third pass - ensure all imports are generated
+          godot --headless --import --quit 2>&1 || true
         
       - name: Generate .NET Bindings
-        run: godot --headless --build-solutions --quit || exit 0
+        run: |
+          # Build solutions may fail first time, retry once
+          godot --headless --build-solutions --quit 2>&1 || godot --headless --build-solutions --quit 2>&1 || true
   
       - name: Build Projects
-        id: build
         run: dotnet build --configuration Release
 
-      - name: Show build directory
-        run: ls -R "${{ steps.build.outputs.build_directory }}"
+      - name: Create export directories
+        run: |
+          mkdir -p builds/linux
+          mkdir -p builds/windows
+          mkdir -p builds/archive
 
-      - name: Show archive directory
-        run: ls -R "${{ steps.build.outputs.archive_directory }}"
+      - name: Export Linux Build
+        run: godot --headless --export-release "linux_release" builds/linux/SYNK33.x86_64
+
+      - name: Export Windows Build
+        run: godot --headless --export-release "windows" builds/windows/SYNK33.exe
+
+      - name: Create Archives
+        run: |
+          cd builds
+          zip -r archive/linux_release.zip linux
+          zip -r archive/windows_release.zip windows
+
+      - name: Show build directory
+        run: ls -R builds/
 
       - name: Create GitHub release
         uses: ncipollo/release-action@v1
@@ -69,18 +96,23 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
           tag: ${{ github.ref_name }}
-          artifacts: ${{ steps.build.outputs.archive_directory }}/**/*.zip
+          artifacts: src/builds/archive/*.zip
           allowUpdates: true
   
       - name: Make get_butler.sh executable
+        working-directory: .
         run: chmod +x ./get_butler.sh  
 
       - name: Deploy to itch.io
+        working-directory: .
         run: |
           ./get_butler.sh
           BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
-            "${{ steps.build.outputs.build_directory }}/web_release" \
-            "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:web"
+            "./src/builds/linux" \
+            "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:linux"
+          BUTLER_API_KEY=${{ secrets.BUTLER_API_KEY }} ./butler --verbose push \
+            "./src/builds/windows" \
+            "${{ vars.ITCHIO_USERNAME }}/${{ vars.ITCHIO_GAME }}:windows"
 
       - name: Send Discord notification
         env:
