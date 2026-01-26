@@ -13,6 +13,10 @@ on:
     tags:
       - "v*"
 
+defaults: 
+  run:
+    working-directory: ./src
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -28,9 +32,7 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore and build .NET project
-        run: |
-          cd src
-          dotnet restore
+        run: dotnet restore
 
       - uses: chickensoft-games/setup-godot@v2
         name: Setup Godot
