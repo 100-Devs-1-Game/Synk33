@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 using SYNK33.chart;
 using SYNK33.core;
 
@@ -25,18 +26,28 @@ public partial class Spawner3D : Node3D {
 
 	private Conductor _conductor;
 
-	private PackedScene _noteScene;
-	private PackedScene _holdNoteScene;
+	private PooledSpawner _noteSpawner;
+	private PooledSpawner _holdNoteSpawner;
 
 	public override void _Ready() {
 		_conductor = GetNode<Conductor>(Conductor);
 		_chart = _conductor.Chart;
-		_noteScene = GD.Load<PackedScene>("res://chart/NoteObject3D.tscn");
-		_holdNoteScene = GD.Load<PackedScene>("res://chart/HoldNoteObject3D.tscn");
-		SpawnNotes();
+        _noteSpawner = GetNode<PooledSpawner>("NoteSpawner");
+        _holdNoteSpawner = GetNode<PooledSpawner>("HoldNoteSpawner");
+        ApplySettings();
+        SpawnNotes();
 	}
 
-	private void SpawnNotes() {
+    private void ApplySettings() {
+        var settingsManager = GetNode<Node>("/root/SettingsManager");
+        var settings = (GodotObject)settingsManager.Get("current");
+        var scrollSpeed = (float)settings.Get("scroll_speed");
+        ScrollSpeed = scrollSpeed;
+        var customOffset = (float)settings.Get("custom_offset");
+        AudioOffset = customOffset;
+    }
+
+    private void SpawnNotes() {
 		var judgementY = GetNode<Marker3D>(JudgementLine).GlobalPosition.Z;
 		foreach (var note in _chart.Notes) {
 			var absoluteBeat = note.Bar * _chart.BeatsPerMeasure + note.Beat + (float)note.Sixteenth/ 4.0f + AudioOffset;
@@ -48,8 +59,8 @@ public partial class Spawner3D : Node3D {
 	private void SpawnNote(Note note, Vector2 position) {
 		var judgementY = GetNode<Marker3D>(JudgementLine).GlobalPosition.Z;
 		NoteObject3D noteInstance = note switch {
-			Note.Hold => _holdNoteScene.Instantiate<NoteObject3D>(),
-			Note.Tap => _noteScene.Instantiate<NoteObject3D>(),
+			Note.Hold => _holdNoteSpawner.Spawn<NoteObject3D>(),
+			Note.Tap => _noteSpawner.Spawn<NoteObject3D>(),
 			_ => throw new ArgumentOutOfRangeException(nameof(note), note, null)
 		};
 		
