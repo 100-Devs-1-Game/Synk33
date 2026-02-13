@@ -1,0 +1,1139 @@
+[gd_scene load_steps=43 format=3 uid="uid://cnb4cvoka5be7"]
+
+[ext_resource type="Script" uid="uid://by33j0y6ofnca" path="res://scenes/menus/results/ResultsScreen.cs" id="1_fw8vw"]
+[ext_resource type="Shader" uid="uid://ddcgjffdmy5p8" path="res://assets/shaders/ps2_dream_void_dark.gdshader" id="2_muo3h"]
+[ext_resource type="Texture2D" uid="uid://bq623lc385k45" path="res://scenes/menus/song_select/grade_sheet.png" id="3_w4bsx"]
+[ext_resource type="FontFile" uid="uid://dql8wmgpy2u70" path="res://fonts/vendsans/vendsans_bold.ttf" id="4_tfgh5"]
+[ext_resource type="Script" uid="uid://beusqcv0inspx" path="res://classes/style_box_outburst.gd" id="5_jeyqw"]
+[ext_resource type="AudioStream" uid="uid://dnb7gs2ba6f57" path="res://assets/audio/music/main_menu/main_menu_theme.mp3" id="6_mhvxp"]
+[ext_resource type="Texture2D" uid="uid://86jv5yttnvpq" path="res://assets/shared/text/results_text.png" id="8_tfgh5"]
+[ext_resource type="Texture2D" uid="uid://s4q2bkrpwe7d" path="res://assets/shared/text/level_numbers/level_01.png" id="9_a6ds0"]
+[ext_resource type="Texture2D" uid="uid://bdtv5jwym5ruw" path="res://assets/shared/masks/mask_01.png" id="9_tfgh5"]
+[ext_resource type="Texture2D" uid="uid://4bb56kxawu00" path="res://assets/shared/text/ranks/rank_s_plus.png" id="10_d243x"]
+[ext_resource type="Texture2D" uid="uid://b0ps42wkmhs7a" path="res://assets/shared/buttons/button_01.png" id="10_jeyqw"]
+[ext_resource type="Texture2D" uid="uid://bs3u1312cmi18" path="res://assets/shared/text/ranks/rank_s.png" id="10_knyp0"]
+[ext_resource type="Texture2D" uid="uid://bthv5lwd54qf4" path="res://assets/shared/text/level_numbers/level_10.png" id="10_mhvxp"]
+[ext_resource type="Texture2D" uid="uid://wxpx4gbfl5kc" path="res://assets/shared/text/ranks/rank_c.png" id="10_mwdai"]
+[ext_resource type="Texture2D" uid="uid://b1c6lovpvwgtg" path="res://assets/shared/text/level_numbers/level_03.png" id="10_x4kkk"]
+[ext_resource type="Texture2D" uid="uid://degcxe2itwa84" path="res://assets/shared/text/level_numbers/level_04.png" id="11_54m81"]
+[ext_resource type="Texture2D" uid="uid://d1dwi85le41go" path="res://assets/shared/text/ranks/rank_a.png" id="11_d243x"]
+[ext_resource type="Texture2D" uid="uid://27j6yshs083q" path="res://assets/shared/text/level_numbers/level_05.png" id="12_1yro4"]
+[ext_resource type="Texture2D" uid="uid://d3e2lm3m8bhci" path="res://assets/shared/text/ranks/rank_b.png" id="12_j7t6m"]
+[ext_resource type="Texture2D" uid="uid://ipgth3c02x0m" path="res://assets/shared/text/level_numbers/level_06.png" id="13_1yro4"]
+[ext_resource type="Texture2D" uid="uid://b5fgffgqv1lk" path="res://assets/shared/text/level_numbers/level_07.png" id="14_agpj8"]
+[ext_resource type="Texture2D" uid="uid://pgqe1272xaw1" path="res://assets/shared/text/level_numbers/level_08.png" id="15_adwd3"]
+[ext_resource type="Texture2D" uid="uid://cxbfv8kivrgvt" path="res://assets/shared/text/ranks/rank_d.png" id="15_j7t6m"]
+[ext_resource type="Texture2D" uid="uid://detu7821wekg2" path="res://assets/shared/text/level_numbers/level_09.png" id="16_gl2gv"]
+[ext_resource type="Texture2D" uid="uid://brpnnmeu45jxv" path="res://assets/shared/text/level_numbers/level_11.png" id="18_l2oqq"]
+[ext_resource type="Texture2D" uid="uid://dxfyjeqp2fuci" path="res://assets/shared/text/level_numbers/level_12.png" id="19_adwd3"]
+[ext_resource type="Texture2D" uid="uid://bibnck3dti7y6" path="res://assets/shared/text/level_numbers/level_13.png" id="20_gl2gv"]
+[ext_resource type="Texture2D" uid="uid://0fs5yjjw0fcj" path="res://assets/shared/text/level_numbers/level_14.png" id="21_gfglj"]
+[ext_resource type="Texture2D" uid="uid://bf22vaf315h0a" path="res://assets/shared/text/level_numbers/level_15.png" id="22_rscp3"]
+[ext_resource type="Texture2D" uid="uid://b4rywxj2p181w" path="res://assets/shared/text/level_numbers/level_16.png" id="23_y77m6"]
+[ext_resource type="Texture2D" uid="uid://bsjvcgvla42x3" path="res://assets/shared/text/level_numbers/level_17.png" id="24_pcivt"]
+[ext_resource type="Texture2D" uid="uid://bhds2uf3jyac6" path="res://assets/shared/text/level_numbers/level_18.png" id="25_gvx0v"]
+[ext_resource type="Texture2D" uid="uid://byt6bhcfli4bj" path="res://assets/shared/text/level_numbers/level_19.png" id="26_5hilr"]
+[ext_resource type="Texture2D" uid="uid://c4tgrx6dntmuv" path="res://assets/shared/text/level_numbers/level_20.png" id="27_lg4h2"]
+[ext_resource type="Texture2D" uid="uid://drojf8a4cinwu" path="res://assets/shared/text/level_numbers/level_21.png" id="28_1q2od"]
+[ext_resource type="Texture2D" uid="uid://dwdhky3dmflp6" path="res://assets/shared/text/level_numbers/level_22.png" id="29_tebm7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ve0i8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ap40w"]
+shader = ExtResource("2_muo3h")
+shader_parameter/global_speed = 1.26000005659012
+shader_parameter/nebula_color_1 = Color(0.011764706, 0.043137256, 0.023529412, 1)
+shader_parameter/nebula_color_2 = Color(0.043137256, 0.05490196, 0.078431375, 1)
+shader_parameter/nebula_intensity = 1.0
+shader_parameter/nebula_speed = 0.56000002334012
+shader_parameter/nebula_scale = 3.00000011875
+shader_parameter/nebula_roundness = 1.00000004517093
+shader_parameter/nebula_swirl = 0.90000004275
+shader_parameter/base_void_color = Color(0, 0, 0, 1)
+shader_parameter/orb_color_1 = Color(0.38431373, 0.94509804, 0.96862745, 1)
+shader_parameter/orb_color_2 = Color(0.98039216, 0.34901962, 0.18039216, 1)
+shader_parameter/orb_color_3 = Color(0.53333336, 0.22352941, 0.9490196, 1)
+shader_parameter/orb_color_4 = Color(0.8901961, 0.12156863, 0.6156863, 1)
+shader_parameter/orb_count = 16
+shader_parameter/orb_brightness = 1.0
+shader_parameter/orb_size = 0.0030000001425
+shader_parameter/tail_length = 2.0
+shader_parameter/tail_fade = 3.0
+shader_parameter/orb_radius = 1.40000004275
+shader_parameter/orb_lens_size = 0.890000042275
+shader_parameter/orb_lens_opacity = 0.5600000266
+shader_parameter/vignette_strength = 0.250000011875
+shader_parameter/grain_amount = 0.0010000000475
+shader_parameter/scanline_strength = 0.0800000038
+shader_parameter/chromatic_aberration = 0.00499999988824
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0j3b"]
+bg_color = Color(1, 0.1285528, 0.43523848, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve0i8"]
+bg_color = Color(0, 0.5803922, 0.9490196, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlbdd"]
+atlas = ExtResource("3_w4bsx")
+region = Rect2(0, 0, 101, 90)
+
+[sub_resource type="StyleBox" id="StyleBox_d0q8g"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("5_jeyqw")
+top_right_offset = Vector2(4, -3)
+bottom_left_offset = Vector2(-12.5, 0)
+bottom_right_offset = Vector2(0, 9)
+tail_offset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://beusqcv0inspx"
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fw8vw")
+
+[node name="background" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_ve0i8")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.03165219, 3.2241587e-05, 0.12420338, 1)
+
+[node name="shader_background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ap40w")
+layout_mode = 0
+offset_top = -323.0
+offset_right = 1920.0
+offset_bottom = 1297.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="old_menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 19.0
+offset_top = -353.0
+offset_right = 59.0
+offset_bottom = -313.0
+
+[node name="Accuracy" type="Control" parent="old_menu"]
+anchors_preset = 0
+offset_left = 213.0
+offset_top = 353.0
+offset_right = 838.0
+offset_bottom = 870.0
+
+[node name="Results" type="Label" parent="old_menu/Accuracy"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 77.0
+offset_right = 630.0
+offset_bottom = 193.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+text = "ACCURACY"
+horizontal_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="old_menu/Accuracy"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 168.0
+offset_right = 625.0
+offset_bottom = 568.0
+
+[node name="MarginContainer" type="MarginContainer" parent="old_menu/Accuracy/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="old_menu/Accuracy/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="PerfectLabel" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.65882355, 0.38431373, 1, 1)
+text = "Perfect"
+
+[node name="PerfectCount" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "30"
+
+[node name="GreatLabel" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0.58431375, 0.93333334, 1)
+text = "Great"
+
+[node name="GreatCount" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "30"
+
+[node name="OkayLabel" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0.6666667, 0.40784314, 1)
+text = "Okay"
+
+[node name="OkayCount" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "30"
+
+[node name="MissesLabel" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.18431373, 0.28235295, 1)
+text = "Misses"
+
+[node name="MissesCount" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "3,188"
+
+[node name="HitsLabel" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Hits"
+
+[node name="HitsCount" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "122"
+
+[node name="TotalLabel" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Total"
+
+[node name="TotalCount" type="Label" parent="old_menu/Accuracy/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "122"
+
+[node name="Combo" type="Control" parent="old_menu"]
+anchors_preset = 0
+offset_left = 981.0
+offset_top = 745.0
+offset_right = 1606.0
+offset_bottom = 1440.0
+
+[node name="Results" type="Label" parent="old_menu/Combo"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 309.0
+offset_right = 630.0
+offset_bottom = 425.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+text = "COMBO"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="old_menu/Combo"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 400.0
+offset_right = 531.0
+offset_bottom = 544.0
+
+[node name="MarginContainer" type="MarginContainer" parent="old_menu/Combo/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="old_menu/Combo/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="old_menu/Combo/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="BestComboLabel" type="Label" parent="old_menu/Combo/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Best"
+
+[node name="BestComboCount" type="Label" parent="old_menu/Combo/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "122"
+
+[node name="MaxComboLabel" type="Label" parent="old_menu/Combo/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Max"
+
+[node name="MaxComboCount" type="Label" parent="old_menu/Combo/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "122"
+
+[node name="Timing" type="Control" parent="old_menu"]
+anchors_preset = 0
+offset_left = 198.0
+offset_top = 967.0
+offset_right = 606.0
+offset_bottom = 1505.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Results" type="Label" parent="old_menu/Timing"]
+layout_mode = 0
+offset_top = 28.0
+offset_right = 408.0
+offset_bottom = 144.0
+theme_type_variation = &"HeaderLarge"
+text = "TIMING"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="old_menu/Timing"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 408.0
+offset_bottom = 264.0
+
+[node name="MarginContainer" type="MarginContainer" parent="old_menu/Timing/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="old_menu/Timing/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="HBoxContainer" parent="old_menu/Timing/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EarlyLabel" type="Label" parent="old_menu/Timing/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0.5803922, 0.9490196, 1)
+text = "Early"
+
+[node name="LateLabel" type="Label" parent="old_menu/Timing/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(1, 0.12941177, 0.43529412, 1)
+text = "Late"
+
+[node name="TimingBar" type="ProgressBar" parent="old_menu/Timing/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_b0j3b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ve0i8")
+max_value = 4.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="EarlyCount" type="Label" parent="old_menu/Timing/PanelContainer/MarginContainer/VBoxContainer/TimingBar"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -29.0
+offset_right = 70.0
+offset_bottom = 31.0
+grow_vertical = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(18.892157, 18.892157, 18.892157, 1)
+text = "122"
+
+[node name="LateCount" type="Label" parent="old_menu/Timing/PanelContainer/MarginContainer/VBoxContainer/TimingBar"]
+unique_name_in_owner = true
+modulate = Color(0.27058825, 0.27058825, 0.27058825, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -29.0
+offset_right = -10.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(18.892157, 18.892157, 18.892157, 1)
+text = "122"
+horizontal_alignment = 2
+
+[node name="Score" type="Control" parent="old_menu"]
+anchors_preset = 0
+offset_left = 1105.0
+offset_top = 405.0
+offset_right = 1513.0
+offset_bottom = 943.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Results" type="Label" parent="old_menu/Score"]
+layout_mode = 0
+offset_top = 28.0
+offset_right = 408.0
+offset_bottom = 144.0
+theme_type_variation = &"HeaderLarge"
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="old_menu/Score"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 408.0
+offset_bottom = 381.0
+
+[node name="MarginContainer" type="MarginContainer" parent="old_menu/Score/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="old_menu/Score/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreCount" type="Label" parent="old_menu/Score/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "3217392"
+horizontal_alignment = 1
+
+[node name="MaxScoreCount" type="Label" parent="old_menu/Score/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.23934713, 0.23934713, 0.23934713, 1)
+theme_override_font_sizes/font_size = 32
+text = "/ 3217392"
+horizontal_alignment = 1
+
+[node name="RankLabel" type="Label" parent="old_menu/Score/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "RANK"
+horizontal_alignment = 1
+
+[node name="Rank" type="TextureRect" parent="old_menu/Score/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_wlbdd")
+stretch_mode = 5
+
+[node name="DnfLabel" type="Label" parent="old_menu/Score/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(0.9432864, 0.10880346, 5.7756904e-07, 1)
+text = "DNF"
+horizontal_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="old_menu"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1592.0
+offset_top = 1316.0
+offset_right = 1839.0
+offset_bottom = 1376.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBox_d0q8g")
+text = "PLAY AGAIN?"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mhvxp")
+autoplay = true
+bus = &"Music"
+
+[node name="results_text" type="Sprite2D" parent="."]
+position = Vector2(245, 92)
+texture = ExtResource("8_tfgh5")
+
+[node name="song_container" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 325.0
+offset_right = 648.9994
+offset_bottom = 748.99805
+color = Color(0.37254903, 0.37254903, 0.37254903, 1)
+
+[node name="mask_01" type="Sprite2D" parent="song_container"]
+position = Vector2(132, 183)
+texture = ExtResource("9_tfgh5")
+
+[node name="song_label" type="Label" parent="song_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 297.155
+offset_right = 85.0
+offset_bottom = 341.155
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 25
+
+[node name="artist_label" type="Label" parent="song_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 322.0
+offset_right = 71.999985
+offset_bottom = 363.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.5137255, 0.5137255, 0.5137255, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 27
+
+[node name="charter_label" type="Label" parent="song_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 350.0
+offset_right = 85.0
+offset_bottom = 394.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 24
+
+[node name="level_01" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_a6ds0")
+
+[node name="level_02" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_x4kkk")
+
+[node name="level_03" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_x4kkk")
+
+[node name="level_04" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_54m81")
+
+[node name="level_05" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_1yro4")
+
+[node name="level_06" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_1yro4")
+
+[node name="level_07" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_agpj8")
+
+[node name="level_08" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_adwd3")
+
+[node name="level_09" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_gl2gv")
+
+[node name="level_10" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_mhvxp")
+
+[node name="level_11" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_l2oqq")
+
+[node name="level_12" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_adwd3")
+
+[node name="level_13" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_gl2gv")
+
+[node name="level_14" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_gfglj")
+
+[node name="level_15" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_rscp3")
+
+[node name="level_16" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_y77m6")
+
+[node name="level_17" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_pcivt")
+
+[node name="level_18" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_gvx0v")
+
+[node name="level_19" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_5hilr")
+
+[node name="level_20" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("27_lg4h2")
+
+[node name="level_21" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("28_1q2od")
+
+[node name="level_22" type="Sprite2D" parent="song_container"]
+visible = false
+position = Vector2(218, 377)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_tebm7")
+
+[node name="score_container" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 325.0
+offset_right = 949.0
+offset_bottom = 748.998
+color = Color(0.019607844, 0.043137256, 0.039215688, 1)
+
+[node name="score_title" type="Label" parent="score_container"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 15.0
+offset_right = 195.0
+offset_bottom = 54.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "SCORE"
+horizontal_alignment = 2
+
+[node name="score_top_line" type="ColorRect" parent="score_container"]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 264.0
+offset_bottom = 106.0
+color = Color(0.44313726, 0.94509804, 0.96862745, 1)
+
+[node name="score_num" type="Label" parent="score_container"]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 264.0
+offset_bottom = 115.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.019607844, 0.043137256, 0.039215688, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="rank_s_plus" type="Sprite2D" parent="score_container"]
+visible = false
+position = Vector2(135, 212)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_d243x")
+
+[node name="rank_s" type="Sprite2D" parent="score_container"]
+visible = false
+position = Vector2(135, 212)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_knyp0")
+
+[node name="rank_a" type="Sprite2D" parent="score_container"]
+visible = false
+position = Vector2(135, 212)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_d243x")
+
+[node name="rank_b" type="Sprite2D" parent="score_container"]
+visible = false
+position = Vector2(135, 212)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("12_j7t6m")
+
+[node name="rank_c" type="Sprite2D" parent="score_container"]
+visible = false
+position = Vector2(135, 212)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_mwdai")
+
+[node name="rank_d" type="Sprite2D" parent="score_container"]
+visible = false
+position = Vector2(135, 212)
+scale = Vector2(1.45, 1.45)
+texture = ExtResource("15_j7t6m")
+
+[node name="rank_label" type="Label" parent="score_container"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 309.0
+offset_right = 185.0
+offset_bottom = 348.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "RANK"
+horizontal_alignment = 2
+
+[node name="score_bottom_line" type="ColorRect" parent="score_container"]
+layout_mode = 0
+offset_top = 416.99997
+offset_right = 264.0
+offset_bottom = 423.99997
+color = Color(0.44313726, 0.94509804, 0.96862745, 1)
+
+[node name="timing_container" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 985.0
+offset_top = 325.0
+offset_right = 1248.9995
+offset_bottom = 749.00024
+color = Color(0.019607844, 0.043137256, 0.039215688, 1)
+
+[node name="timing_title" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 15.0
+offset_right = 201.0
+offset_bottom = 54.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "TIMING"
+horizontal_alignment = 2
+
+[node name="early_label" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 112.0
+offset_right = 79.0
+offset_bottom = 156.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.25490198, 0.57254905, 0.92156863, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Early"
+
+[node name="late_label" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 112.0
+offset_right = 252.00012
+offset_bottom = 156.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.91764706, 0.24313726, 0.4392157, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Late"
+
+[node name="left_box" type="ColorRect" parent="timing_container"]
+layout_mode = 0
+offset_top = 72.0
+offset_bottom = 106.0
+pivot_offset = Vector2(0, 17)
+color = Color(0.25490198, 0.57254905, 0.92156863, 1)
+
+[node name="left_box_num" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 6.075012
+offset_top = 69.0
+offset_right = 105.07501
+offset_bottom = 113.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.019607844, 0.043137256, 0.039215688, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+
+[node name="right_box" type="ColorRect" parent="timing_container"]
+layout_mode = 0
+offset_left = 263.97498
+offset_top = 72.0
+offset_right = 263.97498
+offset_bottom = 106.0
+pivot_offset = Vector2(0, 17)
+color = Color(0.91764706, 0.24313726, 0.4392157, 1)
+
+[node name="right_box_num" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 158.07501
+offset_top = 69.0
+offset_right = 257.075
+offset_bottom = 113.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.019607844, 0.043137256, 0.039215688, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "34"
+horizontal_alignment = 2
+
+[node name="combo_label" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 59.075012
+offset_top = 181.0
+offset_right = 202.07501
+offset_bottom = 220.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "COMBO"
+horizontal_alignment = 2
+
+[node name="best_label" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 230.0
+offset_right = 79.0
+offset_bottom = 274.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Best"
+
+[node name="best_num" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 230.0
+offset_right = 264.00006
+offset_bottom = 275.00003
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="max_label" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 280.0
+offset_right = 67.0
+offset_bottom = 324.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Max"
+
+[node name="max_num" type="Label" parent="timing_container"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 280.0
+offset_right = 264.0
+offset_bottom = 325.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="timing_bottom_line" type="ColorRect" parent="timing_container"]
+layout_mode = 0
+offset_top = 417.0
+offset_right = 264.0
+offset_bottom = 424.0
+color = Color(0.25490198, 0.57254905, 0.92156863, 1)
+
+[node name="accuracy_container" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1285.0
+offset_top = 325.0
+offset_right = 1549.0
+offset_bottom = 749.0
+color = Color(0.019607844, 0.043137256, 0.039215688, 1)
+
+[node name="accuracy_title" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 15.0
+offset_right = 238.0
+offset_bottom = 54.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "ACCURACY"
+horizontal_alignment = 2
+
+[node name="perfect_label" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 65.0
+offset_right = 110.0
+offset_bottom = 109.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.62352943, 0.4, 0.98039216, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Perfect"
+
+[node name="perfect_num" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 65.0
+offset_right = 263.0001
+offset_bottom = 109.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="great_label" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 115.0
+offset_right = 84.0
+offset_bottom = 159.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.25490198, 0.57254905, 0.92156863, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Great"
+
+[node name="great_num" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 115.0
+offset_right = 263.0001
+offset_bottom = 159.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="okay_label" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 165.0
+offset_right = 78.0
+offset_bottom = 209.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.2784314, 0.61960787, 0.40784314, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Okay"
+
+[node name="okay_num" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 165.0
+offset_right = 263.0001
+offset_bottom = 209.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="misses_label" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 215.0
+offset_right = 102.0
+offset_bottom = 259.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.92156863, 0.27450982, 0.30980393, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Misses"
+
+[node name="misses_num" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 215.0
+offset_right = 263.0001
+offset_bottom = 259.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="hits_label" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 298.0
+offset_right = 65.0
+offset_bottom = 342.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Hits"
+
+[node name="hits_num" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 298.0
+offset_right = 263.0001
+offset_bottom = 342.00018
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="total_label" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 348.0
+offset_right = 78.0
+offset_bottom = 392.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+text = "Total"
+
+[node name="total_num" type="Label" parent="accuracy_container"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 348.0
+offset_right = 263.0001
+offset_bottom = 392.00018
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.3529412, 0.36078432, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("4_tfgh5")
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="accuracy_bottom_line" type="ColorRect" parent="accuracy_container"]
+layout_mode = 0
+offset_top = 417.0
+offset_right = 264.0
+offset_bottom = 424.0
+color = Color(0.62352943, 0.4, 0.98039216, 1)
+
+[node name="button_01" type="Sprite2D" parent="."]
+position = Vector2(843, 875)
+scale = Vector2(-1, 1)
+texture = ExtResource("10_jeyqw")
+
+[node name="main_menu_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 733.0
+offset_top = 854.0
+offset_right = 952.0
+offset_bottom = 893.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "MAIN MENU"
+horizontal_alignment = 2
+
+[node name="button_02" type="Sprite2D" parent="."]
+position = Vector2(1203, 875)
+texture = ExtResource("10_jeyqw")
+
+[node name="play_again_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1085.0
+offset_top = 854.0
+offset_right = 1326.0
+offset_bottom = 893.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "PLAY AGAIN?"
+horizontal_alignment = 2
