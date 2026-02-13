@@ -1,0 +1,451 @@
+[gd_scene load_steps=15 format=3 uid="uid://cv7cq1ox3cipc"]
+
+[ext_resource type="Shortcut" uid="uid://c2mgfjt733bdg" path="res://scenes/menus/back_shortcut.tres" id="1_4nuel"]
+[ext_resource type="Script" uid="uid://dinnikrvl54vy" path="res://scenes/menus/settings/back_and_discard.gd" id="2_50lpa"]
+[ext_resource type="Script" uid="uid://dh1xi5gj4fvvd" path="res://scenes/menus/settings/apply_settings.gd" id="3_ygc5f"]
+[ext_resource type="Script" uid="uid://c3h4pxogr1g56" path="res://scenes/menus/settings/audio_sliders.gd" id="4_1siei"]
+[ext_resource type="Script" uid="uid://docp5dvyjslw1" path="res://scenes/menus/settings/settings_spinbox.gd" id="5_lnpnh"]
+[ext_resource type="Shader" uid="uid://ddcgjffdmy5p8" path="res://assets/shaders/ps2_dream_void_dark.gdshader" id="6_cik7h"]
+[ext_resource type="Texture2D" uid="uid://dwdbe0vu5xctp" path="res://assets/shared/text/settings_text.png" id="7_1siei"]
+[ext_resource type="Texture2D" uid="uid://b0ps42wkmhs7a" path="res://assets/shared/buttons/button_01.png" id="8_1siei"]
+[ext_resource type="Texture2D" uid="uid://e8brrluqqho" path="res://assets/shared/buttons/button_02.png" id="8_wluos"]
+[ext_resource type="FontFile" uid="uid://dql8wmgpy2u70" path="res://fonts/vendsans/vendsans_bold.ttf" id="9_lnpnh"]
+[ext_resource type="Texture2D" uid="uid://cv2yrs45oc2nn" path="res://assets/shared/buttons/button_03.png" id="11_otwgh"]
+[ext_resource type="Texture2D" uid="uid://cm7o1rj7upclm" path="res://assets/shared/scribbles/scribble_04.png" id="13_r7q3f"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r7q3f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_as74k"]
+shader = ExtResource("6_cik7h")
+shader_parameter/global_speed = 1.26000005659012
+shader_parameter/nebula_color_1 = Color(0.011764706, 0.043137256, 0.023529412, 1)
+shader_parameter/nebula_color_2 = Color(0.043137256, 0.05490196, 0.078431375, 1)
+shader_parameter/nebula_intensity = 1.0
+shader_parameter/nebula_speed = 0.56000002334012
+shader_parameter/nebula_scale = 3.00000011875
+shader_parameter/nebula_roundness = 1.00000004517093
+shader_parameter/nebula_swirl = 0.90000004275
+shader_parameter/base_void_color = Color(0, 0, 0, 1)
+shader_parameter/orb_color_1 = Color(0.38431373, 0.94509804, 0.96862745, 1)
+shader_parameter/orb_color_2 = Color(0.98039216, 0.34901962, 0.18039216, 1)
+shader_parameter/orb_color_3 = Color(0.53333336, 0.22352941, 0.9490196, 1)
+shader_parameter/orb_color_4 = Color(0.8901961, 0.12156863, 0.6156863, 1)
+shader_parameter/orb_count = 16
+shader_parameter/orb_brightness = 1.0
+shader_parameter/orb_size = 0.0030000001425
+shader_parameter/tail_length = 2.0
+shader_parameter/tail_fade = 3.0
+shader_parameter/orb_radius = 1.40000004275
+shader_parameter/orb_lens_size = 0.890000042275
+shader_parameter/orb_lens_opacity = 0.5600000266
+shader_parameter/vignette_strength = 0.250000011875
+shader_parameter/grain_amount = 0.0010000000475
+shader_parameter/scanline_strength = 0.0800000038
+shader_parameter/chromatic_aberration = 0.00499999988824
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="old_scene" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="old_scene"]
+layout_mode = 0
+offset_right = 506.0
+offset_bottom = 116.0
+theme_type_variation = &"HeaderLarge"
+text = "OPTIONS"
+
+[node name="Back" type="Button" parent="old_scene"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1719.0
+offset_top = 971.0
+offset_right = 1842.0
+offset_bottom = 1027.0
+grow_horizontal = 0
+grow_vertical = 0
+shortcut = ExtResource("1_4nuel")
+text = "Back"
+script = ExtResource("2_50lpa")
+
+[node name="Apply" type="Button" parent="old_scene"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1503.0
+offset_top = 909.0
+offset_right = 1842.0
+offset_bottom = 965.0
+grow_horizontal = 0
+grow_vertical = 0
+shortcut = ExtResource("1_4nuel")
+text = "Apply Settings"
+script = ExtResource("3_ygc5f")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="old_scene"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 98.0
+offset_right = 1535.0
+offset_bottom = 58.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="old_scene/ScrollContainer"]
+layout_mode = 2
+
+[node name="Audio" type="Label" parent="old_scene/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Audio"
+
+[node name="AudioSliders" type="GridContainer" parent="old_scene/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+script = ExtResource("4_1siei")
+
+[node name="CustomOffset" type="Label" parent="old_scene/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Custom Offset"
+
+[node name="CustomOffsetDescription" type="Label" parent="old_scene/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_font_sizes/font_size = 20
+text = "Try starting with smaller numbers like +/- 0.01"
+
+[node name="ScrollSpeed" type="Label" parent="old_scene/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Scroll Speed"
+
+[node name="ScrollSpeedSpinBox" type="SpinBox" parent="old_scene/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 0.1
+max_value = 20.0
+step = 0.01
+value = 0.1
+update_on_text_changed = true
+suffix = "x"
+script = ExtResource("5_lnpnh")
+property = &"scroll_speed"
+
+[node name="Button" type="Button" parent="old_scene/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Run Calibration"
+
+[node name="background" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_r7q3f")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.03165219, 3.2241587e-05, 0.12420338, 1)
+metadata/_edit_lock_ = true
+
+[node name="shader_background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_as74k")
+layout_mode = 0
+offset_top = -323.0
+offset_right = 1920.0
+offset_bottom = 1297.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="settings_text" type="Sprite2D" parent="."]
+position = Vector2(270, 87)
+texture = ExtResource("7_1siei")
+
+[node name="settings_container" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 174.0
+offset_right = 1270.0
+offset_bottom = 907.0
+color = Color(0.019607844, 0.043137256, 0.039215688, 1)
+metadata/_edit_lock_ = true
+
+[node name="audio_title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 873.0
+offset_top = 204.0
+offset_right = 1041.0
+offset_bottom = 267.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 52
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="custom_offset_title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 525.0
+offset_right = 1177.0
+offset_bottom = 588.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 52
+text = "Custom Offset"
+horizontal_alignment = 1
+
+[node name="scroll_speed_title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 654.0
+offset_right = 1177.0
+offset_bottom = 717.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 52
+text = "Scroll Speed"
+horizontal_alignment = 1
+
+[node name="run_calibration_button" type="Sprite2D" parent="."]
+position = Vector2(961, 842)
+texture = ExtResource("8_wluos")
+
+[node name="run_calibration_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 819.0
+offset_right = 1128.0
+offset_bottom = 858.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "RUN CALIBRATION"
+horizontal_alignment = 1
+
+[node name="back_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 721.0
+offset_top = 954.0
+offset_right = 826.0
+offset_bottom = 993.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+horizontal_alignment = 1
+
+[node name="apply_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1078.0
+offset_top = 954.0
+offset_right = 1196.0
+offset_bottom = 993.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "APPLY"
+horizontal_alignment = 1
+
+[node name="CustomOffsetSpinBox" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 593.0
+offset_right = 1133.0
+offset_bottom = 649.0
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+alignment = 1
+update_on_text_changed = true
+script = ExtResource("5_lnpnh")
+property = &"custom_offset"
+
+[node name="CustomOffsetSpinBox2" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 724.0
+offset_right = 1133.0
+offset_bottom = 780.0
+min_value = -1000.0
+max_value = 1000.0
+step = 0.01
+alignment = 1
+update_on_text_changed = true
+script = ExtResource("5_lnpnh")
+property = &"custom_offset"
+
+[node name="button_01" type="Sprite2D" parent="."]
+position = Vector2(776, 975)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_1siei")
+
+[node name="play_again_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 953.0
+offset_right = 892.0
+offset_bottom = 992.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+horizontal_alignment = 1
+
+[node name="button_02" type="Sprite2D" parent="."]
+position = Vector2(1136, 975)
+texture = ExtResource("8_1siei")
+
+[node name="main_menu_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1036.0
+offset_top = 953.0
+offset_right = 1255.0
+offset_bottom = 992.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 32
+text = "APPLY"
+horizontal_alignment = 1
+
+[node name="master_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 280.0
+offset_right = 869.0
+offset_bottom = 335.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("9_lnpnh")
+theme_override_font_sizes/font_size = 36
+text = "Master"
+
+[node name="music_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 342.0
+offset_right = 857.0
+offset_bottom = 397.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("9_lnpnh")
+theme_override_font_sizes/font_size = 36
+text = "Music"
+
+[node name="sfx_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 404.0
+offset_right = 856.0
+offset_bottom = 459.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("9_lnpnh")
+theme_override_font_sizes/font_size = 36
+text = "SFX"
+
+[node name="voice_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 465.0
+offset_right = 856.0
+offset_bottom = 520.0
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("9_lnpnh")
+theme_override_font_sizes/font_size = 36
+text = "Voice"
+
+[node name="master_empty" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 303.0
+offset_right = 1184.0
+offset_bottom = 314.0
+color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+
+[node name="master_bar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 303.0
+offset_right = 1175.0
+offset_bottom = 314.0
+color = Color(0.87058824, 0.09803922, 0.60784316, 1)
+
+[node name="music_empty" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 363.0
+offset_right = 1184.0
+offset_bottom = 374.0
+color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+
+[node name="music_bar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 363.0
+offset_right = 1185.0
+offset_bottom = 374.51163
+color = Color(0.87058824, 0.09803922, 0.60784316, 1)
+
+[node name="sfx_empty" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 426.0
+offset_right = 1184.0
+offset_bottom = 437.0
+color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+
+[node name="sfx_bar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 426.0
+offset_right = 1106.0
+offset_bottom = 437.0
+color = Color(0.87058824, 0.09803922, 0.60784316, 1)
+
+[node name="voice_empty" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 489.0
+offset_right = 1184.0
+offset_bottom = 500.0
+color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+
+[node name="voice_bar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 489.0
+offset_right = 1184.0
+offset_bottom = 500.46045
+color = Color(0.87058824, 0.09803922, 0.60784316, 1)
+
+[node name="button_slide_01" type="Sprite2D" parent="."]
+position = Vector2(1185, 308)
+texture = ExtResource("11_otwgh")
+
+[node name="button_slide_02" type="Sprite2D" parent="."]
+position = Vector2(1185, 369)
+texture = ExtResource("11_otwgh")
+
+[node name="button_slide_03" type="Sprite2D" parent="."]
+position = Vector2(1111, 431)
+texture = ExtResource("11_otwgh")
+
+[node name="button_slide_04" type="Sprite2D" parent="."]
+position = Vector2(1185, 494)
+texture = ExtResource("11_otwgh")
+
+[node name="scribble_04" type="Sprite2D" parent="."]
+position = Vector2(1208, 215)
+texture = ExtResource("13_r7q3f")
