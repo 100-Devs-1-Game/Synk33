@@ -1,0 +1,368 @@
+[gd_scene load_steps=29 format=3 uid="uid://dofkpx1xgn564"]
+
+[ext_resource type="Script" uid="uid://cj5um466xlr2g" path="res://scenes/menus/transition_button.gd" id="1_5dr8f"]
+[ext_resource type="Script" uid="uid://r62um7roqwig" path="res://scenes/menus/main/tutorial.gd" id="2_bkvec"]
+[ext_resource type="Resource" uid="uid://cus44kk21u1cx" path="res://dialogue/tutorial.dialogue" id="3_d2n7u"]
+[ext_resource type="Texture2D" uid="uid://dkcm542xm2tim" path="res://assets/textures/ui/logo.png" id="4_psktv"]
+[ext_resource type="Environment" uid="uid://cx02jn7kksweo" path="res://environments/level.tres" id="5_s7g3t"]
+[ext_resource type="Shader" uid="uid://dynkmwem11gmw" path="res://assets/shaders/ps2_dream_void.gdshader" id="6_d2n7u"]
+[ext_resource type="PackedScene" uid="uid://diqccqrvjnp2d" path="res://assets/models/rails/rail_02_better_size_blue.tscn" id="7_57ncm"]
+[ext_resource type="PackedScene" uid="uid://cvde7maxwvv5t" path="res://assets/models/rails/rail_02_better_size_green.tscn" id="8_psktv"]
+[ext_resource type="PackedScene" uid="uid://b6b5i7y5wwrq1" path="res://assets/models/rails/rail_02_better_size_orange.tscn" id="9_n84ys"]
+[ext_resource type="PackedScene" uid="uid://b6gsw7ljxbllx" path="res://assets/models/rails/rail_02_better_size_pink.tscn" id="11_do1so"]
+[ext_resource type="PackedScene" uid="uid://cmh013c6fv725" path="res://assets/models/buttons/note_button/note_button_purple.tscn" id="12_s7g3t"]
+[ext_resource type="Texture2D" uid="uid://w0tw6bxiq3ta" path="res://assets/shared/icons/play_icon.png" id="12_stxbw"]
+[ext_resource type="PackedScene" uid="uid://c0woujy5p5rdh" path="res://assets/models/buttons/note_button/note_button_orange.tscn" id="13_stxbw"]
+[ext_resource type="PackedScene" uid="uid://drdl1xa2kpif2" path="res://assets/models/buttons/note_button/note_button_green.tscn" id="14_57ncm"]
+[ext_resource type="Texture2D" uid="uid://bgamdvf8mpaa5" path="res://assets/shared/icons/settings_icon.png" id="14_stxbw"]
+[ext_resource type="PackedScene" uid="uid://d26fwfre324mr" path="res://assets/models/buttons/note_button/note_button_blue.tscn" id="15_toqiy"]
+[ext_resource type="Texture2D" uid="uid://sak1imh5c2rk" path="res://assets/shared/icons/editor_icon.png" id="16_57ncm"]
+[ext_resource type="Texture2D" uid="uid://dkpjw0ioxm1qg" path="res://assets/shared/icons/exit_icon.png" id="18_toqiy"]
+[ext_resource type="FontFile" uid="uid://dql8wmgpy2u70" path="res://fonts/vendsans/vendsans_bold.ttf" id="19_n84ys"]
+[ext_resource type="Texture2D" uid="uid://c326d04a38re6" path="res://assets/shared/gallery/01_welcome.png" id="20_do1so"]
+[ext_resource type="Texture2D" uid="uid://cju0v1phew05k" path="res://assets/shared/gallery/carousel_button_action.png" id="21_mh6f1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nysi8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odbn6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kcv0g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qa2qn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wrc37"]
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+stacked_outline_count = 2
+stacked_outline_0/size = 32
+stacked_outline_0/color = Color(1, 1, 1, 1)
+stacked_outline_1/size = 16
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_psktv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7g3t"]
+render_priority = 0
+shader = ExtResource("6_d2n7u")
+shader_parameter/global_speed = 0.50000002049012
+shader_parameter/nebula_color_1 = Color(0.011764706, 0.043137256, 0.023529412, 1)
+shader_parameter/nebula_color_2 = Color(0.043137256, 0.05490196, 0.078431375, 1)
+shader_parameter/nebula_intensity = 1.0000000475
+shader_parameter/nebula_speed = 0.56000002334012
+shader_parameter/nebula_scale = 3.00000011875
+shader_parameter/nebula_roundness = 1.00000004517093
+shader_parameter/nebula_swirl = 0.90000004275
+shader_parameter/base_void_color = Color(0.005, 0.005, 0.015, 1)
+shader_parameter/orb_color_1 = Color(0.38431373, 0.94509804, 0.96862745, 1)
+shader_parameter/orb_color_2 = Color(0.98039216, 0.34901962, 0.18039216, 1)
+shader_parameter/orb_color_3 = Color(0.53333336, 0.22352941, 0.9490196, 1)
+shader_parameter/orb_color_4 = Color(0.8901961, 0.12156863, 0.6156863, 1)
+shader_parameter/orb_count = 16
+shader_parameter/orb_brightness = 1.0
+shader_parameter/orb_size = 0.0030000001425
+shader_parameter/tail_length = 2.0
+shader_parameter/tail_fade = 3.0
+shader_parameter/orb_radius = 1.40000004275
+shader_parameter/orb_lens_size = 0.890000042275
+shader_parameter/orb_lens_opacity = 0.5600000266
+shader_parameter/vignette_strength = 0.250000011875
+shader_parameter/grain_amount = 0.018
+shader_parameter/scanline_strength = 0.0010000000475
+shader_parameter/chromatic_aberration = 0.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="old_scene" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="old_scene"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.24800001
+anchor_right = 1.0
+anchor_bottom = 0.96500003
+offset_left = 2.0
+offset_top = 264.08
+offset_bottom = 363.4
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="SongSelect" type="Button" parent="old_scene/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 64
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nysi8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_odbn6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kcv0g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qa2qn")
+script = ExtResource("1_5dr8f")
+scene = 2
+
+[node name="Label" type="Label" parent="old_scene/VBoxContainer/SongSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21900001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 126.51999
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "SONG SELECT"
+label_settings = SubResource("LabelSettings_wrc37")
+vertical_alignment = 1
+
+[node name="Settings" type="Button" parent="old_scene/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 64
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nysi8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_odbn6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kcv0g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qa2qn")
+script = ExtResource("1_5dr8f")
+scene = 1
+
+[node name="Label" type="Label" parent="old_scene/VBoxContainer/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_wrc37")
+vertical_alignment = 1
+
+[node name="Credits" type="Button" parent="old_scene/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 64
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nysi8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_odbn6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kcv0g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qa2qn")
+script = ExtResource("1_5dr8f")
+scene = 3
+
+[node name="Label" type="Label" parent="old_scene/VBoxContainer/Credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.781
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 125.04199
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "EXIT"
+label_settings = SubResource("LabelSettings_wrc37")
+vertical_alignment = 1
+
+[node name="Tutorial" type="Button" parent="old_scene/VBoxContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+text = "Tutorial"
+script = ExtResource("2_bkvec")
+dialogue = ExtResource("3_d2n7u")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.046000004
+anchor_right = 0.48600003
+anchor_bottom = 0.2
+offset_left = 286.08
+offset_top = 0.31999588
+offset_right = 286.37994
+offset_bottom = 0.5
+texture = ExtResource("4_psktv")
+expand_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_s7g3t")
+
+[node name="shader_background" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.275, 0, 0, 0, 2.275, 0, 0, 0, 1.315, 0, -0.44467103, 0)
+mesh = SubResource("PlaneMesh_psktv")
+surface_material_override/0 = SubResource("ShaderMaterial_s7g3t")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 0)
+projection = 1
+current = true
+size = 2.56
+
+[node name="Tracks" type="Node3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0.1)
+
+[node name="rail_blue" parent="Tracks" instance=ExtResource("7_57ncm")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 7.1, -0.9, -1)
+
+[node name="rail_green" parent="Tracks" instance=ExtResource("8_psktv")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.065, -0.9, 1)
+
+[node name="rail_orange" parent="Tracks" instance=ExtResource("9_n84ys")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 5.065, -0.9, 0)
+
+[node name="rail_purple" parent="Tracks" instance=ExtResource("11_do1so")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 4.055, -0.9, 1)
+
+[node name="play_button" parent="." instance=ExtResource("12_s7g3t")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.52, 0, -0.465)
+
+[node name="play_icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.175, 0, 0, 0, -7.649493e-09, 0.175, 0, -0.175, -7.649493e-09, -1.5078998, 0.005628161, -0.46517134)
+texture = ExtResource("12_stxbw")
+
+[node name="play_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21900001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.480011
+offset_top = 292.0
+offset_right = -1271.0
+offset_bottom = -692.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "PLAY"
+label_settings = SubResource("LabelSettings_wrc37")
+vertical_alignment = 1
+
+[node name="settings_button" parent="." instance=ExtResource("14_57ncm")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.52, 0, -0.165)
+
+[node name="settings_icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.195, 0, 0, 0, -8.52372e-09, 0.195, 0, -0.195, -8.52372e-09, -1.5196605, 0.005628161, -0.16629447)
+texture = ExtResource("14_stxbw")
+
+[node name="settings_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21900001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.480011
+offset_top = 419.0
+offset_right = -1036.0
+offset_bottom = -565.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_wrc37")
+vertical_alignment = 1
+
+[node name="editor_button" parent="." instance=ExtResource("13_stxbw")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.52, 0, 0.165)
+
+[node name="editor_icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.145, 0, 0, 0, -6.3381513e-09, 0.145, 0, -0.145, -6.3381513e-09, -1.523, 0.006, 0.162)
+texture = ExtResource("16_57ncm")
+
+[node name="editor_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21900001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.480011
+offset_top = 556.0
+offset_right = -1036.0
+offset_bottom = -428.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "EDITOR"
+label_settings = SubResource("LabelSettings_wrc37")
+vertical_alignment = 1
+
+[node name="exit_button" parent="." instance=ExtResource("15_toqiy")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1.52, 0, 0.49)
+
+[node name="exit_icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.165, 0, 0, 0, -7.212379e-09, 0.165, 0, -0.165, -7.212379e-09, -1.5185982, 0.005628161, 0.49062264)
+texture = ExtResource("18_toqiy")
+
+[node name="exit_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21900001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.480011
+offset_top = 696.0
+offset_right = -1036.0
+offset_bottom = -288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "EXIT"
+label_settings = SubResource("LabelSettings_wrc37")
+vertical_alignment = 1
+
+[node name="disclaimer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 1025.0
+offset_right = 1134.0
+offset_bottom = 1048.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.3529412)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4509804)
+theme_override_fonts/font = ExtResource("19_n84ys")
+theme_override_font_sizes/font_size = 15
+text = "SYNK:33 is a game developed as part of the 33 Games Jam, hosted by CGGJ (Collaborative Godot Game Jam)"
+horizontal_alignment = 1
+
+[node name="gallery_placeholder" type="Sprite2D" parent="."]
+position = Vector2(1547.133, 762.63367)
+scale = Vector2(1.0009935, 1.0009936)
+texture = ExtResource("20_do1so")
+
+[node name="gallery_bottom" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1287.5166
+offset_top = 921.25
+offset_right = 1807.5166
+offset_bottom = 975.25
+color = Color(0, 0, 0, 0.25490198)
+
+[node name="gallery_bottom_text" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1476.5166
+offset_top = 936.25
+offset_right = 1616.5166
+offset_bottom = 964.25
+theme_override_fonts/font = ExtResource("19_n84ys")
+theme_override_font_sizes/font_size = 18
+text = "Visit our Discord!"
+horizontal_alignment = 1
+
+[node name="gallery_action_button" type="Sprite2D" parent="."]
+position = Vector2(1547.4475, 925.30035)
+scale = Vector2(1.0021251, 1.002125)
+texture = ExtResource("21_mh6f1")

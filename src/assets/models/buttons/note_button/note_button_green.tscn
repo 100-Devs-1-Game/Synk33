@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://drdl1xa2kpif2"]
 
-[ext_resource type="Material" uid="uid://udt128mogpwj" path="res://materials/simple/green.tres" id="1_5bmn7"]
-[ext_resource type="Material" uid="uid://ceduyjmg6nces" path="res://materials/emission/green_e.tres" id="1_pqytt"]
-[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://materials/simple/black.tres" id="3_k75kf"]
+[ext_resource type="Material" uid="uid://b3mgaid0ob4u1" path="res://assets/materials/emission/green_e.tres" id="1_5ykxj"]
+[ext_resource type="Material" uid="uid://3nias33hff1" path="res://assets/materials/simple/green.tres" id="2_5ykxj"]
+[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://assets/materials/simple/black.tres" id="3_k75kf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2n2s"]
 
@@ -95,6 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0026432164, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_pc4bw")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_5bmn7")
-surface_material_override/1 = ExtResource("1_pqytt")
+surface_material_override/0 = ExtResource("1_5ykxj")
+surface_material_override/1 = ExtResource("2_5ykxj")
 surface_material_override/2 = ExtResource("3_k75kf")
