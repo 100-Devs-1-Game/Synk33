@@ -1,0 +1,70 @@
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://bp23kgv5bw8f8"]
+
+[ext_resource type="Texture2D" uid="uid://d2pk25gkcd4fv" path="res://assets/shared/buttons/ui_button_hover_01/0001.png" id="1_wpdg8"]
+[ext_resource type="Texture2D" uid="uid://1wlsco2qeo38" path="res://assets/shared/buttons/ui_button_hover_01/0002.png" id="2_a33yb"]
+[ext_resource type="Texture2D" uid="uid://djns2lti8x0wx" path="res://assets/shared/buttons/ui_button_hover_01/0003 .png" id="3_wcxhw"]
+[ext_resource type="Texture2D" uid="uid://jj0btuxuta8i" path="res://assets/shared/buttons/ui_button_hover_01/0004 .png" id="4_55f8o"]
+[ext_resource type="Texture2D" uid="uid://b2nlgbs4r01oj" path="res://assets/shared/buttons/ui_button_hover_01/0005 .png" id="5_0g7sg"]
+[ext_resource type="Texture2D" uid="uid://b1ate6wdocvyx" path="res://assets/shared/buttons/ui_button_hover_01/0006 .png" id="6_4wbgx"]
+[ext_resource type="Texture2D" uid="uid://igjsky8cugyf" path="res://assets/shared/buttons/ui_button_hover_01/0007 .png" id="7_lt6xh"]
+[ext_resource type="Texture2D" uid="uid://b1qeebih1whg4" path="res://assets/shared/buttons/ui_button_hover_01/0008 .png" id="8_2cf26"]
+[ext_resource type="Texture2D" uid="uid://cp5gojbkxjvvc" path="res://assets/shared/buttons/ui_button_hover_01/0009 .png" id="9_8kn13"]
+[ext_resource type="Texture2D" uid="uid://chifh5m83p7bh" path="res://assets/shared/buttons/ui_button_hover_01/0010 .png" id="10_8gnpk"]
+[ext_resource type="Texture2D" uid="uid://bn8hhrnhnxi47" path="res://assets/shared/buttons/ui_button_hover_01/0011 .png" id="11_lcch3"]
+[ext_resource type="Texture2D" uid="uid://do7sdqucb43e1" path="res://assets/shared/buttons/ui_button_hover_01/0012 .png" id="12_2h67a"]
+[ext_resource type="Texture2D" uid="uid://dqe505lx0h8n2" path="res://assets/shared/buttons/ui_button_hover_01/0013 .png" id="13_46j85"]
+[ext_resource type="Texture2D" uid="uid://bgid5mwkms05q" path="res://assets/shared/buttons/ui_button_hover_01/0014 .png" id="14_nnyt0"]
+[ext_resource type="Texture2D" uid="uid://bxiq05xrgh0f1" path="res://assets/shared/buttons/ui_button_hover_01/0015 .png" id="15_lpj1i"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wpdg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a33yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wcxhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_55f8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0g7sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4wbgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lt6xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2cf26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8kn13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8gnpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lcch3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2h67a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_46j85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nnyt0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lpj1i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
