@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://drpe1mff8pcus"]
+
+[ext_resource type="PackedScene" uid="uid://dpu52r0roa3el" path="res://assets/models/buttons/note_new/note.gltf" id="1_jl2ut"]
+[ext_resource type="Material" uid="uid://dehc5w1b53pe4" path="res://assets/materials/simple/blue.tres" id="2_n41s0"]
+[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://assets/materials/simple/black.tres" id="3_2ewcx"]
+
+[node name="note_blue" instance=ExtResource("1_jl2ut")]
+
+[node name="note" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_n41s0")
+surface_material_override/1 = ExtResource("3_2ewcx")

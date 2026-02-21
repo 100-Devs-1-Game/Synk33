@@ -1,15 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://dkluvwvfg2iyk"]
+[gd_scene load_steps=43 format=3 uid="uid://dkluvwvfg2iyk"]
 
-[ext_resource type="PackedScene" uid="uid://cbpbta52owj4a" path="res://assets/models/rails/rail_02_better_size.tscn" id="1_gagx4"]
 [ext_resource type="Resource" uid="uid://dy6oki16w5u5t" path="res://assets/charts/Fae/uwu_hard.tres" id="2_8jl8h"]
-[ext_resource type="PackedScene" uid="uid://diqccqrvjnp2d" path="res://assets/models/rails/rail_02_better_size_blue.tscn" id="2_nbd8l"]
-[ext_resource type="PackedScene" uid="uid://b6b5i7y5wwrq1" path="res://assets/models/rails/rail_02_better_size_orange.tscn" id="3_hwkc4"]
 [ext_resource type="Script" uid="uid://l5osvw7nm7tr" path="res://core/ScoreManager.cs" id="6_18uvy"]
 [ext_resource type="AudioStream" uid="uid://boxotbbbr6bgy" path="res://assets/editor/hold_note_01.wav" id="10_18uvy"]
 [ext_resource type="Script" uid="uid://d2i6u8ixu12r2" path="res://core/GameManager.cs" id="10_mvjn5"]
 [ext_resource type="Script" uid="uid://dbbkpkhl7jysd" path="res://core/Conductor.cs" id="11_18uvy"]
 [ext_resource type="PackedScene" uid="uid://jtrs7tx8h8na" path="res://ui/score.tscn" id="11_78aa7"]
-[ext_resource type="PackedScene" uid="uid://bsaflpmlchw2b" path="res://notes/fret_button.tscn" id="12_arua4"]
 [ext_resource type="Script" uid="uid://cn66yvsvfpaxu" path="res://core/InputManager.cs" id="13_78aa7"]
 [ext_resource type="Material" uid="uid://dehc5w1b53pe4" path="res://assets/materials/simple/blue.tres" id="13_f541d"]
 [ext_resource type="Material" uid="uid://ccah1txx0qs6x" path="res://assets/materials/simple/purple.tres" id="13_neaty"]
@@ -27,8 +23,27 @@
 [ext_resource type="Material" uid="uid://dnmfjt8tc7ulh" path="res://assets/materials/emission/orange_e.tres" id="18_8jl8h"]
 [ext_resource type="AudioStream" uid="uid://bqisulr2jha7t" path="res://assets/audio/sfx/notes/hit_note_01.wav" id="18_52274"]
 [ext_resource type="PackedScene" uid="uid://cginamruiifir" path="res://assets/models/speaker/speaker.tscn" id="18_mvjn5"]
-[ext_resource type="PackedScene" uid="uid://6ktn83westp0" path="res://assets/models/UI/ui_elemet_02.tscn" id="21_78aa7"]
+[ext_resource type="PackedScene" uid="uid://cgah6420n6rgs" path="res://assets/models/buttons/fret_new/frat_top_blue.tscn" id="25_3bpi0"]
+[ext_resource type="PackedScene" uid="uid://c0o8xyhfktfn7" path="res://assets/models/rails/new_rail/rail_blue.tscn" id="26_3a7vx"]
 [ext_resource type="PackedScene" uid="uid://ckmhq0mtn2p1e" path="res://ui/judgement_indicator_manager.tscn" id="26_neaty"]
+[ext_resource type="PackedScene" uid="uid://bb8y83yrkvnlm" path="res://assets/models/buttons/fret_new/frat_top_orange.tscn" id="26_nkiff"]
+[ext_resource type="PackedScene" uid="uid://c7wupgs1x3u5r" path="res://assets/models/rails/new_rail/rail_orange.tscn" id="27_vls4n"]
+[ext_resource type="PackedScene" uid="uid://bddrhslmt70jk" path="res://assets/models/rails/new_rail/rail_purple.tscn" id="28_8jl8h"]
+[ext_resource type="PackedScene" uid="uid://bhi785lwomotr" path="res://assets/models/buttons/fret_new/frat_base_purple.tscn" id="29_3v0bi"]
+[ext_resource type="PackedScene" uid="uid://bm8cndq74twpu" path="res://assets/models/landmine/landmine.tscn" id="29_8jl8h"]
+[ext_resource type="PackedScene" uid="uid://dhfu774mfy5jy" path="res://assets/models/buttons/fret_new/frat_base_blue.tscn" id="29_btjhw"]
+[ext_resource type="PackedScene" uid="uid://bkl1nhw5ayh3n" path="res://assets/models/buttons/fret_new/frat_top_purple.tscn" id="29_nkiff"]
+[ext_resource type="PackedScene" uid="uid://dvo1j63v5w584" path="res://assets/models/buttons/fret_new/frat_base_orange.tscn" id="30_52274"]
+[ext_resource type="PackedScene" uid="uid://drpe1mff8pcus" path="res://assets/models/buttons/note_new/note_blue.tscn" id="35_0awm3"]
+[ext_resource type="PackedScene" uid="uid://cfvpqsy6um5bs" path="res://assets/models/buttons/note_new/note_orange.tscn" id="36_2x3kq"]
+[ext_resource type="PackedScene" uid="uid://dmqtjn3a8imjt" path="res://assets/models/buttons/note_new/note_purple.tscn" id="37_2x3kq"]
+[ext_resource type="PackedScene" uid="uid://o60abwjco0a7" path="res://assets/models/buttons/note_hold_new/note_hold_subd_blue.tscn" id="38_e8hl2"]
+[ext_resource type="PackedScene" uid="uid://bipvuvso1r8p" path="res://assets/models/buttons/note_hold_new/note_hold_subd_orange.tscn" id="39_8rlvj"]
+[ext_resource type="PackedScene" uid="uid://b2n3p5bjr7ywa" path="res://assets/models/buttons/note_hold_new/note_hold_subd_purple.tscn" id="40_u11vx"]
+[ext_resource type="SpriteFrames" uid="uid://c5l8c230idkqr" path="res://assets/shared/vfx/explosion/blue/explosion_blue.tres" id="42_t4fgn"]
+
+[sub_resource type="Environment" id="Environment_vls4n"]
+glow_intensity = 0.89
 
 [node name="Synk33" type="Node3D"]
 
@@ -124,54 +139,156 @@ bus = &"Sfx"
 
 [node name="Score" parent="Gameplay" node_paths=PackedStringArray("ScoreManager") instance=ExtResource("11_78aa7")]
 transform = Transform3D(1, 0, 0, 0, 0.25881907, -0.9659258, 0, 0.9659258, 0.25881907, 1.925, 2.811, 0.5)
+visible = false
 ScoreManager = NodePath("../ScoreManager")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vls4n")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.92050487, 0.39073116, 0, -0.39073113, 0.92050487, 0, 3.4336958, 5.1822586)
+transform = Transform3D(1, 0, 0, 0, 0.9170601, 0.39874908, 0, -0.39874908, 0.9170601, 0, 3.434, 5.182)
 keep_aspect = 0
 fov = 70.0
 
-[node name="Frets" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 0, 0)
-
-[node name="FretPurple" parent="Frets" instance=ExtResource("12_arua4")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1, 0, 0)
-Material = ExtResource("13_neaty")
-MaterialGlow = ExtResource("14_3a7vx")
-
-[node name="FretBlue" parent="Frets" instance=ExtResource("12_arua4")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-ButtonType = 1
-Material = ExtResource("13_f541d")
-MaterialGlow = ExtResource("14_neaty")
-
-[node name="FretOrange" parent="Frets" instance=ExtResource("12_arua4")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1, 0, 0)
-ButtonType = 2
-Material = ExtResource("17_vls4n")
-MaterialGlow = ExtResource("18_8jl8h")
-
-[node name="Rails" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
-[node name="RailPurple" parent="Rails" instance=ExtResource("1_gagx4")]
-transform = Transform3D(0.45, 0, 0, 0, 0.45000002, 0, 0, 0, 0.9030582, -1, 0, -15)
-
-[node name="RailBlue" parent="Rails" instance=ExtResource("2_nbd8l")]
-transform = Transform3D(0.45, 0, 0, 0, 0.45000002, 0, 0, 0, 0.9030582, 0, 0, -15)
-
-[node name="RailOrange" parent="Rails" instance=ExtResource("3_hwkc4")]
-transform = Transform3D(0.45, 0, 0, 0, 0.45000002, 0, 0, 0, 0.9030582, 1, 0, -15)
-
-[node name="Background" type="Sprite3D" parent="."]
-transform = Transform3D(15.115571, 0, 0, 0, 14.289564, 2.785952, 0, -3.8288772, 10.397315, 0, -64.747856, -157.49887)
+[node name="background" type="Sprite3D" parent="."]
+transform = Transform3D(14.241, 0, 0, 0, 13.463074, 2.624684, 0, -3.6074202, 9.795453, 0, -71.998, -157.499)
+billboard = 1
 texture = ExtResource("17_mvjn5")
 
-[node name="Speaker" parent="." instance=ExtResource("18_mvjn5")]
+[node name="speaker" parent="." instance=ExtResource("18_mvjn5")]
 transform = Transform3D(0.067849174, 0.010427094, -0.072717, 0.006057649, 0.097856246, 0.019684013, 0.073210604, -0.017760392, 0.06576302, 3, -2.5, 0)
-
-[node name="HealthUI" parent="." instance=ExtResource("21_78aa7")]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.8660254, 0, 0.8660254, 0.49999997, -1.738, 3.107, 1)
+visible = false
 
 [node name="JudgementIndicatorManager" parent="." instance=ExtResource("26_neaty")]
 MaxActiveIndicators = 20
+
+[node name="frats" type="Node3D" parent="."]
+
+[node name="frat_top_blue" parent="frats" instance=ExtResource("25_3bpi0")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0, 0.015, 1)
+
+[node name="frat_top_blue_label" type="Label3D" parent="frats"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.038050134, 1.0141402)
+text = "S"
+font_size = 45
+
+[node name="frat_base_blue" parent="frats" instance=ExtResource("29_btjhw")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0, -0.034, 1)
+
+[node name="frat_top_orange" parent="frats" instance=ExtResource("26_nkiff")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0.675, 0.015, 1)
+
+[node name="frat_top_orange_label" type="Label3D" parent="frats"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.675, 0.038, 1.014)
+text = "D"
+font_size = 45
+
+[node name="frat_base_orange" parent="frats" instance=ExtResource("30_52274")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0.675, -0.034, 1)
+
+[node name="frat_top_purple" parent="frats" instance=ExtResource("29_nkiff")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.675, 0.015, 1)
+
+[node name="frat_top_purple_label" type="Label3D" parent="frats"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.675, 0.038, 1.014)
+text = "A"
+font_size = 45
+
+[node name="frat_base_purple" parent="frats" instance=ExtResource("29_3v0bi")]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.675, -0.034, 1)
+
+[node name="rails" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="rail_blue" parent="rails" instance=ExtResource("26_3a7vx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999999, -105.25)
+
+[node name="rail_orange" parent="rails" instance=ExtResource("27_vls4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.685, 0.19999999, -105.25)
+
+[node name="rail_purple" parent="rails" instance=ExtResource("28_8jl8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.685, 0.19999999, -105.25)
+
+[node name="to_delete" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36262012, 0, -2.1349263)
+
+[node name="landmine" parent="to_delete" instance=ExtResource("29_8jl8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3161791, 0, 0.40190125)
+
+[node name="landmine2" parent="to_delete" instance=ExtResource("29_8jl8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364, 0, -7.388)
+
+[node name="landmine3" parent="to_delete" instance=ExtResource("29_8jl8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.024, 0, -18.628)
+
+[node name="note_blue" parent="to_delete" instance=ExtResource("35_0awm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36262012, -0.085, -5.020074)
+
+[node name="note_blue2" parent="to_delete" instance=ExtResource("35_0awm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36262012, -0.085, -1.7300737)
+
+[node name="note_blue3" parent="to_delete" instance=ExtResource("35_0awm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36262012, -0.085, 1.1699264)
+
+[node name="note_blue4" parent="to_delete" instance=ExtResource("35_0awm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.363, -0.085, -12.175)
+
+[node name="note_blue5" parent="to_delete" instance=ExtResource("35_0awm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.363, -0.085, -21.71)
+
+[node name="note_blue6" parent="to_delete" instance=ExtResource("35_0awm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.363, -0.085, -30.27)
+
+[node name="note_blue7" parent="to_delete" instance=ExtResource("35_0awm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.363, -0.085, -45.62)
+
+[node name="note_orange" parent="to_delete" instance=ExtResource("36_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3023799, 0, 2.1349263)
+
+[node name="note_orange2" parent="to_delete" instance=ExtResource("36_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3023799, 0, -3.145074)
+
+[node name="note_orange3" parent="to_delete" instance=ExtResource("36_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3023799, 0, -10.090075)
+
+[node name="note_orange4" parent="to_delete" instance=ExtResource("36_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3023799, 0, -17.125074)
+
+[node name="note_orange5" parent="to_delete" instance=ExtResource("36_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0, -33.38)
+
+[node name="note_orange6" parent="to_delete" instance=ExtResource("36_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302, 0, -59.045)
+
+[node name="note_purple" parent="to_delete" instance=ExtResource("37_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0226202, 0, -0.050073624)
+
+[node name="note_purple2" parent="to_delete" instance=ExtResource("37_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0226202, 0, -6.970073)
+
+[node name="note_purple3" parent="to_delete" instance=ExtResource("37_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0226202, 0, -13.760075)
+
+[node name="note_purple4" parent="to_delete" instance=ExtResource("37_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0226202, 0, -23.950073)
+
+[node name="note_purple5" parent="to_delete" instance=ExtResource("37_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.023, 0, -37.055)
+
+[node name="note_purple6" parent="to_delete" instance=ExtResource("37_2x3kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.023, 0, -53.305)
+
+[node name="note_hold_subd_blue" parent="to_delete" instance=ExtResource("38_e8hl2")]
+transform = Transform3D(0.685, 0, 0, 0, 1, 0, 0, 0, 4.035, -0.36262012, -0.088, 0.88292634)
+
+[node name="note_hold_subd_orange" parent="to_delete" instance=ExtResource("39_8rlvj")]
+transform = Transform3D(0.685, 0, 0, 0, 1, 0, 0, 0, 11.19, 0.3123799, -0.088, -3.6270738)
+
+[node name="note_hold_subd_purple" parent="to_delete" instance=ExtResource("40_u11vx")]
+transform = Transform3D(0.685, 0, 0, 0, 1, 0, 0, 0, 11.19, -1.0376201, -0.088, -7.6070733)
+
+[node name="note_hold_hit_blue2" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0.25, 0.705)
+transparency = 0.08
+sprite_frames = ExtResource("42_t4fgn")
+frame_progress = 0.93134195

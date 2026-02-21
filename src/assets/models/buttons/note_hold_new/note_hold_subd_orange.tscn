@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bipvuvso1r8p"]
+
+[ext_resource type="PackedScene" uid="uid://qyuwib06nn2g" path="res://assets/models/buttons/note_hold_new/note_hold_subd.gltf" id="1_jxnon"]
+[ext_resource type="Shader" uid="uid://b17c1w2nxj3qh" path="res://assets/shaders/vertex_hold.gdshader" id="2_y0trh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fqi4"]
+render_priority = 0
+shader = ExtResource("2_y0trh")
+shader_parameter/amp = 0.0
+shader_parameter/freq = 0.0
+shader_parameter/speed = 6.0
+shader_parameter/end_fade = 0.12
+shader_parameter/core_color = Color(0.9607843, 0.34117648, 0.1764706, 1)
+shader_parameter/emission_strength = 0.0
+shader_parameter/up_axis = Vector3(0, 0, 1)
+shader_parameter/z_bias = 0.002
+shader_parameter/up_to_bottom = true
+
+[node name="note_hold_subd_orange" instance=ExtResource("1_jxnon")]
+
+[node name="note_hold_subd" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("ShaderMaterial_2fqi4")

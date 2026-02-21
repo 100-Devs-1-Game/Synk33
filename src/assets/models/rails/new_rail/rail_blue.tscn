@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0o8xyhfktfn7"]
+
+[ext_resource type="PackedScene" uid="uid://b7qyvvus35ejs" path="res://assets/models/rails/new_rail/rail.gltf" id="1_2oy64"]
+[ext_resource type="Material" uid="uid://nfka01fmnkuk" path="res://assets/materials/simple/gray.tres" id="2_8pors"]
+[ext_resource type="Material" uid="uid://dehc5w1b53pe4" path="res://assets/materials/simple/blue.tres" id="3_jd4tg"]
+[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://assets/materials/simple/black.tres" id="4_jd4tg"]
+
+[node name="rail_blue" instance=ExtResource("1_2oy64")]
+
+[node name="rail" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8pors")
+surface_material_override/1 = ExtResource("3_jd4tg")
+surface_material_override/2 = ExtResource("4_jd4tg")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk3mijpbn4mq1"]
+
+[ext_resource type="PackedScene" uid="uid://b7pe2gnnbe1hl" path="res://assets/models/buttons/note_hold_new/note_hold.gltf" id="1_2ebc4"]
+
+[node name="note_hold" instance=ExtResource("1_2ebc4")]
+
+[node name="note_hold" parent="." index="0"]
+transform = Transform3D(0.027758248, 0, 0, 0, -0.027593318, 0, 0, 0, 0.2927605, 0, 0, 0)
+cast_shadow = 0

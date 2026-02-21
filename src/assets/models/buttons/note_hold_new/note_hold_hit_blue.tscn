@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyc0c3vm7j3gy"]
+
+[ext_resource type="PackedScene" uid="uid://c8tt5vwefaw13" path="res://assets/models/buttons/note_hold_new/note_hold_hit.gltf" id="1_ddpmq"]
+[ext_resource type="Shader" uid="uid://44iqldypwc4f" path="res://assets/shaders/beam_hit.gdshader" id="2_q14t0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q14t0"]
+render_priority = 0
+shader = ExtResource("2_q14t0")
+shader_parameter/beam_color = Color(0.2, 0.8, 1, 1)
+shader_parameter/alpha_base = 1.7650000000000001
+shader_parameter/alpha_core = 0.55
+shader_parameter/edge_power = 2.2
+shader_parameter/fade_bottom = 0.1
+shader_parameter/fade_top = 0.1
+shader_parameter/streak_density = 8.0
+shader_parameter/streak_speed = 1.2
+shader_parameter/streak_width = 0.22
+shader_parameter/streak_strength = 0.25
+shader_parameter/sway_amp = 0.004
+shader_parameter/sway_freq = 4.0
+shader_parameter/sway_speed = 2.0
+shader_parameter/up_axis = Vector3(0, 0, 1)
+shader_parameter/z_bias = 0.002
+shader_parameter/crown_height = 0.3
+shader_parameter/crown_spikes = 14.0
+shader_parameter/crown_cut = 0.74
+shader_parameter/crown_soft = 0.9
+shader_parameter/crown_taper = 0.65
+
+[node name="note_hold_hit_blue" instance=ExtResource("1_ddpmq")]
+
+[node name="note_hold_hit" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_q14t0")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgah6420n6rgs"]
+
+[ext_resource type="PackedScene" uid="uid://cuw4ky72hhtyh" path="res://assets/models/buttons/fret_new/frat_top.gltf" id="1_rktr5"]
+[ext_resource type="Material" uid="uid://dehc5w1b53pe4" path="res://assets/materials/simple/blue.tres" id="2_x8ygo"]
+[ext_resource type="Material" uid="uid://ct1kxrnm13cyy" path="res://assets/materials/simple/black.tres" id="3_wqnm0"]
+
+[node name="frat_top" instance=ExtResource("1_rktr5")]
+
+[node name="frat_top" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_x8ygo")
+surface_material_override/1 = ExtResource("3_wqnm0")
