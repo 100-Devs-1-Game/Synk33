@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Godot;
@@ -24,7 +25,7 @@ public partial class Song : Resource {
 	};
 
 	public Chart? GetChartByDifficulty(Difficulty difficulty) {
-		if (!HasChart(difficulty)) {
+		if (!HasChartInDifficulty(difficulty)) {
 			return null;
 		}
 
@@ -38,8 +39,25 @@ public partial class Song : Resource {
 		return res;
 	}
 
-	public bool HasChart(Difficulty difficulty) {
+	public Array<Chart?>? GetAvalableCharts()
+	{
+		Array<Chart?> AvailableCharts = [];
+		foreach(Difficulty current_dif in Enum.GetValues(typeof(Difficulty)))
+		{
+			if(GetChartByDifficulty(current_dif) != null)
+			{
+				AvailableCharts.Add(GetChartByDifficulty(current_dif));
+			}
+		}
+		return AvailableCharts;
+	}
+
+	public bool HasChartInDifficulty(Difficulty difficulty) {
 		return (Difficulties & (1 << (int)difficulty)) != 0;
+	}
+	public bool HasChart() {
+		//return (Difficulties & (1 << (int)difficulty)) != 0;
+		return HasChartInDifficulty(Difficulty.Easy) || HasChartInDifficulty(Difficulty.Medium) || HasChartInDifficulty(Difficulty.Hard) || HasChartInDifficulty(Difficulty.Expert);
 	}
 	public	void Prepare(){
 		string path;
